@@ -3,10 +3,16 @@ package com.ra4king.opengl.util;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
+import java.util.Map;
+
 public class ShaderProgram {
 	private int program;
 	
 	public ShaderProgram(String vertexShader, String fragmentShader) {
+		this(vertexShader,fragmentShader,null);
+	}
+	
+	public ShaderProgram(String vertexShader, String fragmentShader, Map<Integer,String> attributes) {
 		int vs = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vs, vertexShader);
 		
@@ -26,6 +32,10 @@ public class ShaderProgram {
 		program = glCreateProgram();
 		glAttachShader(program, vs);
 		glAttachShader(program, fs);
+		
+		if(attributes != null)
+			for(Integer i : attributes.keySet())
+				glBindAttribLocation(program, i, attributes.get(i));
 		
 		glLinkProgram(program);
 		
