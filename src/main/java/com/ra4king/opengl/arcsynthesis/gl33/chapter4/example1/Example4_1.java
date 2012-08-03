@@ -5,7 +5,7 @@ import java.nio.FloatBuffer;
 import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.GLProgram;
-import com.ra4king.opengl.ShaderProgram;
+import com.ra4king.opengl.util.ShaderProgram;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;

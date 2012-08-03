@@ -12,7 +12,7 @@ import java.nio.ShortBuffer;
 import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.GLProgram;
-import com.ra4king.opengl.ShaderProgram;
+import com.ra4king.opengl.util.ShaderProgram;
 
 public class Example5_3 extends GLProgram {
 	public static void main(String[] args) {

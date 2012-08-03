@@ -93,7 +93,7 @@ public abstract class GLProgram {
 		lastTime = lastFPS = System.nanoTime();
 		int frames = 0;
 		
-		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+		while(!Display.isCloseRequested() && !shouldStop()) {
 			long deltaTime = System.nanoTime() - lastTime;
 			lastTime += deltaTime;
 			
@@ -134,6 +134,10 @@ public abstract class GLProgram {
 	
 	public void resized() {
 		glViewport(0,0,getWidth(),getHeight());
+	}
+	
+	public boolean shouldStop() {
+		return Keyboard.isKeyDown(Keyboard.KEY_ESCAPE);
 	}
 	
 	public void update(long deltaTime) {}

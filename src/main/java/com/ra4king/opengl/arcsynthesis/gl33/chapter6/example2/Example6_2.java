@@ -11,7 +11,7 @@ import java.nio.ShortBuffer;
 import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.GLProgram;
-import com.ra4king.opengl.ShaderProgram;
+import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.math.Matrix4;
 
 public class Example6_2 extends GLProgram {
