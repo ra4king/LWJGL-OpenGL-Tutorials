@@ -49,7 +49,15 @@ public abstract class GLProgram {
 	}
 	
 	public final void run() {
-		run(false);
+		try {
+			Display.create();
+		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+			System.exit(1);
+		}
+		
+		gameLoop();
 	}
 	
 	public final void run(boolean core) {
@@ -61,6 +69,22 @@ public abstract class GLProgram {
 			System.exit(1);
 		}
 		
+		gameLoop();
+	}
+	
+	public final void run(int major, int minor) {
+		try {
+			Display.create(new PixelFormat(),new ContextAttribs(major,minor));
+		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+			System.exit(1);
+		}
+		
+		gameLoop();
+	}
+	
+	private void gameLoop() {
 		init();
 		
 		resized();
