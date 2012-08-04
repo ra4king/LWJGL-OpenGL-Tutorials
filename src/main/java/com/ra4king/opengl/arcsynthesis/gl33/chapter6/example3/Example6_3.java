@@ -213,8 +213,7 @@ public class Example6_3 extends GLProgram {
 		float sin = (float)Math.sin(angle);
 		float invCos = 1-cos;
 		
-		Vector3 v = new Vector3(1,1,1);
-		v.normalize();
+		Vector3 v = new Vector3(1,1,1).normalize();
 		
 		m.clearToIdentity()
 		 .put(0, v.x()*v.x() + (1 - v.x()*v.x())*cos)
