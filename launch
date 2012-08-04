@@ -5,30 +5,14 @@ die () {
     exit 1
 }
 
-case `uname` in
-
-# PS isn't used yet
-CYGWIN*|MINGW*) 
-        PS=';' 
-        export PATH="target/natives:$PATH"
-        ;;
-    
-*)       
-        PS=':' 
-        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:target/natives"
-        ;;
-
-esac
-
 mvn=$(which mvn)
 
 [[ -z $mvn ]] && die "\n\n  Maven not found.  Please download it from http://maven.apache.org/download.html\n\n"
 
 launch () {
     class=$1
-    mvn compile exec:java -Dexec.mainClass=$class
+    MAVEN_OPTS='-Djava.library.path=target/natives' mvn compile exec:java -Dexec.mainClass=$class
 }
-
 
 get_targets () {
     expr=$1
