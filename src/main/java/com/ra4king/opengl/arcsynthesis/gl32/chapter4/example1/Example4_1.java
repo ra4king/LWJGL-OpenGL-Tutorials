@@ -1,5 +1,10 @@
 package com.ra4king.opengl.arcsynthesis.gl32.chapter4.example1;
 
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL30.*;
+
 import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,11 +13,6 @@ import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
-
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.*;
 
 public class Example4_1 extends GLProgram {
 	public static void main(String[] args) {
