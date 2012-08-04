@@ -1,0 +1,64 @@
+#!/bin/bash
+
+die () {
+    echo -e "$*" >&2
+    exit 1
+}
+
+case `uname` in
+
+# PS isn't used yet
+CYGWIN*) 
+        PS=';' 
+        export PATH="target/natives:$PATH"
+        ;;
+    
+*)       
+        PS=':' 
+        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:target/naives"
+        ;;
+
+esac
+
+mvn=$(which mvn)
+
+[[ -z $mvn ]] && die "\n\n  Maven not found.  Please download it from http://maven.apache.org/download.html\n\n"
+
+launch () {
+    class=$1
+    mvn exec:java -Dexec.mainClass=$class
+}
+
+
+get_targets () {
+    expr=$1
+    grep -rl 'public static void main' src/main/java \
+        | sed 's/\//./g; s/\.java$//; s/^src\.main.java\.//' \
+        | grep $expr
+}
+
+expr=${1:-.}
+
+declare -a targets=($(get_targets $expr))
+len=${#targets[@]}
+if [[ $len = 0 ]]; then
+    echo "No targets found for $expr"
+elif [[ $len -gt 1 ]]; then
+    echo -e "Found $len matching targets.  Choose one:\n"
+    read -p "$(
+    i=0
+    for t in ${targets[@]}
+    do
+        printf "%3d) %s\n" $((++i)) $t
+    done
+    echo -ne "\nSelect one: "
+    )" selection
+    selected="${targets[$((selection-1))]}"
+
+    [[ -z "$selected" ]] && die "No target selected."
+    launch $selected
+    exit 1
+else
+    launch ${targets[0]}
+fi
+
