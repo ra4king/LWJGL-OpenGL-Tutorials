@@ -16,6 +16,11 @@ public class Matrix4 {
 		put(m);
 	}
 	
+	public Matrix4(Matrix4 m) {
+		this();
+		put(m);
+	}
+	
 	public Matrix4 clear() {
 		matrix.clear();
 		return this;
@@ -49,6 +54,14 @@ public class Matrix4 {
 		
 		matrix.position(0);
 		matrix.put(m,0,16).flip();
+		
+		return this;
+	}
+	
+	public Matrix4 put(Matrix4 m) {
+		FloatBuffer b = m.getBuffer();
+		while(b.hasRemaining())
+			matrix.put(b.get());
 		
 		return this;
 	}
