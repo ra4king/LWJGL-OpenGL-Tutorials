@@ -8,7 +8,7 @@ die () {
 case `uname` in
 
 # PS isn't used yet
-CYGWIN*) 
+CYGWIN|MINGW*) 
         PS=';' 
         export PATH="target/natives:$PATH"
         ;;
