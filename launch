@@ -8,7 +8,7 @@ die () {
 case `uname` in
 
 # PS isn't used yet
-CYGWIN|MINGW*) 
+CYGWIN*|MINGW*) 
         PS=';' 
         export PATH="target/natives:$PATH"
         ;;
@@ -26,7 +26,7 @@ mvn=$(which mvn)
 
 launch () {
     class=$1
-    mvn exec:java -Dexec.mainClass=$class
+    mvn compile exec:java -Dexec.mainClass=$class
 }
 
 
