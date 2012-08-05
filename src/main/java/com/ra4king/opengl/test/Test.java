@@ -9,7 +9,6 @@ import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
 import org.lwjgl.BufferUtils;
-import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
@@ -44,12 +43,8 @@ public class Test extends GLProgram {
 		perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
 		modelViewMatrixUniform = glGetUniformLocation(program.getProgram(), "modelViewMatrix");
 		
-		perspectiveMatrix = new Matrix4().clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000);
+		perspectiveMatrix = new Matrix4();
 		modelViewMatrix = new Matrix4();
-		
-		program.begin();
-		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.getBuffer());
-		program.end();
 		
 		float[] vertices = {
 				 5,  5,  5,
@@ -130,28 +125,8 @@ public class Test extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000).getBuffer());
+		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspective(90*(float)Math.PI/180, getWidth(), getHeight(), 1, 1000).getBuffer());
 		program.end();
-	}
-	
-	private long elapsedTime;
-	private boolean rotate = true;
-	
-	@Override
-	public void update(long deltaTime) {
-		if(rotate) {
-			elapsedTime += deltaTime;
-			
-			float loopDuration = 3;
-			float angle = ((elapsedTime/(float)1e9)%loopDuration) * (2*(float)Math.PI/loopDuration);
-			modelViewMatrix.clearToIdentity().translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(angle, 0, 1, 0);
-		}
-	}
-	
-	@Override
-	public void keyPressed(int key, char c, long nanos) {
-		if(key == Keyboard.KEY_P)
-			rotate = !rotate;
 	}
 	
 	@Override
@@ -161,8 +136,15 @@ public class Test extends GLProgram {
 		program.begin();
 		
 		glBindVertexArray(vao);
-		glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.getBuffer());
-		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
+		for(int a = -100; a <= 100; a++) {
+			if(Math.abs(a) < 2)
+				continue;
+			
+			for(int b = -100; b <= 0; b++) {
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity()/*.rotate(20*(float)Math.PI/180,1,0,0)*/.translate(a*10, -20, b*10-20).getBuffer());				
+				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
+			}
+		}
 		glBindVertexArray(0);
 		
 		program.end();
