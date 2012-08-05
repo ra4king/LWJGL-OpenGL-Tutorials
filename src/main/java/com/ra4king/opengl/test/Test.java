@@ -20,7 +20,7 @@ public class Test extends GLProgram {
 	}
 	
 	public Test() {
-		super(true);
+		super("Test",800,600,true);
 	}
 	
 	private ShaderProgram program;
@@ -45,6 +45,7 @@ public class Test extends GLProgram {
 		
 		program.begin();
 		glUniformMatrix4(perspectiveMatrix, false, new Matrix4().clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000).getBuffer());
+		glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.getBuffer());
 		program.end();
 		
 		float[] vertices = {
@@ -128,7 +129,6 @@ public class Test extends GLProgram {
 		program.begin();
 		
 		glBindVertexArray(vao);
-		glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.getBuffer());
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 		glBindVertexArray(0);
 		

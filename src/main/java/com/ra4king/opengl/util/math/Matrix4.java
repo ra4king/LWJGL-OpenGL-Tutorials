@@ -151,10 +151,6 @@ public class Matrix4 {
 		
 		m[15] = 1;
 		
-		for(int a = 0; a < 4; a++)
-			System.out.println(m[a] + " " + m[a+4] + " " + m[a+8] + " " + m[a+12]);
-		System.out.println();
-		
 		return mult(m);
 	}
 	
