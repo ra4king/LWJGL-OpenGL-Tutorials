@@ -151,14 +151,14 @@ public class Test extends GLProgram {
 		angleY -= turnSpeed * Mouse.getDY() / 20f;
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_A))
-			position.sub((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
-		if(Keyboard.isKeyDown(Keyboard.KEY_D))
 			position.add((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
+		if(Keyboard.isKeyDown(Keyboard.KEY_D))
+			position.sub((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W))
-			position.add((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
-		if(Keyboard.isKeyDown(Keyboard.KEY_S))
 			position.sub((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
+		if(Keyboard.isKeyDown(Keyboard.KEY_S))
+			position.add((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_R))
 			position.reset();
@@ -171,7 +171,7 @@ public class Test extends GLProgram {
 		
 		if(position.y() < 0) {
 			position.y(0);
-			vy = -vy/3f;
+			vy = -vy/2f;
 		}
 	}
 	
@@ -183,8 +183,14 @@ public class Test extends GLProgram {
 		
 		glBindVertexArray(vao);
 		for(int a = -100; a <= 100; a++) {
+			if(a == 0)
+				continue;
+			
 			for(int b = -100; b <= 0; b++) {
-				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 + position.x(), -20 - position.y(), b*10-20 + position.z()).getBuffer());				
+				if(b == -50)
+					continue;
+				
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).getBuffer());				
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 			}
 		}
