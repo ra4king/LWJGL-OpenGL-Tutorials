@@ -127,6 +127,9 @@ public abstract class GLProgram {
 				Display.sync(fps);
 			}
 		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+		}
 		finally {
 			destroy();
 		}

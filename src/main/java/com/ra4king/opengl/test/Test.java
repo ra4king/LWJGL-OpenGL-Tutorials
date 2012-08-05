@@ -9,10 +9,13 @@ import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
 import org.lwjgl.BufferUtils;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.math.Matrix4;
+import com.ra4king.opengl.util.math.Vector3;
 
 public class Test extends GLProgram {
 	public static void main(String[] args) {
@@ -20,7 +23,9 @@ public class Test extends GLProgram {
 	}
 	
 	public Test() {
-		super("Test",800,600,true);
+		super(true);//"Test",800,600,true);
+		
+		Mouse.setGrabbed(true);
 	}
 	
 	private ShaderProgram program;
@@ -129,6 +134,47 @@ public class Test extends GLProgram {
 		program.end();
 	}
 	
+	private Vector3 position = new Vector3();
+	private float angle, vy;
+	private final float gravity = -100;
+	
+	private float angleY;
+	
+	@Override
+	public void update(long deltaTime) {
+		final float delta = deltaTime / (float)1e9;
+		
+		float turnSpeed = (float)Math.PI * delta;
+		float moveSpeed = (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) ? 100 : 50) * delta;
+		
+		angle += turnSpeed * Mouse.getDX() / 20f;
+		angleY -= turnSpeed * Mouse.getDY() / 20f;
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_A))
+			position.sub((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
+		if(Keyboard.isKeyDown(Keyboard.KEY_D))
+			position.add((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_W))
+			position.add((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
+		if(Keyboard.isKeyDown(Keyboard.KEY_S))
+			position.sub((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_R))
+			position.reset();
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE) && position.y() == 0)
+			vy = 50;
+		
+		vy += gravity * delta;
+		position.add(0, vy * delta, 0);
+		
+		if(position.y() < 0) {
+			position.y(0);
+			vy = -vy/3f;
+		}
+	}
+	
 	@Override
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -137,11 +183,8 @@ public class Test extends GLProgram {
 		
 		glBindVertexArray(vao);
 		for(int a = -100; a <= 100; a++) {
-			if(Math.abs(a) < 2)
-				continue;
-			
 			for(int b = -100; b <= 0; b++) {
-				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity()/*.rotate(20*(float)Math.PI/180,1,0,0)*/.translate(a*10, -20, b*10-20).getBuffer());				
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 + position.x(), -20 - position.y(), b*10-20 + position.z()).getBuffer());				
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 			}
 		}

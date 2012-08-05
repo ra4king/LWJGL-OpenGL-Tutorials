@@ -14,9 +14,7 @@ public class Vector3 {
 	}
 	
 	public Vector3(Vector3 vec) {
-		x = vec.x;
-		y = vec.y;
-		z = vec.z;
+		set(vec);
 	}
 	
 	public float x() {
@@ -46,6 +44,22 @@ public class Vector3 {
 		return this;
 	}
 	
+	public Vector3 set(float x, float y, float z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		return this;
+	}
+	
+	public Vector3 set(Vector3 vec) {
+		return set(vec.x(),vec.y(),vec.z());
+	}
+	
+	public Vector3 reset() {
+		x = y = z = 0;
+		return this;
+	}
+	
 	public float length() {
 		return (float)Math.sqrt(x*x + y*y + z*z);
 	}
@@ -70,31 +84,22 @@ public class Vector3 {
 	}
 	
 	public Vector3 add(Vector3 vec) {
-		x += vec.x;
-		y += vec.y;
-		z += vec.z;
-		return this;
+		return add(vec.x(),vec.y(),vec.z());
 	}
 	
 	public Vector3 sub(float x, float y, float z) {
-		this.x += x;
-		this.y += y;
-		this.z += z;
+		this.x -= x;
+		this.y -= y;
+		this.z -= z;
 		return this;
 	}
 	
 	public Vector3 sub(Vector3 vec) {
-		x -= vec.x;
-		y -= vec.y;
-		z -= vec.z;
-		return this;
+		return sub(vec.x(),vec.y(),vec.z());
 	}
 	
 	public Vector3 mul(float f) {
-		x *= f;
-		y *= f;
-		z *= f;
-		return this;
+		return mul(f,f,f);
 	}
 	
 	public Vector3 mul(float x, float y, float z) {
@@ -105,9 +110,6 @@ public class Vector3 {
 	}
 	
 	public Vector3 mul(Vector3 vec) {
-		x *= vec.x;
-		y *= vec.y;
-		z *= vec.z;
-		return this;
+		return mul(vec.x(),vec.y(),vec.z());
 	}
 }
