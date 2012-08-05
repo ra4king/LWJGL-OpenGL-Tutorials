@@ -25,6 +25,9 @@ public class Test extends GLProgram {
 	
 	private ShaderProgram program;
 	
+	private Matrix4 perspectiveMatrix;
+	private int perspectiveMatrixUniform;
+	
 	private Matrix4 modelViewMatrix;
 	private int modelViewMatrixUniform;
 	
@@ -35,17 +38,19 @@ public class Test extends GLProgram {
 		glClearColor(0,0,0,0);
 		glClearDepth(1);
 		
+		glEnable(GL_LINE_SMOOTH);
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		
 		program = new ShaderProgram(readFromFile("test.vert"),readFromFile("test.frag"));
 		
-		int perspectiveMatrix = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
+		perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
 		modelViewMatrixUniform = glGetUniformLocation(program.getProgram(), "modelViewMatrix");
 		
-		modelViewMatrix = new Matrix4().clearToIdentity();
-		modelViewMatrix.translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(-45*(float)Math.PI/180, 0, 1, 0);
+		perspectiveMatrix = new Matrix4().clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000);
+		modelViewMatrix = new Matrix4();
 		
 		program.begin();
-		glUniformMatrix4(perspectiveMatrix, false, new Matrix4().clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000).getBuffer());
-		glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.getBuffer());
+		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.getBuffer());
 		program.end();
 		
 		float[] vertices = {
@@ -123,12 +128,33 @@ public class Test extends GLProgram {
 	}
 	
 	@Override
+	public void resized() {
+		super.resized();
+		
+		program.begin();
+		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000).getBuffer());
+		program.end();
+	}
+	
+	private long elapsedTime;
+	
+	@Override
+	public void update(long deltaTime) {
+		elapsedTime += deltaTime;
+		
+		float loopDuration = 3;
+		float angle = ((elapsedTime/(float)1e9)%loopDuration) * (2*(float)Math.PI/loopDuration);
+		modelViewMatrix.clearToIdentity().translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(angle, 0, 1, 0);
+	}
+	
+	@Override
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		program.begin();
 		
 		glBindVertexArray(vao);
+		glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.getBuffer());
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 		glBindVertexArray(0);
 		

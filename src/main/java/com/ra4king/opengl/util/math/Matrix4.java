@@ -22,7 +22,8 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 clear() {
-		matrix.clear();
+		for(int a = 0; a < 16; a++)
+			matrix.put(a,0);
 		return this;
 	}
 	
