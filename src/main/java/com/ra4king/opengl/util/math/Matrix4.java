@@ -53,7 +53,7 @@ public class Matrix4 {
 			throw new IllegalArgumentException("float array must have at least 16 values.");
 		
 		matrix.position(0);
-		matrix.put(m,0,16).flip();
+		matrix.put(m,0,16);
 		
 		return this;
 	}
@@ -151,17 +151,11 @@ public class Matrix4 {
 		
 		m[15] = 1;
 		
-		float[] newm = new float[16];
-		for(int a = 0; a < 16; a += 4) {
-			newm[a+0] = get(0)*m[a] + get(4)*m[a+1] + get(8)*m[a+2] + get(12)*m[a+3];
-			newm[a+1] = get(1)*m[a] + get(5)*m[a+1] + get(9)*m[a+2] + get(13)*m[a+3];
-			newm[a+2] = get(2)*m[a] + get(6)*m[a+1] + get(10)*m[a+2] + get(14)*m[a+3];
-			newm[a+3] = get(3)*m[a] + get(7)*m[a+1] + get(11)*m[a+2] + get(15)*m[a+3];
-		}
+		for(int a = 0; a < 4; a++)
+			System.out.println(m[a] + " " + m[a+4] + " " + m[a+8] + " " + m[a+12]);
+		System.out.println();
 		
-		put(newm);
-		
-		return this;
+		return mult(m);
 	}
 	
 	public Matrix4 rotate(float angle, Vector3 vec) {

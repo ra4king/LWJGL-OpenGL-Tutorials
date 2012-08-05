@@ -85,41 +85,44 @@ public abstract class GLProgram {
 	}
 	
 	private void gameLoop() {
-		init();
-		
-		resized();
-		
-		long lastTime, lastFPS;
-		lastTime = lastFPS = System.nanoTime();
-		int frames = 0;
-		
-		while(!Display.isCloseRequested() && !shouldStop()) {
-			long deltaTime = System.nanoTime() - lastTime;
-			lastTime += deltaTime;
+		try {
+			init();
 			
-			if(Display.wasResized())
-				resized();
+			resized();
 			
-			update(deltaTime);
-			render();
+			long lastTime, lastFPS;
+			lastTime = lastFPS = System.nanoTime();
+			int frames = 0;
 			
-			Display.update();
-			
-			int error;
-			while((error = glGetError()) != GL_NO_ERROR)
-				System.out.println(gluErrorString(error));
-			
-			frames++;
-			if(System.nanoTime() - lastFPS >= 1e9) {
-				System.out.println("FPS: ".concat(String.valueOf(frames)));
-				lastFPS += 1e9;
-				frames = 0;
+			while(!Display.isCloseRequested() && !shouldStop()) {
+				long deltaTime = System.nanoTime() - lastTime;
+				lastTime += deltaTime;
+				
+				if(Display.wasResized())
+					resized();
+				
+				update(deltaTime);
+				render();
+				
+				Display.update();
+				
+				int error;
+				while((error = glGetError()) != GL_NO_ERROR)
+					System.out.println(gluErrorString(error));
+				
+				frames++;
+				if(System.nanoTime() - lastFPS >= 1e9) {
+					System.out.println("FPS: ".concat(String.valueOf(frames)));
+					lastFPS += 1e9;
+					frames = 0;
+				}
+				
+				Display.sync(fps);
 			}
-			
-			Display.sync(fps);
 		}
-		
-		destroy();
+		finally {
+			destroy();
+		}
 	}
 	
 	public int getWidth() {
