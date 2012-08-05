@@ -101,6 +101,13 @@ public abstract class GLProgram {
 				if(Display.wasResized())
 					resized();
 				
+				while(Keyboard.next()) {
+					if(Keyboard.getEventKeyState())
+						keyPressed(Keyboard.getEventKey(),Keyboard.getEventCharacter(),Keyboard.getEventNanoseconds());
+					else
+						keyReleased(Keyboard.getEventKey(),Keyboard.getEventCharacter(),Keyboard.getEventNanoseconds());
+				}
+				
 				update(deltaTime);
 				render();
 				
@@ -142,6 +149,10 @@ public abstract class GLProgram {
 	public boolean shouldStop() {
 		return Keyboard.isKeyDown(Keyboard.KEY_ESCAPE);
 	}
+	
+	public void keyPressed(int key, char c, long nanos) {}
+	
+	public void keyReleased(int key, char c, long nanos) {}
 	
 	public void update(long deltaTime) {}
 	

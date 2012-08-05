@@ -9,6 +9,7 @@ import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
 import org.lwjgl.BufferUtils;
+import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
@@ -38,9 +39,6 @@ public class Test extends GLProgram {
 		glClearColor(0,0,0,0);
 		glClearDepth(1);
 		
-		glEnable(GL_LINE_SMOOTH);
-		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-		
 		program = new ShaderProgram(readFromFile("test.vert"),readFromFile("test.frag"));
 		
 		perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
@@ -54,25 +52,25 @@ public class Test extends GLProgram {
 		program.end();
 		
 		float[] vertices = {
-			 5,  5,  5,
-			 5, -5,  5,
-			-5, -5,  5,
-			-5,  5,  5,
-			
-			 5,  5, -5,
-			 5, -5, -5,
-			-5, -5, -5,
-			-5,  5, -5,
-			
-			0, 0, 0,
-			0, 1, 0,
-			1, 1, 0,
-			1, 0, 0,
-			
-			0, 0, 1,
-			0, 1, 1,
-			1, 1, 1,
-			1, 0, 1,
+				 5,  5,  5,
+				 5, -5,  5,
+				-5, -5,  5,
+				-5,  5,  5,
+				
+				 5,  5, -5,
+				 5, -5, -5,
+				-5, -5, -5,
+				-5,  5, -5,
+				
+				0, 0, 0,
+				0, 1, 0,
+				1, 1, 0,
+				1, 0, 0,
+				
+				0, 0, 1,
+				0, 1, 1,
+				1, 1, 1,
+				1, 0, 1,
 		};
 		
 		short[] indicies = {
@@ -92,7 +90,7 @@ public class Test extends GLProgram {
 				7, 4, 3,
 				
 				1, 5, 6,
-				2, 1, 6
+				2, 1, 6,
 		};
 		
 		int vbo1 = glGenBuffers();
@@ -137,14 +135,23 @@ public class Test extends GLProgram {
 	}
 	
 	private long elapsedTime;
+	private boolean rotate = true;
 	
 	@Override
 	public void update(long deltaTime) {
-		elapsedTime += deltaTime;
-		
-		float loopDuration = 3;
-		float angle = ((elapsedTime/(float)1e9)%loopDuration) * (2*(float)Math.PI/loopDuration);
-		modelViewMatrix.clearToIdentity().translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(angle, 0, 1, 0);
+		if(rotate) {
+			elapsedTime += deltaTime;
+			
+			float loopDuration = 3;
+			float angle = ((elapsedTime/(float)1e9)%loopDuration) * (2*(float)Math.PI/loopDuration);
+			modelViewMatrix.clearToIdentity().translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(angle, 0, 1, 0);
+		}
+	}
+	
+	@Override
+	public void keyPressed(int key, char c, long nanos) {
+		if(key == Keyboard.KEY_P)
+			rotate = !rotate;
 	}
 	
 	@Override
