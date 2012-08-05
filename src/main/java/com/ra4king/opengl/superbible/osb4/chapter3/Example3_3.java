@@ -1,21 +1,25 @@
-package com.ra4king.opengl.superbible.chapter3;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
+import static org.lwjgl.opengl.GL11.*;
+
+import java.nio.FloatBuffer;
+
+import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import com.ra4king.opengl.GLProgram;
 
-import static org.lwjgl.opengl.GL11.*;
-
-public class Example3_5 extends GLProgram {
+public class Example3_3 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_5().run();
+		new Example3_3().run();
 	}
 	
-	public Example3_5() {
-		super("LSTRIPS",800,600,true);
+	public Example3_3() {
+		super("POINTSZ",800,600,true);
 	}
 	
+	FloatBuffer sizes = BufferUtils.createFloatBuffer(16);
 	private float xRot, yRot;
 	
 	public void init() {
@@ -47,15 +51,15 @@ public class Example3_5 extends GLProgram {
 		glRotatef(yRot, 1, 0, 0);
 		glRotatef(xRot, 0, 1, 0);
 		
-		glPointSize(5);
+		float step = glGetFloat(GL_POINT_SIZE_GRANULARITY);
+		glGetFloat(GL_POINT_SIZE_RANGE,(FloatBuffer)sizes.clear());
 		
-		glBegin(GL_LINE_STRIP);
-		
-		for(float angle = 0, z = -50; angle <= 2*Math.PI*3; angle += 0.1f, z += 0.5f) {
+		for(float angle = 0, z = -50, curSize = sizes.get(0); angle <= 2*Math.PI*3; angle += 0.1f, z += 0.5f, curSize = Math.min(curSize + step, sizes.get(1))) {
+			glPointSize(curSize);
+			glBegin(GL_POINTS);
 			glVertex3f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle), z);
+			glEnd();
 		}
-		
-		glEnd();
 		
 		glPopMatrix();
 	}

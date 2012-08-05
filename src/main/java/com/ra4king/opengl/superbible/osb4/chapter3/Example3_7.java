@@ -1,31 +1,29 @@
-package com.ra4king.opengl.superbible.chapter3;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import java.nio.FloatBuffer;
-
-import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import com.ra4king.opengl.GLProgram;
 
-public class Example3_3 extends GLProgram {
+public class Example3_7 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_3().run();
+		new Example3_7().run();
 	}
 	
-	public Example3_3() {
-		super("POINTSZ",800,600,true);
+	public Example3_7() {
+		super("LSTIPPLE",800,600,true);
 	}
 	
-	FloatBuffer sizes = BufferUtils.createFloatBuffer(16);
 	private float xRot, yRot;
 	
 	public void init() {
 		glClearColor(0,0,0,1);
 		
 		glColor3f(0,1,0);
+		
+		glEnable(GL_LINE_STIPPLE);
 	}
 	
 	public void update(long deltaTime) {
@@ -51,13 +49,12 @@ public class Example3_3 extends GLProgram {
 		glRotatef(yRot, 1, 0, 0);
 		glRotatef(xRot, 0, 1, 0);
 		
-		float step = glGetFloat(GL_POINT_SIZE_GRANULARITY);
-		glGetFloat(GL_POINT_SIZE_RANGE,(FloatBuffer)sizes.clear());
-		
-		for(float angle = 0, z = -50, curSize = sizes.get(0); angle <= 2*Math.PI*3; angle += 0.1f, z += 0.5f, curSize = Math.min(curSize + step, sizes.get(1))) {
-			glPointSize(curSize);
-			glBegin(GL_POINTS);
-			glVertex3f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle), z);
+		for(int y = -90, factor = 0; y <= 90; y += 20, factor++) {
+			glLineStipple(factor,(short)0x5555);
+			
+			glBegin(GL_LINES);
+				glVertex2f(-80,y);
+				glVertex2f(80,y);
 			glEnd();
 		}
 		

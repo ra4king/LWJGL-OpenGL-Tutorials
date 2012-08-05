@@ -1,19 +1,19 @@
-package com.ra4king.opengl.superbible.chapter3;
-
-import static org.lwjgl.opengl.GL11.*;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import com.ra4king.opengl.GLProgram;
 
-public class Example3_8 extends GLProgram {
+import static org.lwjgl.opengl.GL11.*;
+
+public class Example3_4 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_8().run();
+		new Example3_4().run();
 	}
 	
-	public Example3_8() {
-		super("TRIANGLE",800,600,true);
+	public Example3_4() {
+		super("LINES",800,600,true);
 	}
 	
 	private float xRot, yRot;
@@ -21,14 +21,7 @@ public class Example3_8 extends GLProgram {
 	public void init() {
 		glClearColor(0,0,0,1);
 		
-		glFrontFace(GL_CW);
-		
-		glShadeModel(GL_FLAT);
-		
-		glEnable(GL_DEPTH_TEST);
-		//glEnable(GL_CULL_FACE);
-		
-		glPolygonMode(GL_BACK,GL_LINE);
+		glColor3f(0,1,0);
 	}
 	
 	public void update(long deltaTime) {
@@ -47,39 +40,20 @@ public class Example3_8 extends GLProgram {
 	}
 	
 	public void render() {
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
 		
 		glPushMatrix();
 		
 		glRotatef(yRot, 1, 0, 0);
 		glRotatef(xRot, 0, 1, 0);
 		
-		glBegin(GL_TRIANGLE_FAN);
+		glPointSize(5);
 		
-		glVertex3f(0,0,75);
-		int pivot = 1;
-		for(float angle = 0; angle <= 2 * Math.PI + 1; angle += Math.PI/8) {
-			if(pivot++ % 2 == 0)
-				glColor3f(0,1,.5f);
-			else
-				glColor3f(1,0,.5f);
-			
-			glVertex3f(50*(float)Math.cos(angle),50*(float)Math.sin(angle),0);
-		}
+		glBegin(GL_LINES);
 		
-		glEnd();
-		
-		glBegin(GL_TRIANGLE_FAN);
-		
-		glVertex2f(0,0);
-		pivot = 1;
-		for(float angle = 0; angle <= 2.1 * Math.PI; angle += Math.PI/8) {
-			if(pivot++ % 2 == 0)
-				glColor3f(0,1,0);
-			else
-				glColor3f(1,0,0);
-			
-			glVertex2f(50*(float)Math.cos(angle),50*(float)Math.sin(angle));
+		for(float angle = 0; angle <= Math.PI; angle += Math.PI/20) {
+			glVertex3f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle), 0);
+			glVertex3f(50 * (float)Math.cos(angle + Math.PI), 50 * (float)Math.sin(angle + Math.PI), 0);
 		}
 		
 		glEnd();

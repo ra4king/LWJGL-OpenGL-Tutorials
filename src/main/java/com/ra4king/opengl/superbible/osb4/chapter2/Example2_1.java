@@ -1,4 +1,4 @@
-package com.ra4king.opengl.superbible.chapter2;
+package com.ra4king.opengl.superbible.osb4.chapter2;
 
 import com.ra4king.opengl.GLProgram;
 

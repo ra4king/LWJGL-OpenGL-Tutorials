@@ -1,4 +1,4 @@
-package com.ra4king.opengl.superbible.chapter3;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
 import static org.lwjgl.opengl.GL11.*;
 
