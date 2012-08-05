@@ -10,6 +10,6 @@ uniform mat4 modelViewMatrix;
 
 void main()
 {
-	gl_Position = perspectiveMatrix * (modelViewMatrix * position);
+	gl_Position = perspectiveMatrix * modelViewMatrix * position;
 	theColor = color;
 }

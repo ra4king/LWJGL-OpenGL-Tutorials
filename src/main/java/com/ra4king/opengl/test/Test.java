@@ -41,7 +41,7 @@ public class Test extends GLProgram {
 		modelViewMatrixUniform = glGetUniformLocation(program.getProgram(), "modelViewMatrix");
 		
 		modelViewMatrix = new Matrix4().clearToIdentity();
-		modelViewMatrix.translate(0, -8, -20).rotate((float)Math.PI, 0, 1, 0);
+		modelViewMatrix.translate(0, -7, -20).rotate(20*(float)Math.PI/180, 1, 0, 0).rotate(-45*(float)Math.PI/180, 0, 1, 0);
 		
 		program.begin();
 		glUniformMatrix4(perspectiveMatrix, false, new Matrix4().clearToPerspective((float)Math.PI/2, getWidth(), getHeight(), 1, 1000).getBuffer());
