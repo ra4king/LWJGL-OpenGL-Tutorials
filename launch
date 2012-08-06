@@ -35,6 +35,14 @@ elif [[ $len -gt 1 ]]; then
     do
         printf "%3d) %s\n" $((++i)) $t
     done
+    if [[ $expr = . ]]; then
+        echo ""
+        echo "Hint: you can narrow down this list by passing part of the name"
+        echo "      as an argument next time you launch."
+        echo ""
+        echo "Example:  $0 arcsyn"
+        echo ""
+    fi
     echo -ne "\nSelect one: "
     )" selection
     selected="${targets[$((selection-1))]}"
