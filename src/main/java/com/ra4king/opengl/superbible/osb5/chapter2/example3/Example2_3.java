@@ -33,7 +33,7 @@ public class Example2_3 extends GLProgram {
 	}
 
 	public Example2_3() {
-		super("Move", 500, 500, false);
+		super("Bounce", 500, 500, false);
 	}
 
 	@Override
