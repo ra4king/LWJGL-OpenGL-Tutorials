@@ -13,14 +13,14 @@ import com.ra4king.opengl.GLProgram;
 /** An "unrolled" version of OSB5e's Triangle sample.  It's similar to the first arcsynthesis example,
  * but uses only VBOs and uniforms, and not not VAOs and attribute positions.
  */
-public class Example1_1 extends GLProgram {
+public class Example2_1 extends GLProgram {
 	public static void main(String[] args) {
-		new Example1_1().run(3, 0);
+		new Example2_1().run(3, 0);
 	}
 
 	private int program, vbo;
 
-	public Example1_1() {
+	public Example2_1() {
 		super("Triangle", 500, 500, false);
 	}
 
@@ -31,7 +31,7 @@ public class Example1_1 extends GLProgram {
 		// Loading shaders is very very "boilerplatey".  This will be the first and last time you see this done without
 		// the benefit of a library that reduces all this down to just one line.
 		int vs = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vs, readFromFile("example1.1.vert"));
+		glShaderSource(vs, readFromFile("example2.1.vert"));
 
 		glCompileShader(vs);
 
@@ -41,7 +41,7 @@ public class Example1_1 extends GLProgram {
 		}
 
 		int fs = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fs, readFromFile("example1.1.frag"));
+		glShaderSource(fs, readFromFile("example2.1.frag"));
 
 		glCompileShader(fs);
 
