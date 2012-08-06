@@ -23,7 +23,7 @@ public class Test extends GLProgram {
 	}
 	
 	public Test() {
-		super(true);//"Test",800,600,true);
+		super("Test",1024,768,true);
 		
 		Mouse.setGrabbed(true);
 	}
@@ -147,8 +147,10 @@ public class Test extends GLProgram {
 		float turnSpeed = (float)Math.PI * delta;
 		float moveSpeed = (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) ? 100 : 50) * delta;
 		
-		angle += turnSpeed * Mouse.getDX() / 20f;
-		angleY -= turnSpeed * Mouse.getDY() / 20f;
+		if(Mouse.isGrabbed()) {
+			angle += turnSpeed * Mouse.getDX() / 20f;
+			angleY -= turnSpeed * Mouse.getDY() / 20f;
+		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_A))
 			position.add((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
@@ -176,6 +178,12 @@ public class Test extends GLProgram {
 	}
 	
 	@Override
+	public void keyPressed(int key, char c, long nanos) {
+		if(key == Keyboard.KEY_M)
+			Mouse.setGrabbed(!Mouse.isGrabbed());
+	}
+	
+	@Override
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
@@ -190,7 +198,7 @@ public class Test extends GLProgram {
 				if(b == -50)
 					continue;
 				
-				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).getBuffer());				
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).getBuffer());
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 			}
 		}
