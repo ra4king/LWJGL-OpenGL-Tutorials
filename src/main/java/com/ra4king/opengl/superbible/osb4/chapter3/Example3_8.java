@@ -1,31 +1,34 @@
-package com.ra4king.opengl.superbible.chapter3;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import java.nio.FloatBuffer;
-
-import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import com.ra4king.opengl.GLProgram;
 
-public class Example3_6 extends GLProgram {
+public class Example3_8 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_6().run();
+		new Example3_8().run();
 	}
 	
-	public Example3_6() {
-		super("LINESW",800,600,true);
+	public Example3_8() {
+		super("TRIANGLE",800,600,true);
 	}
 	
-	FloatBuffer sizes = BufferUtils.createFloatBuffer(16);
 	private float xRot, yRot;
 	
 	public void init() {
 		glClearColor(0,0,0,1);
 		
-		glColor3f(0,1,0);
+		glFrontFace(GL_CW);
+		
+		glShadeModel(GL_FLAT);
+		
+		glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_CULL_FACE);
+		
+		glPolygonMode(GL_BACK,GL_LINE);
 	}
 	
 	public void update(long deltaTime) {
@@ -44,23 +47,42 @@ public class Example3_6 extends GLProgram {
 	}
 	
 	public void render() {
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		glPushMatrix();
 		
 		glRotatef(yRot, 1, 0, 0);
 		glRotatef(xRot, 0, 1, 0);
 		
-		glGetFloat(GL_LINE_WIDTH_RANGE,(FloatBuffer)sizes.clear());
+		glBegin(GL_TRIANGLE_FAN);
 		
-		for(float y = -90, curSize = sizes.get(0); y <= 90; y += 20, curSize += 1) {
-			glLineWidth(curSize);
+		glVertex3f(0,0,75);
+		int pivot = 1;
+		for(float angle = 0; angle <= 2 * Math.PI + 1; angle += Math.PI/8) {
+			if(pivot++ % 2 == 0)
+				glColor3f(0,1,.5f);
+			else
+				glColor3f(1,0,.5f);
 			
-			glBegin(GL_LINES);
-				glVertex2f(-80,y);
-				glVertex2f(80,y);
-			glEnd();
+			glVertex3f(50*(float)Math.cos(angle),50*(float)Math.sin(angle),0);
 		}
+		
+		glEnd();
+		
+		glBegin(GL_TRIANGLE_FAN);
+		
+		glVertex2f(0,0);
+		pivot = 1;
+		for(float angle = 0; angle <= 2.1 * Math.PI; angle += Math.PI/8) {
+			if(pivot++ % 2 == 0)
+				glColor3f(0,1,0);
+			else
+				glColor3f(1,0,0);
+			
+			glVertex2f(50*(float)Math.cos(angle),50*(float)Math.sin(angle));
+		}
+		
+		glEnd();
 		
 		glPopMatrix();
 	}

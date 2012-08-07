@@ -1,31 +1,27 @@
-package com.ra4king.opengl.superbible.chapter3;
-
-import static org.lwjgl.opengl.GL11.*;
+package com.ra4king.opengl.superbible.osb4.chapter3;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import com.ra4king.opengl.GLProgram;
 
-public class Example3_11 extends GLProgram {
+import static org.lwjgl.opengl.GL11.*;
+
+public class Example3_5 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_11().run();
+		new Example3_5().run();
 	}
 	
-	public Example3_11() {
-		super("STAR",800,600,true);
+	public Example3_5() {
+		super("LSTRIPS",800,600,true);
 	}
-	
-	private boolean edgeFlag = false;
 	
 	private float xRot, yRot;
 	
 	public void init() {
 		glClearColor(0,0,0,1);
 		
-		glColor3f(1,1,1);
-		
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glColor3f(0,1,0);
 	}
 	
 	public void update(long deltaTime) {
@@ -51,37 +47,14 @@ public class Example3_11 extends GLProgram {
 		glRotatef(yRot, 1, 0, 0);
 		glRotatef(xRot, 0, 1, 0);
 		
-		glBegin(GL_TRIANGLES);
-			glEdgeFlag(edgeFlag);
-			glVertex2f(-20,0);
-			glEdgeFlag(true);
-			glVertex2f(20,0);
-			glVertex2f(0,40);
-			
-			glVertex2f(-20,0);
-			glVertex2f(-60,-20);
-			glEdgeFlag(edgeFlag);
-			glVertex2f(-20,-40);
-			
-			glEdgeFlag(true);
-			glVertex2f(-20,-40);
-			glVertex2f(0,-80);
-			glEdgeFlag(edgeFlag);
-			glVertex2f(20,-40);
-			
-			glEdgeFlag(true);
-			glVertex2f(20,-40);
-			glVertex2f(60,-20);
-			glEdgeFlag(edgeFlag);
-			glVertex2f(20,0);
-			
-			glVertex2f(-20,0);
-			glVertex2f(-20,-40);
-			glVertex2f(20,0);
-			
-			glVertex2f(-20,-40);
-			glVertex2f(20,-40);
-			glVertex2f(20,0);
+		glPointSize(5);
+		
+		glBegin(GL_LINE_STRIP);
+		
+		for(float angle = 0, z = -50; angle <= 2*Math.PI*3; angle += 0.1f, z += 0.5f) {
+			glVertex3f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle), z);
+		}
+		
 		glEnd();
 		
 		glPopMatrix();
