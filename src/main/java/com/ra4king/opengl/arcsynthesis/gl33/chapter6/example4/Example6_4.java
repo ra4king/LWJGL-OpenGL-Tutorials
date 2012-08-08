@@ -7,7 +7,6 @@ import static org.lwjgl.opengl.GL30.*;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
-import java.util.Stack;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
@@ -15,6 +14,7 @@ import org.lwjgl.input.Keyboard;
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.math.Matrix4;
+import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Vector3;
 
 public class Example6_4 extends GLProgram {
@@ -30,7 +30,7 @@ public class Example6_4 extends GLProgram {
 	private final float[] CYAN_COLOR = { 0, 1, 1, 1 };
 	private final float[] MAGENTA_COLOR = { 1, 0, 1, 1 };
 	
-	private final float[] vertices = {
+	private final float[] data = {
 			+1.0f, +1.0f, +1.0f,
 			+1.0f, -1.0f, +1.0f,
 			-1.0f, -1.0f, +1.0f,
@@ -139,13 +139,9 @@ public class Example6_4 extends GLProgram {
 		hierarchy = new Hierarchy();
 		cameraToClipMatrix = new Matrix4().clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100);
 		
-		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.getBuffer());
-		program.end();
-		
 		int vbo = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(vertices.length).put(vertices).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(data.length).put(data).flip(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		int vbo2 = glGenBuffers();
@@ -209,6 +205,15 @@ public class Example6_4 extends GLProgram {
 	}
 	
 	@Override
+	public void resized() {
+		super.resized();
+		
+		program.begin();
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100).getBuffer());
+		program.end();
+	}
+	
+	@Override
 	public void keyPressed(int key, char c, long nanos) {
 		if(key == Keyboard.KEY_SPACE)
 			hierarchy.writePose();
@@ -221,51 +226,8 @@ public class Example6_4 extends GLProgram {
 		hierarchy.draw();
 	}
 	
-	private static class MatrixStack {
-		private Stack<Matrix4> stack;
-		private Matrix4 current;
-		
-		public MatrixStack() {
-			current = new Matrix4().clearToIdentity();
-			stack = new Stack<Matrix4>();
-		}
-		
-		public Matrix4 getTop() {
-			return current;
-		}
-		
-		public void rotateX(float angle) {
-			current.rotate(angle * (float)Math.PI/180, 1, 0, 0);
-		}
-		
-		public void rotateY(float angle) {
-			current.rotate(angle * (float)Math.PI/180, 0, 1, 0);
-		}
-		
-		public void rotateZ(float angle) {
-			current.rotate(angle * (float)Math.PI/180, 0, 0, 1);
-		}
-		
-		public void scale(Vector3 vec) {
-			current.scale(vec);
-		}
-		
-		public void translate(Vector3 vec) {
-			current.translate(vec);
-		}
-		
-		public void pushMatrix() {
-			stack.push(current);
-			current = new Matrix4(current);
-		}
-		
-		public void popMatrix() {
-			current = stack.pop();
-		}
-	}
-	
 	private class Hierarchy {
-		private final float STANDARD_ANGLE_INCREMENT = 11.25f;
+		private final float STANDARD_ANGLE_INCREMENT = 5f;
 		
 		private Vector3 posBase;
 		private float angleBase;
@@ -447,6 +409,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.translate(new Vector3(0,0,lenFinger/2));
 				modelToCameraStack.scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
 				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
 				modelToCameraStack.popMatrix();
