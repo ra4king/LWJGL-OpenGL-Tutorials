@@ -13,7 +13,7 @@
 * Support for Maven in your IDE (Eclipse Juno and IntelliJ both come with maven support)
 
 * _Windows users:_ a version of the bash shell (either [Cygwin](http://cygwin.com)
-  or [Git Bash](https://openhatch.org/missions/windows-setup/install-git-bash) are fine)
+  or [Git Bash](http://git-scm.com/downloads) are fine)
 
 ### How to run samples ###
 
@@ -28,7 +28,7 @@ Every section is found in the source under `src/main/java/com/ra4king/opengl`.
 Under each section you can find another README file that gives more detail, and finally some of the samples themselves may have their own README.
 
 
-* **arcsynthesis:** Java ports of the excellent C tutorials from "Learning Modern 3d Graphics Programming"
+* **arcsynthesis:** Java ports of the excellent C++ tutorials from "Learning Modern 3d Graphics Programming"
 at [arcsynthesis.org](http://arcsynthesis.org/gltut)
 
 

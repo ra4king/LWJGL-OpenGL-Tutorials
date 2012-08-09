@@ -92,7 +92,7 @@ public class Example6_4 extends GLProgram {
 		    MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3]
 	};
 	
-	private final short[] indicies = {
+	private final short[] indices = {
 			0, 1, 2,
 			2, 3, 0,
 			
@@ -146,7 +146,7 @@ public class Example6_4 extends GLProgram {
 		
 		int vbo2 = glGenBuffers();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indicies.length).put(indicies).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indices.length).put(indices).flip(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		
 		vao = glGenVertexArrays();
@@ -292,24 +292,24 @@ public class Example6_4 extends GLProgram {
 			
 			glBindVertexArray(vao);
 			
-			modelToCameraStack.translate(posBase);
-			modelToCameraStack.rotateY(angleBase);
+			modelToCameraStack.getTop().translate(posBase);
+			modelToCameraStack.getTop().rotate(angleBase*(float)Math.PI/180,0,1,0);
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(posBaseLeft);
-				modelToCameraStack.scale(new Vector3(1,1,scaleBaseZ));
+				modelToCameraStack.getTop().translate(posBaseLeft);
+				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
 				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().getBuffer());
-				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(posBaseRight);
-				modelToCameraStack.scale(new Vector3(1,1,scaleBaseZ));
+				modelToCameraStack.getTop().translate(posBaseRight);
+				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
 				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().getBuffer());
-				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}
 			
@@ -362,26 +362,26 @@ public class Example6_4 extends GLProgram {
 		
 		private void drawFingers(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(posLeftFinger);
-			modelToCameraStack.rotateY(angleFingerOpen);
+			modelToCameraStack.getTop().translate(posLeftFinger);
+			modelToCameraStack.getTop().rotate(angleFingerOpen*(float)Math.PI/180,0,1,0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(new Vector3(0,0,lenFinger/2));
-			modelToCameraStack.scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
+			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
+			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
 			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-			glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(new Vector3(0,0,lenFinger));
-				modelToCameraStack.rotateY(-angleLowerFinger);
+				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger));
+				modelToCameraStack.getTop().rotate(-angleLowerFinger*(float)Math.PI/180,0,1,0);
 				
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(new Vector3(0,0,lenFinger/2));
-				modelToCameraStack.scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
+				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
+				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
 				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
 				modelToCameraStack.popMatrix();
@@ -390,26 +390,26 @@ public class Example6_4 extends GLProgram {
 			modelToCameraStack.popMatrix();
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(posRightFinger);
-			modelToCameraStack.rotateY(-angleFingerOpen);
+			modelToCameraStack.getTop().translate(posRightFinger);
+			modelToCameraStack.getTop().rotate(-angleFingerOpen*(float)Math.PI/180,0,1,0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(new Vector3(0,0,lenFinger/2));
-			modelToCameraStack.scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
+			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
+			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
 			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-			glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(new Vector3(0,0,lenFinger));
-				modelToCameraStack.rotateY(angleLowerFinger);
+				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger));
+				modelToCameraStack.getTop().rotate(angleLowerFinger*(float)Math.PI/180,0,1,0);
 				
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(new Vector3(0,0,lenFinger/2));
-				modelToCameraStack.scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
+				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
+				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
 				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
 				modelToCameraStack.popMatrix();
@@ -420,14 +420,14 @@ public class Example6_4 extends GLProgram {
 		
 		private void drawWrist(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(posWrist);
-			modelToCameraStack.rotateZ(angleWristRoll);
-			modelToCameraStack.rotateX(angleWristPitch);
+			modelToCameraStack.getTop().translate(posWrist);
+			modelToCameraStack.getTop().rotate(angleWristRoll*(float)Math.PI/180,0,0,1);
+			modelToCameraStack.getTop().rotate(angleWristPitch*(float)Math.PI/180,1,0,0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.scale(new Vector3(widthWrist/2,widthWrist/2,lenWrist/2));
+			modelToCameraStack.getTop().scale(new Vector3(widthWrist/2,widthWrist/2,lenWrist/2));
 			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-			glDrawElements(GL_TRIANGLES,indicies.length,GL_UNSIGNED_SHORT,0);
+			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
 			modelToCameraStack.popMatrix();
 			
 			drawFingers(modelToCameraStack);
@@ -437,14 +437,14 @@ public class Example6_4 extends GLProgram {
 		
 		private void drawLowerArm(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(posLowerArm);
-			modelToCameraStack.rotateX(angleLowerArm);
+			modelToCameraStack.getTop().translate(posLowerArm);
+			modelToCameraStack.getTop().rotate(angleLowerArm*(float)Math.PI/180,1,0,0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.translate(new Vector3(0,0,lenLowerArm/2));
-			modelToCameraStack.scale(new Vector3(widthLowerArm/2,widthLowerArm/2,lenLowerArm/2));
+			modelToCameraStack.getTop().translate(new Vector3(0,0,lenLowerArm/2));
+			modelToCameraStack.getTop().scale(new Vector3(widthLowerArm/2,widthLowerArm/2,lenLowerArm/2));
 			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-			glDrawElements(GL_TRIANGLES,indicies.length,GL_UNSIGNED_SHORT,0);
+			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
 			modelToCameraStack.popMatrix();
 			
 			drawWrist(modelToCameraStack);
@@ -454,14 +454,14 @@ public class Example6_4 extends GLProgram {
 		
 		private void drawUpperArm(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.rotateX(angleUpperArm);
+			modelToCameraStack.getTop().rotate(angleUpperArm*(float)Math.PI/180,1,0,0);
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.translate(new Vector3(0,0,(sizeUpperArm/2)-1));
-				modelToCameraStack.scale(new Vector3(1,1,sizeUpperArm/2));
+				modelToCameraStack.getTop().translate(new Vector3(0,0,(sizeUpperArm/2)-1));
+				modelToCameraStack.getTop().scale(new Vector3(1,1,sizeUpperArm/2));
 				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
-				glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}
 			

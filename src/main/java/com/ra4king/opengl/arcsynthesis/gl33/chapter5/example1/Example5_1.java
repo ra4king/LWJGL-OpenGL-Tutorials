@@ -130,7 +130,7 @@ public class Example5_1 extends GLProgram {
 			GREY_COLOR[0], GREY_COLOR[1], GREY_COLOR[2], GREY_COLOR[3],
 	};
 	
-	private final short[] indicies = {
+	private final short[] indices = {
 			0, 2, 1,
 			3, 2, 0,
 			
@@ -186,7 +186,7 @@ public class Example5_1 extends GLProgram {
 		
 		int vbo2 = glGenBuffers();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indicies.length).put(indicies).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indices.length).put(indices).flip(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		
 		vao1 = glGenVertexArrays();
@@ -236,11 +236,11 @@ public class Example5_1 extends GLProgram {
 		
 		glBindVertexArray(vao1);
 		glUniform3f(offsetUniform, 0, 0, 0);
-		glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+		glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 		
 		glBindVertexArray(vao2);
 		glUniform3f(offsetUniform, 0, 0, -1);
-		glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+		glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 		
 		glBindVertexArray(0);
 		

@@ -46,7 +46,7 @@ public class Example6_2 extends GLProgram {
 			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
 	};
 	
-	private final short[] indicies = {
+	private final short[] indices = {
 			0, 1, 2,
 			1, 0, 3,
 			2, 3, 0,
@@ -115,7 +115,7 @@ public class Example6_2 extends GLProgram {
 		int vbo2 = glGenBuffers();
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo2);
-		glBufferData(GL_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indicies.length).put(indicies).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (ShortBuffer)BufferUtils.createShortBuffer(indices.length).put(indices).flip(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		vao = glGenVertexArrays();
@@ -228,7 +228,7 @@ public class Example6_2 extends GLProgram {
 		
 		for(Matrix4 m : modelToCameraMatrices) {
 			glUniformMatrix4(modelToCameraMatrixUniform, false, m.getBuffer());
-			glDrawElements(GL_TRIANGLES, indicies.length, GL_UNSIGNED_SHORT, 0);
+			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 		}
 		
 		glBindVertexArray(0);

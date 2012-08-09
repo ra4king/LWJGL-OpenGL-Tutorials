@@ -76,6 +76,10 @@ public class Vector3 {
 		return x*vec.x + y*vec.y + z*vec.z;
 	}
 	
+	public Vector3 cross(Vector3 vec) {
+		return new Vector3(y()*vec.z() - vec.y()*z(), vec.z()*x() - z()*vec.x(), x()*vec.y() - vec.x()*y());
+	}
+	
 	public Vector3 add(float x, float y, float z) {
 		this.x += x;
 		this.y += y;

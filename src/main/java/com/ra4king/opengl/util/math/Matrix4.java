@@ -8,7 +8,7 @@ public class Matrix4 {
 	private FloatBuffer matrix;
 	
 	public Matrix4() {
-		matrix = BufferUtils.createFloatBuffer(16);
+		matrix = FloatBuffer.allocate(16);
 	}
 	
 	public Matrix4(float[] m) {
@@ -46,6 +46,14 @@ public class Matrix4 {
 	
 	public Matrix4 put(int index, float f) {
 		matrix.put(index, f);
+		return this;
+	}
+	
+	public Matrix4 put(int index, Vector3 v, float w) {
+		put(index*4+0,v.x());
+		put(index*4+1,v.y());
+		put(index*4+2,v.z());
+		put(index*4+3,w);
 		return this;
 	}
 	
@@ -92,6 +100,34 @@ public class Matrix4 {
 		}
 		
 		put(newm);
+		
+		return this;
+	}
+	
+	public Matrix4 transpose() {
+		float old = get(1);
+		put(1,get(4));
+		put(4,old);
+		
+		old = get(2);
+		put(2,get(8));
+		put(8,old);
+		
+		old = get(3);
+		put(3,get(12));
+		put(12,old);
+		
+		old = get(7);
+		put(7,get(13));
+		put(13,old);
+		
+		old = get(11);
+		put(11,get(14));
+		put(14,old);
+		
+		old = get(6);
+		put(6,get(9));
+		put(9,old);
 		
 		return this;
 	}
@@ -159,7 +195,14 @@ public class Matrix4 {
 		return rotate(angle, vec.x(), vec.y(), vec.z());
 	}
 	
+	private FloatBuffer direct;
+	
 	public FloatBuffer getBuffer() {
-		return (FloatBuffer)matrix.limit(16).position(0);
+		if(direct == null)
+			direct = BufferUtils.createFloatBuffer(16);
+		direct.clear();
+		direct.put((FloatBuffer)matrix.position(16).flip());
+		direct.flip();
+		return direct;
 	}
 }
