@@ -88,8 +88,6 @@ public class Mesh {
 								
 								break;
 							}
-							case "mesh":
-								break;
 							default:
 								throw new IllegalArgumentException("Invalid TAG name: " + xml.getName());
 						}

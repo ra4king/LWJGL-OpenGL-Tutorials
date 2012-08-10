@@ -504,7 +504,7 @@ public class Example7_1 extends GLProgram {
 		{
 			modelMatrix.pushMatrix();
 			
-			modelMatrix.getTop().translate(0, parthenonColumnHeight, 0).scale(1,columnBaseHeight,1).translate(0,0.5f,0);
+			modelMatrix.getTop().translate(0, parthenonColumnHeight - columnBaseHeight, 0).scale(1,columnBaseHeight,1).translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
 			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
