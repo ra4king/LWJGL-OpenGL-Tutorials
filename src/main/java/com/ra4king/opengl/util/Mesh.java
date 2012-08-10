@@ -6,6 +6,7 @@ import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -20,78 +21,88 @@ public class Mesh {
 	private int vao;
 	private ArrayList<RenderCmd> renderCommands;
 	
-	public Mesh(InputStream file) throws Exception {
+	public Mesh(URL url) throws Exception {
 		renderCommands = new ArrayList<RenderCmd>();
-		
-		XmlPullParser xml = XmlPullParserFactory.newInstance().newPullParser();
-		xml.setInput(file, "UTF-8");
-		
-		xml.next();
-		
-		xml.require(XmlPullParser.START_TAG, null, "mesh");
 		
 		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
 		
 		ByteBuffer attributeData = BufferUtils.createByteBuffer(0), indexData = BufferUtils.createByteBuffer(0);
 		
-		do {
-			xml.nextTag();
+		try(InputStream is = url.openStream()) {
+			XmlPullParser xml = XmlPullParserFactory.newInstance().newPullParser();
+			xml.setInput(is, "UTF-8");
 			
-			switch(xml.getName()) {
-				case "attribute": {
-					int index = Integer.parseInt(xml.getAttributeValue(null, "index"));
-					String type = xml.getAttributeValue(null, "type");
-					int size = Integer.parseInt(xml.getAttributeValue(null, "size"));
-					
-					Attribute attrib = new Attribute(index,type,size);
-					attributes.add(attrib);
-					
-					xml.next();
-					xml.require(XmlPullParser.TEXT, null, null);
-					
-					attributeData = attrib.storeData(attributeData, clean(xml.getText().trim().replace("\r\n", " ").replace('\n', ' ').split(" ")));
-					
-					xml.next();
-					xml.require(XmlPullParser.END_TAG, null, "attribute");
-					
-					break;
+			xml.next();
+			
+			xml.require(XmlPullParser.START_TAG, null, "mesh");
+			
+			do {
+				switch(xml.nextTag()) {
+					case XmlPullParser.START_TAG:
+						switch(xml.getName()) {
+							case "attribute": {
+								int index = Integer.parseInt(xml.getAttributeValue(null, "index"));
+								String type = xml.getAttributeValue(null, "type");
+								int size = Integer.parseInt(xml.getAttributeValue(null, "size"));
+								
+								Attribute attrib = new Attribute(index,type,size);
+								attributes.add(attrib);
+								
+								xml.next();
+								xml.require(XmlPullParser.TEXT, null, null);
+								
+								attributeData = attrib.storeData(attributeData, clean(xml.getText().trim().replace("\r\n", " ").replace('\n', ' ').split(" ")));
+								
+								xml.next();
+								xml.require(XmlPullParser.END_TAG, null, "attribute");
+								
+								break;
+							}
+							case "indices": {
+								String primitive = xml.getAttributeValue(null, "cmd");
+								String type = xml.getAttributeValue(null, "type");
+								
+								RenderCmd cmd = new RenderCmd(primitive,type);
+								renderCommands.add(cmd);
+								
+								xml.next();
+								xml.require(XmlPullParser.TEXT, null, null);
+								
+								indexData = cmd.storeData(indexData, clean(xml.getText().trim().replace("\r\n", " ").replace('\n', ' ').split(" ")));
+								
+								xml.next();
+								xml.require(XmlPullParser.END_TAG, null, "indices");
+								
+								break;
+							}
+							case "arrays": {
+								String primitive = xml.getAttributeValue(null, "cmd");
+								int start = Integer.parseInt(xml.getAttributeValue(null, "start"));
+								int count = Integer.parseInt(xml.getAttributeValue(null, "count"));
+								
+								RenderCmd cmd = new RenderCmd(primitive,start,count);
+								renderCommands.add(cmd);
+								
+								xml.next();
+								xml.require(XmlPullParser.END_TAG, null, "arrays");
+								
+								break;
+							}
+							case "mesh":
+								break;
+							default:
+								throw new IllegalArgumentException("Invalid TAG name: " + xml.getName());
+						}
+						
+						break;
+					case XmlPullParser.END_TAG:
+						continue;
 				}
-				case "indices": {
-					String primitive = xml.getAttributeValue(null, "cmd");
-					String type = xml.getAttributeValue(null, "type");
-					
-					RenderCmd cmd = new RenderCmd(primitive,type);
-					renderCommands.add(cmd);
-					
-					xml.next();
-					xml.require(XmlPullParser.TEXT, null, null);
-					
-					indexData = cmd.storeData(indexData, clean(xml.getText().trim().replace("\r\n", " ").replace('\n', ' ').split(" ")));
-					
-					xml.next();
-					xml.require(XmlPullParser.END_TAG, null, "indices");
-					
-					break;
-				}
-				case "arrays": {
-					String primitive = xml.getAttributeValue(null, "cmd");
-					int start = Integer.parseInt(xml.getAttributeValue(null, "start"));
-					int count = Integer.parseInt(xml.getAttributeValue(null, "count"));
-					
-					RenderCmd cmd = new RenderCmd(primitive,start,count);
-					renderCommands.add(cmd);
-					
-					xml.next();
-					xml.require(XmlPullParser.END_TAG, null, "arrays");
-					
-					break;
-				}
-				case "mesh":
-					break;
-				default:
-					throw new IllegalArgumentException("Invalid TAG name: " + xml.getName());
-			}
-		} while(xml.next() != XmlPullParser.END_DOCUMENT);
+			} while(xml.next() != XmlPullParser.END_DOCUMENT);
+		}
+		catch(Exception exc) {
+			throw exc;
+		}
 		
 		if(attributes.size() == 0)
 			throw new IllegalArgumentException("There must be at least 1 set of attributes.");

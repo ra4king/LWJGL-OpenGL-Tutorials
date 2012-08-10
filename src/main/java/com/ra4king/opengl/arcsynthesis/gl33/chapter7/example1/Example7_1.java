@@ -152,11 +152,11 @@ public class Example7_1 extends GLProgram {
 		perspectiveMatrix = new Matrix4();
 		
 		try {
-			coneMesh = new Mesh(getClass().getResourceAsStream("example7.1.UnitConeTint.xml"));
-			cylinderMesh = new Mesh(getClass().getResourceAsStream("example7.1.UnitCylinderTint.xml"));
-			cubeTintMesh = new Mesh(getClass().getResourceAsStream("example7.1.UnitCubeTint.xml"));
-			cubeColorMesh = new Mesh(getClass().getResourceAsStream("example7.1.UnitCubeColor.xml"));
-			planeMesh = new Mesh(getClass().getResourceAsStream("example7.1.UnitPlane.xml"));
+			coneMesh = new Mesh(getClass().getResource("example7.1.UnitConeTint.xml"));
+			cylinderMesh = new Mesh(getClass().getResource("example7.1.UnitCylinderTint.xml"));
+			cubeTintMesh = new Mesh(getClass().getResource("example7.1.UnitCubeTint.xml"));
+			cubeColorMesh = new Mesh(getClass().getResource("example7.1.UnitCubeColor.xml"));
+			planeMesh = new Mesh(getClass().getResource("example7.1.UnitPlane.xml"));
 		}
 		catch(Exception exc) {
 			exc.printStackTrace();
