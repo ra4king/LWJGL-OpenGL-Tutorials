@@ -154,7 +154,7 @@ public class Example5_1 extends GLProgram {
 	private float frustumScale = 1;
 	
 	public Example5_1() {
-		super("Example 5.1", 500, 500, false);
+		super("Example 5.1", 500, 500, true);
 	}
 	
 	@Override

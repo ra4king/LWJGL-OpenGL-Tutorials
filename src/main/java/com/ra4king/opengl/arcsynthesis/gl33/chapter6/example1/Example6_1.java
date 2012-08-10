@@ -73,7 +73,7 @@ public class Example6_1 extends GLProgram {
 	private long elapsedTime;
 	
 	public Example6_1() {
-		super("Example 6.1", 500, 500, false);
+		super("Example 6.1", 500, 500, true);
 	}
 	
 	private float calculateFrustumScale(float angle) {

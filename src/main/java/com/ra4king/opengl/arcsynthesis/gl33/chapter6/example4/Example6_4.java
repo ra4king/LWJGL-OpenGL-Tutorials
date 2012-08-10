@@ -123,7 +123,7 @@ public class Example6_4 extends GLProgram {
 	private int vao;
 	
 	public Example6_4() {
-		super("Example 6.4", 500, 500, false);
+		super("Example 6.4", 500, 500, true);
 	}
 	
 	@Override

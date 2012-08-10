@@ -26,7 +26,7 @@ public class Example3_4 extends GLProgram {
 	private long elapsedTime;
 	
 	public Example3_4() {
-		super("Example 3.4", 500, 500, false);
+		super("Example 3.4", 500, 500, true);
 	}
 	
 	@Override

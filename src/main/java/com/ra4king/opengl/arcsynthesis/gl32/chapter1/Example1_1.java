@@ -19,7 +19,7 @@ public class Example1_1 extends GLProgram {
 	private int program, vbo;
 	
 	public Example1_1() {
-		super("Example 1.1", 500, 500, false);
+		super("Example 1.1", 500, 500, true);
 	}
 	
 	@Override
