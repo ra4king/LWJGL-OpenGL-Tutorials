@@ -137,7 +137,7 @@ public class Example7_1 extends GLProgram {
 	private boolean drawLookAtPoint = true;
 	
 	public Example7_1() {
-		super("Example 7.1", 500, 500, false);
+		super("Example 7.1", 500, 500, true);
 	}
 	
 	@Override
@@ -268,7 +268,7 @@ public class Example7_1 extends GLProgram {
 		rotMat.put(1,perpUpDir,0);
 		rotMat.put(2,lookDir.mul(-1),0);
 		
-		return rotMat.transpose().translate(cameraPoint.mul(-1));
+		return rotMat.transpose().translate(new Vector3(cameraPoint).mul(-1));
 	}
 	
 	private Vector3 resolveCamPosition() {
@@ -290,7 +290,7 @@ public class Example7_1 extends GLProgram {
 		Vector3 camPos = resolveCamPosition();
 		
 		MatrixStack camMatrix = new MatrixStack();
-		camMatrix.getTop().put(calcLookAtMatrix(camPos, camTarget, new Vector3(0,1,0)));
+		camMatrix.setTop(calcLookAtMatrix(camPos, camTarget, new Vector3(0,1,0)));
 		
 		uniformColor.program.begin();
 		glUniformMatrix4(uniformColor.worldToCameraMatrixUniform,false,camMatrix.getTop().getBuffer());
@@ -372,7 +372,7 @@ public class Example7_1 extends GLProgram {
 		
 		modelMatrix.pushMatrix();
 		
-		modelMatrix.getTop().translate(0,trunkHeight,0);
+		modelMatrix.getTop().translate(0,trunkHeight,0).scale(3,coneHeight,3);
 		
 		uniformColorTint.program.begin();
 		glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());

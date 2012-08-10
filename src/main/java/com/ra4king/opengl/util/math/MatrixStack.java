@@ -15,6 +15,10 @@ public class MatrixStack {
 		return current;
 	}
 	
+	public void setTop(Matrix4 m) {
+		current = m;
+	}
+	
 	public void pushMatrix() {
 		stack.push(current);
 		current = new Matrix4(current);

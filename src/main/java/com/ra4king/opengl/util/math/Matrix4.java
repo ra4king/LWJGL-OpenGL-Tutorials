@@ -49,6 +49,13 @@ public class Matrix4 {
 		return this;
 	}
 	
+	public Matrix4 put(int index, Vector3 v) {
+		put(index*4+0,v.x());
+		put(index*4+1,v.y());
+		put(index*4+2,v.z());
+		return this;
+	}
+	
 	public Matrix4 put(int index, Vector3 v, float w) {
 		put(index*4+0,v.x());
 		put(index*4+1,v.y());
