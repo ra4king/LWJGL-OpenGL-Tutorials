@@ -101,19 +101,6 @@ public class Mesh {
 		attributeData.flip();
 		indexData.flip();
 		
-		FloatBuffer a = attributeData.asFloatBuffer();
-		ShortBuffer i = indexData.asShortBuffer();
-		
-		System.out.print("attribs: ");
-		while(a.hasRemaining())
-			System.out.print(a.get() + " ");
-		
-		System.out.print("\nindices: ");
-		while(i.hasRemaining())
-			System.out.print(i.get() + " ");
-		
-		System.out.println();
-		
 		int vbo1 = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo1);
 		glBufferData(GL_ARRAY_BUFFER, (ByteBuffer)BufferUtils.createByteBuffer(attributeData.capacity()).put(attributeData).flip(),GL_STATIC_DRAW);
