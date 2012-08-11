@@ -202,11 +202,9 @@ public class Matrix4 {
 		return rotate(angle, vec.x(), vec.y(), vec.z());
 	}
 	
-	private FloatBuffer direct;
+	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(16);
 	
 	public FloatBuffer getBuffer() {
-		if(direct == null)
-			direct = BufferUtils.createFloatBuffer(16);
 		direct.clear();
 		direct.put((FloatBuffer)matrix.position(16).flip());
 		direct.flip();
