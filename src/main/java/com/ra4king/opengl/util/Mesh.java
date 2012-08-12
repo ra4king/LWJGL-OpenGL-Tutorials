@@ -57,11 +57,18 @@ public class Mesh {
 					case XmlPullParser.START_TAG:
 						switch(xml.getName()) {
 							case "attribute": {
-								int index = Integer.parseInt(xml.getAttributeValue(null, "index"));
+								String index = xml.getAttributeValue(null, "index");
 								String type = xml.getAttributeValue(null, "type");
-								int size = Integer.parseInt(xml.getAttributeValue(null, "size"));
+								String size = xml.getAttributeValue(null, "size");
 								
-								Attribute attrib = new Attribute(index,type,size);
+								if(index == null)
+									throw new IllegalArgumentException("<attribute> missing 'index'");
+								if(type == null)
+									throw new IllegalArgumentException("<attribute> missing 'type'");
+								if(size == null)
+									throw new IllegalArgumentException("<attribute> missing 'size'");
+								
+								Attribute attrib = new Attribute(Integer.parseInt(index),type,Integer.parseInt(size));
 								attributes.add(attrib);
 								
 								xml.next();
@@ -77,6 +84,11 @@ public class Mesh {
 							case "indices": {
 								String primitive = xml.getAttributeValue(null, "cmd");
 								String type = xml.getAttributeValue(null, "type");
+								
+								if(primitive == null)
+									throw new IllegalArgumentException("<indices> missing 'cmd'");
+								if(type == null)
+									throw new IllegalArgumentException("<indices> missing 'type'");
 								
 								RenderCmd cmd = new RenderCmd(primitive,type);
 								renderCommands.add(cmd);
@@ -95,12 +107,23 @@ public class Mesh {
 								if(vaos == null)
 									vaos = new ArrayList<VAO>();
 								
-								VAO vao = new VAO(xml.getAttributeValue(null, "name"));
+								String name = xml.getAttributeValue(null, "name");
+								
+								if(name == null)
+									throw new IllegalArgumentException("<vao> missing 'name'");
+								
+								VAO vao = new VAO(name);
 								vaos.add(vao);
 								
 								while(xml.nextTag() == XmlPullParser.START_TAG) {
 									xml.require(XmlPullParser.START_TAG, null, "source");
-									vao.sources.add(Integer.parseInt(xml.getAttributeValue(null, "attrib")));
+									
+									String attrib = xml.getAttributeValue(null, "attrib");
+									
+									if(attrib == null)
+										throw new IllegalArgumentException("<source> missing 'attrib'");
+									
+									vao.sources.add(Integer.parseInt(attrib));
 									xml.nextTag();
 									xml.require(XmlPullParser.END_TAG, null, "source");
 								}
@@ -111,10 +134,17 @@ public class Mesh {
 							}
 							case "arrays": {
 								String primitive = xml.getAttributeValue(null, "cmd");
-								int start = Integer.parseInt(xml.getAttributeValue(null, "start"));
-								int count = Integer.parseInt(xml.getAttributeValue(null, "count"));
+								String start = xml.getAttributeValue(null, "start");
+								String count = xml.getAttributeValue(null, "count");
 								
-								RenderCmd cmd = new RenderCmd(primitive,start,count);
+								if(primitive == null)
+									throw new IllegalArgumentException("<arrays> missing 'cmd'");
+								if(start == null)
+									throw new IllegalArgumentException("<arrays> missing 'start'");
+								if(count == null)
+									throw new IllegalArgumentException("<arrays> missing 'count'");
+								
+								RenderCmd cmd = new RenderCmd(primitive,Integer.parseInt(start),Integer.parseInt(count));
 								renderCommands.add(cmd);
 								
 								xml.next();
