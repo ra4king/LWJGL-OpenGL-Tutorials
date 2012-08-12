@@ -18,7 +18,7 @@ import com.ra4king.opengl.util.math.Vector3;
 
 public class Example7_2 extends GLProgram {
 	public static void main(String[] args) {
-		new Example7_2().run();
+		new Example7_2().run(true);
 	}
 	
 	private final TreeData[] forest = {
