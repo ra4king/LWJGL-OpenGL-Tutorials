@@ -24,7 +24,7 @@ public class ShaderProgram {
 			throw new RuntimeException("Failure in compiling vertex shader. Error log:\n" + infoLog);
 		else {
 			System.out.print("Compiling vertex shader successfull.");
-			if(infoLog != null)
+			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
 				System.out.println(" Log: " + infoLog);
 			else
 				System.out.println();
@@ -41,8 +41,8 @@ public class ShaderProgram {
 			throw new RuntimeException("Failure in compiling fragment shader. Error log:\n" + infoLog);
 		else {
 			System.out.print("Compiling fragment shader successfull.");
-			if(infoLog != null)
-				System.out.println(" Log: " + infoLog);
+			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
+				System.out.println(" Log:\n" + infoLog);
 			else
 				System.out.println();
 		}
@@ -63,8 +63,8 @@ public class ShaderProgram {
 			throw new RuntimeException("Failure in linking program. Error log:\n" + infoLog);
 		else {
 			System.out.print("Linking program successfull.");
-			if(infoLog != null)
-				System.out.println(" Log: " + infoLog);
+			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
+				System.out.println(" Log:\n" + infoLog);
 			else
 				System.out.println();
 		}
