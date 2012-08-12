@@ -40,6 +40,10 @@ public class Matrix4 {
 		return clear().put(0,fov/(width/height)).put(5,fov).put(10,(far+near)/(near-far)).put(14,(2*far*near)/(near-far)).put(11,-1);
 	}
 	
+	public Matrix4 clearToPerspectiveDeg(float fov, float width, float height, float near, float far) {
+		return clearToPerspective((float)Math.toRadians(fov), width, height, near, far);
+	}
+	
 	public float get(int index) {
 		return matrix.get(index);
 	}
@@ -200,6 +204,14 @@ public class Matrix4 {
 	
 	public Matrix4 rotate(float angle, Vector3 vec) {
 		return rotate(angle, vec.x(), vec.y(), vec.z());
+	}
+	
+	public Matrix4 rotateDeg(float angle, float x, float y, float z) {
+		return rotate((float)Math.toRadians(angle), x, y, z);
+	}
+	
+	public Matrix4 rotateDeg(float angle, Vector3 vec) {
+		return rotate((float)Math.toRadians(angle),vec);
 	}
 	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(16);

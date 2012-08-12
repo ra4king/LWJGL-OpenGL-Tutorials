@@ -87,7 +87,7 @@ public class Example8_1 extends GLProgram {
 	
 	@Override
 	public void update(long deltaTime) {
-		float speed = 9 * deltaTime / (float)1e9;
+		float speed = 90 * deltaTime / (float)1e9;
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W))
 			angles.x += speed;
@@ -119,15 +119,15 @@ public class Example8_1 extends GLProgram {
 		
 		stack.getTop().translate(0, 0, -200);
 		
-		stack.getTop().rotate(angles.x, 1, 0, 0);
+		stack.getTop().rotateDeg(angles.x, 1, 0, 0);
 		drawGimbal(stack, GimbalAxis.GIMBAL_X_AXIS, 0.4f, 0.4f, 1, 1);
-		stack.getTop().rotate(angles.y, 0, 1, 0);
+		stack.getTop().rotateDeg(angles.y, 0, 1, 0);
 		drawGimbal(stack, GimbalAxis.GIMBAL_Y_AXIS, 0, 1, 0, 1);
-		stack.getTop().rotate(angles.z, 0, 0, 1);
+		stack.getTop().rotateDeg(angles.z, 0, 0, 1);
 		drawGimbal(stack, GimbalAxis.GIMBAL_Z_AXIS, 1, 0.3f, 0.3f, 1);
 		
 		program.begin();
-		stack.getTop().scale(3, 3, 3).rotate(-90*(float)Math.PI/180, 1, 0, 0);
+		stack.getTop().scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
 		glUniform4f(baseColorUniform, 1, 1, 1, 1);
 		glUniformMatrix4(modelToCameraMatrixUniform, false, stack.getTop().getBuffer());
 		ship.render("tint");
@@ -144,12 +144,12 @@ public class Example8_1 extends GLProgram {
 			case GIMBAL_X_AXIS:
 				break;
 			case GIMBAL_Y_AXIS:
-				stack.getTop().rotate(90, 1, 0, 0);
-				stack.getTop().rotate(90, 0, 0, 1);
+				stack.getTop().rotateDeg(90, 0, 0, 1);
+				stack.getTop().rotateDeg(90, 1, 0, 0);
 				break;
 			case GIMBAL_Z_AXIS:
-				stack.getTop().rotate(90, 1, 0, 0);
-				stack.getTop().rotate(90, 0, 1, 0);
+				stack.getTop().rotateDeg(90, 0, 1, 0);
+				stack.getTop().rotateDeg(90, 1, 0, 0);
 				break;
 		}
 		
