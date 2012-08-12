@@ -14,7 +14,6 @@ public class ShaderProgram {
 	
 	public ShaderProgram(String vertexShader, String fragmentShader, Map<Integer,String> attributes) {
 		int vs = compileShader(vertexShader, GL_VERTEX_SHADER);
-		
 		int fs = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
 		
 		program = glCreateProgram();
@@ -32,7 +31,7 @@ public class ShaderProgram {
 		if(glGetProgram(program, GL_LINK_STATUS) == GL_FALSE)
 			throw new RuntimeException("Failure in linking program. Error log:\n" + infoLog);
 		else {
-			System.out.print("Linking program successfull.");
+			System.out.print("Linking program successful.");
 			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
 				System.out.println(" Log:\n" + infoLog);
 			else
@@ -57,7 +56,7 @@ public class ShaderProgram {
 		if(glGetShader(shader, GL_COMPILE_STATUS) == GL_FALSE)
 			throw new RuntimeException("Failure in compiling " + getName(type) + " shader. Error log:\n" + infoLog);
 		else {
-			System.out.print("Compiling " + getName(type) + " shader successfull.");
+			System.out.print("Compiling " + getName(type) + " shader successful.");
 			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
 				System.out.println(" Log:\n" + infoLog);
 			else
