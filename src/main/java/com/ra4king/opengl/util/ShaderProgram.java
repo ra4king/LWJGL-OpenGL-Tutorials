@@ -13,39 +13,9 @@ public class ShaderProgram {
 	}
 	
 	public ShaderProgram(String vertexShader, String fragmentShader, Map<Integer,String> attributes) {
-		int vs = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vs, vertexShader);
+		int vs = compileShader(vertexShader, GL_VERTEX_SHADER);
 		
-		glCompileShader(vs);
-		
-		String infoLog = glGetShaderInfoLog(vs, glGetShader(vs, GL_INFO_LOG_LENGTH));
-		
-		if(glGetShader(vs, GL_COMPILE_STATUS) == GL_FALSE)
-			throw new RuntimeException("Failure in compiling vertex shader. Error log:\n" + infoLog);
-		else {
-			System.out.print("Compiling vertex shader successfull.");
-			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
-				System.out.println(" Log: " + infoLog);
-			else
-				System.out.println();
-		}
-		
-		int fs = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fs, fragmentShader);
-		
-		glCompileShader(fs);
-		
-		infoLog = glGetShaderInfoLog(fs, glGetShader(fs, GL_INFO_LOG_LENGTH));
-		
-		if(glGetShader(fs, GL_COMPILE_STATUS) == GL_FALSE)
-			throw new RuntimeException("Failure in compiling fragment shader. Error log:\n" + infoLog);
-		else {
-			System.out.print("Compiling fragment shader successfull.");
-			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
-				System.out.println(" Log:\n" + infoLog);
-			else
-				System.out.println();
-		}
+		int fs = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
 		
 		program = glCreateProgram();
 		glAttachShader(program, vs);
@@ -57,7 +27,7 @@ public class ShaderProgram {
 		
 		glLinkProgram(program);
 		
-		infoLog = glGetProgramInfoLog(program, glGetProgram(program, GL_INFO_LOG_LENGTH));
+		String infoLog = glGetProgramInfoLog(program, glGetProgram(program, GL_INFO_LOG_LENGTH));
 		
 		if(glGetProgram(program, GL_LINK_STATUS) == GL_FALSE)
 			throw new RuntimeException("Failure in linking program. Error log:\n" + infoLog);
@@ -74,6 +44,36 @@ public class ShaderProgram {
 		
 		glDeleteShader(vs);
 		glDeleteShader(fs);
+	}
+	
+	private int compileShader(String source, int type) {
+		int shader = glCreateShader(type);
+		glShaderSource(shader, source);
+		
+		glCompileShader(shader);
+		
+		String infoLog = glGetShaderInfoLog(shader, glGetShader(shader, GL_INFO_LOG_LENGTH));
+		
+		if(glGetShader(shader, GL_COMPILE_STATUS) == GL_FALSE)
+			throw new RuntimeException("Failure in compiling " + getName(type) + " shader. Error log:\n" + infoLog);
+		else {
+			System.out.print("Compiling " + getName(type) + " shader successfull.");
+			if(infoLog != null && !(infoLog = infoLog.trim()).isEmpty())
+				System.out.println(" Log:\n" + infoLog);
+			else
+				System.out.println();
+		}
+		
+		return shader;
+	}
+	
+	private String getName(int shaderType) {
+		if(shaderType == GL_VERTEX_SHADER)
+			return "vertex";
+		if(shaderType == GL_FRAGMENT_SHADER)
+			return "fragment";
+		
+		throw new IllegalArgumentException("Invalid shaderType, must be either GL_VERTEX_SHADER or GL_FRAGMENT_SHADER");
 	}
 	
 	public int getProgram() {
