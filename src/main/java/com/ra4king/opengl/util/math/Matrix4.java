@@ -5,10 +5,10 @@ import java.nio.FloatBuffer;
 import org.lwjgl.BufferUtils;
 
 public class Matrix4 {
-	private FloatBuffer matrix;
+	private float[] matrix;
 	
 	public Matrix4() {
-		matrix = FloatBuffer.allocate(16);
+		matrix = new float[16];
 	}
 	
 	public Matrix4(float[] m) {
@@ -22,8 +22,8 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 clear() {
-		for(int a = 0; a < 16; a++)
-			matrix.put(a,0);
+		for(int a = 0; a < matrix.length; a++)
+			put(a,0);
 		return this;
 	}
 	
@@ -45,11 +45,11 @@ public class Matrix4 {
 	}
 	
 	public float get(int index) {
-		return matrix.get(index);
+		return matrix[index];
 	}
 	
 	public Matrix4 put(int index, float f) {
-		matrix.put(index, f);
+		matrix[index] = f;
 		return this;
 	}
 	
@@ -72,16 +72,15 @@ public class Matrix4 {
 		if(m.length < 16)
 			throw new IllegalArgumentException("float array must have at least 16 values.");
 		
-		matrix.position(0);
-		matrix.put(m,0,16);
+		for(int a = 0; a < matrix.length; a++)
+			put(a,m[a]);
 		
 		return this;
 	}
 	
 	public Matrix4 put(Matrix4 m) {
-		FloatBuffer b = m.getBuffer();
-		while(b.hasRemaining())
-			matrix.put(b.get());
+		for(int a = 0; a < matrix.length; a++)
+			put(a,m.get(a));
 		
 		return this;
 	}
@@ -218,7 +217,7 @@ public class Matrix4 {
 	
 	public FloatBuffer getBuffer() {
 		direct.clear();
-		direct.put((FloatBuffer)matrix.position(16).flip());
+		direct.put(matrix);
 		direct.flip();
 		return direct;
 	}
