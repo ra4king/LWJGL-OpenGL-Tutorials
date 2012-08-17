@@ -8,9 +8,7 @@ public class Vector3 {
 	}
 	
 	public Vector3(float x, float y, float z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
+		set(x,y,z);
 	}
 	
 	public Vector3(Vector3 vec) {
@@ -52,7 +50,7 @@ public class Vector3 {
 	}
 	
 	public Vector3 set(Vector3 vec) {
-		return set(vec.x(),vec.y(),vec.z());
+		return set(vec.x,vec.y,vec.z);
 	}
 	
 	public Vector3 reset() {
