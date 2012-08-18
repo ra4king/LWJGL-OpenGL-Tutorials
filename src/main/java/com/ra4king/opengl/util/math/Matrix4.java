@@ -79,14 +79,12 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 put(Matrix4 m) {
-		for(int a = 0; a < matrix.length; a++)
-			put(a,m.get(a));
-		
-		return this;
+		return put(m.matrix);
 	}
 	
 	public Matrix4 mult(float[] m) {
 		float[] newm = new float[16];
+		
 		for(int a = 0; a < 16; a += 4) {
 			newm[a+0] = get(0)*m[a] + get(4)*m[a+1] + get(8)*m[a+2] + get(12)*m[a+3];
 			newm[a+1] = get(1)*m[a] + get(5)*m[a+1] + get(9)*m[a+2] + get(13)*m[a+3];
@@ -100,18 +98,7 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 mult(Matrix4 m) {
-		float[] newm = new float[16];
-		
-		for(int a = 0; a < 16; a += 4) {
-			newm[a+0] = get(0)*m.get(a) + get(4)*m.get(a+1) + get(8)*m.get(a+2) + get(12)*m.get(a+3);
-			newm[a+1] = get(1)*m.get(a) + get(5)*m.get(a+1) + get(9)*m.get(a+2) + get(13)*m.get(a+3);
-			newm[a+2] = get(2)*m.get(a) + get(6)*m.get(a+1) + get(10)*m.get(a+2) + get(14)*m.get(a+3);
-			newm[a+3] = get(3)*m.get(a) + get(7)*m.get(a+1) + get(11)*m.get(a+2) + get(15)*m.get(a+3);
-		}
-		
-		put(newm);
-		
-		return this;
+		return mult(m.matrix);
 	}
 	
 	public Matrix4 transpose() {

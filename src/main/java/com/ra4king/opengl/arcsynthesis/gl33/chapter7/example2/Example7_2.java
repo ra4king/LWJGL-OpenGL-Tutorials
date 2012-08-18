@@ -276,9 +276,9 @@ public class Example7_2 extends GLProgram {
 		Matrix4 rotMat = new Matrix4().clearToIdentity();
 		rotMat.put(0,rightDir,0);
 		rotMat.put(1,perpUpDir,0);
-		rotMat.put(2,lookDir.mul(-1),0);
+		rotMat.put(2,lookDir.mult(-1),0);
 		
-		return rotMat.transpose().translate(new Vector3(cameraPoint).mul(-1));
+		return rotMat.transpose().translate(new Vector3(cameraPoint).mult(-1));
 	}
 	
 	private Vector3 resolveCamPosition() {
@@ -290,7 +290,7 @@ public class Example7_2 extends GLProgram {
 		float cosPhi = (float)Math.cos(phi);
 		float sinPhi = (float)Math.sin(phi);
 		
-		return new Vector3(sinTheta * cosPhi, cosTheta, sinTheta * sinPhi).mul(sphereCamRelPos.z()).add(camTarget);
+		return new Vector3(sinTheta * cosPhi, cosTheta, sinTheta * sinPhi).mult(sphereCamRelPos.z()).add(camTarget);
 	}
 	
 	@Override

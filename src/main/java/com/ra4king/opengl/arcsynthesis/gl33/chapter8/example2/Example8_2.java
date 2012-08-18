@@ -75,14 +75,16 @@ public class Example8_2 extends GLProgram {
 	}
 	
 	private void offsetOrientation(Vector3 axis, float angle) {
+		System.out.println(axis.x() + " " + axis.y() + " " + axis.z());
+		
 		angle = angle * (float)Math.PI / 180;
 		
-		axis.normalize().mul((float)Math.sin(angle/2));
+		axis.normalize().mult((float)Math.sin(angle/2));
 		
 		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle/2));
 		
 		if(rightMultiply)
-			orientation = orientation.mult(offset);
+			orientation = orientation.mult(offset).normalize();
 		else
 			orientation = offset.mult(orientation);
 		

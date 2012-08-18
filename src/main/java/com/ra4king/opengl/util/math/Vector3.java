@@ -100,11 +100,11 @@ public class Vector3 {
 		return sub(vec.x(),vec.y(),vec.z());
 	}
 	
-	public Vector3 mul(float f) {
-		return mul(f,f,f);
+	public Vector3 mult(float f) {
+		return mult(f,f,f);
 	}
 	
-	public Vector3 mul(float x, float y, float z) {
+	public Vector3 mult(float x, float y, float z) {
 		this.x *= x;
 		this.y *= y;
 		this.z *= z;
@@ -112,6 +112,6 @@ public class Vector3 {
 	}
 	
 	public Vector3 mul(Vector3 vec) {
-		return mul(vec.x(),vec.y(),vec.z());
+		return mult(vec.x(),vec.y(),vec.z());
 	}
 }
