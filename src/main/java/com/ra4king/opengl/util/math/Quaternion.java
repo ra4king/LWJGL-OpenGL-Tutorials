@@ -151,6 +151,6 @@ public class Quaternion {
 				                0,                 0,                 0, 1,
 		};
 		
-		return new Matrix4(m);
+		return new Matrix4(m).transpose();
 	}
 }
