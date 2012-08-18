@@ -176,7 +176,7 @@ public abstract class GLProgram {
 			String l;
 			
 			while((l = reader.readLine()) != null)
-				s.append(l).append("\n");
+				s.append(l).append('\n');
 			
 			return s.toString();
 		}

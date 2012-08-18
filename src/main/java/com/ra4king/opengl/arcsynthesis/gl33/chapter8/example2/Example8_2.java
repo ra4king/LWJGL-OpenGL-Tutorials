@@ -82,7 +82,7 @@ public class Example8_2 extends GLProgram {
 		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle/2));
 		
 		if(rightMultiply)
-			orientation = orientation.mult(offset).normalize();
+			orientation = orientation.mult(offset);
 		else
 			orientation = offset.mult(orientation);
 		

@@ -122,10 +122,10 @@ public class Quaternion {
 	}
 	
 	public Quaternion mult(Quaternion q) {
-		float xx = (w*q.x) + (x*q.w) + (y*q.z) - (z*q.y);
-		float yy = (w*q.y) + (y*q.w) + (z*q.x) - (x*q.z);
-		float zz = (w*q.z) + (z*q.w) + (x*q.y) - (y*q.x);
-		float ww = (w*q.w) - (x*q.x) - (y*q.y) - (z*q.z);
+		float xx = w*q.x + x*q.w + y*q.z - z*q.y;
+		float yy = w*q.y + y*q.w + z*q.x - x*q.z;
+		float zz = w*q.z + z*q.w + x*q.y - y*q.x;
+		float ww = w*q.w - x*q.x - y*q.y - z*q.z;
 		
 		x = xx;
 		y = yy;
@@ -145,12 +145,12 @@ public class Quaternion {
 	
 	public Matrix4 getMatrix() {
 		float[] m = {
-				1 - 2*y*y - 2*z*z,     2*x*y - 2*w*z,     2*x*z + 2*w*y, 0,
-				    2*x*y + 2*w*z, 1 - 2*x*x - 2*z*z,     2*y*z - 2*w*x, 0,
-				    2*x*z - 2*w*y,     2*y*z + 2*w*x, 1 - 2*x*x - 2*y*y, 0,
+				1 - 2*y*y - 2*z*z,     2*x*y + 2*w*z,     2*x*z - 2*w*y, 0,
+				    2*x*y - 2*w*z, 1 - 2*x*x - 2*z*z,     2*y*z + 2*w*x, 0,
+				    2*x*z + 2*w*y,     2*y*z - 2*w*x, 1 - 2*x*x - 2*y*y, 0,
 				                0,                 0,                 0, 1,
 		};
 		
-		return new Matrix4(m).transpose();
+		return new Matrix4(m);
 	}
 }
