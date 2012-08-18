@@ -77,9 +77,7 @@ public class Example8_2 extends GLProgram {
 	private void offsetOrientation(Vector3 axis, float angle) {
 		angle = angle * (float)Math.PI / 180;
 		
-		axis.normalize();
-		System.out.println(axis.x() + " " + axis.y() + " " + axis.z());
-		axis.mul((float)Math.sin(angle/2));
+		axis.normalize().mul((float)Math.sin(angle/2));
 		
 		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle/2));
 		
@@ -124,16 +122,12 @@ public class Example8_2 extends GLProgram {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		MatrixStack stack = new MatrixStack();
-		stack.getTop().translate(0, 0, -200).mult(orientation.getMatrix());
+		stack.getTop().translate(0, 0, -200).mult(orientation.getMatrix()).scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
 		
 		program.begin();
-		stack.getTop().scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
-		
 		glUniform4f(baseColorUniform, 1, 1, 1, 1);
 		glUniformMatrix4(modelToClipMatrixUniform, false, stack.getTop().getBuffer());
-		
 		ship.render("tint");
-		
 		program.end();
 	}
 }
