@@ -130,7 +130,7 @@ public class Test extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspectiveDeg(90, getWidth(), getHeight(), 1, 1000).getBuffer());
+		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspectiveDeg(90, getWidth(), getHeight(), 1, 1000).toBuffer());
 		program.end();
 	}
 	
@@ -198,7 +198,7 @@ public class Test extends GLProgram {
 				if(b == -50)
 					continue;
 				
-				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).getBuffer());
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).toBuffer());
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 			}
 		}

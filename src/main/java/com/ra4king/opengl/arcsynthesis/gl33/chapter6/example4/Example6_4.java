@@ -209,7 +209,7 @@ public class Example6_4 extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100).getBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100).toBuffer());
 		program.end();
 	}
 	
@@ -299,7 +299,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(posBaseLeft);
 				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
-				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().getBuffer());
+				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}
@@ -308,7 +308,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(posBaseRight);
 				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
-				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().getBuffer());
+				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}
@@ -368,7 +368,7 @@ public class Example6_4 extends GLProgram {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
 			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
@@ -380,7 +380,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
 				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
@@ -396,7 +396,7 @@ public class Example6_4 extends GLProgram {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
 			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
@@ -408,7 +408,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
 				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
@@ -426,7 +426,7 @@ public class Example6_4 extends GLProgram {
 			
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().scale(new Vector3(widthWrist/2,widthWrist/2,lenWrist/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
 			modelToCameraStack.popMatrix();
 			
@@ -443,7 +443,7 @@ public class Example6_4 extends GLProgram {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(new Vector3(0,0,lenLowerArm/2));
 			modelToCameraStack.getTop().scale(new Vector3(widthLowerArm/2,widthLowerArm/2,lenLowerArm/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
 			modelToCameraStack.popMatrix();
 			
@@ -460,7 +460,7 @@ public class Example6_4 extends GLProgram {
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(new Vector3(0,0,(sizeUpperArm/2)-1));
 				modelToCameraStack.getTop().scale(new Vector3(1,1,sizeUpperArm/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().getBuffer());
+				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}

@@ -143,7 +143,7 @@ public class Quaternion {
 		return this;
 	}
 	
-	public Matrix4 getMatrix() {
+	public Matrix4 toMatrix() {
 		float[] m = {
 				1 - 2*y*y - 2*z*z,     2*x*y + 2*w*z,     2*x*z - 2*w*y, 0,
 				    2*x*y - 2*w*z, 1 - 2*x*x - 2*z*z,     2*y*z + 2*w*x, 0,

@@ -103,7 +103,7 @@ public class Example6_2 extends GLProgram {
 		cameraToClipMatrix.put(11,-1);
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.getBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
 		program.end();
 		
 		int vbo1 = glGenBuffers();
@@ -147,7 +147,7 @@ public class Example6_2 extends GLProgram {
 		cameraToClipMatrix.put(0,frustumScale / ((float)getWidth() / getHeight()));
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.getBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
 		program.end();
 	}
 	
@@ -227,7 +227,7 @@ public class Example6_2 extends GLProgram {
 		glBindVertexArray(vao);
 		
 		for(Matrix4 m : modelToCameraMatrices) {
-			glUniformMatrix4(modelToCameraMatrixUniform, false, m.getBuffer());
+			glUniformMatrix4(modelToCameraMatrixUniform, false, m.toBuffer());
 			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 		}
 		

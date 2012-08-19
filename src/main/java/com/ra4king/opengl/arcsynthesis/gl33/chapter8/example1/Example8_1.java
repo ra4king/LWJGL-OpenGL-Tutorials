@@ -81,7 +81,7 @@ public class Example8_1 extends GLProgram {
 		cameraToClipMatrix.clearToPerspective(20*(float)Math.PI/180, getWidth(), getHeight(), 1, 600);
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.getBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
 		program.end();
 	}
 	
@@ -129,7 +129,7 @@ public class Example8_1 extends GLProgram {
 		program.begin();
 		stack.getTop().scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
 		glUniform4f(baseColorUniform, 1, 1, 1, 1);
-		glUniformMatrix4(modelToCameraMatrixUniform, false, stack.getTop().getBuffer());
+		glUniformMatrix4(modelToCameraMatrixUniform, false, stack.getTop().toBuffer());
 		ship.render("tint");
 		program.end();
 	}
@@ -155,7 +155,7 @@ public class Example8_1 extends GLProgram {
 		
 		program.begin();
 		glUniform4f(baseColorUniform, r, b, g, 1);
-		glUniformMatrix4(modelToCameraMatrixUniform, false, stack.getTop().getBuffer());
+		glUniformMatrix4(modelToCameraMatrixUniform, false, stack.getTop().toBuffer());
 		gimbals[axis.ordinal()].render();
 		program.end();
 		

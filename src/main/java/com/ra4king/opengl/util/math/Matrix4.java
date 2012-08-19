@@ -200,9 +200,68 @@ public class Matrix4 {
 		return rotate((float)Math.toRadians(angle),vec);
 	}
 	
+	public Quaternion toQuaternion() {
+		float x = get(0)  - get(5) - get(10);
+		float y = get(5)  - get(0) - get(10);
+		float z = get(10) - get(0) - get(5);
+		float w = get(0)  + get(5) + get(10);
+		
+		int biggestIndex = 0;
+		float biggest = w;
+		
+		if(x > biggest) {
+			biggest = x;
+			biggestIndex = 1;
+		}
+		
+		if(y > biggest) {
+			biggest = y;
+			biggestIndex = 2;
+		}
+		
+		if(z > biggest) {
+			biggest = z;
+			biggestIndex = 3;
+		}
+		
+		float biggestVal = (float)(Math.sqrt(biggest+1) * 0.5);
+		float mult = 0.25f / biggestVal;
+		
+		Quaternion res = new Quaternion();
+		
+		switch(biggestIndex) {
+			case 0:
+				res.w(biggestVal);
+				res.x((get(6) - get(9)) * mult);
+				res.y((get(8) - get(2)) * mult);
+				res.z((get(1) - get(4)) * mult);
+				break;
+			case 1:
+				res.w((get(6) - get(9)) * mult);
+				res.x(biggestVal);
+				res.y((get(1) - get(4)) * mult);
+				res.z((get(8) - get(2)) * mult);
+				break;
+			case 2:
+				res.w((get(8) - get(2)) * mult);
+				res.x((get(1) - get(4)) * mult);
+				res.y(biggestVal);
+				res.z((get(6) - get(9)) * mult);
+				break;
+			case 3:
+				res.w((get(1) - get(4)) * mult);
+				res.x((get(8) - get(2)) * mult);
+				res.y((get(6) - get(9)) * mult);
+				res.z(biggestVal);
+				break;
+		}
+		
+		return res;
+	}
+	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(16);
 	
-	public FloatBuffer getBuffer() {
+	public FloatBuffer toBuffer() {
 		direct.clear();
 		direct.put(matrix);
 		direct.flip();

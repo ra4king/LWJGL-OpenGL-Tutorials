@@ -70,7 +70,7 @@ public class Example8_2 extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, new Matrix4().clearToPerspectiveDeg(20, getWidth(), getHeight(), 1, 600).getBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, new Matrix4().clearToPerspectiveDeg(20, getWidth(), getHeight(), 1, 600).toBuffer());
 		program.end();
 	}
 	
@@ -122,11 +122,11 @@ public class Example8_2 extends GLProgram {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		MatrixStack stack = new MatrixStack();
-		stack.getTop().translate(0, 0, -200).mult(orientation.getMatrix()).scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
+		stack.getTop().translate(0, 0, -200).mult(orientation.toMatrix()).scale(3, 3, 3).rotateDeg(-90, 1, 0, 0);
 		
 		program.begin();
 		glUniform4f(baseColorUniform, 1, 1, 1, 1);
-		glUniformMatrix4(modelToClipMatrixUniform, false, stack.getTop().getBuffer());
+		glUniformMatrix4(modelToClipMatrixUniform, false, stack.getTop().toBuffer());
 		ship.render("tint");
 		program.end();
 	}

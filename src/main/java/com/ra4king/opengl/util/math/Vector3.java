@@ -111,7 +111,7 @@ public class Vector3 {
 		return this;
 	}
 	
-	public Vector3 mul(Vector3 vec) {
+	public Vector3 mult(Vector3 vec) {
 		return mult(vec.x(),vec.y(),vec.z());
 	}
 }

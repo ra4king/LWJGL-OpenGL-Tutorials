@@ -204,7 +204,7 @@ public class Example7_2 extends GLProgram {
 		perspectiveMatrix.clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 1000);
 		
 		glBindBuffer(GL_UNIFORM_BUFFER, ubo);
-		glBufferSubData(GL_UNIFORM_BUFFER, 0, perspectiveMatrix.getBuffer());
+		glBufferSubData(GL_UNIFORM_BUFFER, 0, perspectiveMatrix.toBuffer());
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 	
@@ -303,7 +303,7 @@ public class Example7_2 extends GLProgram {
 		camMatrix.setTop(calcLookAtMatrix(camPos, camTarget, new Vector3(0,1,0)));
 		
 		glBindBuffer(GL_UNIFORM_BUFFER, ubo);
-		glBufferSubData(GL_UNIFORM_BUFFER, 16 * 4, camMatrix.getTop().getBuffer());
+		glBufferSubData(GL_UNIFORM_BUFFER, 16 * 4, camMatrix.getTop().toBuffer());
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 		
 		MatrixStack modelMatrix = new MatrixStack();
@@ -314,7 +314,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().scale(100, 1, 100);
 			
 			uniformColor.program.begin();
-			glUniformMatrix4(uniformColor.modelToWorldMatrixUniform,false,modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColor.modelToWorldMatrixUniform,false,modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColor.baseColorUniform,0.302f,0.416f,0.0589f,1.0f);
 			planeMesh.render();
 			uniformColor.program.end();
@@ -342,7 +342,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().translate(camTarget).scale(1,1,1);
 			
 			objectColor.program.begin();
-			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			cubeColorMesh.render();
 			objectColor.program.end();
 			
@@ -367,7 +367,7 @@ public class Example7_2 extends GLProgram {
 		modelMatrix.getTop().scale(1,trunkHeight,1).translate(0,0.5f,0);
 		
 		uniformColorTint.program.begin();
-		glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+		glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 		glUniform4f(uniformColorTint.baseColorUniform, 0.694f, 0.4f, 0.106f, 1);
 		cylinderMesh.render();
 		uniformColorTint.program.end();
@@ -380,7 +380,7 @@ public class Example7_2 extends GLProgram {
 		modelMatrix.getTop().translate(0,trunkHeight,0).scale(3,coneHeight,3);
 		
 		uniformColorTint.program.begin();
-		glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+		glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 		glUniform4f(uniformColorTint.baseColorUniform, 0, 1, 0, 1);
 		coneMesh.render();
 		uniformColorTint.program.end();
@@ -404,7 +404,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().scale(parthenonWidth,parthenonBaseHeight,parthenonLength).translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
-			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColorTint.baseColorUniform, 0.9f, 0.9f, 0.9f, 0.9f);
 			cubeTintMesh.render();
 			uniformColorTint.program.end();
@@ -420,7 +420,7 @@ public class Example7_2 extends GLProgram {
 								.translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
-			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColorTint.baseColorUniform, 0.9f, 0.9f, 0.9f, 0.9f);
 			cubeTintMesh.render();
 			uniformColorTint.program.end();
@@ -466,7 +466,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().translate(0,1,0).scale(parthenonWidth-6, parthenonColumnHeight, parthenonLength-6).translate(0,0.5f,0);
 			
 			objectColor.program.begin();
-			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			cubeColorMesh.render();
 			objectColor.program.end();
 			
@@ -481,7 +481,7 @@ public class Example7_2 extends GLProgram {
 								.rotate(45*(float)Math.PI/180, 0, 1, 0);
 			
 			objectColor.program.begin();
-			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(objectColor.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			cubeColorMesh.render();
 			objectColor.program.end();
 
@@ -498,7 +498,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().scale(1, columnBaseHeight, 1).translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
-			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColorTint.baseColorUniform, 1, 1, 1, 1);
 			cubeTintMesh.render();
 			uniformColorTint.program.end();
@@ -512,7 +512,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().translate(0, parthenonColumnHeight - columnBaseHeight, 0).scale(1,columnBaseHeight,1).translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
-			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColorTint.baseColorUniform, 0.9f, 0.9f, 0.9f, 0.9f);
 			cubeTintMesh.render();
 			uniformColorTint.program.end();
@@ -526,7 +526,7 @@ public class Example7_2 extends GLProgram {
 			modelMatrix.getTop().translate(0, columnBaseHeight, 0).scale(0.8f,  parthenonColumnHeight - columnBaseHeight*2,  0.8f).translate(0,0.5f,0);
 			
 			uniformColorTint.program.begin();
-			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().getBuffer());
+			glUniformMatrix4(uniformColorTint.modelToWorldMatrixUniform, false, modelMatrix.getTop().toBuffer());
 			glUniform4f(uniformColorTint.baseColorUniform, 0.9f, 0.9f, 0.9f, 0.9f);
 			cylinderMesh.render();
 			uniformColorTint.program.end();
