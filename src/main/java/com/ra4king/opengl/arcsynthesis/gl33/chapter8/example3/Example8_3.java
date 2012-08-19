@@ -145,6 +145,19 @@ public class Example8_3 extends GLProgram {
 		sphereCamRelPos.y(clamp(sphereCamRelPos.y(), -78.75f, 10));
 	}
 	
+	@Override
+	public void keyPressed(int key, char c, long nanos) {
+		if(key == Keyboard.KEY_SPACE) {
+			offsetRelative = OffsetRelative.values()[(offsetRelative.ordinal()+1)%OffsetRelative.values().length];
+			
+			switch(offsetRelative) {
+				case MODEL_RELATIVE: System.out.println("Model Relative"); break;
+				case WORLD_RELATIVE: System.out.println("World Relative"); break;
+				case CAMERA_RELATIVE: System.out.println("Camera Relative"); break;
+			}
+		}
+	}
+	
 	private Vector3 resolveCamPosition() {
 		float phi = sphereCamRelPos.x() * (float)Math.PI / 180;
 		float theta = (sphereCamRelPos.y() + 90) * (float)Math.PI / 180;
