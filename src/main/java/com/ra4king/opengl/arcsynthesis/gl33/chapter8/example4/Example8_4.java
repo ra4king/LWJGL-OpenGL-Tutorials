@@ -204,18 +204,18 @@ public class Example8_4 extends GLProgram {
 					return lerp(q0, q1, alpha);
 				
 				dot = clamp(dot, -1, 1);
-				float theta = (float)Math.cos(dot) * alpha;
+				float theta = (float)Math.acos(dot) * alpha;
 				
-				Quaternion q2 = q1.sub(new Quaternion(q0).mult(dot)).normalize();
+				Quaternion q2 = q1.add(new Quaternion(q0).mult(-dot)).normalize();
 				
 				return q0.mult((float)Math.cos(theta)).add(q2.mult((float)Math.sin(theta)));
 			}
 			
 			private Quaternion lerp(Quaternion q0, Quaternion q1, float alpha) {
 				return new Quaternion(q0.x() + (q1.x() - q0.x()) * alpha,
-						  q0.y() + (q1.y() - q0.y()) * alpha,
-						  q0.z() + (q1.z() - q0.z()) * alpha,
-						  q0.w() + (q1.w() - q0.w()) * alpha).normalize();
+									  q0.y() + (q1.y() - q0.y()) * alpha,
+									  q0.z() + (q1.z() - q0.z()) * alpha,
+									  q0.w() + (q1.w() - q0.w()) * alpha).normalize();
 			}
 			
 			public void startAnimation(int destination, float duration) {

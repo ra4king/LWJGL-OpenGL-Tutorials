@@ -16,6 +16,8 @@ public class Timer {
 	private float absPrevTime;
 	private float secAccumTime;
 	
+	private long elapsedTime;
+	
 	public Timer() {
 		this(Type.INFINITE, 1);
 	}
@@ -47,7 +49,9 @@ public class Timer {
 	}
 	
 	public boolean update(long deltaTime) {
-		float currTime = deltaTime / (float)1e9;
+		elapsedTime += deltaTime;
+		
+		float currTime = elapsedTime / (float)1e9;
 		
 		if(!hasUpdated) {
 			absPrevTime = currTime;
