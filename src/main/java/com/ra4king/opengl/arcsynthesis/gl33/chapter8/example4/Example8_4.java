@@ -206,7 +206,7 @@ public class Example8_4 extends GLProgram {
 				dot = clamp(dot, -1, 1);
 				float theta = (float)Math.acos(dot) * alpha;
 				
-				Quaternion q2 = q1.add(new Quaternion(q0).mult(-dot)).normalize();
+				Quaternion q2 = q1.sub(new Quaternion(q0).mult(dot)).normalize();
 				
 				return q0.mult((float)Math.cos(theta)).add(q2.mult((float)Math.sin(theta)));
 			}
