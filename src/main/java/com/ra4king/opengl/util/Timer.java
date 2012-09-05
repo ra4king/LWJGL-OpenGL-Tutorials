@@ -88,7 +88,7 @@ public class Timer {
 			case LOOP:
 				return (secAccumTime%secDuration) / secDuration;
 			case SINGLE:
-				return clamp(secAccumTime/secDuration, 0, 1);
+				return Utils.clamp(secAccumTime/secDuration, 0, 1);
 			case INFINITE:
 			default:
 				return -1;
@@ -100,7 +100,7 @@ public class Timer {
 			case LOOP:
 				return secAccumTime%secDuration;
 			case SINGLE:
-				return clamp(secAccumTime, 0, secDuration);
+				return Utils.clamp(secAccumTime, 0, secDuration);
 			case INFINITE:
 			default:
 				return -1;
@@ -109,9 +109,5 @@ public class Timer {
 	
 	public float getTimeSinceStart() {
 		return secAccumTime;
-	}
-	
-	private float clamp(float value, float low, float high) {
-		return Math.min(Math.max(value, low), high);
 	}
 }

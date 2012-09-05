@@ -8,6 +8,7 @@ import org.lwjgl.input.Keyboard;
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Quaternion;
@@ -108,10 +109,6 @@ public class Example8_3 extends GLProgram {
 		orientation.normalize();
 	}
 	
-	private float clamp(float value, float low, float high) {
-		return Math.min(Math.max(value, low), high);
-	}
-	
 	@Override
 	public void update(long deltaTime) {
 		float speed = 90 * deltaTime / (float)1e9;
@@ -142,7 +139,7 @@ public class Example8_3 extends GLProgram {
 		if(Keyboard.isKeyDown(Keyboard.KEY_L))
 			sphereCamRelPos.add(speed, 0, 0);
 		
-		sphereCamRelPos.y(clamp(sphereCamRelPos.y(), -78.75f, 10));
+		sphereCamRelPos.y(Utils.clamp(sphereCamRelPos.y(), -78.75f, 10));
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.Timer;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.Timer.Type;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
@@ -189,10 +190,6 @@ public class Example8_4 extends GLProgram {
 					return lerp(initial, orients[finalOrient], timer.getAlpha());
 			}
 			
-			private float clamp(float value, float low, float high) {
-				return Math.min(Math.max(value, low), high);
-			}
-			
 			private Quaternion slerp(Quaternion q0, Quaternion q1, float alpha) {
 				q0 = new Quaternion(q0);
 				q1 = new Quaternion(q1);
@@ -203,7 +200,7 @@ public class Example8_4 extends GLProgram {
 				if(dot > DOT_THRESHOLD)
 					return lerp(q0, q1, alpha);
 				
-				dot = clamp(dot, -1, 1);
+				dot = Utils.clamp(dot, -1, 1);
 				float theta = (float)Math.acos(dot) * alpha;
 				
 				Quaternion q2 = q1.sub(new Quaternion(q0).mult(dot)).normalize();

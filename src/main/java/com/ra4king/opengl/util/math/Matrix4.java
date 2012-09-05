@@ -1,6 +1,7 @@
 package com.ra4king.opengl.util.math;
 
 import java.nio.FloatBuffer;
+import java.util.Arrays;
 
 import org.lwjgl.BufferUtils;
 
@@ -22,8 +23,7 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 clear() {
-		for(int a = 0; a < matrix.length; a++)
-			put(a,0);
+		Arrays.fill(matrix, 0);
 		return this;
 	}
 	
@@ -53,6 +53,14 @@ public class Matrix4 {
 		return this;
 	}
 	
+	public Matrix4 put(int index, Vector4 v) {
+		put(index*4+0,v.x());
+		put(index*4+1,v.y());
+		put(index*4+2,v.z());
+		put(index*4+3,v.z());
+		return this;
+	}
+	
 	public Matrix4 put(int index, Vector3 v) {
 		put(index*4+0,v.x());
 		put(index*4+1,v.y());
@@ -69,11 +77,10 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 put(float[] m) {
-		if(m.length < 16)
-			throw new IllegalArgumentException("float array must have at least 16 values.");
+		if(m.length < matrix.length)
+			throw new IllegalArgumentException("float array must have at least " + matrix.length + " values.");
 		
-		for(int a = 0; a < matrix.length; a++)
-			put(a,m[a]);
+		System.arraycopy(m, 0, matrix, 0, matrix.length);
 		
 		return this;
 	}
@@ -83,9 +90,9 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 mult(float[] m) {
-		float[] newm = new float[16];
+		float[] newm = new float[matrix.length];
 		
-		for(int a = 0; a < 16; a += 4) {
+		for(int a = 0; a < matrix.length; a += 4) {
 			newm[a+0] = get(0)*m[a] + get(4)*m[a+1] + get(8)*m[a+2] + get(12)*m[a+3];
 			newm[a+1] = get(1)*m[a] + get(5)*m[a+1] + get(9)*m[a+2] + get(13)*m[a+3];
 			newm[a+2] = get(2)*m[a] + get(6)*m[a+1] + get(10)*m[a+2] + get(14)*m[a+3];
@@ -99,6 +106,17 @@ public class Matrix4 {
 	
 	public Matrix4 mult(Matrix4 m) {
 		return mult(m.matrix);
+	}
+	
+	public Vector4 mult(Vector4 vec) {
+		Vector4 v = new Vector4();
+		
+		v.x(get(0)*vec.x() + get(4)*vec.y() + get(8)*vec.z() + get(12)*vec.w());
+		v.x(get(1)*vec.x() + get(5)*vec.y() + get(9)*vec.z() + get(13)*vec.w());
+		v.x(get(2)*vec.x() + get(6)*vec.y() + get(10)*vec.z() + get(14)*vec.w());
+		v.x(get(3)*vec.x() + get(7)*vec.y() + get(12)*vec.z() + get(15)*vec.w());
+		
+		return v;
 	}
 	
 	public Matrix4 transpose() {
@@ -130,7 +148,7 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 translate(float x, float y, float z) {
-		float[] m = new float[16];
+		float[] m = new float[matrix.length];
 		
 		m[0] = 1;
 		m[5] = 1;
@@ -149,7 +167,7 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 scale(float x, float y, float z) {
-		float[] m = new float[16];
+		float[] m = new float[matrix.length];
 		
 		m[0] = x;
 		m[5] = y;
@@ -170,7 +188,7 @@ public class Matrix4 {
 		
 		Vector3 v = new Vector3(x,y,z).normalize();
 		
-		float[] m = new float[16];
+		float[] m = new float[matrix.length];
 		m[0] = v.x()*v.x() + (1 - v.x()*v.x())*cos;
 		m[4] = v.x()*v.y()*invCos - v.z()*sin;
 		m[8] = v.x()*v.z()*invCos + v.y()*sin;

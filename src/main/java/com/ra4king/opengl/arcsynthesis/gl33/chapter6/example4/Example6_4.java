@@ -13,6 +13,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Vector3;
@@ -327,17 +328,17 @@ public class Example6_4 extends GLProgram {
 		
 		public void adjUpperArm(boolean increment) {
 			angleUpperArm += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
-			angleUpperArm = clamp(angleUpperArm, - 90, 0);
+			angleUpperArm = Utils.clamp(angleUpperArm, - 90, 0);
 		}
 		
 		public void adjLowerArm(boolean increment) {
 			angleLowerArm += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
-			angleLowerArm = clamp(angleLowerArm, 0, 146.25f);
+			angleLowerArm = Utils.clamp(angleLowerArm, 0, 146.25f);
 		}
 		
 		public void adjWristPitch(boolean increment) {
 			angleWristPitch += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
-			angleWristPitch = clamp(angleWristPitch, 0, 90);
+			angleWristPitch = Utils.clamp(angleWristPitch, 0, 90);
 		}
 		
 		public void adjWristRoll(boolean increment) {
@@ -347,7 +348,7 @@ public class Example6_4 extends GLProgram {
 		
 		public void adjFingerOpen(boolean increment) {
 			angleFingerOpen += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
-			angleFingerOpen = clamp(angleFingerOpen, 9, 180);
+			angleFingerOpen = Utils.clamp(angleFingerOpen, 9, 180);
 		}
 		
 		public void writePose() {
@@ -468,10 +469,6 @@ public class Example6_4 extends GLProgram {
 			drawLowerArm(modelToCameraStack);
 			
 			modelToCameraStack.popMatrix();
-		}
-		
-		private float clamp(float value, float low, float high) {
-			return Math.max(Math.min(value, high), low);
 		}
 	}
 }

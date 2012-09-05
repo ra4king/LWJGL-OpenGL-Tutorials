@@ -121,6 +121,19 @@ public class Quaternion {
 		return this;
 	}
 	
+	public Vector3 mult(Vector3 v) {
+		Vector3 uv, uuv;
+		Vector3 quatVector = new Vector3(x, y, z);
+		
+		uv = quatVector.cross(v);
+		uuv = quatVector.cross(uv);
+		
+		uv.mult(w * 2);
+		uuv.mult(2);
+		
+		return new Vector3(v).add(uv).add(uuv);
+	}
+	
 	public Quaternion mult(Quaternion q) {
 		float xx = w*q.x + x*q.w + y*q.z - z*q.y;
 		float yy = w*q.y + y*q.w + z*q.x - x*q.z;

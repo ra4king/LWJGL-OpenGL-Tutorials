@@ -12,6 +12,7 @@ import org.lwjgl.input.Keyboard;
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Vector3;
@@ -246,13 +247,9 @@ public class Example7_2 extends GLProgram {
 		if(Keyboard.isKeyDown(Keyboard.KEY_U))
 			sphereCamRelPos.add(0,0,speed3);
 		
-		sphereCamRelPos.y(clamp(sphereCamRelPos.y(), -78.75f, -1));
+		sphereCamRelPos.y(Utils.clamp(sphereCamRelPos.y(), -78.75f, -1));
 		camTarget.y(camTarget.y() > 0 ? camTarget.y() : 0);
 		sphereCamRelPos.z(sphereCamRelPos.z() > 5 ? sphereCamRelPos.z() : 5);
-	}
-	
-	private float clamp(float value, float low, float high) {
-		return Math.min(Math.max(value, low), high);
 	}
 	
 	@Override
