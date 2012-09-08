@@ -96,7 +96,7 @@ public class MousePoles {
 		
 		public Matrix4 calcMatrix() {
 			Matrix4 translateMat = new Matrix4().clearToIdentity();
-			translateMat.translate(po.position);
+			translateMat.put(3, po.position);
 			return translateMat.mult(po.orientation.toMatrix());
 		}
 		
@@ -126,7 +126,7 @@ public class MousePoles {
 		}
 		
 		private Quaternion calcRotationQuat(int axis, float angle) {
-			return Utils.angleAxisDeg(axis, axisVectors[axis]);
+			return Utils.angleAxisDeg(angle, axisVectors[axis]);
 		}
 		
 		private void rotateWorldDegrees(Quaternion rot, boolean fromInitial) {
@@ -153,13 +153,13 @@ public class MousePoles {
 		public void mouseMove(int positionX, int positionY) {
 			if(isDragging) {
 				int diffX = positionX - prevMousePosX;
-				int diffY = positionY - prevMousePosY;
+				int diffY = -(positionY - prevMousePosY);
 				
 				switch(rotateMode) {
 					case DUAL_AXIS:
 						{
 							Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diffX * rotateScale);
-							rot = calcRotationQuat(Axis.AXIS_X, -diffY * rotateScale).mult(rot).normalize();
+							rot = calcRotationQuat(Axis.AXIS_X, diffY * rotateScale).mult(rot).normalize();
 							rotateViewDegrees(rot, false);
 						}
 						break;
@@ -399,7 +399,7 @@ public class MousePoles {
 		
 		public void onDragRotate(int currX, int currY) {
 			int diffX = currX - startDragMouseLocX;
-			int diffY = - (currY - startDragMouseLocY);
+			int diffY = -(currY - startDragMouseLocY);
 			
 			switch (rotateMode) {
 				case DUAL_AXIS_ROTATE:
