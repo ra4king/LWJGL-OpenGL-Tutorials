@@ -12,6 +12,7 @@ import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix4;
 
 public class Example6_2 extends GLProgram {
@@ -182,12 +183,8 @@ public class Example6_2 extends GLProgram {
 		return value * 2;
 	}
 	
-	private float mix(float f1, float f2, float mix) {
-		return f1 + (f2-f1) * Math.max(Math.min(mix, 1), 0);
-	}
-	
 	private void setupDynamicUniformScale(Matrix4 m) {
-		float s = mix(1,4,calculateLerpFactor(3));
+		float s = Utils.mix(1,4,calculateLerpFactor(3));
 		
 		m.clearToIdentity()
 		 .put(0, s)
@@ -200,9 +197,9 @@ public class Example6_2 extends GLProgram {
 	
 	private void setupDynamicNonUniformScale(Matrix4 m) {
 		m.clearToIdentity()
-		 .put(0, mix(1,0.5f,calculateLerpFactor(3)))
+		 .put(0, Utils.mix(1,0.5f,calculateLerpFactor(3)))
 		 .put(5, 1)
-		 .put(10, mix(1,10,calculateLerpFactor(5)))
+		 .put(10, Utils.mix(1,10,calculateLerpFactor(5)))
 		 .put(12, 10)
 		 .put(13, -10)
 		 .put(14, -45);

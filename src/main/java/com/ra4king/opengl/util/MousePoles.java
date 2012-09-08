@@ -5,10 +5,6 @@ import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector3;
 
 public class MousePoles {
-	private static abstract class ViewProvider {
-		public abstract Matrix4 calcMatrix();
-	}
-	
 	public enum MouseButton {
 		LEFT_BUTTON,
 		MIDDLE_BUTTON,
@@ -31,13 +27,24 @@ public class MousePoles {
 		KEY_ALT
 	}
 	
+	public static abstract class Pole {
+		public abstract void mouseMove(int x, int y);
+		public abstract void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY);
+		public abstract void mouseWheel(int direction, MouseModifier modifiers, int positionX, int positionY);
+		public abstract void charPress(char key, boolean isShiftPressed, float lastFrameDuration);
+	}
+	
+	private static abstract class ViewProvider extends Pole {
+		public abstract Matrix4 calcMatrix();
+	}
+	
 	public static class ObjectData {
 		private Vector3 position;
 		private Quaternion orientation;
 		
-		public ObjectData() {
-			position = new Vector3();
-			orientation = new Quaternion();
+		public ObjectData(ObjectData data) {
+			position = new Vector3(data.position);
+			orientation = new Quaternion(data.orientation);
 		}
 		
 		public ObjectData(Vector3 v, Quaternion q) {
@@ -46,17 +53,17 @@ public class MousePoles {
 		}
 	}
 	
-	public static class ObjectPole {
+	public static class ObjectPole extends Pole {
 		private enum Axis {
 			AXIS_X,
 			AXIS_Y,
-			AXIS_Z;
+			AXIS_Z
 		}
 		
 		private enum RotateMode {
-			RDUAL_AXIS,
-			RBIAXIAL,
-			RSPIN;
+			DUAL_AXIS,
+			BIAXIAL,
+			SPIN
 		}
 		
 		private Vector3[] axisVectors = {
@@ -81,7 +88,7 @@ public class MousePoles {
 		
 		public ObjectPole(ObjectData initialData, float rotateScale, MouseButton actionButton, ViewProvider lookAtProvider) {
 			this.view = lookAtProvider;
-			this.po = initialData;
+			this.po = new ObjectData(initialData);
 			this.initialPo = initialData;
 			this.rotateScale = rotateScale;
 			this.actionButton = actionButton;
@@ -111,7 +118,7 @@ public class MousePoles {
 		
 		public void reset() {
 			if(!isDragging)
-				po = initialPo;
+				po = new ObjectData(initialPo);
 		}
 		
 		private Quaternion calcRotationQuat(Axis axis, float angle) {
@@ -119,21 +126,14 @@ public class MousePoles {
 		}
 		
 		private Quaternion calcRotationQuat(int axis, float angle) {
-			return new Quaternion(axisVectors[axis].x(), axisVectors[axis].y(), axisVectors[axis].z(), angle);
+			return Utils.angleAxisDeg(axis, axisVectors[axis]);
 		}
 		
-		public void rotateWorldDegrees(Quaternion rot, boolean fromInitial) {
+		private void rotateWorldDegrees(Quaternion rot, boolean fromInitial) {
 			if(!isDragging)
 				fromInitial = false;
 			
 			po.orientation = new Quaternion(rot).mult(fromInitial ? startDragOrient : po.orientation).normalize();
-		}
-		
-		public void rotateLocalDegrees(Quaternion rot, boolean fromInitial) {
-			if(!isDragging)
-				fromInitial = false;
-			
-			po.orientation = new Quaternion(fromInitial ? startDragOrient : po.orientation).mult(rot).normalize();
 		}
 		
 		public void rotateViewDegrees(Quaternion rot, boolean fromInitial) {
@@ -149,20 +149,21 @@ public class MousePoles {
 			}
 		}
 		
+		@Override
 		public void mouseMove(int positionX, int positionY) {
 			if(isDragging) {
 				int diffX = positionX - prevMousePosX;
 				int diffY = positionY - prevMousePosY;
 				
 				switch(rotateMode) {
-					case RDUAL_AXIS:
+					case DUAL_AXIS:
 						{
 							Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diffX * rotateScale);
-							rot = calcRotationQuat(Axis.AXIS_X, diffY * rotateScale).mult(rot).normalize();
+							rot = calcRotationQuat(Axis.AXIS_X, -diffY * rotateScale).mult(rot).normalize();
 							rotateViewDegrees(rot, false);
 						}
 						break;
-					case RBIAXIAL:
+					case BIAXIAL:
 						{
 							int initDiffX = positionX - startDragMousePosX;
 							int initDiffY = positionY - startDragMousePosY;
@@ -181,7 +182,7 @@ public class MousePoles {
 							rotateViewDegrees(calcRotationQuat(axis, degAngle), true);
 						}
 						break;
-					case RSPIN:
+					case SPIN:
 						rotateViewDegrees(calcRotationQuat(Axis.AXIS_Z, -diffX * rotateScale), false);
 						break;
 				}
@@ -191,16 +192,17 @@ public class MousePoles {
 			}
 		}
 		
+		@Override
 		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY) {
 			if(isPressed) {
 				if(!isDragging) {
 					if(button == actionButton) {
 						if(modifiers == MouseModifier.KEY_ALT)
-							rotateMode = RotateMode.RSPIN;
+							rotateMode = RotateMode.SPIN;
 						else if(modifiers == MouseModifier.KEY_CTRL)
-							rotateMode = RotateMode.RBIAXIAL;
+							rotateMode = RotateMode.BIAXIAL;
 						else
-							rotateMode = RotateMode.RDUAL_AXIS;
+							rotateMode = RotateMode.DUAL_AXIS;
 						
 						prevMousePosX = positionX;
 						prevMousePosY = positionY;
@@ -224,6 +226,12 @@ public class MousePoles {
 				}
 			}
 		}
+		
+		@Override
+		public void mouseWheel(int direction, MouseModifier modifiers, int positionX, int positionY) {}
+		
+		@Override
+		public void charPress(char key, boolean isShiftPressed, float lastFrameDuration) {}
 	}
 	
 	public static class ViewData {
@@ -232,9 +240,11 @@ public class MousePoles {
 		private float radius;
 		private float degSpinRotation;
 		
-		public ViewData() {
-			targetPos = new Vector3();
-			orient = new Quaternion();
+		public ViewData(ViewData data) {
+			targetPos = new Vector3(data.targetPos);
+			orient = new Quaternion(data.orient);
+			radius = data.radius;
+			degSpinRotation = data.degSpinRotation;
 		}
 		
 		public ViewData(Vector3 v, Quaternion q, float r, float d) {
@@ -253,8 +263,6 @@ public class MousePoles {
 		private float largePosOffset;
 		private float smallPosOffset;
 		private float rotationScale;
-		
-		public ViewScale() {}
 		
 		public ViewScale(float min, float max, float large, float small, float largePos, float smallPos, float rot) {
 			minRadius = min;
@@ -309,19 +317,20 @@ public class MousePoles {
 		private Quaternion startDragOrient;
 		
 		public ViewPole(ViewData initialView, ViewScale viewScale, MouseButton actionButton, boolean rightKeyboardCtrls) {
-			this.currView = initialView;
+			this.currView = new ViewData(initialView);
 			this.viewScale = viewScale;
 			this.initialView = initialView;
 			this.actionButton = actionButton;
 			this.rightKeyboardCtrls = rightKeyboardCtrls;
 		}
 		
+		@Override
 		public Matrix4 calcMatrix() {
 			Matrix4 mat = new Matrix4().clearToIdentity();
 			
 			mat.translate(0, 0, -currView.radius);
 			
-			Quaternion fullRotation = new Quaternion(0, 0, 1, currView.degSpinRotation).mult(currView.orient);
+			Quaternion fullRotation = Utils.angleAxisDeg(currView.degSpinRotation, new Vector3(0, 0, 1)).mult(currView.orient);
 			mat.mult(fullRotation.toMatrix());
 			
 			mat.translate(new Vector3(currView.targetPos).mult(-1));
@@ -331,7 +340,7 @@ public class MousePoles {
 		
 		public void reset() {
 			if(!isDragging)
-				currView = initialView;
+				currView = new ViewData(initialView);
 		}
 		
 		public void setRotationScale(float rotateScale) {
@@ -353,21 +362,21 @@ public class MousePoles {
 		public void processXChange(int diffX) {
 			float degAngleDiff = diffX * viewScale.rotationScale;
 			
-			currView.orient = new Quaternion(startDragOrient).mult(new Quaternion(0, 1, 0, degAngleDiff));
+			currView.orient = new Quaternion(startDragOrient).mult(Utils.angleAxisDeg(degAngleDiff, new Vector3(0, 1, 0)));
 		}
 		
 		public void processYChange(int diffY) {
 			float degAngleDiff = diffY * viewScale.rotationScale;
 			
-			currView.orient = new Quaternion(1, 0, 0, degAngleDiff).mult(startDragOrient);
+			currView.orient = Utils.angleAxisDeg(degAngleDiff, new Vector3(1, 0, 0)).mult(startDragOrient);
 		}
 		
-		public void processXYChange(int diffX, int diffY ) {
+		public void processXYChange(int diffX, int diffY) {
 			float degXAngleDiff = diffX * viewScale.rotationScale;
 			float degYAngleDiff = diffY * viewScale.rotationScale;
 			
-			currView.orient = new Quaternion(startDragOrient).mult(new Quaternion(0, 1, 0, degXAngleDiff));
-			currView.orient = new Quaternion(1, 0, 0, degYAngleDiff).mult(currView.orient);
+			currView.orient = new Quaternion(startDragOrient).mult(Utils.angleAxisDeg(degXAngleDiff, new Vector3(0, 1, 0)));
+			currView.orient = Utils.angleAxisDeg(degYAngleDiff, new Vector3(1, 0, 0)).mult(currView.orient);
 		}
 		
 		public void processSpinAxis(int diffX, int diffY) {
@@ -390,7 +399,7 @@ public class MousePoles {
 		
 		public void onDragRotate(int currX, int currY) {
 			int diffX = currX - startDragMouseLocX;
-			int diffY = currY - startDragMouseLocY;
+			int diffY = - (currY - startDragMouseLocY);
 			
 			switch (rotateMode) {
 				case DUAL_AXIS_ROTATE:
@@ -443,11 +452,13 @@ public class MousePoles {
 				currView.radius = viewScale.maxRadius;
 		}
 		
+		@Override
 		public void mouseMove(int positionX, int positionY) {
 			if(isDragging)
 				onDragRotate(positionX, positionY);
 		}
 		
+		@Override
 		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY) {
 			if(isPressed) {
 				if(!isDragging) {
@@ -467,7 +478,7 @@ public class MousePoles {
 						if(rotateMode == RotateMode.DUAL_AXIS_ROTATE ||
 						   rotateMode == RotateMode.SPIN_VIEW_AXIS ||
 						   rotateMode == RotateMode.BIAXIAL_ROTATE)
-							endDragRotate(positionX, positionY, false);
+							endDragRotate(positionX, positionY, true);
 					}
 				}
 			}
@@ -481,46 +492,49 @@ public class MousePoles {
 		}
 		
 		private void offsetTargetPos(TargetOffsetDir dir, float worldDistance) {
-			offsetTargetPos(offsets[dir.ordinal()]);
+			offsetTargetPos(new Vector3(offsets[dir.ordinal()]).mult(worldDistance));
 		}
 		
 		private void offsetTargetPos(Vector3 cameraOffset) {
 			currView.targetPos.add(calcMatrix().toQuaternion().conjugate().mult(cameraOffset));
 		}
 		
-		public void charPress(char key) {
+		@Override
+		public void charPress(char key, boolean isShiftPressed, float lastFrameDuration) {
+			float offset = isShiftPressed ? viewScale.smallPosOffset : viewScale.largePosOffset;
+			
 			if(rightKeyboardCtrls) {
 				switch(key) {
-					case 'i': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, viewScale.largePosOffset); break;
-					case 'k': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, viewScale.largePosOffset); break;
-					case 'l': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, viewScale.largePosOffset); break;
-					case 'j': offsetTargetPos(TargetOffsetDir.DIR_LEFT, viewScale.largePosOffset); break;
-					case 'o': offsetTargetPos(TargetOffsetDir.DIR_UP, viewScale.largePosOffset); break;
-					case 'u': offsetTargetPos(TargetOffsetDir.DIR_DOWN, viewScale.largePosOffset); break;
+					case 'i': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
+					case 'k': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
+					case 'l': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
+					case 'j': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
+					case 'o': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
+					case 'u': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
 
-					case 'I': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, viewScale.smallPosOffset); break;
-					case 'K': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, viewScale.smallPosOffset); break;
-					case 'L': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, viewScale.smallPosOffset); break;
-					case 'J': offsetTargetPos(TargetOffsetDir.DIR_LEFT, viewScale.smallPosOffset); break;
-					case 'O': offsetTargetPos(TargetOffsetDir.DIR_UP, viewScale.smallPosOffset); break;
-					case 'U': offsetTargetPos(TargetOffsetDir.DIR_DOWN, viewScale.smallPosOffset); break;
+					case 'I': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
+					case 'K': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
+					case 'L': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
+					case 'J': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
+					case 'O': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
+					case 'U': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
 				}
 			}
 			else {
 				switch(key) {
-					case 'w': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, viewScale.largePosOffset); break;
-					case 's': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, viewScale.largePosOffset); break;
-					case 'd': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, viewScale.largePosOffset); break;
-					case 'a': offsetTargetPos(TargetOffsetDir.DIR_LEFT, viewScale.largePosOffset); break;
-					case 'e': offsetTargetPos(TargetOffsetDir.DIR_UP, viewScale.largePosOffset); break;
-					case 'q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, viewScale.largePosOffset); break;
+					case 'w': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
+					case 's': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
+					case 'd': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
+					case 'a': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
+					case 'e': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
+					case 'q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
 
-					case 'W': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, viewScale.smallPosOffset); break;
-					case 'S': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, viewScale.smallPosOffset); break;
-					case 'D': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, viewScale.smallPosOffset); break;
-					case 'A': offsetTargetPos(TargetOffsetDir.DIR_LEFT, viewScale.smallPosOffset); break;
-					case 'E': offsetTargetPos(TargetOffsetDir.DIR_UP, viewScale.smallPosOffset); break;
-					case 'Q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, viewScale.smallPosOffset); break;
+					case 'W': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
+					case 'S': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
+					case 'D': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
+					case 'A': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
+					case 'E': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
+					case 'Q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
 				}
 			}
 		}

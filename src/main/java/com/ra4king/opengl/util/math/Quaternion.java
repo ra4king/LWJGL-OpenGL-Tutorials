@@ -11,6 +11,15 @@ public class Quaternion {
 		set(x,y,z,w);
 	}
 	
+	public Quaternion(float angle, Vector3 vec) {
+		float s = (float)Math.sin(angle/2);
+		
+		x = vec.x() * s;
+		y = vec.y() * s;
+		z = vec.z() * s;
+		w = (float)Math.cos(angle/2);
+	}
+	
 	public Quaternion(Quaternion q) {
 		set(q);
 	}
