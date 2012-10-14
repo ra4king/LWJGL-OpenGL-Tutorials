@@ -75,6 +75,13 @@ public class Matrix3 {
 		return this;
 	}
 	
+	public Matrix3 mult(float f) {
+		for(int a = 0; a < matrix.length; a++)
+			put(a, get(a) * f);
+		
+		return this;
+	}
+	
 	public Matrix3 mult(float[] m) {
 		float[] newm = new float[matrix.length];
 		

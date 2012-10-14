@@ -89,6 +89,13 @@ public class Matrix4 {
 		return put(m.matrix);
 	}
 	
+	public Matrix4 mult(float f) {
+		for(int a = 0; a < matrix.length; a++)
+			put(a, get(a) * f);
+		
+		return this;
+	}
+	
 	public Matrix4 mult(float[] m) {
 		float[] newm = new float[matrix.length];
 		
@@ -216,6 +223,41 @@ public class Matrix4 {
 	
 	public Matrix4 rotateDeg(float angle, Vector3 vec) {
 		return rotate((float)Math.toRadians(angle),vec);
+	}
+	
+	public float determinant() {
+		float a = get(5)*get(10)*get(15) + get(9)*get(14)*get(7) + get(13)*get(6)*get(11) - get(7)*get(10)*get(13) - get(11)*get(14)*get(5) - get(15)*get(6)*get(9);
+		float b = get(1)*get(10)*get(15) + get(9)*get(14)*get(3) + get(13)*get(2)*get(11) - get(3)*get(10)*get(13) - get(11)*get(14)*get(1) - get(15)*get(2)*get(9);
+		float c = get(1)*get(6)*get(15) + get(5)*get(14)*get(3) + get(13)*get(2)*get(7) - get(3)*get(6)*get(13) - get(7)*get(14)*get(1) - get(15)*get(2)*get(5);
+		float d = get(1)*get(6)*get(11) + get(5)*get(10)*get(3) + get(9)*get(2)*get(7) - get(3)*get(6)*get(9) - get(7)*get(10)*get(1) - get(11)*get(2)*get(5);
+		
+		return get(0)*a - get(4)*b + get(8)*c - get(12)*d;
+	}
+	
+	public Matrix4 inverse() {
+		Matrix4 inv = new Matrix4();
+		
+		inv.put(0, + (get(5)*get(10)*get(15) + get(9)*get(14)*get(7) + get(13)*get(6)*get(11) - get(7)*get(10)*get(13) - get(11)*get(14)*get(5) - get(15)*get(6)*get(9)));
+		inv.put(1, - (get(4)*get(10)*get(15) + get(8)*get(14)*get(7) + get(12)*get(6)*get(11) - get(7)*get(10)*get(12) - get(11)*get(14)*get(4) - get(15)*get(6)*get(8)));
+		inv.put(2, + (get(4)*get(9)*get(15) + get(8)*get(13)*get(7) + get(12)*get(5)*get(11) - get(7)*get(9)*get(12) - get(11)*get(13)*get(4) - get(15)*get(5)*get(8)));
+		inv.put(3, - (get(4)*get(9)*get(14) + get(8)*get(13)*get(6) + get(12)*get(5)*get(10) - get(6)*get(9)*get(12) - get(10)*get(13)*get(4) - get(14)*get(5)*get(8)));
+		
+		inv.put(4, - (get(1)*get(10)*get(15) + get(9)*get(14)*get(3) + get(13)*get(2)*get(11) - get(3)*get(10)*get(13) - get(11)*get(14)*get(1) - get(15)*get(2)*get(9)));
+		inv.put(5, + (get(0)*get(10)*get(15) + get(8)*get(14)*get(3) + get(12)*get(2)*get(11) - get(3)*get(10)*get(12) - get(11)*get(14)*get(0) - get(15)*get(2)*get(8)));
+		inv.put(6, - (get(0)*get(9)*get(15) + get(8)*get(13)*get(3) + get(12)*get(1)*get(11) - get(3)*get(9)*get(12) - get(11)*get(13)*get(0) - get(15)*get(1)*get(8)));
+		inv.put(7, + (get(0)*get(9)*get(14) + get(8)*get(13)*get(2) + get(12)*get(1)*get(10) - get(2)*get(9)*get(12) - get(10)*get(13)*get(0) - get(14)*get(1)*get(8)));
+		
+		inv.put(8, + (get(1)*get(6)*get(15) + get(5)*get(14)*get(3) + get(13)*get(2)*get(7) - get(3)*get(6)*get(13) - get(7)*get(14)*get(1) - get(15)*get(2)*get(5)));
+		inv.put(9, - (get(0)*get(6)*get(15) + get(4)*get(14)*get(3) + get(12)*get(2)*get(7) - get(3)*get(6)*get(12) - get(7)*get(14)*get(0) - get(15)*get(2)*get(4)));
+		inv.put(10, + (get(0)*get(5)*get(15) + get(4)*get(13)*get(3) + get(12)*get(1)*get(7) - get(3)*get(5)*get(12) - get(7)*get(13)*get(0) - get(15)*get(1)*get(4)));
+		inv.put(11, - (get(0)*get(5)*get(14) + get(4)*get(13)*get(2) + get(12)*get(1)*get(6) - get(2)*get(5)*get(12) - get(6)*get(13)*get(0) - get(14)*get(1)*get(4)));
+		
+		inv.put(12, - (get(1)*get(6)*get(11) + get(5)*get(10)*get(3) + get(9)*get(2)*get(7) - get(3)*get(6)*get(9) - get(7)*get(10)*get(1) - get(11)*get(2)*get(5)));
+		inv.put(13, + (get(0)*get(6)*get(11) + get(4)*get(10)*get(3) + get(8)*get(2)*get(7) - get(3)*get(6)*get(8) - get(7)*get(10)*get(0) - get(11)*get(2)*get(4)));
+		inv.put(14, - (get(0)*get(5)*get(11) + get(4)*get(9)*get(3) + get(8)*get(1)*get(7) - get(3)*get(5)*get(8) - get(7)*get(9)*get(0) - get(11)*get(1)*get(4)));
+		inv.put(15, + (get(0)*get(5)*get(10) + get(4)*get(9)*get(2) + get(8)*get(1)*get(6) - get(2)*get(5)*get(8) - get(6)*get(9)*get(0) - get(10)*get(1)*get(4)));
+		
+		return put(inv.transpose().mult(1f/determinant()));
 	}
 	
 	public Quaternion toQuaternion() {
