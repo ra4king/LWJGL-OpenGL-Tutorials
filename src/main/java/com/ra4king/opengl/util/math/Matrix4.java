@@ -257,7 +257,7 @@ public class Matrix4 {
 		inv.put(14, - (get(0)*get(5)*get(11) + get(4)*get(9)*get(3) + get(8)*get(1)*get(7) - get(3)*get(5)*get(8) - get(7)*get(9)*get(0) - get(11)*get(1)*get(4)));
 		inv.put(15, + (get(0)*get(5)*get(10) + get(4)*get(9)*get(2) + get(8)*get(1)*get(6) - get(2)*get(5)*get(8) - get(6)*get(9)*get(0) - get(10)*get(1)*get(4)));
 		
-		return put(inv.transpose().mult(1f/determinant()));
+		return put(inv.transpose().mult(1/determinant()));
 	}
 	
 	public Quaternion toQuaternion() {

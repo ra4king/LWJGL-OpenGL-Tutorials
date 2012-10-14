@@ -126,6 +126,29 @@ public class Matrix3 {
 		return this;
 	}
 	
+	public float determinant() {
+		return + get(0)*get(4)*get(8) + get(3)*get(7)*get(2) + get(6)*get(1)*get(5)
+			   - get(2)*get(4)*get(6) - get(5)*get(7)*get(0) - get(8)*get(1)*get(3);
+	}
+	
+	public Matrix3 inverse() {
+		Matrix3 inv = new Matrix3();
+		
+		inv.put(0, + (get(4)*get(8) - get(5)*get(7)));
+		inv.put(1, - (get(3)*get(8) - get(5)*get(6)));
+		inv.put(2, + (get(3)*get(7) - get(4)*get(6)));
+		
+		inv.put(3, - (get(1)*get(8) - get(2)*get(7)));
+		inv.put(4, + (get(0)*get(8) - get(2)*get(6)));
+		inv.put(5, - (get(0)*get(7) - get(1)*get(6)));
+		
+		inv.put(6, + (get(1)*get(5) - get(2)*get(4)));
+		inv.put(7, - (get(0)*get(5) - get(2)*get(3)));
+		inv.put(8, + (get(0)*get(4) - get(1)*get(3)));
+		
+		return put(inv.transpose().mult(1/determinant()));
+	}
+	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(9);
 	
 	public FloatBuffer toBuffer() {
