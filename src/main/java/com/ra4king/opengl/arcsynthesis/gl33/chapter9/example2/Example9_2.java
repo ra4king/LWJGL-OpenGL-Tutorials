@@ -125,6 +125,7 @@ public class Example9_2 extends GLProgram {
 			scaleCyl = !scaleCyl;
 		else if(key == Keyboard.KEY_T) {
 			doInvTranspose = !doInvTranspose;
+			
 			if(doInvTranspose)
 				System.out.println("Doing inverse transpose.");
 			else
