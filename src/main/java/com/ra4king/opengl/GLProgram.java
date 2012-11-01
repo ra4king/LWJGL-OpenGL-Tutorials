@@ -88,7 +88,11 @@ public abstract class GLProgram {
 		try {
 			init();
 			
+			checkGLError("init");
+			
 			resized();
+			
+			checkGLError("resized");
 			
 			long lastTime, lastFPS;
 			lastTime = lastFPS = System.nanoTime();
@@ -109,11 +113,14 @@ public abstract class GLProgram {
 				}
 				
 				update(deltaTime);
+				
+				checkGLError("update");
+				
 				render();
 				
-				Display.update();
+				checkGLError("render");
 				
-				checkGLError();
+				Display.update();
 				
 				frames++;
 				if(System.nanoTime() - lastFPS >= 1e9) {
@@ -133,10 +140,10 @@ public abstract class GLProgram {
 		}
 	}
 	
-	public void checkGLError() {
+	public void checkGLError(String after) {
 		int error;
 		while((error = glGetError()) != GL_NO_ERROR)
-			throw new RuntimeException("OpenGL Error: " + gluErrorString(error));
+			throw new RuntimeException("OpenGL Error during " + after + ": " + gluErrorString(error));
 	}
 	
 	public int getWidth() {

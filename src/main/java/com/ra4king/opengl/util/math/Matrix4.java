@@ -121,7 +121,7 @@ public class Matrix4 {
 		v.x(get(0)*vec.x() + get(4)*vec.y() + get(8)*vec.z() + get(12)*vec.w());
 		v.y(get(1)*vec.x() + get(5)*vec.y() + get(9)*vec.z() + get(13)*vec.w());
 		v.z(get(2)*vec.x() + get(6)*vec.y() + get(10)*vec.z() + get(14)*vec.w());
-		v.w(get(3)*vec.x() + get(7)*vec.y() + get(12)*vec.z() + get(15)*vec.w());
+		v.w(get(3)*vec.x() + get(7)*vec.y() + get(11)*vec.z() + get(15)*vec.w());
 		
 		return v;
 	}

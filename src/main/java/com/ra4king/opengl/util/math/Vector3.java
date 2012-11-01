@@ -19,6 +19,10 @@ public class Vector3 {
 		set(vec);
 	}
 	
+	public Vector3(Vector4 vec) {
+		set(vec);
+	}
+	
 	public float x() {
 		return x;
 	}
@@ -55,6 +59,10 @@ public class Vector3 {
 	
 	public Vector3 set(Vector3 vec) {
 		return set(vec.x,vec.y,vec.z);
+	}
+	
+	public Vector3 set(Vector4 vec) {
+		return set(vec.x(),vec.y(),vec.z());
 	}
 	
 	public Vector3 reset() {
