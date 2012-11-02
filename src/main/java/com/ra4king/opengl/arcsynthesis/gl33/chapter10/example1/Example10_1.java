@@ -252,7 +252,11 @@ public class Example10_1 extends GLProgram {
 				glUniform4f(unlit.objectColorUniform, 0.8078f, 0.8706f,  0.9922f, 1);
 				cubeMesh.render("flat");
 				unlit.program.end();
+				
+				modelMatrix.popMatrix();
 			}
+			
+			modelMatrix.popMatrix();
 		}
 	}
 	

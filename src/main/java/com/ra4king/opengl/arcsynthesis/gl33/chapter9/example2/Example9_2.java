@@ -181,7 +181,11 @@ public class Example9_2 extends GLProgram {
 				glUniform4f(vertexDiffuseColor.lightIntensityUniform, 1, 1, 1, 1);
 				cylinderMesh.render("lit-color");
 				vertexDiffuseColor.program.end();
+				
+				modelMatrix.popMatrix();
 			}
+			
+			modelMatrix.popMatrix();
 		}
 	}
 	

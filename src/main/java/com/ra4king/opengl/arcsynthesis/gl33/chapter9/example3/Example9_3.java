@@ -207,7 +207,11 @@ public class Example9_3 extends GLProgram {
 					cylinderMesh.render("lit");
 					whiteDiffuse.program.end();
 				}
+				
+				modelMatrix.popMatrix();
 			}
+			
+			modelMatrix.popMatrix();
 		}
 	}
 	
