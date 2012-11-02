@@ -238,6 +238,8 @@ public class Example10_1 extends GLProgram {
 					cylinderMesh.render("lit");
 					whiteDiffuseColor.program.end();
 				}
+				
+				modelMatrix.popMatrix();
 			}
 			
 			if(drawLight) {
