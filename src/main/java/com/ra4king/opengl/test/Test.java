@@ -166,14 +166,14 @@ public class Test extends GLProgram {
 			position.reset();
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE) && position.y() == 0)
-			vy = 50;
+			vy = 30;
 		
 		vy += gravity * delta;
 		position.add(0, vy * delta, 0);
 		
 		if(position.y() < 0) {
 			position.y(0);
-			vy = -vy/2f;
+			vy = 0;
 		}
 	}
 	

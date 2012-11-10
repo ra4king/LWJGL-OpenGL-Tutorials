@@ -228,18 +228,14 @@ public class Example5_5 extends GLProgram {
 	private boolean depthClampingActive;
 	
 	@Override
-	public void update(long deltaTime) {
-		while(Keyboard.next()) {
-			if(Keyboard.getEventKeyState()) {
-				if(Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
-					if(depthClampingActive)
-						glDisable(GL_DEPTH_CLAMP);
-					else
-						glEnable(GL_DEPTH_CLAMP);
-					
-					depthClampingActive = !depthClampingActive;
-				}
-			}
+	public void keyPressed(int key, char c, long nanos) {
+		if(key == Keyboard.KEY_SPACE) {
+			if(depthClampingActive)
+				glDisable(GL_DEPTH_CLAMP);
+			else
+				glEnable(GL_DEPTH_CLAMP);
+			
+			depthClampingActive = !depthClampingActive;
 		}
 	}
 	
