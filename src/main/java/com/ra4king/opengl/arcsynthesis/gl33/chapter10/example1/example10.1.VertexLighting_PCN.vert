@@ -13,7 +13,7 @@ uniform vec4 ambientIntensity;
 uniform mat4 modelToCameraMatrix;
 uniform mat3 normalModelToCameraMatrix;
 
-layout(std140) uniform Projection
+uniform Projection
 {
 	mat4 cameraToClipMatrix;
 };

@@ -401,11 +401,6 @@ public class Mesh {
 		}
 		
 		public void store(ByteBuffer b, String[] data) {
-			for(String s : data)
-				System.out.println(s);
-			
-			System.out.println();
-			
 			switch(dataType) {
 				case GL_FLOAT:
 					FloatBuffer fb = b.asFloatBuffer();
