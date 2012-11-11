@@ -210,8 +210,6 @@ public class Example10_2 extends GLProgram {
 			 vertColorProgram = vertexDiffuseColor;
 		 }
 		 
-		 checkGLError("1");
-		 
 		 whiteProgram.program.begin();
 		 glUniform4f(whiteProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
 		 glUniform4f(whiteProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
@@ -219,8 +217,6 @@ public class Example10_2 extends GLProgram {
 		 glUniform4f(vertColorProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
 		 glUniform4f(vertColorProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
 		 vertColorProgram.program.end();
-		 
-		 checkGLError("2");
 		 
 		 {
 			 modelMatrix.pushMatrix();
@@ -239,8 +235,6 @@ public class Example10_2 extends GLProgram {
 				 
 				 modelMatrix.popMatrix();
 			 }
-			 
-			 checkGLError("3");
 			 
 			 {
 				 modelMatrix.pushMatrix();
@@ -269,8 +263,6 @@ public class Example10_2 extends GLProgram {
 				 
 				 modelMatrix.popMatrix();
 			 }
-			 
-			 checkGLError("4");
 			 
 			 if(drawLight) {
 				 modelMatrix.pushMatrix();
