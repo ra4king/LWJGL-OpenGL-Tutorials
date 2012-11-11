@@ -167,6 +167,9 @@ public class Example10_2 extends GLProgram {
 			case Keyboard.KEY_Y:
 				drawLight = !drawLight;
 				break;
+			case Keyboard.KEY_T:
+				scaleCyl = !scaleCyl;
+				break;
 			case Keyboard.KEY_H:
 				useFragmentLighting = !useFragmentLighting;
 				break;
