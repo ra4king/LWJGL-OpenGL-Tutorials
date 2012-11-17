@@ -17,5 +17,5 @@ void main()
 	
 	float cosAngIncidence = clamp(dot(normalize(vertexNormal), lightDir), 0, 1);
 	
-	outputColor = (diffuseColor *lightIntensity * cosAngIncidence) + (diffuseColor * ambientIntensity);
+	outputColor = (diffuseColor * lightIntensity * cosAngIncidence) + (diffuseColor * ambientIntensity);
 }

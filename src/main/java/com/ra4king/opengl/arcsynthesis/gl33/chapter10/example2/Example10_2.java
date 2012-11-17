@@ -50,6 +50,8 @@ public class Example10_2 extends GLProgram {
 	
 	private Timer lightTimer = new Timer(Timer.Type.LOOP, 5);
 	
+	private float lightHeight = 1.5f, lightRadius = 1;
+	
 	private boolean useFragmentLighting = true, drawColoredCyl, drawLight, scaleCyl;
 	
 	public Example10_2() {
@@ -156,8 +158,6 @@ public class Example10_2 extends GLProgram {
 			lightRadius = 0.2f;
 	}
 	
-	private float lightHeight = 1.5f, lightRadius = 1;
-	
 	@Override
 	public void keyPressed(int key, char c, long nanos) {
 		switch(key) {
@@ -193,93 +193,92 @@ public class Example10_2 extends GLProgram {
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		 MatrixStack modelMatrix = new MatrixStack();
-		 modelMatrix.setTop(viewPole.calcMatrix());
-		 
-		 Vector4 worldLightPos = calcLightPosition();
-		 Vector4 lightPosCameraSpace = modelMatrix.getTop().mult(worldLightPos);
-		 
-		 ProgramData whiteProgram, vertColorProgram;
-		 
-		 if(useFragmentLighting) {
-			 whiteProgram = fragWhiteDiffuseColor;
-			 vertColorProgram = fragVertexDiffuseColor;
-		 }
-		 else {
-			 whiteProgram = whiteDiffuseColor;
-			 vertColorProgram = vertexDiffuseColor;
-		 }
-		 
-		 whiteProgram.program.begin();
-		 glUniform4f(whiteProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
-		 glUniform4f(whiteProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
-		 vertColorProgram.program.begin();
-		 glUniform4f(vertColorProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
-		 glUniform4f(vertColorProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
-		 vertColorProgram.program.end();
-		 
-		 {
-			 modelMatrix.pushMatrix();
-			 
-			 {
-				 modelMatrix.pushMatrix();
-				 
-				 whiteProgram.program.begin();
-				 glUniformMatrix4(whiteProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
-				 
-				 Vector4 lightPosModelSpace = new Matrix4(modelMatrix.getTop()).inverse().mult(lightPosCameraSpace);
-				 glUniform3(whiteProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
-				 
-				 planeMesh.render();
-				 whiteProgram.program.end();
-				 
-				 modelMatrix.popMatrix();
-			 }
-			 
-			 {
-				 modelMatrix.pushMatrix();
-				 
-				 modelMatrix.getTop().mult(objectPole.calcMatrix());
-				 
-				 if(scaleCyl)
-					 modelMatrix.getTop().scale(1, 1, 0.2f);
-				 
-				 Vector4 lightPosModelSpace = new Matrix4(modelMatrix.getTop()).inverse().mult(lightPosCameraSpace);
-				 
-				 if(drawColoredCyl) {
-					 vertColorProgram.program.begin();
-					 glUniformMatrix4(vertColorProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
-					 glUniform3(vertColorProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
-					 cylinderMesh.render("lit-color");
-					 vertColorProgram.program.end();
-				 }
-				 else {
-					 whiteProgram.program.begin();
-					 glUniformMatrix4(whiteProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
-					 glUniform3(whiteProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
-					 cylinderMesh.render("lit");
-					 whiteProgram.program.end();
-				 }
-				 
-				 modelMatrix.popMatrix();
-			 }
-			 
-			 if(drawLight) {
-				 modelMatrix.pushMatrix();
-				 
-				 modelMatrix.getTop().translate(new Vector3(worldLightPos));
-				 modelMatrix.getTop().scale(0.1f, 0.1f, 0.1f);
-				 
-				 unlit.program.begin();
-				 glUniformMatrix4(unlit.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
-				 glUniform4f(unlit.objectColorUniform, 0.8078f, 0.8706f, 0.9922f, 1);
-				 cubeMesh.render("flat");
-				 
-				 modelMatrix.popMatrix();
-			 }
-			 
-			 modelMatrix.popMatrix();
-		 }
+		MatrixStack modelMatrix = new MatrixStack();
+		modelMatrix.setTop(viewPole.calcMatrix());
+		
+		Vector4 worldLightPos = calcLightPosition();
+		Vector4 lightPosCameraSpace = modelMatrix.getTop().mult(worldLightPos);
+		
+		ProgramData whiteProgram, vertColorProgram;
+		
+		if(useFragmentLighting) {
+			whiteProgram = fragWhiteDiffuseColor;
+			vertColorProgram = fragVertexDiffuseColor;
+		}
+		else {
+			whiteProgram = whiteDiffuseColor;
+			vertColorProgram = vertexDiffuseColor;
+		}
+		
+		whiteProgram.program.begin();
+		glUniform4f(whiteProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
+		glUniform4f(whiteProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
+		vertColorProgram.program.begin();
+		glUniform4f(vertColorProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
+		glUniform4f(vertColorProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
+		vertColorProgram.program.end();
+		
+		{
+			modelMatrix.pushMatrix();
+			
+			{
+				modelMatrix.pushMatrix();
+				
+				whiteProgram.program.begin();
+				glUniformMatrix4(whiteProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
+				
+				Vector4 lightPosModelSpace = new Matrix4(modelMatrix.getTop()).inverse().mult(lightPosCameraSpace);
+				glUniform3(whiteProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
+				
+				planeMesh.render();
+				whiteProgram.program.end();
+				
+				modelMatrix.popMatrix();
+			}
+			
+			{
+				modelMatrix.pushMatrix();
+				
+				modelMatrix.getTop().mult(objectPole.calcMatrix());
+				
+				if(scaleCyl)
+					modelMatrix.getTop().scale(1, 1, 0.2f);
+				
+				Vector4 lightPosModelSpace = new Matrix4(modelMatrix.getTop()).inverse().mult(lightPosCameraSpace);
+				if(drawColoredCyl) {
+					vertColorProgram.program.begin();
+					glUniformMatrix4(vertColorProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
+					glUniform3(vertColorProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
+					cylinderMesh.render("lit-color");
+					vertColorProgram.program.end();
+				}
+				else {
+					whiteProgram.program.begin();
+					glUniformMatrix4(whiteProgram.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
+					glUniform3(whiteProgram.modelSpaceLightPosUniform, lightPosModelSpace.toBuffer());
+					cylinderMesh.render("lit");
+					whiteProgram.program.end();
+				}
+				
+				modelMatrix.popMatrix();
+			}
+			
+			if(drawLight) {
+				modelMatrix.pushMatrix();
+				
+				modelMatrix.getTop().translate(new Vector3(worldLightPos));
+				modelMatrix.getTop().scale(0.1f, 0.1f, 0.1f);
+				
+				unlit.program.begin();
+				glUniformMatrix4(unlit.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
+				glUniform4f(unlit.objectColorUniform, 0.8078f, 0.8706f, 0.9922f, 1);
+				cubeMesh.render("flat");
+				
+				modelMatrix.popMatrix();
+			}
+			
+			modelMatrix.popMatrix();
+		}
 	}
 	
 	private static class ProgramData {
