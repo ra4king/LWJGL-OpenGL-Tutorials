@@ -15,7 +15,8 @@ uniform vec3 cameraSpaceLightPos;
 uniform float lightAttenuation;
 uniform bool useRSquare;
 
-uniform UnProjection {
+uniform UnProjection
+{
 	mat4 clipToCameraMatrix;
 	ivec2 windowSize;
 };

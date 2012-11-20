@@ -156,8 +156,9 @@ public class Example10_3 extends GLProgram {
 		
 		unprojectionData.clear();
 		unprojectionData.asFloatBuffer().put(persMatrix.inverse().toBuffer());
+		unprojectionData.position(16*4);
 		unprojectionData.asIntBuffer().put(getWidth()).put(getHeight());
-		unprojectionData.flip();
+		unprojectionData.position(18*4).flip();
 		
 		glBindBuffer(GL_UNIFORM_BUFFER, unprojectionUniformBuffer);
 		glBufferSubData(GL_UNIFORM_BUFFER, 0, unprojectionData);
@@ -300,7 +301,7 @@ public class Example10_3 extends GLProgram {
 					glUniformMatrix4(fragWhiteDiffuseColor.modelToCameraMatrixUniform, false, modelMatrix.getTop().toBuffer());
 					glUniformMatrix3(fragWhiteDiffuseColor.normalModelToCameraMatrixUniform, false, normMatrix.toBuffer());
 					cylinderMesh.render("lit");
-					fragVertexDiffuseColor.program.end();
+					fragWhiteDiffuseColor.program.end();
 				}
 				
 				modelMatrix.popMatrix();
