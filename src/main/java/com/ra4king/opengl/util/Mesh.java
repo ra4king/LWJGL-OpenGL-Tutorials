@@ -8,9 +8,6 @@ import static org.lwjgl.opengl.GL30.*;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -334,14 +331,12 @@ public class Mesh {
 						b.put(Byte.parseByte(s));
 					break;
 				case GL_UNSIGNED_SHORT:
-					ShortBuffer sb = b.asShortBuffer();
 					for(String s : data)
-						sb.put(Short.parseShort(s));
+						b.putShort(Short.parseShort(s));
 					break;
 				case GL_UNSIGNED_INT:
-					IntBuffer ib = b.asIntBuffer();
 					for(String s : data)
-						ib.put(Integer.parseInt(s));
+						b.putInt(Integer.parseInt(s));
 					break;
 			}
 			
@@ -403,21 +398,18 @@ public class Mesh {
 		public void store(ByteBuffer b, String[] data) {
 			switch(dataType) {
 				case GL_FLOAT:
-					FloatBuffer fb = b.asFloatBuffer();
 					for(String s : data)
-						fb.put(Float.parseFloat(s));
+						b.putFloat(Float.parseFloat(s));
 					break;
 				case GL_INT:
 				case GL_UNSIGNED_INT:
-					IntBuffer ib = b.asIntBuffer();
 					for(String s : data)
-						ib.put(Integer.parseInt(s));
+						b.putInt(Integer.parseInt(s));
 					break;
 				case GL_SHORT:
 				case GL_UNSIGNED_SHORT:
-					ShortBuffer sb = b.asShortBuffer();
 					for(String s : data)
-						sb.put(Short.parseShort(s));
+						b.putShort(Short.parseShort(s));
 					break;
 				case GL_BYTE:
 				case GL_UNSIGNED_BYTE:

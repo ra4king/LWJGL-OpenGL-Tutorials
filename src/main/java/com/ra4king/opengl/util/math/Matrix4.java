@@ -32,12 +32,21 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 clearToOrtho(float left, float right, float bottom, float top, float near, float far) {
-		return clear().put(0,2/(right-left)).put(5,2/(top-bottom)).put(10,-2/(far-near)).put(12,-(right+left)/(right-left)).put(13,-(top+bottom)/(top-bottom)).put(14,-(far+near)/(far-near)).put(15,1);
+		return clear().put(0, 2/(right-left))
+					  .put(5, 2/(top-bottom))
+					  .put(10,-2/(far-near))
+					  .put(12,-(right+left)/(right-left))
+					  .put(13,-(top+bottom)/(top-bottom))
+					  .put(14,-(far+near)/(far-near))
+					  .put(15,1);
 	}
 	
 	public Matrix4 clearToPerspective(float fovRad, float width, float height, float near, float far) {
 		float fov = 1 / (float)Math.tan(fovRad/2);
-		return clear().put(0,fov/(width/height)).put(5,fov).put(10,(far+near)/(near-far)).put(14,(2*far*near)/(near-far)).put(11,-1);
+		return clear().put(0, fov/(width/height))
+					  .put(5, fov).put(10,(far+near)/(near-far))
+					  .put(14,(2*far*near)/(near-far))
+					  .put(11,-1);
 	}
 	
 	public Matrix4 clearToPerspectiveDeg(float fov, float width, float height, float near, float far) {
