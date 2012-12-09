@@ -312,7 +312,24 @@ public class Mesh {
 	}
 	
 	private enum RenderCommandType {
-		UBYTE("ubyte",GL_UNSIGNED_BYTE,1), USHORT("ushort",GL_UNSIGNED_SHORT,2), UINT("uint",GL_UNSIGNED_INT,4);
+		UBYTE("ubyte",GL_UNSIGNED_BYTE,1) {
+			public void store(ByteBuffer b, String[] data) {
+				for(String s : data)
+					b.put(Byte.parseByte(s));
+			}
+		},
+		USHORT("ushort",GL_UNSIGNED_SHORT,2) {
+			public void store(ByteBuffer b, String[] data) {
+				for(String s : data)
+					b.putShort(Short.parseShort(s));
+			}
+		},
+		UINT("uint",GL_UNSIGNED_INT,4) {
+			public void store(ByteBuffer b, String[] data) {
+				for(String s : data)
+					b.putInt(Integer.parseInt(s));
+			}
+		};
 		
 		private String name;
 		private int dataType;
@@ -324,24 +341,7 @@ public class Mesh {
 			this.size = size;
 		}
 		
-		public void store(ByteBuffer b, String[] data) {
-			switch(dataType) {
-				case GL_UNSIGNED_BYTE:
-					for(String s : data)
-						b.put(Byte.parseByte(s));
-					break;
-				case GL_UNSIGNED_SHORT:
-					for(String s : data)
-						b.putShort(Short.parseShort(s));
-					break;
-				case GL_UNSIGNED_INT:
-					for(String s : data)
-						b.putInt(Integer.parseInt(s));
-					break;
-			}
-			
-			b.position(b.capacity());
-		}
+		public abstract void store(ByteBuffer b, String[] data);
 		
 		public static RenderCommandType getRenderType(String name) {
 			for(RenderCommandType rt : values()) {
@@ -417,8 +417,6 @@ public class Mesh {
 						b.put(Byte.parseByte(s));
 					break;
 			}
-			
-			b.position(b.capacity());
 		}
 		
 		public static AttributeType getAttributeType(String name) {
