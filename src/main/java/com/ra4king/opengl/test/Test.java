@@ -130,7 +130,7 @@ public class Test extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspectiveDeg(90, getWidth(), getHeight(), 1, 1000).toBuffer());
+		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix.clearToPerspectiveDeg(60, getWidth(), getHeight(), 1, 1000).toBuffer());
 		program.end();
 	}
 	
