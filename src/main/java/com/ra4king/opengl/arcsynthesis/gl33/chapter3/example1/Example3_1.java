@@ -32,13 +32,13 @@ public class Example3_1 extends GLProgram {
 	public void init() {
 		glClearColor(0, 0, 0, 0);
 		
-		program = new ShaderProgram(readFromFile("example3.1.vert"),readFromFile("example3.1.frag"));
+		program = new ShaderProgram(readFromFile("example3.1.vert"), readFromFile("example3.1.frag"));
 		
 		vbo = glGenBuffers();
 		
-		vertexData = (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f,  0.25f, 0.0f, 1.0f,
-																					  0.25f, -0.25f, 0.0f, 1.0f,
-																					 -0.25f, -0.25f, 0.0f, 1.0f}).flip();
+		vertexData = (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
+																						0.25f, -0.25f, 0.0f, 1.0f,
+																						-0.25f, -0.25f, 0.0f, 1.0f }).flip();
 		newData = BufferUtils.createFloatBuffer(12);
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -55,7 +55,7 @@ public class Example3_1 extends GLProgram {
 		
 		float loopDuration = 5;
 		float scale = (float)Math.PI * 2 / loopDuration;
-		float currentTimeThroughLoop = (elapsedTime/(float)1e9) % loopDuration;
+		float currentTimeThroughLoop = (elapsedTime / (float)1e9) % loopDuration;
 		
 		float xOffset = (float)Math.cos(currentTimeThroughLoop * scale) * 0.5f;
 		float yOffset = (float)Math.sin(currentTimeThroughLoop * scale) * 0.5f;
@@ -64,7 +64,7 @@ public class Example3_1 extends GLProgram {
 		
 		for(int a = 0; a < 12; a += 4) {
 			newData.put(vertexData.get(a) + xOffset);
-			newData.put(vertexData.get(a+1) + yOffset);
+			newData.put(vertexData.get(a + 1) + yOffset);
 			newData.put(0);
 			newData.put(1);
 		}

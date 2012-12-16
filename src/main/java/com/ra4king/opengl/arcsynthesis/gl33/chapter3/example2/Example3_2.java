@@ -31,15 +31,15 @@ public class Example3_2 extends GLProgram {
 	public void init() {
 		glClearColor(0, 0, 0, 0);
 		
-		program = new ShaderProgram(readFromFile("example3.2.vert"),readFromFile("example3.2.frag"));
+		program = new ShaderProgram(readFromFile("example3.2.vert"), readFromFile("example3.2.frag"));
 		offsetLocation = glGetUniformLocation(program.getProgram(), "offset");
 		
 		vbo = glGenBuffers();
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f,  0.25f, 0.0f, 1.0f,
-																									   0.25f, -0.25f, 0.0f, 1.0f,
-																									  -0.25f, -0.25f, 0.0f, 1.0f}).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
+																										0.25f, -0.25f, 0.0f, 1.0f,
+																										-0.25f, -0.25f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
 		
 		glBindVertexArray(glGenVertexArrays());
 		
@@ -55,7 +55,7 @@ public class Example3_2 extends GLProgram {
 	public void render() {
 		float loopDuration = 5;
 		float scale = (float)Math.PI * 2 / loopDuration;
-		float currentTimeThroughLoop = (elapsedTime/(float)1e9) % loopDuration;
+		float currentTimeThroughLoop = (elapsedTime / (float)1e9) % loopDuration;
 		
 		float xOffset = (float)Math.cos(currentTimeThroughLoop * scale) * 0.5f;
 		float yOffset = (float)Math.sin(currentTimeThroughLoop * scale) * 0.5f;

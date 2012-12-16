@@ -10,11 +10,11 @@ public class Example2_1 extends GLProgram {
 	}
 	
 	public Example2_1() {
-		super("SIMPLE",800,600,false);
+		super("SIMPLE", 800, 600, false);
 	}
 	
 	public void init() {
-		glClearColor(0,0,1,1);
+		glClearColor(0, 0, 1, 1);
 	}
 	
 	public void render() {

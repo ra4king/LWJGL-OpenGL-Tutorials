@@ -13,15 +13,15 @@ public class Example3_7 extends GLProgram {
 	}
 	
 	public Example3_7() {
-		super("LSTIPPLE",800,600,true);
+		super("LSTIPPLE", 800, 600, true);
 	}
 	
 	private float xRot, yRot;
 	
 	public void init() {
-		glClearColor(0,0,0,1);
+		glClearColor(0, 0, 0, 1);
 		
-		glColor3f(0,1,0);
+		glColor3f(0, 1, 0);
 		
 		glEnable(GL_LINE_STIPPLE);
 	}
@@ -50,11 +50,11 @@ public class Example3_7 extends GLProgram {
 		glRotatef(xRot, 0, 1, 0);
 		
 		for(int y = -90, factor = 0; y <= 90; y += 20, factor++) {
-			glLineStipple(factor,(short)0x5555);
+			glLineStipple(factor, (short)0x5555);
 			
 			glBegin(GL_LINES);
-				glVertex2f(-80,y);
-				glVertex2f(80,y);
+			glVertex2f(-80, y);
+			glVertex2f(80, y);
 			glEnd();
 		}
 		
@@ -67,16 +67,16 @@ public class Example3_7 extends GLProgram {
 		if(h == 0)
 			h = 1;
 		
-		glViewport(0,0,Display.getWidth(),Display.getHeight());
+		glViewport(0, 0, Display.getWidth(), Display.getHeight());
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		float aspect = (float)w/h;
+		float aspect = (float)w / h;
 		if(w <= h)
-			glOrtho(-100,100,-100/aspect,100/aspect,100,-100);
+			glOrtho(-100, 100, -100 / aspect, 100 / aspect, 100, -100);
 		else
-			glOrtho(-100*aspect,100*aspect,-100,100,100,-100);
+			glOrtho(-100 * aspect, 100 * aspect, -100, 100, 100, -100);
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

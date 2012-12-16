@@ -25,37 +25,37 @@ public class Example6_1 extends GLProgram {
 	private final float[] BROWN_COLOR = { 0.5f, 0.5f, 0, 1 };
 	
 	private final float[] data = {
-			 1,  1,  1,
-			-1, -1,  1,
-			-1,  1, -1,
-			 1, -1, -1,
-			
-			-1, -1, -1,
-			 1,  1, -1,
-			 1, -1,  1,
-			-1,  1,  1,
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									1, 1, 1,
+									-1, -1, 1,
+									-1, 1, -1,
+									1, -1, -1,
+									
+									-1, -1, -1,
+									1, 1, -1,
+									1, -1, 1,
+									-1, 1, 1,
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
 	};
 	
 	private final short[] indices = {
-			0, 1, 2,
-			1, 0, 3,
-			2, 3, 0,
-			3, 2, 1,
-			
-			5, 4, 6,
-			4, 5, 7,
-			7, 6, 4,
-			6, 7, 5
+										0, 1, 2,
+										1, 0, 3,
+										2, 3, 0,
+										3, 2, 1,
+										
+										5, 4, 6,
+										4, 5, 7,
+										7, 6, 4,
+										6, 7, 5
 	};
 	
 	private ShaderProgram program;
@@ -85,7 +85,7 @@ public class Example6_1 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		program = new ShaderProgram(readFromFile("example6.1.vert"),readFromFile("example6.1.frag"));
+		program = new ShaderProgram(readFromFile("example6.1.vert"), readFromFile("example6.1.frag"));
 		
 		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
 		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
@@ -96,11 +96,11 @@ public class Example6_1 extends GLProgram {
 		
 		float zNear = 1, zFar = 45;
 		cameraToClipMatrix = new Matrix4();
-		cameraToClipMatrix.put(0,frustumScale);
-		cameraToClipMatrix.put(5,frustumScale);
-		cameraToClipMatrix.put(10,(zFar + zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(14,(2 * zFar * zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(11,-1);
+		cameraToClipMatrix.put(0, frustumScale);
+		cameraToClipMatrix.put(5, frustumScale);
+		cameraToClipMatrix.put(10, (zFar + zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(14, (2 * zFar * zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(11, -1);
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -144,7 +144,7 @@ public class Example6_1 extends GLProgram {
 	public void resized() {
 		super.resized();
 		
-		cameraToClipMatrix.put(0,frustumScale / ((float)getWidth() / getHeight()));
+		cameraToClipMatrix.put(0, frustumScale / ((float)getWidth() / getHeight()));
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -158,23 +158,23 @@ public class Example6_1 extends GLProgram {
 	private void setupOvalOffset(Matrix4 m) {
 		float loopDuration = 3, scale = (float)Math.PI * 2 / loopDuration;
 		
-		float currentTime = (elapsedTime/(float)1e9) % loopDuration;
+		float currentTime = (elapsedTime / (float)1e9) % loopDuration;
 		
 		m.clearToIdentity()
-		 .put(12, (float)Math.cos(currentTime * scale) * 4)
-		 .put(13, (float)Math.sin(currentTime * scale) * 6)
-		 .put(14, -20);
+				.put(12, (float)Math.cos(currentTime * scale) * 4)
+				.put(13, (float)Math.sin(currentTime * scale) * 6)
+				.put(14, -20);
 	}
 	
 	private void setupBottomCircleOffset(Matrix4 m) {
 		float loopDuration = 12, scale = (float)Math.PI * 2 / loopDuration;
 		
-		float currentTime = (elapsedTime/(float)1e9) % loopDuration;
+		float currentTime = (elapsedTime / (float)1e9) % loopDuration;
 		
 		m.clearToIdentity()
-		 .put(12, (float)Math.cos(currentTime * scale) * 5)
-		 .put(13, -3.5f)
-		 .put(14, (float)Math.sin(currentTime * scale) * 5 - 20);
+				.put(12, (float)Math.cos(currentTime * scale) * 5)
+				.put(13, -3.5f)
+				.put(14, (float)Math.sin(currentTime * scale) * 5 - 20);
 	}
 	
 	@Override

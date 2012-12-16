@@ -18,101 +18,101 @@ public class Example4_4 extends GLProgram {
 	}
 	
 	private final float[] data = {
-			 0.25f,  0.25f, -1.25f, 1.0f,
-			 0.25f, -0.25f, -1.25f, 1.0f,
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			
-			 0.25f, -0.25f, -1.25f, 1.0f,
-			-0.25f, -0.25f, -1.25f, 1.0f,
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			
-			 0.25f,  0.25f, -2.75f, 1.0f,
-			-0.25f,  0.25f, -2.75f, 1.0f,
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			-0.25f,  0.25f, -2.75f, 1.0f,
-			-0.25f, -0.25f, -2.75f, 1.0f,
-			
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			-0.25f, -0.25f, -1.25f, 1.0f,
-			-0.25f, -0.25f, -2.75f, 1.0f,
-			
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			-0.25f, -0.25f, -2.75f, 1.0f,
-			-0.25f,  0.25f, -2.75f, 1.0f,
-			
-			 0.25f,  0.25f, -1.25f, 1.0f,
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			 0.25f, -0.25f, -1.25f, 1.0f,
-			
-			 0.25f,  0.25f, -1.25f, 1.0f,
-			 0.25f,  0.25f, -2.75f, 1.0f,
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			
-			 0.25f,  0.25f, -2.75f, 1.0f,
-			 0.25f,  0.25f, -1.25f, 1.0f,
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			
-			 0.25f,  0.25f, -2.75f, 1.0f,
-			-0.25f,  0.25f, -1.25f, 1.0f,
-			-0.25f,  0.25f, -2.75f, 1.0f,
-			
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			-0.25f, -0.25f, -1.25f, 1.0f,
-			 0.25f, -0.25f, -1.25f, 1.0f,
-			
-			 0.25f, -0.25f, -2.75f, 1.0f,
-			-0.25f, -0.25f, -2.75f, 1.0f,
-			-0.25f, -0.25f, -1.25f, 1.0f,
-			
-			0.0f, 0.0f, 1.0f, 1.0f,
-			0.0f, 0.0f, 1.0f, 1.0f,
-			0.0f, 0.0f, 1.0f, 1.0f,
-			
-			0.0f, 0.0f, 1.0f, 1.0f,
-			0.0f, 0.0f, 1.0f, 1.0f,
-			0.0f, 0.0f, 1.0f, 1.0f,
-			
-			0.8f, 0.8f, 0.8f, 1.0f,
-			0.8f, 0.8f, 0.8f, 1.0f,
-			0.8f, 0.8f, 0.8f, 1.0f,
-			
-			0.8f, 0.8f, 0.8f, 1.0f,
-			0.8f, 0.8f, 0.8f, 1.0f,
-			0.8f, 0.8f, 0.8f, 1.0f,
-			
-			0.0f, 1.0f, 0.0f, 1.0f,
-			0.0f, 1.0f, 0.0f, 1.0f,
-			0.0f, 1.0f, 0.0f, 1.0f,
-			
-			0.0f, 1.0f, 0.0f, 1.0f,
-			0.0f, 1.0f, 0.0f, 1.0f,
-			0.0f, 1.0f, 0.0f, 1.0f,
-			
-			0.5f, 0.5f, 0.0f, 1.0f,
-			0.5f, 0.5f, 0.0f, 1.0f,
-			0.5f, 0.5f, 0.0f, 1.0f,
-			
-			0.5f, 0.5f, 0.0f, 1.0f,
-			0.5f, 0.5f, 0.0f, 1.0f,
-			0.5f, 0.5f, 0.0f, 1.0f,
-			
-			1.0f, 0.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 0.0f, 1.0f,
-			
-			1.0f, 0.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 0.0f, 1.0f,
-			
-			0.0f, 1.0f, 1.0f, 1.0f,
-			0.0f, 1.0f, 1.0f, 1.0f,
-			0.0f, 1.0f, 1.0f, 1.0f,
-			
-			0.0f, 1.0f, 1.0f, 1.0f,
-			0.0f, 1.0f, 1.0f, 1.0f,
-			0.0f, 1.0f, 1.0f, 1.0f
+									0.25f, 0.25f, -1.25f, 1.0f,
+									0.25f, -0.25f, -1.25f, 1.0f,
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									
+									0.25f, -0.25f, -1.25f, 1.0f,
+									-0.25f, -0.25f, -1.25f, 1.0f,
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									
+									0.25f, 0.25f, -2.75f, 1.0f,
+									-0.25f, 0.25f, -2.75f, 1.0f,
+									0.25f, -0.25f, -2.75f, 1.0f,
+									
+									0.25f, -0.25f, -2.75f, 1.0f,
+									-0.25f, 0.25f, -2.75f, 1.0f,
+									-0.25f, -0.25f, -2.75f, 1.0f,
+									
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									-0.25f, -0.25f, -1.25f, 1.0f,
+									-0.25f, -0.25f, -2.75f, 1.0f,
+									
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									-0.25f, -0.25f, -2.75f, 1.0f,
+									-0.25f, 0.25f, -2.75f, 1.0f,
+									
+									0.25f, 0.25f, -1.25f, 1.0f,
+									0.25f, -0.25f, -2.75f, 1.0f,
+									0.25f, -0.25f, -1.25f, 1.0f,
+									
+									0.25f, 0.25f, -1.25f, 1.0f,
+									0.25f, 0.25f, -2.75f, 1.0f,
+									0.25f, -0.25f, -2.75f, 1.0f,
+									
+									0.25f, 0.25f, -2.75f, 1.0f,
+									0.25f, 0.25f, -1.25f, 1.0f,
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									
+									0.25f, 0.25f, -2.75f, 1.0f,
+									-0.25f, 0.25f, -1.25f, 1.0f,
+									-0.25f, 0.25f, -2.75f, 1.0f,
+									
+									0.25f, -0.25f, -2.75f, 1.0f,
+									-0.25f, -0.25f, -1.25f, 1.0f,
+									0.25f, -0.25f, -1.25f, 1.0f,
+									
+									0.25f, -0.25f, -2.75f, 1.0f,
+									-0.25f, -0.25f, -2.75f, 1.0f,
+									-0.25f, -0.25f, -1.25f, 1.0f,
+									
+									0.0f, 0.0f, 1.0f, 1.0f,
+									0.0f, 0.0f, 1.0f, 1.0f,
+									0.0f, 0.0f, 1.0f, 1.0f,
+									
+									0.0f, 0.0f, 1.0f, 1.0f,
+									0.0f, 0.0f, 1.0f, 1.0f,
+									0.0f, 0.0f, 1.0f, 1.0f,
+									
+									0.8f, 0.8f, 0.8f, 1.0f,
+									0.8f, 0.8f, 0.8f, 1.0f,
+									0.8f, 0.8f, 0.8f, 1.0f,
+									
+									0.8f, 0.8f, 0.8f, 1.0f,
+									0.8f, 0.8f, 0.8f, 1.0f,
+									0.8f, 0.8f, 0.8f, 1.0f,
+									
+									0.0f, 1.0f, 0.0f, 1.0f,
+									0.0f, 1.0f, 0.0f, 1.0f,
+									0.0f, 1.0f, 0.0f, 1.0f,
+									
+									0.0f, 1.0f, 0.0f, 1.0f,
+									0.0f, 1.0f, 0.0f, 1.0f,
+									0.0f, 1.0f, 0.0f, 1.0f,
+									
+									0.5f, 0.5f, 0.0f, 1.0f,
+									0.5f, 0.5f, 0.0f, 1.0f,
+									0.5f, 0.5f, 0.0f, 1.0f,
+									
+									0.5f, 0.5f, 0.0f, 1.0f,
+									0.5f, 0.5f, 0.0f, 1.0f,
+									0.5f, 0.5f, 0.0f, 1.0f,
+									
+									1.0f, 0.0f, 0.0f, 1.0f,
+									1.0f, 0.0f, 0.0f, 1.0f,
+									1.0f, 0.0f, 0.0f, 1.0f,
+									
+									1.0f, 0.0f, 0.0f, 1.0f,
+									1.0f, 0.0f, 0.0f, 1.0f,
+									1.0f, 0.0f, 0.0f, 1.0f,
+									
+									0.0f, 1.0f, 1.0f, 1.0f,
+									0.0f, 1.0f, 1.0f, 1.0f,
+									0.0f, 1.0f, 1.0f, 1.0f,
+									
+									0.0f, 1.0f, 1.0f, 1.0f,
+									0.0f, 1.0f, 1.0f, 1.0f,
+									0.0f, 1.0f, 1.0f, 1.0f
 	};
 	
 	private ShaderProgram program;
@@ -132,7 +132,7 @@ public class Example4_4 extends GLProgram {
 	public void init() {
 		glClearColor(0, 0, 0, 0);
 		
-		program = new ShaderProgram(readFromFile("example4.4.vert"),readFromFile("example4.4.frag"));
+		program = new ShaderProgram(readFromFile("example4.4.vert"), readFromFile("example4.4.frag"));
 		
 		offsetUniform = glGetUniformLocation(program.getProgram(), "offset");
 		
@@ -140,11 +140,11 @@ public class Example4_4 extends GLProgram {
 		
 		float zNear = 0.5f, zFar = 3;
 		perspectiveMatrix = BufferUtils.createFloatBuffer(16);
-		perspectiveMatrix.put(0,frustumScale);
-		perspectiveMatrix.put(5,frustumScale);
-		perspectiveMatrix.put(10,(zFar + zNear) / (zNear - zFar));
-		perspectiveMatrix.put(14,(2 * zFar * zNear) / (zNear - zFar));
-		perspectiveMatrix.put(11,-1);
+		perspectiveMatrix.put(0, frustumScale);
+		perspectiveMatrix.put(5, frustumScale);
+		perspectiveMatrix.put(10, (zFar + zNear) / (zNear - zFar));
+		perspectiveMatrix.put(14, (2 * zFar * zNear) / (zNear - zFar));
+		perspectiveMatrix.put(11, -1);
 		
 		program.begin();
 		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix);
@@ -168,7 +168,7 @@ public class Example4_4 extends GLProgram {
 	public void resized() {
 		super.resized();
 		
-		perspectiveMatrix.put(0,frustumScale / ((float)getWidth() / getHeight()));
+		perspectiveMatrix.put(0, frustumScale / ((float)getWidth() / getHeight()));
 		
 		program.begin();
 		glUniformMatrix4(perspectiveMatrixUniform, false, perspectiveMatrix);

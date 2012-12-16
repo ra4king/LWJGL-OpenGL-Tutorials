@@ -31,7 +31,7 @@ public class Example3_4 extends GLProgram {
 	public void init() {
 		glClearColor(0, 0, 0, 0);
 		
-		program = new ShaderProgram(readFromFile("example3.4.vert"),readFromFile("example3.4.frag"));
+		program = new ShaderProgram(readFromFile("example3.4.vert"), readFromFile("example3.4.frag"));
 		timeLocation = glGetUniformLocation(program.getProgram(), "time");
 		
 		int loopDurationLocation = glGetUniformLocation(program.getProgram(), "loopDuration");
@@ -44,9 +44,9 @@ public class Example3_4 extends GLProgram {
 		vbo = glGenBuffers();
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f,  0.25f, 0.0f, 1.0f,
-																									   0.25f, -0.25f, 0.0f, 1.0f,
-																									  -0.25f, -0.25f, 0.0f, 1.0f}).flip(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
+																										0.25f, -0.25f, 0.0f, 1.0f,
+																										-0.25f, -0.25f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
 		
 		glBindVertexArray(glGenVertexArrays());
 		
@@ -64,7 +64,7 @@ public class Example3_4 extends GLProgram {
 		
 		program.begin();
 		
-		glUniform1f(timeLocation, elapsedTime/(float)1e9);
+		glUniform1f(timeLocation, elapsedTime / (float)1e9);
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glEnableVertexAttribArray(0);

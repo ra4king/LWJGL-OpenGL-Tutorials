@@ -86,9 +86,9 @@ public class Timer {
 	public float getAlpha() {
 		switch(type) {
 			case LOOP:
-				return (secAccumTime%secDuration) / secDuration;
+				return (secAccumTime % secDuration) / secDuration;
 			case SINGLE:
-				return Utils.clamp(secAccumTime/secDuration, 0, 1);
+				return Utils.clamp(secAccumTime / secDuration, 0, 1);
 			case INFINITE:
 			default:
 				return -1;
@@ -98,7 +98,7 @@ public class Timer {
 	public float getProgression() {
 		switch(type) {
 			case LOOP:
-				return secAccumTime%secDuration;
+				return secAccumTime % secDuration;
 			case SINGLE:
 				return Utils.clamp(secAccumTime, 0, secDuration);
 			case INFINITE:

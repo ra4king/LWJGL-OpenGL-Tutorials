@@ -13,22 +13,22 @@ public class Example3_8 extends GLProgram {
 	}
 	
 	public Example3_8() {
-		super("TRIANGLE",800,600,true);
+		super("TRIANGLE", 800, 600, true);
 	}
 	
 	private float xRot, yRot;
 	
 	public void init() {
-		glClearColor(0,0,0,1);
+		glClearColor(0, 0, 0, 1);
 		
 		glFrontFace(GL_CW);
 		
 		glShadeModel(GL_FLAT);
 		
 		glEnable(GL_DEPTH_TEST);
-		//glEnable(GL_CULL_FACE);
+		// glEnable(GL_CULL_FACE);
 		
-		glPolygonMode(GL_BACK,GL_LINE);
+		glPolygonMode(GL_BACK, GL_LINE);
 	}
 	
 	public void update(long deltaTime) {
@@ -56,30 +56,30 @@ public class Example3_8 extends GLProgram {
 		
 		glBegin(GL_TRIANGLE_FAN);
 		
-		glVertex3f(0,0,75);
+		glVertex3f(0, 0, 75);
 		int pivot = 1;
-		for(float angle = 0; angle <= 2 * Math.PI + 1; angle += Math.PI/8) {
+		for(float angle = 0; angle <= 2 * Math.PI + 1; angle += Math.PI / 8) {
 			if(pivot++ % 2 == 0)
-				glColor3f(0,1,.5f);
+				glColor3f(0, 1, .5f);
 			else
-				glColor3f(1,0,.5f);
+				glColor3f(1, 0, .5f);
 			
-			glVertex3f(50*(float)Math.cos(angle),50*(float)Math.sin(angle),0);
+			glVertex3f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle), 0);
 		}
 		
 		glEnd();
 		
 		glBegin(GL_TRIANGLE_FAN);
 		
-		glVertex2f(0,0);
+		glVertex2f(0, 0);
 		pivot = 1;
-		for(float angle = 0; angle <= 2.1 * Math.PI; angle += Math.PI/8) {
+		for(float angle = 0; angle <= 2.1 * Math.PI; angle += Math.PI / 8) {
 			if(pivot++ % 2 == 0)
-				glColor3f(0,1,0);
+				glColor3f(0, 1, 0);
 			else
-				glColor3f(1,0,0);
+				glColor3f(1, 0, 0);
 			
-			glVertex2f(50*(float)Math.cos(angle),50*(float)Math.sin(angle));
+			glVertex2f(50 * (float)Math.cos(angle), 50 * (float)Math.sin(angle));
 		}
 		
 		glEnd();
@@ -93,16 +93,16 @@ public class Example3_8 extends GLProgram {
 		if(h == 0)
 			h = 1;
 		
-		glViewport(0,0,Display.getWidth(),Display.getHeight());
+		glViewport(0, 0, Display.getWidth(), Display.getHeight());
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		float aspect = (float)w/h;
+		float aspect = (float)w / h;
 		if(w <= h)
-			glOrtho(-100,100,-100/aspect,100/aspect,100,-100);
+			glOrtho(-100, 100, -100 / aspect, 100 / aspect, 100, -100);
 		else
-			glOrtho(-100*aspect,100*aspect,-100,100,100,-100);
+			glOrtho(-100 * aspect, 100 * aspect, -100, 100, 100, -100);
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

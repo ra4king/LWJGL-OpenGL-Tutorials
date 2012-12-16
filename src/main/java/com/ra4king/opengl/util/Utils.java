@@ -20,7 +20,7 @@ public class Utils {
 	}
 	
 	public static float mix(float f1, float f2, float a) {
-		return f1 + (f2-f1) * a; 
+		return f1 + (f2 - f1) * a;
 	}
 	
 	public static void updateMousePoles(ViewPole viewPole, ObjectPole objectPole) {

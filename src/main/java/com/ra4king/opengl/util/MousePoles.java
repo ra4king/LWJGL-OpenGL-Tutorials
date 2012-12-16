@@ -12,11 +12,16 @@ public class MousePoles {
 		
 		public static MouseButton getButton(int button) {
 			switch(button) {
-				case 0: return MouseButton.LEFT_BUTTON;
-				case 1: return MouseButton.RIGHT_BUTTON;
-				case 2: return MouseButton.MIDDLE_BUTTON;
-				case -1: return null;
-				default: throw new IllegalArgumentException("Invalid button: " + button);
+				case 0:
+					return MouseButton.LEFT_BUTTON;
+				case 1:
+					return MouseButton.RIGHT_BUTTON;
+				case 2:
+					return MouseButton.MIDDLE_BUTTON;
+				case -1:
+					return null;
+				default:
+					throw new IllegalArgumentException("Invalid button: " + button);
 			}
 		}
 	}
@@ -29,8 +34,11 @@ public class MousePoles {
 	
 	public static abstract class Pole {
 		public abstract void mouseMove(int x, int y);
+		
 		public abstract void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY);
+		
 		public abstract void mouseWheel(int direction, MouseModifier modifiers, int positionX, int positionY);
+		
 		public abstract void charPress(char key, boolean isShiftPressed, float lastFrameDuration);
 	}
 	
@@ -67,9 +75,9 @@ public class MousePoles {
 		}
 		
 		private Vector3[] axisVectors = {
-				new Vector3(1, 0, 0),
-				new Vector3(0, 1, 0),
-				new Vector3(0, 0, 1)
+											new Vector3(1, 0, 0),
+											new Vector3(0, 1, 0),
+											new Vector3(0, 0, 1)
 		};
 		
 		private ViewProvider view;
@@ -156,31 +164,29 @@ public class MousePoles {
 				int diffY = -(positionY - prevMousePosY);
 				
 				switch(rotateMode) {
-					case DUAL_AXIS:
-						{
-							Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diffX * rotateScale);
-							rot = calcRotationQuat(Axis.AXIS_X, diffY * rotateScale).mult(rot).normalize();
-							rotateViewDegrees(rot, false);
-						}
+					case DUAL_AXIS: {
+						Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diffX * rotateScale);
+						rot = calcRotationQuat(Axis.AXIS_X, diffY * rotateScale).mult(rot).normalize();
+						rotateViewDegrees(rot, false);
+					}
 						break;
-					case BIAXIAL:
-						{
-							int initDiffX = positionX - startDragMousePosX;
-							int initDiffY = positionY - startDragMousePosY;
-							
-							Axis axis;
-							float degAngle;
-							if(Math.abs(initDiffX) > Math.abs(initDiffY)) {
-								axis = Axis.AXIS_Y;
-								degAngle = initDiffX * rotateScale;
-							}
-							else {
-								axis = Axis.AXIS_X;
-								degAngle = initDiffY * rotateScale;
-							}
-							
-							rotateViewDegrees(calcRotationQuat(axis, degAngle), true);
+					case BIAXIAL: {
+						int initDiffX = positionX - startDragMousePosX;
+						int initDiffY = positionY - startDragMousePosY;
+						
+						Axis axis;
+						float degAngle;
+						if(Math.abs(initDiffX) > Math.abs(initDiffY)) {
+							axis = Axis.AXIS_Y;
+							degAngle = initDiffX * rotateScale;
 						}
+						else {
+							axis = Axis.AXIS_X;
+							degAngle = initDiffY * rotateScale;
+						}
+						
+						rotateViewDegrees(calcRotationQuat(axis, degAngle), true);
+					}
 						break;
 					case SPIN:
 						rotateViewDegrees(calcRotationQuat(Axis.AXIS_Z, -diffX * rotateScale), false);
@@ -294,12 +300,12 @@ public class MousePoles {
 		}
 		
 		private Vector3[] offsets = {
-				new Vector3( 0,  1,  0),
-				new Vector3( 0, -1,  0),
-				new Vector3( 0,  0, -1),
-				new Vector3( 0,  0,  1),
-				new Vector3( 1,  0,  0),
-				new Vector3(-1,  0,  0)
+										new Vector3(0, 1, 0),
+										new Vector3(0, -1, 0),
+										new Vector3(0, 0, -1),
+										new Vector3(0, 0, 1),
+										new Vector3(1, 0, 0),
+										new Vector3(-1, 0, 0)
 		};
 		
 		private ViewData currView;
@@ -401,7 +407,7 @@ public class MousePoles {
 			int diffX = currX - startDragMouseLocX;
 			int diffY = -(currY - startDragMouseLocY);
 			
-			switch (rotateMode) {
+			switch(rotateMode) {
 				case DUAL_AXIS_ROTATE:
 					processXYChange(diffX, diffY);
 					break;
@@ -427,7 +433,7 @@ public class MousePoles {
 			if(keepResults)
 				onDragRotate(endX, endY);
 			else
-				currView.orient  = startDragOrient;
+				currView.orient = startDragOrient;
 			
 			isDragging = false;
 		}
@@ -476,8 +482,8 @@ public class MousePoles {
 				if(isDragging) {
 					if(button == actionButton) {
 						if(rotateMode == RotateMode.DUAL_AXIS_ROTATE ||
-						   rotateMode == RotateMode.SPIN_VIEW_AXIS ||
-						   rotateMode == RotateMode.BIAXIAL_ROTATE)
+								rotateMode == RotateMode.SPIN_VIEW_AXIS ||
+								rotateMode == RotateMode.BIAXIAL_ROTATE)
 							endDragRotate(positionX, positionY, true);
 					}
 				}
@@ -505,36 +511,84 @@ public class MousePoles {
 			
 			if(rightKeyboardCtrls) {
 				switch(key) {
-					case 'i': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
-					case 'k': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
-					case 'l': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
-					case 'j': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
-					case 'o': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
-					case 'u': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
-
-					case 'I': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
-					case 'K': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
-					case 'L': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
-					case 'J': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
-					case 'O': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
-					case 'U': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
+					case 'i':
+						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+						break;
+					case 'k':
+						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+						break;
+					case 'l':
+						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+						break;
+					case 'j':
+						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+						break;
+					case 'o':
+						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+						break;
+					case 'u':
+						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
+						break;
+					
+					case 'I':
+						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+						break;
+					case 'K':
+						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+						break;
+					case 'L':
+						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+						break;
+					case 'J':
+						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+						break;
+					case 'O':
+						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+						break;
+					case 'U':
+						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
+						break;
 				}
 			}
 			else {
 				switch(key) {
-					case 'w': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
-					case 's': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
-					case 'd': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
-					case 'a': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
-					case 'e': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
-					case 'q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
-
-					case 'W': offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset); break;
-					case 'S': offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset); break;
-					case 'D': offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset); break;
-					case 'A': offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset); break;
-					case 'E': offsetTargetPos(TargetOffsetDir.DIR_UP, offset); break;
-					case 'Q': offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset); break;
+					case 'w':
+						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+						break;
+					case 's':
+						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+						break;
+					case 'd':
+						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+						break;
+					case 'a':
+						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+						break;
+					case 'e':
+						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+						break;
+					case 'q':
+						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
+						break;
+					
+					case 'W':
+						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+						break;
+					case 'S':
+						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+						break;
+					case 'D':
+						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+						break;
+					case 'A':
+						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+						break;
+					case 'E':
+						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+						break;
+					case 'Q':
+						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
+						break;
 				}
 			}
 		}

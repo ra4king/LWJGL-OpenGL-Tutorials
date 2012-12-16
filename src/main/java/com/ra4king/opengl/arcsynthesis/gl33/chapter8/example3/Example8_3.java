@@ -44,7 +44,7 @@ public class Example8_3 extends GLProgram {
 	
 	@Override
 	public void init() {
-		glClearColor(0,0,0,0);
+		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
 		program = new ShaderProgram(readFromFile("example8.3.vert"), readFromFile("example8.3.frag"));
@@ -56,8 +56,7 @@ public class Example8_3 extends GLProgram {
 		try {
 			ship = new Mesh(getClass().getResource("example8.3.Ship.xml"));
 			plane = new Mesh(getClass().getResource("example8.3.plane.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -88,9 +87,9 @@ public class Example8_3 extends GLProgram {
 	private void offsetOrientation(Vector3 axis, float angle) {
 		angle = angle * (float)Math.PI / 180;
 		
-		axis.normalize().mult((float)Math.sin(angle/2));
+		axis.normalize().mult((float)Math.sin(angle / 2));
 		
-		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle/2));
+		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle / 2));
 		
 		switch(offsetRelative) {
 			case MODEL_RELATIVE:
@@ -100,7 +99,7 @@ public class Example8_3 extends GLProgram {
 				orientation = offset.mult(orientation);
 				break;
 			case CAMERA_RELATIVE:
-				Matrix4 camMat = calcLookAtMatrix(resolveCamPosition(), camTarget, new Vector3(0,1,0));
+				Matrix4 camMat = calcLookAtMatrix(resolveCamPosition(), camTarget, new Vector3(0, 1, 0));
 				Quaternion viewQuat = camMat.toQuaternion();
 				orientation = new Quaternion(viewQuat).conjugate().mult(offset).mult(viewQuat).mult(orientation);
 				break;
@@ -145,12 +144,18 @@ public class Example8_3 extends GLProgram {
 	@Override
 	public void keyPressed(int key, char c, long nanos) {
 		if(key == Keyboard.KEY_SPACE) {
-			offsetRelative = OffsetRelative.values()[(offsetRelative.ordinal()+1)%OffsetRelative.values().length];
+			offsetRelative = OffsetRelative.values()[(offsetRelative.ordinal() + 1) % OffsetRelative.values().length];
 			
 			switch(offsetRelative) {
-				case MODEL_RELATIVE: System.out.println("Model Relative"); break;
-				case WORLD_RELATIVE: System.out.println("World Relative"); break;
-				case CAMERA_RELATIVE: System.out.println("Camera Relative"); break;
+				case MODEL_RELATIVE:
+					System.out.println("Model Relative");
+					break;
+				case WORLD_RELATIVE:
+					System.out.println("World Relative");
+					break;
+				case CAMERA_RELATIVE:
+					System.out.println("Camera Relative");
+					break;
 			}
 		}
 	}
@@ -187,7 +192,7 @@ public class Example8_3 extends GLProgram {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		MatrixStack stack = new MatrixStack();
-		stack.setTop(calcLookAtMatrix(resolveCamPosition(), camTarget, new Vector3(0,1,0)));
+		stack.setTop(calcLookAtMatrix(resolveCamPosition(), camTarget, new Vector3(0, 1, 0)));
 		
 		program.begin();
 		

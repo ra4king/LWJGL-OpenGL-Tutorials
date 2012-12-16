@@ -57,11 +57,11 @@ public class Example9_1 extends GLProgram {
 		glClearDepth(1);
 		
 		ViewData initialViewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
-		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f/250f);
+		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f / 250f);
 		ObjectData initialObjectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
 		
 		viewPole = new ViewPole(initialViewData, viewScale, MouseButton.LEFT_BUTTON, false);
-		objectPole = new ObjectPole(initialObjectData, 90f/250f, MouseButton.RIGHT_BUTTON, viewPole);
+		objectPole = new ObjectPole(initialObjectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
 		whiteDiffuseColor = loadShader("example9.1.VertexLighting_PN.vert", "example9.1.frag");
 		vertexDiffuseColor = loadShader("example9.1.VertexLighting_PCN.vert", "example9.1.frag");
@@ -69,8 +69,7 @@ public class Example9_1 extends GLProgram {
 		try {
 			cylinderMesh = new Mesh(getClass().getResource("example9.1.UnitCylinder.xml"));
 			planeMesh = new Mesh(getClass().getResource("example9.1.LargePlane.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -87,8 +86,8 @@ public class Example9_1 extends GLProgram {
 		
 		projectionUniformBuffer = glGenBuffers();
 		glBindBuffer(GL_UNIFORM_BUFFER, projectionUniformBuffer);
-		glBufferData(GL_UNIFORM_BUFFER, 16*4, GL_DYNAMIC_DRAW);
-		glBindBufferRange(GL_UNIFORM_BUFFER, projectionBlockIndex, projectionUniformBuffer, 0, 16*4);
+		glBufferData(GL_UNIFORM_BUFFER, 16 * 4, GL_DYNAMIC_DRAW);
+		glBindBufferRange(GL_UNIFORM_BUFFER, projectionBlockIndex, projectionUniformBuffer, 0, 16 * 4);
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 	

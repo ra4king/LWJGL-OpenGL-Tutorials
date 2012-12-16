@@ -12,11 +12,11 @@ public class Example2_2 extends GLProgram {
 	}
 	
 	public Example2_2() {
-		super("GLRect",800,600,true);
+		super("GLRect", 800, 600, true);
 	}
 	
 	public void init() {
-		glClearColor(0,0,1,1);
+		glClearColor(0, 0, 1, 1);
 	}
 	
 	public void resized() {
@@ -25,16 +25,16 @@ public class Example2_2 extends GLProgram {
 		if(h == 0)
 			h = 1;
 		
-		glViewport(0,0,Display.getWidth(),Display.getHeight());
+		glViewport(0, 0, Display.getWidth(), Display.getHeight());
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		float aspect = (float)w/h;
+		float aspect = (float)w / h;
 		if(w <= h)
-			glOrtho(-100,100,-100/aspect,100/aspect,1,-1);
+			glOrtho(-100, 100, -100 / aspect, 100 / aspect, 1, -1);
 		else
-			glOrtho(-100*aspect,100*aspect,-100,100,1,-1);
+			glOrtho(-100 * aspect, 100 * aspect, -100, 100, 1, -1);
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -43,7 +43,7 @@ public class Example2_2 extends GLProgram {
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		glColor3f(1,0,0);
-		glRectf(-25,25,25,-25);
+		glColor3f(1, 0, 0);
+		glRectf(-25, 25, 25, -25);
 	}
 }

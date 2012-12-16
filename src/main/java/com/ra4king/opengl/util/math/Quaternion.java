@@ -8,16 +8,16 @@ public class Quaternion {
 	}
 	
 	public Quaternion(float x, float y, float z, float w) {
-		set(x,y,z,w);
+		set(x, y, z, w);
 	}
 	
 	public Quaternion(float angle, Vector3 vec) {
-		float s = (float)Math.sin(angle/2);
+		float s = (float)Math.sin(angle / 2);
 		
 		x = vec.x() * s;
 		y = vec.y() * s;
 		z = vec.z() * s;
-		w = (float)Math.cos(angle/2);
+		w = (float)Math.cos(angle / 2);
 	}
 	
 	public Quaternion(Quaternion q) {
@@ -69,7 +69,7 @@ public class Quaternion {
 	}
 	
 	public Quaternion set(Quaternion q) {
-		return set(q.x,q.y,q.z,q.w);
+		return set(q.x, q.y, q.z, q.w);
 	}
 	
 	public Quaternion reset() {
@@ -79,7 +79,7 @@ public class Quaternion {
 	}
 	
 	public float length() {
-		return (float)Math.sqrt(x*x + y*y + z*z + w*w);
+		return (float)Math.sqrt(x * x + y * y + z * z + w * w);
 	}
 	
 	public Quaternion normalize() {
@@ -92,7 +92,7 @@ public class Quaternion {
 	}
 	
 	public float dot(Quaternion q) {
-		return x*q.x + y*q.y + z*q.z + w*q.w;
+		return x * q.x + y * q.y + z * q.z + w * q.w;
 	}
 	
 	public Quaternion add(float x, float y, float z, float w) {
@@ -105,7 +105,7 @@ public class Quaternion {
 	}
 	
 	public Quaternion add(Quaternion q) {
-		return add(q.x,q.y,q.z,q.w);
+		return add(q.x, q.y, q.z, q.w);
 	}
 	
 	public Quaternion sub(float x, float y, float z, float w) {
@@ -118,7 +118,7 @@ public class Quaternion {
 	}
 	
 	public Quaternion sub(Quaternion q) {
-		return sub(q.x,q.y,q.z,q.w);
+		return sub(q.x, q.y, q.z, q.w);
 	}
 	
 	public Quaternion mult(float f) {
@@ -144,10 +144,10 @@ public class Quaternion {
 	}
 	
 	public Quaternion mult(Quaternion q) {
-		float xx = w*q.x + x*q.w + y*q.z - z*q.y;
-		float yy = w*q.y + y*q.w + z*q.x - x*q.z;
-		float zz = w*q.z + z*q.w + x*q.y - y*q.x;
-		float ww = w*q.w - x*q.x - y*q.y - z*q.z;
+		float xx = w * q.x + x * q.w + y * q.z - z * q.y;
+		float yy = w * q.y + y * q.w + z * q.x - x * q.z;
+		float zz = w * q.z + z * q.w + x * q.y - y * q.x;
+		float ww = w * q.w - x * q.x - y * q.y - z * q.z;
 		
 		x = xx;
 		y = yy;
@@ -167,10 +167,10 @@ public class Quaternion {
 	
 	public Matrix4 toMatrix() {
 		float[] m = {
-				1 - 2*y*y - 2*z*z,     2*x*y + 2*w*z,     2*x*z - 2*w*y, 0,
-				    2*x*y - 2*w*z, 1 - 2*x*x - 2*z*z,     2*y*z + 2*w*x, 0,
-				    2*x*z + 2*w*y,     2*y*z - 2*w*x, 1 - 2*x*x - 2*y*y, 0,
-				                0,                 0,                 0, 1,
+						1 - 2 * y * y - 2 * z * z, 2 * x * y + 2 * w * z, 2 * x * z - 2 * w * y, 0,
+						2 * x * y - 2 * w * z, 1 - 2 * x * x - 2 * z * z, 2 * y * z + 2 * w * x, 0,
+						2 * x * z + 2 * w * y, 2 * y * z - 2 * w * x, 1 - 2 * x * x - 2 * y * y, 0,
+						0, 0, 0, 1,
 		};
 		
 		return new Matrix4(m);

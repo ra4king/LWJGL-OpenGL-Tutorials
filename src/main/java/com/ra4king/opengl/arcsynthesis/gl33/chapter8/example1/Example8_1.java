@@ -56,8 +56,7 @@ public class Example8_1 extends GLProgram {
 				gimbals[a] = new Mesh(getClass().getResource(gimbalNames[a]));
 			
 			ship = new Mesh(getClass().getResource("example8.1.Ship.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -78,7 +77,7 @@ public class Example8_1 extends GLProgram {
 	public void resized() {
 		super.resized();
 		
-		cameraToClipMatrix.clearToPerspective(20*(float)Math.PI/180, getWidth(), getHeight(), 1, 600);
+		cameraToClipMatrix.clearToPerspective(20 * (float)Math.PI / 180, getWidth(), getHeight(), 1, 600);
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());

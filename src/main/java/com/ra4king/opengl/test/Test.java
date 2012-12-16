@@ -23,7 +23,7 @@ public class Test extends GLProgram {
 	}
 	
 	public Test() {
-		super("Test",1024,768,true);
+		super("Test", 1024, 768, true);
 		
 		Mouse.setGrabbed(true);
 	}
@@ -40,10 +40,10 @@ public class Test extends GLProgram {
 	
 	@Override
 	public void init() {
-		glClearColor(0,0,0,0);
+		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		program = new ShaderProgram(readFromFile("test.vert"),readFromFile("test.frag"));
+		program = new ShaderProgram(readFromFile("test.vert"), readFromFile("test.frag"));
 		
 		perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
 		modelViewMatrixUniform = glGetUniformLocation(program.getProgram(), "modelViewMatrix");
@@ -52,45 +52,45 @@ public class Test extends GLProgram {
 		modelViewMatrix = new Matrix4();
 		
 		float[] vertices = {
-				 5,  5,  5,
-				 5, -5,  5,
-				-5, -5,  5,
-				-5,  5,  5,
-				
-				 5,  5, -5,
-				 5, -5, -5,
-				-5, -5, -5,
-				-5,  5, -5,
-				
-				0, 0, 0,
-				0, 1, 0,
-				1, 1, 0,
-				1, 0, 0,
-				
-				0, 0, 1,
-				0, 1, 1,
-				1, 1, 1,
-				1, 0, 1,
+							5, 5, 5,
+							5, -5, 5,
+							-5, -5, 5,
+							-5, 5, 5,
+							
+							5, 5, -5,
+							5, -5, -5,
+							-5, -5, -5,
+							-5, 5, -5,
+							
+							0, 0, 0,
+							0, 1, 0,
+							1, 1, 0,
+							1, 0, 0,
+							
+							0, 0, 1,
+							0, 1, 1,
+							1, 1, 1,
+							1, 0, 1,
 		};
 		
 		short[] indicies = {
-				0, 1, 2,
-				3, 0, 2,
-				
-				7, 6, 5,
-				4, 7, 5,
-				
-				4, 5, 1,
-				0, 4, 1,
-				
-				3, 2, 6,
-				7, 3, 6,
-				
-				4, 0, 3,
-				7, 4, 3,
-				
-				1, 5, 6,
-				2, 1, 6,
+							0, 1, 2,
+							3, 0, 2,
+							
+							7, 6, 5,
+							4, 7, 5,
+							
+							4, 5, 1,
+							0, 4, 1,
+							
+							3, 2, 6,
+							7, 3, 6,
+							
+							4, 0, 3,
+							7, 4, 3,
+							
+							1, 5, 6,
+							2, 1, 6,
 		};
 		
 		int vbo1 = glGenBuffers();
@@ -109,7 +109,7 @@ public class Test extends GLProgram {
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
-		glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 8*3*4);
+		glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 8 * 3 * 4);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
 		glBindVertexArray(0);
 		
@@ -117,7 +117,7 @@ public class Test extends GLProgram {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		
 		glEnable(GL_DEPTH_TEST);
-		glDepthRange(0,1);
+		glDepthRange(0, 1);
 		glDepthFunc(GL_LEQUAL);
 		
 		glEnable(GL_CULL_FACE);
@@ -153,14 +153,14 @@ public class Test extends GLProgram {
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_A))
-			position.add((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
+			position.add((float)Math.cos(angle + Math.PI) * moveSpeed, 0, (float)Math.sin(angle + Math.PI) * moveSpeed);
 		if(Keyboard.isKeyDown(Keyboard.KEY_D))
-			position.sub((float)Math.cos(angle+Math.PI)*moveSpeed, 0, (float)Math.sin(angle+Math.PI)*moveSpeed);
+			position.sub((float)Math.cos(angle + Math.PI) * moveSpeed, 0, (float)Math.sin(angle + Math.PI) * moveSpeed);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_W))
-			position.sub((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
+			position.sub((float)Math.cos(angle + Math.PI / 2) * moveSpeed, 0, (float)Math.sin(angle + Math.PI / 2) * moveSpeed);
 		if(Keyboard.isKeyDown(Keyboard.KEY_S))
-			position.add((float)Math.cos(angle+Math.PI/2)*moveSpeed, 0, (float)Math.sin(angle+Math.PI/2)*moveSpeed);
+			position.add((float)Math.cos(angle + Math.PI / 2) * moveSpeed, 0, (float)Math.sin(angle + Math.PI / 2) * moveSpeed);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_R))
 			position.reset();
@@ -198,7 +198,7 @@ public class Test extends GLProgram {
 				if(b == -50)
 					continue;
 				
-				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle,0,1,0).translate(a*10 - position.x(), -20 - position.y(), b*10-20 - position.z()).toBuffer());
+				glUniformMatrix4(modelViewMatrixUniform, false, modelViewMatrix.clearToIdentity().rotate(angleY, 1, 0, 0).rotate(angle, 0, 1, 0).translate(a * 10 - position.x(), -20 - position.y(), b * 10 - 20 - position.z()).toBuffer());
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 			}
 		}

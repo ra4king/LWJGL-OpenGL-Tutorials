@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class Mesh {
 	private int vao;
-	private HashMap<String, Integer> vaoMap;
+	private HashMap<String,Integer> vaoMap;
 	
 	private ArrayList<RenderCmd> renderCommands;
 	
@@ -65,7 +65,7 @@ public class Mesh {
 								if(size == null)
 									throw new IllegalArgumentException("<attribute> missing 'size'");
 								
-								Attribute attrib = new Attribute(Integer.parseInt(index),type,Integer.parseInt(size));
+								Attribute attrib = new Attribute(Integer.parseInt(index), type, Integer.parseInt(size));
 								attributes.add(attrib);
 								
 								xml.next();
@@ -87,7 +87,7 @@ public class Mesh {
 								if(type == null)
 									throw new IllegalArgumentException("<indices> missing 'type'");
 								
-								RenderCmd cmd = new RenderCmd(primitive,type);
+								RenderCmd cmd = new RenderCmd(primitive, type);
 								renderCommands.add(cmd);
 								
 								xml.next();
@@ -141,7 +141,7 @@ public class Mesh {
 								if(count == null)
 									throw new IllegalArgumentException("<arrays> missing 'count'");
 								
-								RenderCmd cmd = new RenderCmd(primitive,Integer.parseInt(start),Integer.parseInt(count));
+								RenderCmd cmd = new RenderCmd(primitive, Integer.parseInt(start), Integer.parseInt(count));
 								renderCommands.add(cmd);
 								
 								xml.next();
@@ -158,8 +158,7 @@ public class Mesh {
 						continue;
 				}
 			} while(xml.next() != XmlPullParser.END_DOCUMENT);
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			throw exc;
 		}
 		
@@ -173,14 +172,14 @@ public class Mesh {
 		
 		int vbo1 = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo1);
-		glBufferData(GL_ARRAY_BUFFER, (ByteBuffer)BufferUtils.createByteBuffer(attributeData.capacity()).put(attributeData).flip(),GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (ByteBuffer)BufferUtils.createByteBuffer(attributeData.capacity()).put(attributeData).flip(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		int vbo2 = -1;
 		if(indexData.hasRemaining()) {
 			vbo2 = glGenBuffers();
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ByteBuffer)BufferUtils.createByteBuffer(indexData.capacity()).put(indexData).flip(),GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, (ByteBuffer)BufferUtils.createByteBuffer(indexData.capacity()).put(indexData).flip(), GL_STATIC_DRAW);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 		
@@ -202,7 +201,7 @@ public class Mesh {
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 		else {
-			vaoMap = new HashMap<String, Integer>();
+			vaoMap = new HashMap<String,Integer>();
 			
 			for(VAO vao : vaos) {
 				int v = glGenVertexArrays();
@@ -283,7 +282,7 @@ public class Mesh {
 			start = b.position();
 			count = data.length;
 			
-			ByteBuffer b2 = BufferUtils.createByteBuffer(start+count*type.size);
+			ByteBuffer b2 = BufferUtils.createByteBuffer(start + count * type.size);
 			b2.put((ByteBuffer)b.flip());
 			type.store(b2, data);
 			
@@ -292,14 +291,22 @@ public class Mesh {
 		
 		private static int getPrimitive(String name) {
 			switch(name) {
-				case "triangles": return GL_TRIANGLES;
-				case "tri-fan": return GL_TRIANGLE_FAN;
-				case "tri-strip": return GL_TRIANGLE_STRIP;
-				case "lines": return GL_LINES;
-				case "line-strip": return GL_LINE_STRIP;
-				case "line-loop": return GL_LINE_LOOP;
-				case "points": return GL_POINTS;
-				default: throw new IllegalArgumentException("Invalid primitive name: " + name);
+				case "triangles":
+					return GL_TRIANGLES;
+				case "tri-fan":
+					return GL_TRIANGLE_FAN;
+				case "tri-strip":
+					return GL_TRIANGLE_STRIP;
+				case "lines":
+					return GL_LINES;
+				case "line-strip":
+					return GL_LINE_STRIP;
+				case "line-loop":
+					return GL_LINE_LOOP;
+				case "points":
+					return GL_POINTS;
+				default:
+					throw new IllegalArgumentException("Invalid primitive name: " + name);
 			}
 		}
 		
@@ -312,19 +319,19 @@ public class Mesh {
 	}
 	
 	private enum RenderCommandType {
-		UBYTE("ubyte",GL_UNSIGNED_BYTE,1) {
+		UBYTE("ubyte", GL_UNSIGNED_BYTE, 1) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
 					b.put(Byte.parseByte(s));
 			}
 		},
-		USHORT("ushort",GL_UNSIGNED_SHORT,2) {
+		USHORT("ushort", GL_UNSIGNED_SHORT, 2) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
 					b.putShort(Short.parseShort(s));
 			}
 		},
-		UINT("uint",GL_UNSIGNED_INT,4) {
+		UINT("uint", GL_UNSIGNED_INT, 4) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
 					b.putInt(Integer.parseInt(s));
@@ -369,7 +376,7 @@ public class Mesh {
 		public ByteBuffer storeData(ByteBuffer b, String[] data) {
 			offset = b.position();
 			
-			ByteBuffer b2 = BufferUtils.createByteBuffer(offset+data.length*type.size);
+			ByteBuffer b2 = BufferUtils.createByteBuffer(offset + data.length * type.size);
 			b2.put((ByteBuffer)b.flip());
 			type.store(b2, data);
 			
@@ -378,10 +385,10 @@ public class Mesh {
 	}
 	
 	private enum AttributeType {
-		FLOAT("float",false,GL_FLOAT,4),
-		INT("int",false,GL_INT,4), UINT("uint",false,GL_UNSIGNED_INT,4), NORM_INT("norm-int",true,GL_INT,4), NORM_UINT("norm-uint",true,GL_UNSIGNED_INT,4),
-		SHORT("short",false,GL_SHORT,2), USHORT("ushort",false,GL_UNSIGNED_SHORT,2), NORM_SHORT("norm-short",true,GL_SHORT,2), NORM_USHORT("norm-ushort",true,GL_UNSIGNED_SHORT,2),
-		BYTE("byte",false,GL_BYTE,1), UBYTE("ubyte",false,GL_UNSIGNED_BYTE,1), NORM_BYTE("norm-byte",true,GL_BYTE,1), NORM_UBYTE("norm-ubyte",true,GL_UNSIGNED_BYTE,1);
+		FLOAT("float", false, GL_FLOAT, 4),
+		INT("int", false, GL_INT, 4), UINT("uint", false, GL_UNSIGNED_INT, 4), NORM_INT("norm-int", true, GL_INT, 4), NORM_UINT("norm-uint", true, GL_UNSIGNED_INT, 4),
+		SHORT("short", false, GL_SHORT, 2), USHORT("ushort", false, GL_UNSIGNED_SHORT, 2), NORM_SHORT("norm-short", true, GL_SHORT, 2), NORM_USHORT("norm-ushort", true, GL_UNSIGNED_SHORT, 2),
+		BYTE("byte", false, GL_BYTE, 1), UBYTE("ubyte", false, GL_UNSIGNED_BYTE, 1), NORM_BYTE("norm-byte", true, GL_BYTE, 1), NORM_UBYTE("norm-ubyte", true, GL_UNSIGNED_BYTE, 1);
 		
 		private String name;
 		private boolean normalized;

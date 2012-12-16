@@ -17,11 +17,11 @@ public class Example2_3 extends GLProgram {
 	private float width = 100, height = 100;
 	
 	public Example2_3() {
-		super("BOUNCE",500,500,true);
+		super("BOUNCE", 500, 500, true);
 	}
 	
 	public void init() {
-		glClearColor(0,0,1,1);
+		glClearColor(0, 0, 1, 1);
 	}
 	
 	public void resized() {
@@ -30,44 +30,44 @@ public class Example2_3 extends GLProgram {
 		if(h == 0)
 			h = 1;
 		
-		glViewport(0,0,Display.getWidth(),Display.getHeight());
+		glViewport(0, 0, Display.getWidth(), Display.getHeight());
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		float aspect = (float)w/h;
+		float aspect = (float)w / h;
 		if(w <= h) {
 			width = 100;
-			height = 100/aspect;
+			height = 100 / aspect;
 		}
 		else {
-			width = 100*aspect;
+			width = 100 * aspect;
 			height = 100;
 		}
 		
-		glOrtho(-width,width,-height,height,1,-1);
+		glOrtho(-width, width, -height, height, 1, -1);
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 	}
 	
 	public void update(long deltaTime) {
-		if(x > width-size || x < -width)
+		if(x > width - size || x < -width)
 			xstep = -xstep;
 		
-		if(y > height || y < -height+size)
+		if(y > height || y < -height + size)
 			ystep = -ystep;
 		
 		x += xstep;
 		y += ystep;
 		
 		if(x > width - size + xstep)
-			x = width-size-1;
-		else if(x < -width-xstep)
-			x = -width-1;
+			x = width - size - 1;
+		else if(x < -width - xstep)
+			x = -width - 1;
 		
 		if(y > height + ystep)
-			y = height-1;
+			y = height - 1;
 		else if(y < -height + size - ystep)
 			y = -height + size - 1;
 	}
@@ -75,7 +75,7 @@ public class Example2_3 extends GLProgram {
 	public void render() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		glColor3f(1,0,0);
-		glRectf(x,y,x+size,y-size);
+		glColor3f(1, 0, 0);
+		glRectf(x, y, x + size, y - size);
 	}
 }

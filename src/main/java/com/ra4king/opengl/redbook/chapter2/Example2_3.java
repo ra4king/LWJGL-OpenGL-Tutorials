@@ -15,10 +15,10 @@ public class Example2_3 extends GLProgram {
 	
 	@Override
 	public void init() {
-		glOrtho(0,getWidth(),0,getHeight(),-1,1);
+		glOrtho(0, getWidth(), 0, getHeight(), -1, 1);
 		
-		glClearColor(0,0,0,0);
-		glColor3f(1,1,1);
+		glClearColor(0, 0, 0, 0);
+		glColor3f(1, 1, 1);
 		
 		glShadeModel(GL_FLAT);
 	}
@@ -29,14 +29,14 @@ public class Example2_3 extends GLProgram {
 		
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glBegin(GL_POLYGON);
-			glEdgeFlag(true);
-			glVertex2f(50, 50);
-			
-			glEdgeFlag(false);
-			glVertex2f(150,100);
-			
-			glEdgeFlag(true);
-			glVertex2f(90,150);
+		glEdgeFlag(true);
+		glVertex2f(50, 50);
+		
+		glEdgeFlag(false);
+		glVertex2f(150, 100);
+		
+		glEdgeFlag(true);
+		glVertex2f(90, 150);
 		glEnd();
 	}
 }

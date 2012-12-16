@@ -26,37 +26,37 @@ public class Example6_2 extends GLProgram {
 	private final float[] BROWN_COLOR = { 0.5f, 0.5f, 0, 1 };
 	
 	private final float[] data = {
-			 1,  1,  1,
-			-1, -1,  1,
-			-1,  1, -1,
-			 1, -1, -1,
-			
-			-1, -1, -1,
-			 1,  1, -1,
-			 1, -1,  1,
-			-1,  1,  1,
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									1, 1, 1,
+									-1, -1, 1,
+									-1, 1, -1,
+									1, -1, -1,
+									
+									-1, -1, -1,
+									1, 1, -1,
+									1, -1, 1,
+									-1, 1, 1,
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
 	};
 	
 	private final short[] indices = {
-			0, 1, 2,
-			1, 0, 3,
-			2, 3, 0,
-			3, 2, 1,
-			
-			5, 4, 6,
-			4, 5, 7,
-			7, 6, 4,
-			6, 7, 5
+										0, 1, 2,
+										1, 0, 3,
+										2, 3, 0,
+										3, 2, 1,
+										
+										5, 4, 6,
+										4, 5, 7,
+										7, 6, 4,
+										6, 7, 5
 	};
 	
 	private ShaderProgram program;
@@ -86,7 +86,7 @@ public class Example6_2 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		program = new ShaderProgram(readFromFile("example6.2.vert"),readFromFile("example6.2.frag"));
+		program = new ShaderProgram(readFromFile("example6.2.vert"), readFromFile("example6.2.frag"));
 		
 		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
 		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
@@ -97,11 +97,11 @@ public class Example6_2 extends GLProgram {
 		
 		float zNear = 1, zFar = 61;
 		cameraToClipMatrix = new Matrix4();
-		cameraToClipMatrix.put(0,frustumScale);
-		cameraToClipMatrix.put(5,frustumScale);
-		cameraToClipMatrix.put(10,(zFar + zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(14,(2 * zFar * zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(11,-1);
+		cameraToClipMatrix.put(0, frustumScale);
+		cameraToClipMatrix.put(5, frustumScale);
+		cameraToClipMatrix.put(10, (zFar + zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(14, (2 * zFar * zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(11, -1);
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -145,7 +145,7 @@ public class Example6_2 extends GLProgram {
 	public void resized() {
 		super.resized();
 		
-		cameraToClipMatrix.put(0,frustumScale / ((float)getWidth() / getHeight()));
+		cameraToClipMatrix.put(0, frustumScale / ((float)getWidth() / getHeight()));
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -158,51 +158,51 @@ public class Example6_2 extends GLProgram {
 	
 	private void setupStaticUniformScale(Matrix4 m) {
 		m.clearToIdentity()
-		 .put(0, 4)
-		 .put(5, 4)
-		 .put(10, 4)
-		 .put(12, -10)
-		 .put(13, -10)
-		 .put(14, -45);
+				.put(0, 4)
+				.put(5, 4)
+				.put(10, 4)
+				.put(12, -10)
+				.put(13, -10)
+				.put(14, -45);
 	}
 	
 	private void setupStaticNonUniformScale(Matrix4 m) {
 		m.clearToIdentity()
-		 .put(0, 0.5f)
-		 .put(5, 1)
-		 .put(10, 10)
-		 .put(12, -10)
-		 .put(13, 10)
-		 .put(14, -45);
+				.put(0, 0.5f)
+				.put(5, 1)
+				.put(10, 10)
+				.put(12, -10)
+				.put(13, 10)
+				.put(14, -45);
 	}
 	
 	private float calculateLerpFactor(float loopDuration) {
-		float value = ((elapsedTime/(float)1e9) % loopDuration) / loopDuration;
+		float value = ((elapsedTime / (float)1e9) % loopDuration) / loopDuration;
 		if(value > 0.5f)
 			value = 1 - value;
 		return value * 2;
 	}
 	
 	private void setupDynamicUniformScale(Matrix4 m) {
-		float s = Utils.mix(1,4,calculateLerpFactor(3));
+		float s = Utils.mix(1, 4, calculateLerpFactor(3));
 		
 		m.clearToIdentity()
-		 .put(0, s)
-		 .put(5, s)
-		 .put(10, s)
-		 .put(12, 10)
-		 .put(13, 10)
-		 .put(14, -45);
+				.put(0, s)
+				.put(5, s)
+				.put(10, s)
+				.put(12, 10)
+				.put(13, 10)
+				.put(14, -45);
 	}
 	
 	private void setupDynamicNonUniformScale(Matrix4 m) {
 		m.clearToIdentity()
-		 .put(0, Utils.mix(1,0.5f,calculateLerpFactor(3)))
-		 .put(5, 1)
-		 .put(10, Utils.mix(1,10,calculateLerpFactor(5)))
-		 .put(12, 10)
-		 .put(13, -10)
-		 .put(14, -45);
+				.put(0, Utils.mix(1, 0.5f, calculateLerpFactor(3)))
+				.put(5, 1)
+				.put(10, Utils.mix(1, 10, calculateLerpFactor(5)))
+				.put(12, 10)
+				.put(13, -10)
+				.put(14, -45);
 	}
 	
 	@Override

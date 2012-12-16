@@ -9,7 +9,7 @@ public class ShaderProgram {
 	private int program;
 	
 	public ShaderProgram(String vertexShader, String fragmentShader) {
-		this(vertexShader,fragmentShader,null);
+		this(vertexShader, fragmentShader, null);
 	}
 	
 	public ShaderProgram(String vertexShader, String fragmentShader, Map<Integer,String> attributes) {

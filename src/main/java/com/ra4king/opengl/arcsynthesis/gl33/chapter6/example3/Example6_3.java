@@ -26,37 +26,37 @@ public class Example6_3 extends GLProgram {
 	private final float[] BROWN_COLOR = { 0.5f, 0.5f, 0, 1 };
 	
 	private final float[] data = {
-			 1,  1,  1,
-			-1, -1,  1,
-			-1,  1, -1,
-			 1, -1, -1,
-			
-			-1, -1, -1,
-			 1,  1, -1,
-			 1, -1,  1,
-			-1,  1,  1,
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
-			
-			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									1, 1, 1,
+									-1, -1, 1,
+									-1, 1, -1,
+									1, -1, -1,
+									
+									-1, -1, -1,
+									1, 1, -1,
+									1, -1, 1,
+									-1, 1, 1,
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
 	};
 	
 	private final short[] indices = {
-			0, 1, 2,
-			1, 0, 3,
-			2, 3, 0,
-			3, 2, 1,
-			
-			5, 4, 6,
-			4, 5, 7,
-			7, 6, 4,
-			6, 7, 5
+										0, 1, 2,
+										1, 0, 3,
+										2, 3, 0,
+										3, 2, 1,
+										
+										5, 4, 6,
+										4, 5, 7,
+										7, 6, 4,
+										6, 7, 5
 	};
 	
 	private ShaderProgram program;
@@ -86,7 +86,7 @@ public class Example6_3 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		program = new ShaderProgram(readFromFile("example6.3.vert"),readFromFile("example6.3.frag"));
+		program = new ShaderProgram(readFromFile("example6.3.vert"), readFromFile("example6.3.frag"));
 		
 		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
 		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
@@ -97,11 +97,11 @@ public class Example6_3 extends GLProgram {
 		
 		float zNear = 1, zFar = 61;
 		cameraToClipMatrix = new Matrix4();
-		cameraToClipMatrix.put(0,frustumScale);
-		cameraToClipMatrix.put(5,frustumScale);
-		cameraToClipMatrix.put(10,(zFar + zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(14,(2 * zFar * zNear) / (zNear - zFar));
-		cameraToClipMatrix.put(11,-1);
+		cameraToClipMatrix.put(0, frustumScale);
+		cameraToClipMatrix.put(5, frustumScale);
+		cameraToClipMatrix.put(10, (zFar + zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(14, (2 * zFar * zNear) / (zNear - zFar));
+		cameraToClipMatrix.put(11, -1);
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -145,7 +145,7 @@ public class Example6_3 extends GLProgram {
 	public void resized() {
 		super.resized();
 		
-		cameraToClipMatrix.put(0,frustumScale / ((float)getWidth() / getHeight()));
+		cameraToClipMatrix.put(0, frustumScale / ((float)getWidth() / getHeight()));
 		
 		program.begin();
 		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.toBuffer());
@@ -154,12 +154,12 @@ public class Example6_3 extends GLProgram {
 	
 	private float computeAngle(float loopDuration) {
 		float scale = (float)Math.PI * 2 / loopDuration;
-		return ((elapsedTime/(float)1e9) % loopDuration) * scale;
+		return ((elapsedTime / (float)1e9) % loopDuration) * scale;
 	}
 	
 	private void setupNullRotation(Matrix4 m) {
 		m.clearToIdentity()
-		 .put(14, -25);
+				.put(14, -25);
 	}
 	
 	private void setupRotateX(Matrix4 m) {
@@ -168,13 +168,13 @@ public class Example6_3 extends GLProgram {
 		float sin = (float)Math.sin(angle);
 		
 		m.clearToIdentity()
-		 .put(5, cos)
-		 .put(6, sin)
-		 .put(9, -sin)
-		 .put(10, cos)
-		 .put(12, -5)
-		 .put(13, -5)
-		 .put(14, -25);
+				.put(5, cos)
+				.put(6, sin)
+				.put(9, -sin)
+				.put(10, cos)
+				.put(12, -5)
+				.put(13, -5)
+				.put(14, -25);
 	}
 	
 	private void setupRotateY(Matrix4 m) {
@@ -183,13 +183,13 @@ public class Example6_3 extends GLProgram {
 		float sin = (float)Math.sin(angle);
 		
 		m.clearToIdentity()
-		 .put(0, cos)
-		 .put(2, -sin)
-		 .put(8, sin)
-		 .put(10, cos)
-		 .put(12, -5)
-		 .put(13, 5)
-		 .put(14, -25);
+				.put(0, cos)
+				.put(2, -sin)
+				.put(8, sin)
+				.put(10, cos)
+				.put(12, -5)
+				.put(13, 5)
+				.put(14, -25);
 	}
 	
 	private void setupRotateZ(Matrix4 m) {
@@ -198,39 +198,39 @@ public class Example6_3 extends GLProgram {
 		float sin = (float)Math.sin(angle);
 		
 		m.clearToIdentity()
-		 .put(0, cos)
-		 .put(1, sin)
-		 .put(4, -sin)
-		 .put(5, cos)
-		 .put(12, 5)
-		 .put(13, 5)
-		 .put(14, -25);
+				.put(0, cos)
+				.put(1, sin)
+				.put(4, -sin)
+				.put(5, cos)
+				.put(12, 5)
+				.put(13, 5)
+				.put(14, -25);
 	}
 	
 	private void setupRotateAxis(Matrix4 m) {
 		float angle = computeAngle(2);
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
-		float invCos = 1-cos;
+		float invCos = 1 - cos;
 		
-		Vector3 v = new Vector3(1,1,1).normalize();
+		Vector3 v = new Vector3(1, 1, 1).normalize();
 		
 		m.clearToIdentity()
-		 .put(0, v.x()*v.x() + (1 - v.x()*v.x())*cos)
-		 .put(4, v.x()*v.y()*invCos - v.z()*sin)
-		 .put(8, v.x()*v.z()*invCos + v.y()*sin)
-		 
-		 .put(1, v.y()*v.x()*invCos + v.z()*sin)
-		 .put(5, v.y()*v.y() + (1-v.y()*v.y())*cos)
-		 .put(9, v.y()*v.z()*invCos - v.x()*sin)
-		 
-		 .put(2, v.z()*v.x()*invCos - v.y()*sin)
-		 .put(6, v.z()*v.y()*invCos + v.x()*sin)
-		 .put(10,v.z()*v.z() + (1-v.z()*v.z())*cos)
-		 
-		 .put(12, 5)
-		 .put(13, -5)
-		 .put(14, -25);
+				.put(0, v.x() * v.x() + (1 - v.x() * v.x()) * cos)
+				.put(4, v.x() * v.y() * invCos - v.z() * sin)
+				.put(8, v.x() * v.z() * invCos + v.y() * sin)
+				
+				.put(1, v.y() * v.x() * invCos + v.z() * sin)
+				.put(5, v.y() * v.y() + (1 - v.y() * v.y()) * cos)
+				.put(9, v.y() * v.z() * invCos - v.x() * sin)
+				
+				.put(2, v.z() * v.x() * invCos - v.y() * sin)
+				.put(6, v.z() * v.y() * invCos + v.x() * sin)
+				.put(10, v.z() * v.z() + (1 - v.z() * v.z()) * cos)
+				
+				.put(12, 5)
+				.put(13, -5)
+				.put(14, -25);
 	}
 	
 	@Override

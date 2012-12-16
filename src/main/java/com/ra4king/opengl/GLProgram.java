@@ -19,8 +19,7 @@ public abstract class GLProgram {
 		try {
 			Display.setFullscreen(true);
 			Display.setVSyncEnabled(vsync);
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 		}
 	}
@@ -29,9 +28,8 @@ public abstract class GLProgram {
 		Display.setTitle(name);
 		
 		try {
-			Display.setDisplayMode(new DisplayMode(width,height));
-		}
-		catch(Exception exc) {
+			Display.setDisplayMode(new DisplayMode(width, height));
+		} catch(Exception exc) {
 			exc.printStackTrace();
 		}
 		
@@ -51,8 +49,7 @@ public abstract class GLProgram {
 	public final void run() {
 		try {
 			Display.create();
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			System.exit(1);
 		}
@@ -62,9 +59,8 @@ public abstract class GLProgram {
 	
 	public final void run(boolean core) {
 		try {
-			Display.create(new PixelFormat(),core ? new ContextAttribs(3,3) : new ContextAttribs());
-		}
-		catch(Exception exc) {
+			Display.create(new PixelFormat(), core ? new ContextAttribs(3, 3) : new ContextAttribs());
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			System.exit(1);
 		}
@@ -74,9 +70,8 @@ public abstract class GLProgram {
 	
 	public final void run(int major, int minor) {
 		try {
-			Display.create(new PixelFormat(),new ContextAttribs(major,minor));
-		}
-		catch(Exception exc) {
+			Display.create(new PixelFormat(), new ContextAttribs(major, minor));
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			System.exit(1);
 		}
@@ -107,9 +102,9 @@ public abstract class GLProgram {
 				
 				while(Keyboard.next()) {
 					if(Keyboard.getEventKeyState())
-						keyPressed(Keyboard.getEventKey(),Keyboard.getEventCharacter(),Keyboard.getEventNanoseconds());
+						keyPressed(Keyboard.getEventKey(), Keyboard.getEventCharacter(), Keyboard.getEventNanoseconds());
 					else
-						keyReleased(Keyboard.getEventKey(),Keyboard.getEventCharacter(),Keyboard.getEventNanoseconds());
+						keyReleased(Keyboard.getEventKey(), Keyboard.getEventCharacter(), Keyboard.getEventNanoseconds());
 				}
 				
 				update(deltaTime);
@@ -131,11 +126,9 @@ public abstract class GLProgram {
 				
 				Display.sync(fps);
 			}
-		}
-		catch(Throwable exc) {
+		} catch(Throwable exc) {
 			exc.printStackTrace();
-		}
-		finally {
+		} finally {
 			destroy();
 		}
 	}
@@ -157,7 +150,7 @@ public abstract class GLProgram {
 	public abstract void init();
 	
 	public void resized() {
-		glViewport(0,0,getWidth(),getHeight());
+		glViewport(0, 0, getWidth(), getHeight());
 	}
 	
 	public boolean shouldStop() {
@@ -178,7 +171,7 @@ public abstract class GLProgram {
 	}
 	
 	protected String readFromFile(String file) {
-		try(BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(file),"UTF-8"))) {
+		try(BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(file), "UTF-8"))) {
 			StringBuilder s = new StringBuilder();
 			String l;
 			
@@ -186,9 +179,8 @@ public abstract class GLProgram {
 				s.append(l).append('\n');
 			
 			return s.toString();
-		}
-		catch(Exception exc) {
-			throw new RuntimeException("Failure reading file: " + file,exc);
+		} catch(Exception exc) {
+			throw new RuntimeException("Failure reading file: " + file, exc);
 		}
 	}
 }

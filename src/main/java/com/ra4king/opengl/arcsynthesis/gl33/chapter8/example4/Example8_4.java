@@ -31,25 +31,25 @@ public class Example8_4 extends GLProgram {
 	private Orientation orientation;
 	
 	private final Quaternion[] orients = {
-			new Quaternion(0.7071f, 0, 0, 0.7071f),
-			new Quaternion(0.5f, -0.5f, 0.5f, 0.5f),
-			new Quaternion(-0.7892f, -0.37f, -0.02514f, -0.4895f),
-			new Quaternion(0.7892f, 0.37f, 0.02514f, 0.4895f),
-			
-			new Quaternion(-0.1591f, -0.7991f, -0.4344f, 0.384f),
-			new Quaternion(0.5208f, 0.6483f, 0.041f, 0.5537f),
-			new Quaternion(0, 1, 0, 0)
+											new Quaternion(0.7071f, 0, 0, 0.7071f),
+											new Quaternion(0.5f, -0.5f, 0.5f, 0.5f),
+											new Quaternion(-0.7892f, -0.37f, -0.02514f, -0.4895f),
+											new Quaternion(0.7892f, 0.37f, 0.02514f, 0.4895f),
+											
+											new Quaternion(-0.1591f, -0.7991f, -0.4344f, 0.384f),
+											new Quaternion(0.5208f, 0.6483f, 0.041f, 0.5537f),
+											new Quaternion(0, 1, 0, 0)
 	};
 	
 	private final int[] orientKeys = {
-			Keyboard.KEY_Q,
-			Keyboard.KEY_W,
-			Keyboard.KEY_E,
-			Keyboard.KEY_R,
-			
-			Keyboard.KEY_T,
-			Keyboard.KEY_Y,
-			Keyboard.KEY_U
+										Keyboard.KEY_Q,
+										Keyboard.KEY_W,
+										Keyboard.KEY_E,
+										Keyboard.KEY_R,
+										
+										Keyboard.KEY_T,
+										Keyboard.KEY_Y,
+										Keyboard.KEY_U
 	};
 	
 	public Example8_4() {
@@ -69,8 +69,7 @@ public class Example8_4 extends GLProgram {
 		
 		try {
 			ship = new Mesh(getClass().getResource("example8.4.Ship.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -210,9 +209,9 @@ public class Example8_4 extends GLProgram {
 			
 			private Quaternion lerp(Quaternion q0, Quaternion q1, float alpha) {
 				return new Quaternion(q0.x() + (q1.x() - q0.x()) * alpha,
-									  q0.y() + (q1.y() - q0.y()) * alpha,
-									  q0.z() + (q1.z() - q0.z()) * alpha,
-									  q0.w() + (q1.w() - q0.w()) * alpha).normalize();
+						q0.y() + (q1.y() - q0.y()) * alpha,
+						q0.z() + (q1.z() - q0.z()) * alpha,
+						q0.w() + (q1.w() - q0.w()) * alpha).normalize();
 			}
 			
 			public void startAnimation(int destination, float duration) {

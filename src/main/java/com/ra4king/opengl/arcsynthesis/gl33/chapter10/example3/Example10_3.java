@@ -69,11 +69,11 @@ public class Example10_3 extends GLProgram {
 		glClearDepth(1);
 		
 		ViewData initialViewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
-		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f/250f);
+		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f / 250f);
 		ObjectData initialObjectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
 		
 		viewPole = new ViewPole(initialViewData, viewScale, MouseButton.LEFT_BUTTON, false);
-		objectPole = new ObjectPole(initialObjectData, 90f/250f, MouseButton.RIGHT_BUTTON, viewPole);
+		objectPole = new ObjectPole(initialObjectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
 		fragWhiteDiffuseColor = loadLitShader("example10.3.FragLightAtten_PN.vert", "example10.3.FragLightAtten.frag");
 		fragVertexDiffuseColor = loadLitShader("example10.3.FragLightAtten_PCN.vert", "example10.3.FragLightAtten.frag");
@@ -84,8 +84,7 @@ public class Example10_3 extends GLProgram {
 			cylinderMesh = new Mesh(getClass().getResource("example10.3.UnitCylinder.xml"));
 			planeMesh = new Mesh(getClass().getResource("example10.3.LargePlane.xml"));
 			cubeMesh = new Mesh(getClass().getResource("example10.3.UnitCube.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -102,14 +101,14 @@ public class Example10_3 extends GLProgram {
 		
 		projectionUniformBuffer = glGenBuffers();
 		glBindBuffer(GL_UNIFORM_BUFFER, projectionUniformBuffer);
-		glBufferData(GL_UNIFORM_BUFFER, 16*4, GL_DYNAMIC_DRAW);
-		glBindBufferRange(GL_UNIFORM_BUFFER, projectionBlockIndex, projectionUniformBuffer, 0, 16*4);
+		glBufferData(GL_UNIFORM_BUFFER, 16 * 4, GL_DYNAMIC_DRAW);
+		glBindBufferRange(GL_UNIFORM_BUFFER, projectionBlockIndex, projectionUniformBuffer, 0, 16 * 4);
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 		
 		unprojectionUniformBuffer = glGenBuffers();
 		glBindBuffer(GL_UNIFORM_BUFFER, unprojectionUniformBuffer);
-		glBufferData(GL_UNIFORM_BUFFER, 18*4, GL_DYNAMIC_DRAW);
-		glBindBufferRange(GL_UNIFORM_BUFFER, unprojectionBlockIndex, unprojectionUniformBuffer, 0, 18*4);
+		glBufferData(GL_UNIFORM_BUFFER, 18 * 4, GL_DYNAMIC_DRAW);
+		glBindBufferRange(GL_UNIFORM_BUFFER, unprojectionBlockIndex, unprojectionUniformBuffer, 0, 18 * 4);
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 	
@@ -142,7 +141,7 @@ public class Example10_3 extends GLProgram {
 		return data;
 	}
 	
-	private ByteBuffer unprojectionData = BufferUtils.createByteBuffer(18*4);
+	private ByteBuffer unprojectionData = BufferUtils.createByteBuffer(18 * 4);
 	
 	@Override
 	public void resized() {
@@ -156,9 +155,9 @@ public class Example10_3 extends GLProgram {
 		
 		unprojectionData.clear();
 		unprojectionData.asFloatBuffer().put(persMatrix.inverse().toBuffer());
-		unprojectionData.position(16*4);
+		unprojectionData.position(16 * 4);
 		unprojectionData.asIntBuffer().put(getWidth()).put(getHeight());
-		unprojectionData.position(18*4).flip();
+		unprojectionData.position(18 * 4).flip();
 		
 		glBindBuffer(GL_UNIFORM_BUFFER, unprojectionUniformBuffer);
 		glBufferSubData(GL_UNIFORM_BUFFER, 0, unprojectionData);
@@ -285,7 +284,7 @@ public class Example10_3 extends GLProgram {
 				modelMatrix.getTop().mult(objectPole.calcMatrix());
 				
 				if(scaleCyl)
-					modelMatrix.getTop().scale(1,1,0.2f);
+					modelMatrix.getTop().scale(1, 1, 0.2f);
 				
 				Matrix3 normMatrix = new Matrix3(modelMatrix.getTop()).inverse().transpose();
 				

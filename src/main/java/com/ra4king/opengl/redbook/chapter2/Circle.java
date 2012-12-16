@@ -15,10 +15,10 @@ public class Circle extends GLProgram {
 	
 	@Override
 	public void init() {
-		glOrtho(-1,1,-1,1,-1,1);
+		glOrtho(-1, 1, -1, 1, -1, 1);
 		
-		glClearColor(0,0,0,0);
-		glColor3f(1,0,0);
+		glClearColor(0, 0, 0, 0);
+		glColor3f(1, 0, 0);
 	}
 	
 	@Override
@@ -28,7 +28,7 @@ public class Circle extends GLProgram {
 		glBegin(GL_LINE_LOOP);
 		for(int a = 0; a < 100; a++) {
 			double angle = 2 * Math.PI * a / 100;
-			glVertex2f((float)Math.cos(angle),(float)Math.sin(angle));
+			glVertex2f((float)Math.cos(angle), (float)Math.sin(angle));
 		}
 		glEnd();
 	}

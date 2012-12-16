@@ -8,11 +8,11 @@ public class Vector3 {
 	private float x, y, z;
 	
 	public Vector3() {
-		set(0,0,0);
+		set(0, 0, 0);
 	}
 	
 	public Vector3(float x, float y, float z) {
-		set(x,y,z);
+		set(x, y, z);
 	}
 	
 	public Vector3(Vector3 vec) {
@@ -58,11 +58,11 @@ public class Vector3 {
 	}
 	
 	public Vector3 set(Vector3 vec) {
-		return set(vec.x,vec.y,vec.z);
+		return set(vec.x, vec.y, vec.z);
 	}
 	
 	public Vector3 set(Vector4 vec) {
-		return set(vec.x(),vec.y(),vec.z());
+		return set(vec.x(), vec.y(), vec.z());
 	}
 	
 	public Vector3 reset() {
@@ -71,7 +71,7 @@ public class Vector3 {
 	}
 	
 	public float length() {
-		return (float)Math.sqrt(x*x + y*y + z*z);
+		return (float)Math.sqrt(x * x + y * y + z * z);
 	}
 	
 	public Vector3 normalize() {
@@ -83,11 +83,11 @@ public class Vector3 {
 	}
 	
 	public float dot(Vector3 vec) {
-		return x*vec.x + y*vec.y + z*vec.z;
+		return x * vec.x + y * vec.y + z * vec.z;
 	}
 	
 	public Vector3 cross(Vector3 vec) {
-		return new Vector3(y*vec.z - vec.y*z, z*vec.x - vec.z*x, x*vec.y - vec.x*y);
+		return new Vector3(y * vec.z - vec.y * z, z * vec.x - vec.z * x, x * vec.y - vec.x * y);
 	}
 	
 	public Vector3 add(float x, float y, float z) {
@@ -98,7 +98,7 @@ public class Vector3 {
 	}
 	
 	public Vector3 add(Vector3 vec) {
-		return add(vec.x,vec.y,vec.z);
+		return add(vec.x, vec.y, vec.z);
 	}
 	
 	public Vector3 sub(float x, float y, float z) {
@@ -109,11 +109,11 @@ public class Vector3 {
 	}
 	
 	public Vector3 sub(Vector3 vec) {
-		return sub(vec.x,vec.y,vec.z);
+		return sub(vec.x, vec.y, vec.z);
 	}
 	
 	public Vector3 mult(float f) {
-		return mult(f,f,f);
+		return mult(f, f, f);
 	}
 	
 	public Vector3 mult(float x, float y, float z) {
@@ -124,7 +124,7 @@ public class Vector3 {
 	}
 	
 	public Vector3 mult(Vector3 vec) {
-		return mult(vec.x,vec.y,vec.z);
+		return mult(vec.x, vec.y, vec.z);
 	}
 	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(3);

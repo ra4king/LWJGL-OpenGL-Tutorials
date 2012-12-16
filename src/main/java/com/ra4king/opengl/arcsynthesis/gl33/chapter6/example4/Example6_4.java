@@ -32,85 +32,85 @@ public class Example6_4 extends GLProgram {
 	private final float[] MAGENTA_COLOR = { 1, 0, 1, 1 };
 	
 	private final float[] data = {
-			+1.0f, +1.0f, +1.0f,
-			+1.0f, -1.0f, +1.0f,
-			-1.0f, -1.0f, +1.0f,
-			-1.0f, +1.0f, +1.0f,
-			
-			+1.0f, +1.0f, +1.0f,
-			-1.0f, +1.0f, +1.0f,
-			-1.0f, +1.0f, -1.0f,
-			+1.0f, +1.0f, -1.0f,
-			
-			+1.0f, +1.0f, +1.0f,
-			+1.0f, +1.0f, -1.0f,
-			+1.0f, -1.0f, -1.0f,
-			+1.0f, -1.0f, +1.0f,
-			
-			+1.0f, +1.0f, -1.0f,
-			-1.0f, +1.0f, -1.0f,
-			-1.0f, -1.0f, -1.0f,
-			+1.0f, -1.0f, -1.0f,
-			
-			+1.0f, -1.0f, +1.0f,
-			+1.0f, -1.0f, -1.0f,
-			-1.0f, -1.0f, -1.0f,
-			-1.0f, -1.0f, +1.0f,
-			
-			-1.0f, +1.0f, +1.0f,
-			-1.0f, -1.0f, +1.0f,
-			-1.0f, -1.0f, -1.0f,
-			-1.0f, +1.0f, -1.0f,
-		    
-		    GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-		    GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-		    GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-		    GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-		    
-		    BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-		    BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-		    BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-		    BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-		    
-		    RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-		    RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-		    RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-		    RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-		    
-		    YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-		    YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-		    YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-		    YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-		    
-		    CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-		    CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-		    CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-		    CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-		    
-		    MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-		    MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-		    MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-		    MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3]
+									+1.0f, +1.0f, +1.0f,
+									+1.0f, -1.0f, +1.0f,
+									-1.0f, -1.0f, +1.0f,
+									-1.0f, +1.0f, +1.0f,
+									
+									+1.0f, +1.0f, +1.0f,
+									-1.0f, +1.0f, +1.0f,
+									-1.0f, +1.0f, -1.0f,
+									+1.0f, +1.0f, -1.0f,
+									
+									+1.0f, +1.0f, +1.0f,
+									+1.0f, +1.0f, -1.0f,
+									+1.0f, -1.0f, -1.0f,
+									+1.0f, -1.0f, +1.0f,
+									
+									+1.0f, +1.0f, -1.0f,
+									-1.0f, +1.0f, -1.0f,
+									-1.0f, -1.0f, -1.0f,
+									+1.0f, -1.0f, -1.0f,
+									
+									+1.0f, -1.0f, +1.0f,
+									+1.0f, -1.0f, -1.0f,
+									-1.0f, -1.0f, -1.0f,
+									-1.0f, -1.0f, +1.0f,
+									
+									-1.0f, +1.0f, +1.0f,
+									-1.0f, -1.0f, +1.0f,
+									-1.0f, -1.0f, -1.0f,
+									-1.0f, +1.0f, -1.0f,
+									
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+									
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+									
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+									
+									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+									
+									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+									
+									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3]
 	};
 	
 	private final short[] indices = {
-			0, 1, 2,
-			2, 3, 0,
-			
-			4, 5, 6,
-			6, 7, 4,
-			
-			8, 9, 10,
-			10, 11, 8,
-			
-			12, 13, 14,
-			14, 15, 12,
-			
-			16, 17, 18,
-			18, 19, 16,
-			
-			20, 21, 22,
-			22, 23, 20
+										0, 1, 2,
+										2, 3, 0,
+										
+										4, 5, 6,
+										6, 7, 4,
+										
+										8, 9, 10,
+										10, 11, 8,
+										
+										12, 13, 14,
+										14, 15, 12,
+										
+										16, 17, 18,
+										18, 19, 16,
+										
+										20, 21, 22,
+										22, 23, 20
 	};
 	
 	private ShaderProgram program;
@@ -132,13 +132,13 @@ public class Example6_4 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		program = new ShaderProgram(readFromFile("example6.4.vert"),readFromFile("example6.4.frag"));
+		program = new ShaderProgram(readFromFile("example6.4.vert"), readFromFile("example6.4.frag"));
 		
-		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(),"modelToCameraMatrix");
-		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(),"cameraToClipMatrix");
+		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
+		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
 		
 		hierarchy = new Hierarchy();
-		cameraToClipMatrix = new Matrix4().clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100);
+		cameraToClipMatrix = new Matrix4().clearToPerspective(45 * (float)Math.PI / 180, getWidth(), getHeight(), 1, 100);
 		
 		int vbo = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -157,7 +157,7 @@ public class Example6_4 extends GLProgram {
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
-		glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 24*3*4);
+		glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 24 * 3 * 4);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
 		
 		glBindVertexArray(0);
@@ -169,7 +169,7 @@ public class Example6_4 extends GLProgram {
 		glEnable(GL_DEPTH_TEST);
 		glDepthMask(true);
 		glDepthFunc(GL_LEQUAL);
-		glDepthRange(0,1);
+		glDepthRange(0, 1);
 	}
 	
 	@Override
@@ -210,7 +210,7 @@ public class Example6_4 extends GLProgram {
 		super.resized();
 		
 		program.begin();
-		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.clearToPerspective(45*(float)Math.PI/180, getWidth(), getHeight(), 1, 100).toBuffer());
+		glUniformMatrix4(cameraToClipMatrixUniform, false, cameraToClipMatrix.clearToPerspective(45 * (float)Math.PI / 180, getWidth(), getHeight(), 1, 100).toBuffer());
 		program.end();
 	}
 	
@@ -257,29 +257,29 @@ public class Example6_4 extends GLProgram {
 		private float angleLowerFinger;
 		
 		public Hierarchy() {
-			posBase = new Vector3(3,-5,-40);
+			posBase = new Vector3(3, -5, -40);
 			angleBase = -45;
 			
-			posBaseLeft = new Vector3(2,0,0);
-			posBaseRight = new Vector3(-2,0,0);
+			posBaseLeft = new Vector3(2, 0, 0);
+			posBaseRight = new Vector3(-2, 0, 0);
 			scaleBaseZ = 3;
 			
 			angleUpperArm = -33.75f;
 			sizeUpperArm = 9;
 			
-			posLowerArm = new Vector3(0,0,8);
+			posLowerArm = new Vector3(0, 0, 8);
 			angleLowerArm = 146.25f;
 			lenLowerArm = 5;
 			widthLowerArm = 1.5f;
 			
-			posWrist = new Vector3(0,0,5);
+			posWrist = new Vector3(0, 0, 5);
 			angleWristRoll = 0;
 			angleWristPitch = 67.5f;
 			lenWrist = 2;
 			widthWrist = 2;
 			
-			posLeftFinger = new Vector3(1,0,1);
-			posRightFinger = new Vector3(-1,0,1);
+			posLeftFinger = new Vector3(1, 0, 1);
+			posRightFinger = new Vector3(-1, 0, 1);
 			angleFingerOpen = 180;
 			lenFinger = 2;
 			widthFinger = 0.5f;
@@ -294,12 +294,12 @@ public class Example6_4 extends GLProgram {
 			glBindVertexArray(vao);
 			
 			modelToCameraStack.getTop().translate(posBase);
-			modelToCameraStack.getTop().rotate(angleBase*(float)Math.PI/180,0,1,0);
+			modelToCameraStack.getTop().rotate(angleBase * (float)Math.PI / 180, 0, 1, 0);
 			
 			{
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(posBaseLeft);
-				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
+				modelToCameraStack.getTop().scale(new Vector3(1, 1, scaleBaseZ));
 				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
@@ -308,7 +308,7 @@ public class Example6_4 extends GLProgram {
 			{
 				modelToCameraStack.pushMatrix();
 				modelToCameraStack.getTop().translate(posBaseRight);
-				modelToCameraStack.getTop().scale(new Vector3(1,1,scaleBaseZ));
+				modelToCameraStack.getTop().scale(new Vector3(1, 1, scaleBaseZ));
 				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
@@ -322,13 +322,13 @@ public class Example6_4 extends GLProgram {
 		}
 		
 		public void adjBase(boolean increment) {
-			angleBase += increment ? STANDARD_ANGLE_INCREMENT : - STANDARD_ANGLE_INCREMENT;
+			angleBase += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
 			angleBase %= 360;
 		}
 		
 		public void adjUpperArm(boolean increment) {
 			angleUpperArm += increment ? STANDARD_ANGLE_INCREMENT : -STANDARD_ANGLE_INCREMENT;
-			angleUpperArm = Utils.clamp(angleUpperArm, - 90, 0);
+			angleUpperArm = Utils.clamp(angleUpperArm, -90, 0);
 		}
 		
 		public void adjLowerArm(boolean increment) {
@@ -364,24 +364,24 @@ public class Example6_4 extends GLProgram {
 		private void drawFingers(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(posLeftFinger);
-			modelToCameraStack.getTop().rotate(angleFingerOpen*(float)Math.PI/180,0,1,0);
+			modelToCameraStack.getTop().rotate(angleFingerOpen * (float)Math.PI / 180, 0, 1, 0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
-			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
+			modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger / 2));
+			modelToCameraStack.getTop().scale(new Vector3(widthFinger / 2, widthFinger / 2, lenFinger / 2));
+			glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger));
-				modelToCameraStack.getTop().rotate(-angleLowerFinger*(float)Math.PI/180,0,1,0);
+				modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger));
+				modelToCameraStack.getTop().rotate(-angleLowerFinger * (float)Math.PI / 180, 0, 1, 0);
 				
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
-				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
+				modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger / 2));
+				modelToCameraStack.getTop().scale(new Vector3(widthFinger / 2, widthFinger / 2, lenFinger / 2));
+				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
@@ -392,24 +392,24 @@ public class Example6_4 extends GLProgram {
 			
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(posRightFinger);
-			modelToCameraStack.getTop().rotate(-angleFingerOpen*(float)Math.PI/180,0,1,0);
+			modelToCameraStack.getTop().rotate(-angleFingerOpen * (float)Math.PI / 180, 0, 1, 0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
-			modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
+			modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger / 2));
+			modelToCameraStack.getTop().scale(new Vector3(widthFinger / 2, widthFinger / 2, lenFinger / 2));
+			glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger));
-				modelToCameraStack.getTop().rotate(angleLowerFinger*(float)Math.PI/180,0,1,0);
+				modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger));
+				modelToCameraStack.getTop().rotate(angleLowerFinger * (float)Math.PI / 180, 0, 1, 0);
 				
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.getTop().translate(new Vector3(0,0,lenFinger/2));
-				modelToCameraStack.getTop().scale(new Vector3(widthFinger/2,widthFinger/2,lenFinger/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
+				modelToCameraStack.getTop().translate(new Vector3(0, 0, lenFinger / 2));
+				modelToCameraStack.getTop().scale(new Vector3(widthFinger / 2, widthFinger / 2, lenFinger / 2));
+				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 				
@@ -422,13 +422,13 @@ public class Example6_4 extends GLProgram {
 		private void drawWrist(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(posWrist);
-			modelToCameraStack.getTop().rotate(angleWristRoll*(float)Math.PI/180,0,0,1);
-			modelToCameraStack.getTop().rotate(angleWristPitch*(float)Math.PI/180,1,0,0);
+			modelToCameraStack.getTop().rotate(angleWristRoll * (float)Math.PI / 180, 0, 0, 1);
+			modelToCameraStack.getTop().rotate(angleWristPitch * (float)Math.PI / 180, 1, 0, 0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.getTop().scale(new Vector3(widthWrist/2,widthWrist/2,lenWrist/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
-			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
+			modelToCameraStack.getTop().scale(new Vector3(widthWrist / 2, widthWrist / 2, lenWrist / 2));
+			glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
+			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			drawFingers(modelToCameraStack);
@@ -439,13 +439,13 @@ public class Example6_4 extends GLProgram {
 		private void drawLowerArm(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
 			modelToCameraStack.getTop().translate(posLowerArm);
-			modelToCameraStack.getTop().rotate(angleLowerArm*(float)Math.PI/180,1,0,0);
+			modelToCameraStack.getTop().rotate(angleLowerArm * (float)Math.PI / 180, 1, 0, 0);
 			
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.getTop().translate(new Vector3(0,0,lenLowerArm/2));
-			modelToCameraStack.getTop().scale(new Vector3(widthLowerArm/2,widthLowerArm/2,lenLowerArm/2));
-			glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
-			glDrawElements(GL_TRIANGLES,indices.length,GL_UNSIGNED_SHORT,0);
+			modelToCameraStack.getTop().translate(new Vector3(0, 0, lenLowerArm / 2));
+			modelToCameraStack.getTop().scale(new Vector3(widthLowerArm / 2, widthLowerArm / 2, lenLowerArm / 2));
+			glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
+			glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 			modelToCameraStack.popMatrix();
 			
 			drawWrist(modelToCameraStack);
@@ -455,13 +455,13 @@ public class Example6_4 extends GLProgram {
 		
 		private void drawUpperArm(MatrixStack modelToCameraStack) {
 			modelToCameraStack.pushMatrix();
-			modelToCameraStack.getTop().rotate(angleUpperArm*(float)Math.PI/180,1,0,0);
+			modelToCameraStack.getTop().rotate(angleUpperArm * (float)Math.PI / 180, 1, 0, 0);
 			
 			{
 				modelToCameraStack.pushMatrix();
-				modelToCameraStack.getTop().translate(new Vector3(0,0,(sizeUpperArm/2)-1));
-				modelToCameraStack.getTop().scale(new Vector3(1,1,sizeUpperArm/2));
-				glUniformMatrix4(modelToCameraMatrixUniform,false,modelToCameraStack.getTop().toBuffer());
+				modelToCameraStack.getTop().translate(new Vector3(0, 0, (sizeUpperArm / 2) - 1));
+				modelToCameraStack.getTop().scale(new Vector3(1, 1, sizeUpperArm / 2));
+				glUniformMatrix4(modelToCameraMatrixUniform, false, modelToCameraStack.getTop().toBuffer());
 				glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_SHORT, 0);
 				modelToCameraStack.popMatrix();
 			}

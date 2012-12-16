@@ -28,14 +28,14 @@ public class Example2_1 extends GLProgram {
 	public void init() {
 		glClearColor(0, 0, 0, 0);
 		
-		program = new ShaderProgram(readFromFile("example2.1.vert"),readFromFile("example2.1.frag"));
+		program = new ShaderProgram(readFromFile("example2.1.vert"), readFromFile("example2.1.frag"));
 		
 		vbo = glGenBuffers();
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.75f,  0.75f, 0.0f, 1.0f,
-																									   0.75f, -0.75f, 0.0f, 1.0f,
-																									  -0.75f, -0.75f, 0.0f, 1.0f}).flip(),GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.75f, 0.75f, 0.0f, 1.0f,
+																										0.75f, -0.75f, 0.0f, 1.0f,
+																										-0.75f, -0.75f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
 		
 		glBindVertexArray(glGenVertexArrays());
 		

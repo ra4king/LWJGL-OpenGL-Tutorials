@@ -14,21 +14,21 @@ public class Example1_3 extends GLProgram {
 	private float spin;
 	
 	public Example1_3() {
-		super("Example 1.3", 800, 600,false);
+		super("Example 1.3", 800, 600, false);
 	}
 	
 	@Override
 	public void init() {
-		glClearColor(0,0,0,1);
-		glColor3f(1,1,1);
+		glClearColor(0, 0, 0, 1);
+		glColor3f(1, 1, 1);
 		glShadeModel(GL_FLAT);
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		
-		glOrtho(-50f * getWidth()/getHeight(),
-				50f * getWidth()/getHeight(),
-				-50, 50, -1 ,1);
+		glOrtho(-50f * getWidth() / getHeight(),
+				50f * getWidth() / getHeight(),
+				-50, 50, -1, 1);
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

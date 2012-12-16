@@ -36,7 +36,7 @@ public class Example8_2 extends GLProgram {
 	
 	@Override
 	public void init() {
-		glClearColor(0,0,0,0);
+		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
 		program = new ShaderProgram(readFromFile("example8.2.vert"), readFromFile("example8.2.frag"));
@@ -47,8 +47,7 @@ public class Example8_2 extends GLProgram {
 		
 		try {
 			ship = new Mesh(getClass().getResource("example8.2.Ship.xml"));
-		}
-		catch(Exception exc) {
+		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
 		}
@@ -77,9 +76,9 @@ public class Example8_2 extends GLProgram {
 	private void offsetOrientation(Vector3 axis, float angle) {
 		angle = angle * (float)Math.PI / 180;
 		
-		axis.normalize().mult((float)Math.sin(angle/2));
+		axis.normalize().mult((float)Math.sin(angle / 2));
 		
-		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle/2));
+		Quaternion offset = new Quaternion(axis.x(), axis.y(), axis.z(), (float)Math.cos(angle / 2));
 		
 		if(rightMultiply)
 			orientation = orientation.mult(offset);
