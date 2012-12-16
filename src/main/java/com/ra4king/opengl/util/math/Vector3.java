@@ -11,6 +11,10 @@ public class Vector3 {
 		set(0, 0, 0);
 	}
 	
+	public Vector3(float v) {
+		this(v, v, v);
+	}
+	
 	public Vector3(float x, float y, float z) {
 		set(x, y, z);
 	}
