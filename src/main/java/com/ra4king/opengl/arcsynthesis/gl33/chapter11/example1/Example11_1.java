@@ -211,7 +211,7 @@ public class Example11_1 extends GLProgram {
 				drawDark = !drawDark;
 				break;
 			case Keyboard.KEY_H:
-				lightModel = LightingModel.values()[(lightModel.ordinal()+1)%LightingModel.values().length];
+				lightModel = LightingModel.values()[(lightModel.ordinal() + 1) % LightingModel.values().length];
 				changedLightModel = true;
 				break;
 		}
