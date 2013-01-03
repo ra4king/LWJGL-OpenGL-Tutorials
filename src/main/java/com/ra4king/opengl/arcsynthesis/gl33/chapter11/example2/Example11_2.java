@@ -58,7 +58,7 @@ public class Example11_2 extends GLProgram {
 	private Timer lightTimer = new Timer(Timer.Type.LOOP, 5);
 	private float lightHeight = 1.5f, lightRadius = 1;
 	
-	private LightingModel lightModel = LightingModel.BLINN_ONLY;
+	private LightingModel lightModel = LightingModel.BLINN_SPECULAR;
 	private MaterialParams materialParams = new MaterialParams();
 	
 	private boolean drawColoredCyl, drawLightSource, scaleCyl, drawDark;
