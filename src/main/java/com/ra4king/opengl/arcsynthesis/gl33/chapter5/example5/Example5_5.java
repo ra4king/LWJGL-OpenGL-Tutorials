@@ -228,7 +228,7 @@ public class Example5_5 extends GLProgram {
 	private boolean depthClampingActive;
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		if(key == Keyboard.KEY_SPACE) {
 			if(depthClampingActive)
 				glDisable(GL_DEPTH_CLAMP);

@@ -66,7 +66,7 @@ public class Example2_2 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		switch(key) {
 			case Keyboard.KEY_UP:
 				dy = stepSize;
@@ -84,7 +84,7 @@ public class Example2_2 extends GLProgram {
 	}
 	
 	@Override
-	public void keyReleased(int key, char c, long nanos) {
+	public void keyReleased(int key, char c) {
 		switch(key) {
 			case Keyboard.KEY_UP:
 				dy = 0;

@@ -6,8 +6,6 @@ in vec3 cameraSpacePosition;
 
 out vec4 outputColor;
 
-uniform vec3 modelSpaceLightPos;
-
 uniform vec4 lightIntensity;
 uniform vec4 ambientIntensity;
 

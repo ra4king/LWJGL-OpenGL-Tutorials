@@ -178,7 +178,7 @@ public class Test extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		if(key == Keyboard.KEY_M)
 			Mouse.setGrabbed(!Mouse.isGrabbed());
 	}

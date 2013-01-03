@@ -106,7 +106,7 @@ public class Example8_4 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		if(key == Keyboard.KEY_SPACE) {
 			boolean slerp = orientation.toggleSlerp();
 			System.out.println(slerp ? "Slerp" : "Lerp");

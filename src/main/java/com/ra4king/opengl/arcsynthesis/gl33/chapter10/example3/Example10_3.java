@@ -186,7 +186,7 @@ public class Example10_3 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		boolean changedAtten = false;
 		
 		switch(key) {

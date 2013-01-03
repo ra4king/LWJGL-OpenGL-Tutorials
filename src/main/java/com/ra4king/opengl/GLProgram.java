@@ -102,9 +102,9 @@ public abstract class GLProgram {
 				
 				while(Keyboard.next()) {
 					if(Keyboard.getEventKeyState())
-						keyPressed(Keyboard.getEventKey(), Keyboard.getEventCharacter(), Keyboard.getEventNanoseconds());
+						keyPressed(Keyboard.getEventKey(), Keyboard.getEventCharacter());
 					else
-						keyReleased(Keyboard.getEventKey(), Keyboard.getEventCharacter(), Keyboard.getEventNanoseconds());
+						keyReleased(Keyboard.getEventKey(), Keyboard.getEventCharacter());
 				}
 				
 				update(deltaTime);
@@ -157,9 +157,9 @@ public abstract class GLProgram {
 		return Keyboard.isKeyDown(Keyboard.KEY_ESCAPE);
 	}
 	
-	public void keyPressed(int key, char c, long nanos) {}
+	public void keyPressed(int key, char c) {}
 	
-	public void keyReleased(int key, char c, long nanos) {}
+	public void keyReleased(int key, char cs) {}
 	
 	public void update(long deltaTime) {}
 	

@@ -119,7 +119,7 @@ public class Example9_2 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		if(key == Keyboard.KEY_SPACE)
 			scaleCyl = !scaleCyl;
 		else if(key == Keyboard.KEY_T) {

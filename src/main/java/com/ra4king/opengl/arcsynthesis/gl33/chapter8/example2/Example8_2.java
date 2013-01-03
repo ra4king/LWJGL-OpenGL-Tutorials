@@ -109,7 +109,7 @@ public class Example8_2 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		if(key == Keyboard.KEY_SPACE) {
 			rightMultiply = !rightMultiply;
 			System.out.println(rightMultiply ? "Right-multiply" : "Left-multiply");

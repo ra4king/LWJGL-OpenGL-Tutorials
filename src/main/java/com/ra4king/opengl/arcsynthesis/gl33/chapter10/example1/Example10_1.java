@@ -155,7 +155,7 @@ public class Example10_1 extends GLProgram {
 	private float lightHeight = 1.5f, lightRadius = 1;
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		switch(key) {
 			case Keyboard.KEY_SPACE:
 				drawColoredCyl = !drawColoredCyl;

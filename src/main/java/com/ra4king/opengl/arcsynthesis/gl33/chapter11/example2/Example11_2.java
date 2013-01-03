@@ -1,4 +1,4 @@
-package com.ra4king.opengl.arcsynthesis.gl33.chapter11.example1;
+package com.ra4king.opengl.arcsynthesis.gl33.chapter11.example2;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
@@ -11,15 +11,15 @@ import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
-import com.ra4king.opengl.util.ShaderProgram;
-import com.ra4king.opengl.util.Timer;
-import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.MousePoles.MouseButton;
 import com.ra4king.opengl.util.MousePoles.ObjectData;
 import com.ra4king.opengl.util.MousePoles.ObjectPole;
 import com.ra4king.opengl.util.MousePoles.ViewData;
 import com.ra4king.opengl.util.MousePoles.ViewPole;
 import com.ra4king.opengl.util.MousePoles.ViewScale;
+import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Timer;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix3;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
@@ -27,23 +27,21 @@ import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.math.Vector4;
 
-public class Example11_1 extends GLProgram {
+public class Example11_2 extends GLProgram {
 	public static void main(String[] args) {
-		new Example11_1().run(true);
+		new Example11_2().run(true);
 	}
 	
 	private static enum LightingModel {
-		PURE_DIFFUSE, DIFFUSE_AND_SPECULAR, SPECULAR_ONLY
+		PHONG_SPECULAR, PHONG_ONLY, BLINN_SPECULAR, BLINN_ONLY
 	}
 	
-	private ProgramData whiteNoPhong;
-	private ProgramData colorNoPhong;
-	
-	private ProgramData whitePhong;
-	private ProgramData colorPhong;
-	
-	private ProgramData whitePhongOnly;
-	private ProgramData colorPhongOnly;
+	private ProgramPair[] programs = new ProgramPair[LightingModel.values().length];
+	private ShaderPair[] shaderFiles = { new ShaderPair("PN.vert", "PCN.vert", "PhongLighting.frag"),
+										new ShaderPair("PN.vert", "PCN.vert", "PhongOnly.frag"),
+										new ShaderPair("PN.vert", "PCN.vert", "BlinnLighting.frag"),
+										new ShaderPair("PN.vert", "PCN.vert", "BlinnOnly.frag"),
+	};
 	
 	private UnlitProgramData unlit;
 	
@@ -60,18 +58,18 @@ public class Example11_1 extends GLProgram {
 	private Timer lightTimer = new Timer(Timer.Type.LOOP, 5);
 	private float lightHeight = 1.5f, lightRadius = 1;
 	
-	private LightingModel lightModel = LightingModel.DIFFUSE_AND_SPECULAR;
+	private LightingModel lightModel = LightingModel.BLINN_ONLY;
+	private MaterialParams materialParams = new MaterialParams();
 	
 	private boolean drawColoredCyl, drawLightSource, scaleCyl, drawDark;
 	
 	private final float lightAttenuation = 1.2f;
-	private float shininessFactor = 4;
 	
 	private Vector4 darkColor = new Vector4(0.2f, 0.2f, 0.2f, 1);
 	private Vector4 lightColor = new Vector4(1);
 	
-	public Example11_1() {
-		super("Example 11.1", 500, 500, true);
+	public Example11_2() {
+		super("Example 11.2", 500, 500, true);
 	}
 	
 	@Override
@@ -86,21 +84,16 @@ public class Example11_1 extends GLProgram {
 		viewPole = new ViewPole(initialViewData, viewScale, MouseButton.LEFT_BUTTON, false);
 		objectPole = new ObjectPole(initialObjectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
-		whiteNoPhong = loadLitProgram("example11.1.PN.vert", "example11.1.NoPhong.frag");
-		colorNoPhong = loadLitProgram("example11.1.PCN.vert", "example11.1.NoPhong.frag");
+		for(int a = 0; a < shaderFiles.length; a++)
+			programs[a] = new ProgramPair(loadLitProgram("example11.2." + shaderFiles[a].whiteVertexShader, "example11.2." + shaderFiles[a].fragmentShader),
+					loadLitProgram("example11.2." + shaderFiles[a].colorVertexShader, "example11.2." + shaderFiles[a].fragmentShader));
 		
-		whitePhong = loadLitProgram("example11.1.PN.vert", "example11.1.PhongLighting.frag");
-		colorPhong = loadLitProgram("example11.1.PCN.vert", "example11.1.PhongLighting.frag");
-		
-		whitePhongOnly = loadLitProgram("example11.1.PN.vert", "example11.1.PhongOnly.frag");
-		colorPhongOnly = loadLitProgram("example11.1.PCN.vert", "example11.1.PhongOnly.frag");
-		
-		unlit = loadUnlitProgram("example11.1.PosTransform.vert", "example11.1.UniformColor.frag");
+		unlit = loadUnlitProgramData("example11.2.PosTransform.vert", "example11.2.UniformColor.frag");
 		
 		try {
-			cylinderMesh = new Mesh(getClass().getResource("example11.1.UnitCylinder.xml"));
-			planeMesh = new Mesh(getClass().getResource("example11.1.LargePlane.xml"));
-			cubeMesh = new Mesh(getClass().getResource("example11.1.UnitCube.xml"));
+			cylinderMesh = new Mesh(getClass().getResource("example11.2.UnitCylinder.xml"));
+			planeMesh = new Mesh(getClass().getResource("example11.2.LargePlane.xml"));
+			cubeMesh = new Mesh(getClass().getResource("example11.2.UnitCube.xml"));
 		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
@@ -123,14 +116,14 @@ public class Example11_1 extends GLProgram {
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
 	
-	private ProgramData loadLitProgram(String vertFile, String fragFile) {
-		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertFile), readFromFile(fragFile)));
+	private ProgramData loadLitProgram(String vertexFile, String fragmentFile) {
+		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertexFile), readFromFile(fragmentFile)));
 		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
 		data.lightIntensityUniform = glGetUniformLocation(data.program.getProgram(), "lightIntensity");
 		data.ambientIntensityUniform = glGetUniformLocation(data.program.getProgram(), "ambientIntensity");
 		
 		data.normalModelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "normalModelToCameraMatrix");
-		data.cameraSpaceLightPosUniform = glGetUniformLocation(data.program.getProgram(), "cameraSpaceLightPos");
+		data.cameraSpaceLightPositionUniform = glGetUniformLocation(data.program.getProgram(), "cameraSpaceLightPos");
 		data.lightAttenuationUniform = glGetUniformLocation(data.program.getProgram(), "lightAttenuation");
 		data.shininessFactorUniform = glGetUniformLocation(data.program.getProgram(), "shininessFactor");
 		data.baseDiffuseColorUniform = glGetUniformLocation(data.program.getProgram(), "baseDiffuseColor");
@@ -141,8 +134,8 @@ public class Example11_1 extends GLProgram {
 		return data;
 	}
 	
-	private UnlitProgramData loadUnlitProgram(String vertFile, String fragFile) {
-		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertFile), readFromFile(fragFile)));
+	private UnlitProgramData loadUnlitProgramData(String vertexFile, String fragmentFile) {
+		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertexFile), readFromFile(fragmentFile)));
 		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
 		data.objectColorUniform = glGetUniformLocation(data.program.getProgram(), "objectColor");
 		
@@ -192,11 +185,11 @@ public class Example11_1 extends GLProgram {
 				drawColoredCyl = !drawColoredCyl;
 				break;
 			case Keyboard.KEY_O:
-				shininessFactor += 0.5f;
+				materialParams.increment(!(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)));
 				changedShininess = true;
 				break;
 			case Keyboard.KEY_U:
-				shininessFactor -= 0.5f;
+				materialParams.decrement(!(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)));
 				changedShininess = true;
 				break;
 			case Keyboard.KEY_Y:
@@ -212,33 +205,24 @@ public class Example11_1 extends GLProgram {
 				drawDark = !drawDark;
 				break;
 			case Keyboard.KEY_H:
-				if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
-					switch(lightModel) {
-						case DIFFUSE_AND_SPECULAR:
-							lightModel = LightingModel.PURE_DIFFUSE;
-							break;
-						case PURE_DIFFUSE:
-							lightModel = LightingModel.DIFFUSE_AND_SPECULAR;
-							break;
-						case SPECULAR_ONLY:
-							lightModel = LightingModel.PURE_DIFFUSE;
-							break;
-					}
+				if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+					if(lightModel.ordinal()%2 != 0)
+						lightModel = LightingModel.values()[(lightModel.ordinal()-1)%LightingModel.values().length];
+					else
+						lightModel = LightingModel.values()[(lightModel.ordinal()+1)%LightingModel.values().length];
+				}
 				else
-					lightModel = LightingModel.values()[(lightModel.ordinal() + 1) % LightingModel.values().length];
+					lightModel = LightingModel.values()[(lightModel.ordinal()+2)%LightingModel.values().length];
 				
 				changedLightModel = true;
 				break;
 		}
 		
-		if(shininessFactor <= 0)
-			shininessFactor = 0.0001f;
-		
 		if(changedShininess)
-			System.out.printf("Shiny: %f\n", shininessFactor);
+			System.out.printf("Shiny: %f\n", materialParams.getSpecularValue());
 		
 		if(changedLightModel)
-			System.out.printf("%s\n", lightModel.name());
+			System.out.printf("%s\n", lightModel);
 	}
 	
 	private Vector4 calcLightPosition() {
@@ -261,41 +245,24 @@ public class Example11_1 extends GLProgram {
 		Vector4 worldLightPos = calcLightPosition();
 		Vector4 lightPosCameraSpace = modelMatrix.getTop().mult(worldLightPos);
 		
-		ProgramData whiteProgram;
-		ProgramData colorProgram;
-		
-		switch(lightModel) {
-			case PURE_DIFFUSE:
-				whiteProgram = whiteNoPhong;
-				colorProgram = colorNoPhong;
-				break;
-			case DIFFUSE_AND_SPECULAR:
-				whiteProgram = whitePhong;
-				colorProgram = colorPhong;
-				break;
-			case SPECULAR_ONLY:
-				whiteProgram = whitePhongOnly;
-				colorProgram = colorPhongOnly;
-				break;
-			default:
-				throw new RuntimeException("How is this even possible?");
-		}
+		ProgramData whiteProgram = programs[lightModel.ordinal()].whiteProgram;
+		ProgramData colorProgram = programs[lightModel.ordinal()].colorProgram;
 		
 		whiteProgram.program.begin();
 		glUniform4f(whiteProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
 		glUniform4f(whiteProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
-		glUniform3(whiteProgram.cameraSpaceLightPosUniform, lightPosCameraSpace.toBuffer());
+		glUniform3(whiteProgram.cameraSpaceLightPositionUniform, lightPosCameraSpace.toBuffer());
 		glUniform1f(whiteProgram.lightAttenuationUniform, lightAttenuation);
-		glUniform1f(whiteProgram.shininessFactorUniform, shininessFactor);
+		glUniform1f(whiteProgram.shininessFactorUniform, materialParams.getSpecularValue());
 		glUniform4(whiteProgram.baseDiffuseColorUniform, drawDark ? darkColor.toBuffer() : lightColor.toBuffer());
 		whiteProgram.program.end();
 		
 		colorProgram.program.begin();
 		glUniform4f(colorProgram.lightIntensityUniform, 0.8f, 0.8f, 0.8f, 1);
 		glUniform4f(colorProgram.ambientIntensityUniform, 0.2f, 0.2f, 0.2f, 1);
-		glUniform3(colorProgram.cameraSpaceLightPosUniform, lightPosCameraSpace.toBuffer());
+		glUniform3(colorProgram.cameraSpaceLightPositionUniform, lightPosCameraSpace.toBuffer());
 		glUniform1f(colorProgram.lightAttenuationUniform, lightAttenuation);
-		glUniform1f(colorProgram.shininessFactorUniform, shininessFactor);
+		glUniform1f(colorProgram.shininessFactorUniform, materialParams.getSpecularValue());
 		colorProgram.program.end();
 		
 		{
@@ -365,7 +332,7 @@ public class Example11_1 extends GLProgram {
 		private int ambientIntensityUniform;
 		
 		private int normalModelToCameraMatrixUniform;
-		private int cameraSpaceLightPosUniform;
+		private int cameraSpaceLightPositionUniform;
 		private int lightAttenuationUniform;
 		private int shininessFactorUniform;
 		private int baseDiffuseColorUniform;
@@ -383,6 +350,92 @@ public class Example11_1 extends GLProgram {
 		
 		public UnlitProgramData(ShaderProgram program) {
 			this.program = program;
+		}
+	}
+	
+	private static class ProgramPair {
+		private ProgramData whiteProgram;
+		private ProgramData colorProgram;
+		
+		public ProgramPair(ProgramData whiteProgram, ProgramData colorProgram) {
+			this.whiteProgram = whiteProgram;
+			this.colorProgram = colorProgram;
+		}
+	}
+	
+	private static class ShaderPair {
+		private String whiteVertexShader;
+		private String colorVertexShader;
+		private String fragmentShader;
+		
+		public ShaderPair(String whiteVertexShader, String colorVertexShader, String fragmentShader) {
+			this.whiteVertexShader = whiteVertexShader;
+			this.colorVertexShader = colorVertexShader;
+			this.fragmentShader = fragmentShader;
+		}
+	}
+	
+	private class MaterialParams {
+		private float phongExponent;
+		private float blinnExponent;
+		
+		public MaterialParams() {
+			phongExponent = 4;
+			blinnExponent = 4;
+		}
+		
+		public float getSpecularValue() {
+			switch(lightModel) {
+				case PHONG_SPECULAR:
+				case PHONG_ONLY:
+					return phongExponent;
+				case BLINN_SPECULAR:
+				case BLINN_ONLY:
+					return blinnExponent;
+					
+				default:
+					return 0;
+			}
+		}
+		
+		public void setSpecularValue(float value) {
+			switch(lightModel) {
+				case PHONG_SPECULAR:
+				case PHONG_ONLY:
+					phongExponent = value;
+					break;
+				case BLINN_SPECULAR:
+				case BLINN_ONLY:
+					blinnExponent = value;
+			}
+		}
+		
+		public void increment(boolean isLarge) {
+			float param = getSpecularValue();
+			
+			if(isLarge)
+				param += 0.5f;
+			else
+				param += 0.1f;
+			
+			setSpecularValue(clamp(param));
+		}
+		
+		public void decrement(boolean isLarge) {
+			float param = getSpecularValue();
+			
+			if(isLarge)
+				param -= 0.5f;
+			else
+				param -= 0.1f;
+			
+			setSpecularValue(clamp(param));
+		}
+		
+		private float clamp(float param) {
+			if(param <= 0f)
+				param = 0.0001f;
+			return param;
 		}
 	}
 }

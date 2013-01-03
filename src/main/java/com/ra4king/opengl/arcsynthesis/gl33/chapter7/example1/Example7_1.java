@@ -242,7 +242,7 @@ public class Example7_1 extends GLProgram {
 	}
 	
 	@Override
-	public void keyPressed(int key, char c, long nanos) {
+	public void keyPressed(int key, char c) {
 		switch(key) {
 			case Keyboard.KEY_SPACE:
 				drawLookAtPoint = !drawLookAtPoint;

@@ -32,17 +32,14 @@ void main()
 	vec4 attenIntensity = atten * lightIntensity;
 	
 	vec3 surfaceNormal = normalize(vertexNormal);
-	float cosAngIncidence = dot(surfaceNormal, lightDir);
-	cosAngIncidence = clamp(cosAngIncidence, 0, 1);
 	
 	vec3 viewDirection = normalize(-cameraSpacePosition);
-	vec3 reflectDir = reflect(-lightDir, surfaceNormal);
-	float phongTerm = dot(viewDirection, reflectDir);
-	phongTerm = clamp(phongTerm, 0, 1);
-	phongTerm = cosAngIncidence != 0.0 ? phongTerm : 0.0;
-	phongTerm = pow(phongTerm, shininessFactor);
 	
-	outputColor = diffuseColor  * attenIntensity * cosAngIncidence +
-				  specularColor * attenIntensity * phongTerm	   +
-				  diffuseColor  * ambientIntensity;
+	vec3 halfAngle = normalize(lightDir + viewDirection);
+	float blinnTerm = dot(surfaceNormal, halfAngle);
+	blinnTerm = clamp(blinnTerm, 0, 1);
+	blinnTerm = dot(surfaceNormal, lightDir) >= 0 ? blinnTerm : 0;
+	blinnTerm = pow(blinnTerm, shininessFactor);
+	
+	outputColor = specularColor * attenIntensity * blinnTerm + diffuseColor * ambientIntensity;
 }
