@@ -22,10 +22,11 @@ float CalcAttenuation(in vec3 cameraSpacePosition, out vec3 lightDirection)
 	float lightDistanceSqr = dot(lightDifference, lightDifference);
 	lightDirection = lightDifference * inversesqrt(lightDistanceSqr);
 	
-	return 1/ (1 + lightAttenuation * sqrt(lightDistanceSqr));
+	return 1 / (1 + lightAttenuation * sqrt(lightDistanceSqr));
 }
 
-void main() {
+void main()
+{
 	vec3 lightDir = vec3(0);
 	float atten = CalcAttenuation(cameraSpacePosition, lightDir);
 	vec4 attenIntensity = atten * lightIntensity;
@@ -35,14 +36,13 @@ void main() {
 	cosAngIncidence = clamp(cosAngIncidence, 0, 1);
 	
 	vec3 viewDirection = normalize(-cameraSpacePosition);
-	
-	vec3 halfAngle = normalize(lightDir + viewDirection);
-	float blinnTerm = dot(surfaceNormal, halfAngle);
-	blinnTerm = clamp(blinnTerm, 0, 1);
-	blinnTerm = cosAngIncidence != 0.0 ? blinnTerm : 0.0;
-	blinnTerm = pow(blinnTerm, shininessFactor);
+	vec3 reflectDir = reflect(-lightDir, surfaceNormal);
+	float phongTerm = dot(viewDirection, reflectDir);
+	phongTerm = clamp(phongTerm, 0, 1);
+	phongTerm = cosAngIncidence != 0.0 ? phongTerm : 0.0;
+	phongTerm = pow(phongTerm, shininessFactor);
 	
 	outputColor = diffuseColor  * attenIntensity * cosAngIncidence +
-				  specularColor * attenIntensity * blinnTerm 	   +
+				  specularColor * attenIntensity * phongTerm	   +
 				  diffuseColor  * ambientIntensity;
 }

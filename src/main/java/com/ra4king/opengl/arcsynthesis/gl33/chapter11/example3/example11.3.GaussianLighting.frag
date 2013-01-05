@@ -16,18 +16,19 @@ uniform float lightAttenuation;
 const vec4 specularColor = vec4(0.25, 0.25, 0.25, 1);
 uniform float shininessFactor;
 
-float CalcAttenuation(in vec3 cameraSpacePosition, out vec3 lightDirection)
+float calcAttenuation(in vec3 cameraSpacePosition, out vec3 lightDirection)
 {
 	vec3 lightDifference = cameraSpaceLightPos - cameraSpacePosition;
 	float lightDistanceSqr = dot(lightDifference, lightDifference);
 	lightDirection = lightDifference * inversesqrt(lightDistanceSqr);
 	
-	return 1/ (1 + lightAttenuation * sqrt(lightDistanceSqr));
+	return 1 / (1 + lightAttenuation * sqrt(lightDistanceSqr));
 }
 
-void main() {
+void main()
+{
 	vec3 lightDir = vec3(0);
-	float atten = CalcAttenuation(cameraSpacePosition, lightDir);
+	float atten = calcAttenuation(cameraSpacePosition, lightDir);
 	vec4 attenIntensity = atten * lightIntensity;
 	
 	vec3 surfaceNormal = normalize(vertexNormal);
@@ -37,12 +38,14 @@ void main() {
 	vec3 viewDirection = normalize(-cameraSpacePosition);
 	
 	vec3 halfAngle = normalize(lightDir + viewDirection);
-	float blinnTerm = dot(surfaceNormal, halfAngle);
-	blinnTerm = clamp(blinnTerm, 0, 1);
-	blinnTerm = cosAngIncidence != 0.0 ? blinnTerm : 0.0;
-	blinnTerm = pow(blinnTerm, shininessFactor);
+	float angleNormalHalf = acos(dot(halfAngle, surfaceNormal));
+	float exponent = angleNormalHalf / shininessFactor;
+	exponent = -(exponent * exponent);
+	float gaussianTerm = exp(exponent);
+	
+	gaussianTerm = cosAngIncidence != 0.0 ? gaussianTerm : 0.0;
 	
 	outputColor = diffuseColor  * attenIntensity * cosAngIncidence +
-				  specularColor * attenIntensity * blinnTerm 	   +
+				  specularColor * attenIntensity * gaussianTerm +
 				  diffuseColor  * ambientIntensity;
 }

@@ -37,7 +37,7 @@ void main()
 	vec3 reflectDir = normalize(reflect(-lightDir, surfaceNormal));
 	float phongTerm = dot(viewDirection, reflectDir);
 	phongTerm = clamp(phongTerm, 0, 1);
-	phongTerm = dot(surfaceNormal, lightDir) > 0 ? phongTerm : 0;
+	phongTerm = dot(surfaceNormal, lightDir) > 0.0 ? phongTerm : 0.0;
 	phongTerm = pow(phongTerm, shininessFactor);
 	
 	outputColor = specularColor * attenIntensity * phongTerm + diffuseColor * ambientIntensity;
