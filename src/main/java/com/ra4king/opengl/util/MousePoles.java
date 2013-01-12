@@ -104,7 +104,7 @@ public class MousePoles {
 		
 		public Matrix4 calcMatrix() {
 			Matrix4 translateMat = new Matrix4().clearToIdentity();
-			translateMat.put(3, po.position);
+			translateMat.putColumn(3, po.position);
 			return translateMat.mult(po.orientation.toMatrix());
 		}
 		

@@ -28,7 +28,10 @@ public class Matrix4 {
 	}
 	
 	public Matrix4 clearToIdentity() {
-		return clear().put(0, 1).put(5, 1).put(10, 1).put(15, 1);
+		return clear().put(0, 1)
+				.put(5, 1)
+				.put(10, 1)
+				.put(15, 1);
 	}
 	
 	public Matrix4 clearToOrtho(float left, float right, float bottom, float top, float near, float far) {
@@ -62,7 +65,7 @@ public class Matrix4 {
 		return this;
 	}
 	
-	public Matrix4 put(int index, Vector4 v) {
+	public Matrix4 putColumn(int index, Vector4 v) {
 		put(index * 4 + 0, v.x());
 		put(index * 4 + 1, v.y());
 		put(index * 4 + 2, v.z());
@@ -70,14 +73,14 @@ public class Matrix4 {
 		return this;
 	}
 	
-	public Matrix4 put(int index, Vector3 v) {
+	public Matrix4 putColumn(int index, Vector3 v) {
 		put(index * 4 + 0, v.x());
 		put(index * 4 + 1, v.y());
 		put(index * 4 + 2, v.z());
 		return this;
 	}
 	
-	public Matrix4 put(int index, Vector3 v, float w) {
+	public Matrix4 putColumn(int index, Vector3 v, float w) {
 		put(index * 4 + 0, v.x());
 		put(index * 4 + 1, v.y());
 		put(index * 4 + 2, v.z());
@@ -200,21 +203,21 @@ public class Matrix4 {
 	public Matrix4 rotate(float angle, float x, float y, float z) {
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
-		float invCos = 1 - cos;
+		float oneMinusCos = 1 - cos;
 		
 		Vector3 v = new Vector3(x, y, z).normalize();
 		
 		float[] m = new float[matrix.length];
 		m[0] = v.x() * v.x() + (1 - v.x() * v.x()) * cos;
-		m[4] = v.x() * v.y() * invCos - v.z() * sin;
-		m[8] = v.x() * v.z() * invCos + v.y() * sin;
+		m[4] = v.x() * v.y() * oneMinusCos - v.z() * sin;
+		m[8] = v.x() * v.z() * oneMinusCos + v.y() * sin;
 		
-		m[1] = v.y() * v.x() * invCos + v.z() * sin;
+		m[1] = v.y() * v.x() * oneMinusCos + v.z() * sin;
 		m[5] = v.y() * v.y() + (1 - v.y() * v.y()) * cos;
-		m[9] = v.y() * v.z() * invCos - v.x() * sin;
+		m[9] = v.y() * v.z() * oneMinusCos - v.x() * sin;
 		
-		m[2] = v.z() * v.x() * invCos - v.y() * sin;
-		m[6] = v.z() * v.y() * invCos + v.x() * sin;
+		m[2] = v.z() * v.x() * oneMinusCos - v.y() * sin;
+		m[6] = v.z() * v.y() * oneMinusCos + v.x() * sin;
 		m[10] = v.z() * v.z() + (1 - v.z() * v.z()) * cos;
 		
 		m[15] = 1;

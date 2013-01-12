@@ -180,9 +180,9 @@ public class Example8_3 extends GLProgram {
 		Vector3 perpUpDir = rightDir.cross(lookDir);
 		
 		Matrix4 rotMat = new Matrix4().clearToIdentity();
-		rotMat.put(0, rightDir);
-		rotMat.put(1, perpUpDir);
-		rotMat.put(2, lookDir.mult(-1));
+		rotMat.putColumn(0, rightDir);
+		rotMat.putColumn(1, perpUpDir);
+		rotMat.putColumn(2, lookDir.mult(-1));
 		
 		return rotMat.transpose().translate(cameraPoint.mult(-1));
 	}
