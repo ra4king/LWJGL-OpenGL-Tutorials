@@ -45,7 +45,7 @@ public class Matrix3 {
 		return this;
 	}
 	
-	public Matrix3 put(int index, Vector3 v) {
+	public Matrix3 putColumn(int index, Vector3 v) {
 		put(index * 3 + 0, v.x());
 		put(index * 3 + 1, v.y());
 		put(index * 3 + 2, v.z());
