@@ -3,12 +3,13 @@ package com.ra4king.opengl.superbible.osb4.chapter3;
 import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.PixelFormat;
 
 import com.ra4king.opengl.GLProgram;
 
 public class Example3_14 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_14().run();
+		new Example3_14().run(new PixelFormat(8,16,8));
 	}
 	
 	private float x, y, size = 50;

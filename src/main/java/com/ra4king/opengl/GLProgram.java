@@ -79,6 +79,21 @@ public abstract class GLProgram {
 		gameLoop();
 	}
 	
+	public final void run(PixelFormat format) {
+		run(format, new ContextAttribs());
+	}
+	
+	public final void run(PixelFormat format, ContextAttribs attribs) {
+		try {
+			Display.create(format, attribs);
+		} catch(Exception exc) {
+			exc.printStackTrace();
+			System.exit(1);
+		}
+		
+		gameLoop();
+	}
+	
 	private void gameLoop() {
 		try {
 			init();

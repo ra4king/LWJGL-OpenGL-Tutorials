@@ -206,13 +206,13 @@ public class Example11_2 extends GLProgram {
 				break;
 			case Keyboard.KEY_H:
 				if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-					if(lightModel.ordinal()%2 != 0)
-						lightModel = LightingModel.values()[(lightModel.ordinal()-1)%LightingModel.values().length];
+					if(lightModel.ordinal() % 2 != 0)
+						lightModel = LightingModel.values()[(lightModel.ordinal() - 1) % LightingModel.values().length];
 					else
-						lightModel = LightingModel.values()[(lightModel.ordinal()+1)%LightingModel.values().length];
+						lightModel = LightingModel.values()[(lightModel.ordinal() + 1) % LightingModel.values().length];
 				}
 				else
-					lightModel = LightingModel.values()[(lightModel.ordinal()+2)%LightingModel.values().length];
+					lightModel = LightingModel.values()[(lightModel.ordinal() + 2) % LightingModel.values().length];
 				
 				changedLightModel = true;
 				break;
