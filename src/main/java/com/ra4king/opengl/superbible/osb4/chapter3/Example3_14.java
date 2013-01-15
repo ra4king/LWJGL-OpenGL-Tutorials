@@ -9,7 +9,7 @@ import com.ra4king.opengl.GLProgram;
 
 public class Example3_14 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_14().run(new PixelFormat(8,0,1));
+		new Example3_14().run(new PixelFormat(0,0,1));
 	}
 	
 	private float x, y, size = 50;
