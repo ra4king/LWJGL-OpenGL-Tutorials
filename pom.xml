@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lwjgl.version>2.8.4</lwjgl.version>
+        <lwjgl.version>2.8.5</lwjgl.version>
     </properties>
 
     <repositories>
@@ -71,7 +71,7 @@
             <plugin>
                 <groupId>com.googlecode.mavennatives</groupId>
                 <artifactId>maven-nativedependencies-plugin</artifactId>
-                <version>0.0.6</version>
+                <version>0.0.7</version>
                 <executions>
                     <execution>
                         <id>unpacknatives</id>
@@ -103,7 +103,7 @@
         									maven-nativedependencies-plugin
         								</artifactId>
         								<versionRange>
-        									[0.0.6,)
+        									[0.0.7,)
         								</versionRange>
         								<goals>
         									<goal>copy</goal>

@@ -31,8 +31,8 @@ public class Example1_1 extends GLProgram {
 		
 		glCompileShader(vs);
 		
-		if(glGetShader(vs, GL_COMPILE_STATUS) == GL_FALSE) {
-			System.err.println("Failure in compiling vertex shader. Error log:\n" + glGetShaderInfoLog(vs, glGetShader(vs, GL_INFO_LOG_LENGTH)));
+		if(glGetShaderi(vs, GL_COMPILE_STATUS) == GL_FALSE) {
+			System.err.println("Failure in compiling vertex shader. Error log:\n" + glGetShaderInfoLog(vs, glGetShaderi(vs, GL_INFO_LOG_LENGTH)));
 			System.exit(0);
 		}
 		
@@ -41,8 +41,8 @@ public class Example1_1 extends GLProgram {
 		
 		glCompileShader(fs);
 		
-		if(glGetShader(fs, GL_COMPILE_STATUS) == GL_FALSE) {
-			System.err.println("Failure in compiling fragment shader. Error log:\n" + glGetShaderInfoLog(fs, glGetShader(fs, GL_INFO_LOG_LENGTH)));
+		if(glGetShaderi(fs, GL_COMPILE_STATUS) == GL_FALSE) {
+			System.err.println("Failure in compiling fragment shader. Error log:\n" + glGetShaderInfoLog(fs, glGetShaderi(fs, GL_INFO_LOG_LENGTH)));
 			destroy();
 		}
 		
@@ -52,8 +52,8 @@ public class Example1_1 extends GLProgram {
 		
 		glLinkProgram(program);
 		
-		if(glGetProgram(program, GL_LINK_STATUS) == GL_FALSE) {
-			System.err.println("Failure in linking program. Error log:\n" + glGetProgramInfoLog(program, glGetProgram(program, GL_INFO_LOG_LENGTH)));
+		if(glGetProgrami(program, GL_LINK_STATUS) == GL_FALSE) {
+			System.err.println("Failure in linking program. Error log:\n" + glGetProgramInfoLog(program, glGetProgrami(program, GL_INFO_LOG_LENGTH)));
 			destroy();
 		}
 		

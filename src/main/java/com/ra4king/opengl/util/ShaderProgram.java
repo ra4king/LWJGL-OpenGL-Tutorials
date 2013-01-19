@@ -26,9 +26,9 @@ public class ShaderProgram {
 		
 		glLinkProgram(program);
 		
-		String infoLog = glGetProgramInfoLog(program, glGetProgram(program, GL_INFO_LOG_LENGTH));
+		String infoLog = glGetProgramInfoLog(program, glGetProgrami(program, GL_INFO_LOG_LENGTH));
 		
-		if(glGetProgram(program, GL_LINK_STATUS) == GL_FALSE)
+		if(glGetProgrami(program, GL_LINK_STATUS) == GL_FALSE)
 			throw new RuntimeException("Failure in linking program. Error log:\n" + infoLog);
 		else {
 			System.out.print("Linking program successful.");
@@ -51,9 +51,9 @@ public class ShaderProgram {
 		
 		glCompileShader(shader);
 		
-		String infoLog = glGetShaderInfoLog(shader, glGetShader(shader, GL_INFO_LOG_LENGTH));
+		String infoLog = glGetShaderInfoLog(shader, glGetShaderi(shader, GL_INFO_LOG_LENGTH));
 		
-		if(glGetShader(shader, GL_COMPILE_STATUS) == GL_FALSE)
+		if(glGetShaderi(shader, GL_COMPILE_STATUS) == GL_FALSE)
 			throw new RuntimeException("Failure in compiling " + getName(type) + " shader. Error log:\n" + infoLog);
 		else {
 			System.out.print("Compiling " + getName(type) + " shader successful.");
