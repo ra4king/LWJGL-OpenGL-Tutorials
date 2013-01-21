@@ -67,6 +67,16 @@ public class Vector4 {
 		return this;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Vector4) {
+			Vector4 v = (Vector4)o;
+			return x == v.x && y == v.y && z == v.z && w == v.w;
+		}
+		
+		return false;
+	}
+	
 	public Vector4 set(float x, float y, float z, float w) {
 		this.x = x;
 		this.y = y;
