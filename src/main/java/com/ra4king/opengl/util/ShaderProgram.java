@@ -21,7 +21,7 @@ public class ShaderProgram {
 		glAttachShader(program, fs);
 		
 		if(attributes != null)
-			for(Integer i : attributes.keySet())
+			for(int i : attributes.keySet())
 				glBindAttribLocation(program, i, attributes.get(i));
 		
 		glLinkProgram(program);

@@ -148,10 +148,10 @@ public abstract class GLProgram {
 		}
 	}
 	
-	public void checkGLError(String after) {
+	public void checkGLError(String event) {
 		int error;
 		while((error = glGetError()) != GL_NO_ERROR)
-			throw new RuntimeException("OpenGL Error during " + after + ": " + gluErrorString(error));
+			throw new RuntimeException("OpenGL Error during " + event + ": " + gluErrorString(error));
 	}
 	
 	public int getWidth() {

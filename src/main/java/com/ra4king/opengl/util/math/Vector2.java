@@ -4,7 +4,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
-public class Vector2 {
+public class Vector2 implements Vector<Vector2> {
 	private float x, y;
 	
 	public Vector2() {
@@ -29,6 +29,10 @@ public class Vector2 {
 	
 	public Vector2(Vector4 vec) {
 		set(vec);
+	}
+	
+	public Vector2 copy() {
+		return new Vector2(this);
 	}
 	
 	public float x() {
@@ -103,6 +107,7 @@ public class Vector2 {
 		return this;
 	}
 	
+	@Override
 	public Vector2 add(Vector2 vec) {
 		return add(vec.x, vec.y);
 	}
@@ -113,6 +118,7 @@ public class Vector2 {
 		return this;
 	}
 	
+	@Override
 	public Vector2 sub(Vector2 vec) {
 		return sub(vec.x, vec.y);
 	}
@@ -127,6 +133,7 @@ public class Vector2 {
 		return this;
 	}
 	
+	@Override
 	public Vector2 mult(Vector2 vec) {
 		return mult(vec.x, vec.y);
 	}
