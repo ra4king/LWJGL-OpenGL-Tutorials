@@ -31,6 +31,7 @@ public class Vector2 implements Vector<Vector2> {
 		set(vec);
 	}
 	
+	@Override
 	public Vector2 copy() {
 		return new Vector2(this);
 	}
@@ -86,6 +87,7 @@ public class Vector2 implements Vector<Vector2> {
 		return this;
 	}
 	
+	@Override
 	public float length() {
 		return (float)Math.sqrt(x * x + y * y);
 	}
@@ -123,6 +125,7 @@ public class Vector2 implements Vector<Vector2> {
 		return sub(vec.x, vec.y);
 	}
 	
+	@Override
 	public Vector2 mult(float f) {
 		return mult(f, f);
 	}
@@ -140,6 +143,7 @@ public class Vector2 implements Vector<Vector2> {
 	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(2);
 	
+	@Override
 	public FloatBuffer toBuffer() {
 		direct.clear();
 		direct.put(x).put(y);

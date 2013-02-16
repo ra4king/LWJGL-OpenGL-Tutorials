@@ -40,6 +40,6 @@ public class WeightedLinearInterpolatorVector<T extends Vector<T>> {
 		
 		float invSecAlpha = 1 - sectionAlpha;
 		
-		return values.get(segment-1).data.mult(invSecAlpha).add(values.get(segment).data.mult(sectionAlpha));
+		return values.get(segment-1).data.copy().mult(invSecAlpha).add(values.get(segment).data.copy().mult(sectionAlpha));
 	}
 }

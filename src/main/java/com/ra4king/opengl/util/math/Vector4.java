@@ -39,6 +39,7 @@ public class Vector4 implements Vector<Vector4> {
 		set(vec);
 	}
 	
+	@Override
 	public Vector4 copy() {
 		return new Vector4(this);
 	}
@@ -122,6 +123,7 @@ public class Vector4 implements Vector<Vector4> {
 		return this;
 	}
 	
+	@Override
 	public float length() {
 		return (float)Math.sqrt(x * x + y * y + z * z + w * w);
 	}
@@ -165,6 +167,7 @@ public class Vector4 implements Vector<Vector4> {
 		return sub(vec.x, vec.y, vec.z, vec.w);
 	}
 	
+	@Override
 	public Vector4 mult(float f) {
 		return mult(f, f, f, f);
 	}
@@ -184,6 +187,7 @@ public class Vector4 implements Vector<Vector4> {
 	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(4);
 	
+	@Override
 	public FloatBuffer toBuffer() {
 		direct.clear();
 		direct.put(x).put(y).put(z).put(w);

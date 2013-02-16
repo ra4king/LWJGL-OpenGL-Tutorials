@@ -3,19 +3,18 @@ package com.ra4king.opengl.arcsynthesis.gl33.chapter12;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.security.auth.x500.X500Principal;
-
 import com.ra4king.opengl.util.Timer;
 import com.ra4king.opengl.util.Timer.Type;
 import com.ra4king.opengl.util.interpolators.ConstVelLinearInterpolatorVector;
 import com.ra4king.opengl.util.interpolators.TimedLinearInterpolatorVector;
 import com.ra4king.opengl.util.interpolators.TimedLinearInterpolatorf;
+import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.math.Vector4;
 
 public class LightManager {
-	public final int NUMBER_OF_LIGHTS = 4;
-	public final int NUMBER_OF_POINT_LIGHTS = NUMBER_OF_LIGHTS - 1;
+	public static final int NUMBER_OF_LIGHTS = 4;
+	public static final int NUMBER_OF_POINT_LIGHTS = NUMBER_OF_LIGHTS - 1;
 	
 	private Timer sunTimer;
 	private TimedLinearInterpolatorVector<Vector4> ambientInterpolator;
@@ -128,21 +127,21 @@ public class LightManager {
 		return ret;
 	}
 	
-	public Vector4 getMaxIntensityValue(Pair<Vector4, Float> data) {
-		return data.first;
-	}
-	
-	public float getMaxIntensityTime(Pair<Vector4, Float> data) {
-		return data.second;
-	}
-	
-	public float getLightVectorValue(Pair<Float, Float> data) {
-		return data.first;
-	}
-	
-	public float getLightVectorTime(Pair<Float, Float> data) {
-		return data.second;
-	}
+//	public Vector4 getMaxIntensityValue(Pair<Vector4,Float> data) {
+//		return data.first;
+//	}
+//	
+//	public float getMaxIntensityTime(Pair<Vector4,Float> data) {
+//		return data.second;
+//	}
+//	
+//	public float getLightVectorValue(Pair<Float,Float> data) {
+//		return data.first;
+//	}
+//	
+//	public float getLightVectorTime(Pair<Float,Float> data) {
+//		return data.second;
+//	}
 	
 	public void setSunlightValues(SunlightValue[] values) {
 		ArrayList<TimedLinearInterpolatorVector<Vector4>.Data> ambient = new ArrayList<>();
@@ -183,21 +182,154 @@ public class LightManager {
 		maxIntensityInterpolator.setValues(maxIntensity);
 	}
 	
+	public void updateTime(long deltaTime) {
+		sunTimer.update(deltaTime);
+		for(Timer t : lightTimers)
+			t.update(deltaTime);
+		for(Timer t : extraTimers.values())
+			t.update(deltaTime);
+	}
 	
-	
-	private static class Pair<F, S> {
-		private F first;
-		private S second;
+	public void setPause(TimerTypes timer, boolean pause) {
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_LIGHTS) {
+			for(Timer t : lightTimers)
+				t.setPause(pause);
+			for(Timer t : extraTimers.values())
+				t.setPause(pause);
+		}
 		
-		public Pair(F first, S second) {
-			this.first = first;
-			this.second = second;
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_SUN)
+			sunTimer.togglePause();
+	}
+	
+	public void togglePause(TimerTypes timer) {
+		setPause(timer, !isPaused(timer));
+	}
+	
+	public boolean isPaused(TimerTypes timer) {
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_SUN)
+			return sunTimer.isPaused();
+		
+		return lightTimers.get(0).isPaused();
+	}
+	
+	public void rewindTime(TimerTypes timer, float secRewind) {
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_SUN)
+			sunTimer.rewind(secRewind);
+		
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_LIGHTS) {
+			for(Timer t : lightTimers)
+				t.rewind(secRewind);
+			for(Timer t : extraTimers.values())
+				t.rewind(secRewind);
 		}
 	}
 	
-	private class PerLight {
-		private Vector4 cameraSpaceLightPos;
-		private Vector4 lightIntensity;
+	public void fastForwardTime(TimerTypes timer, float secFF) {
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_SUN)
+			sunTimer.fastForward(secFF);
+		
+		if(timer == TimerTypes.TIMER_ALL || timer == TimerTypes.TIMER_LIGHTS) {
+			for(Timer t : lightTimers)
+				t.fastForward(secFF);
+			for(Timer t : extraTimers.values())
+				t.fastForward(secFF);
+		}
+	}
+	
+	public LightBlock getLightInformation(Matrix4 worldToCameraMatrix) {
+		LightBlock lightData = new LightBlock(ambientInterpolator.interpolate(sunTimer.getAlpha()), lightAttenuation);
+		lightData.lights[0] = new PerLight(worldToCameraMatrix.mult(getSunlightDirection()), sunlightInterpolator.interpolate(sunTimer.getAlpha()));
+		
+		for(int light = 0; light < NUMBER_OF_POINT_LIGHTS; light++) {
+			Vector4 worldLightPos = new Vector4(lightPos.get(light).interpolate(lightTimers.get(light).getAlpha()), 1);
+			Vector4 lightPosCameraSpace = worldToCameraMatrix.mult(worldLightPos);
+			
+			lightData.lights[light+1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
+		}
+		
+		return lightData;
+	}
+	
+	public LightBlockHDR getLightInformationHDR(Matrix4 worldToCameraMatrix) {
+		LightBlockHDR lightData = new LightBlockHDR(ambientInterpolator.interpolate(sunTimer.getAlpha()), lightAttenuation, maxIntensityInterpolator.interpolate(sunTimer.getAlpha()));
+		lightData.lights[0] = new PerLight(worldToCameraMatrix.mult(getSunlightDirection()), sunlightInterpolator.interpolate(sunTimer.getAlpha()));
+		
+		for(int light = 0; light < NUMBER_OF_POINT_LIGHTS; light++) {
+			Vector4 worldLightPos = new Vector4(lightPos.get(light).interpolate(lightTimers.get(light).getAlpha()), 1);
+			Vector4 lightPosCameraSpace = worldToCameraMatrix.mult(worldLightPos);
+			
+			lightData.lights[light+1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
+		}
+		
+		return lightData;
+	}
+	
+	public LightBlockGamma getLightInformationGamma(Matrix4 worldToCameraMatrix) {
+		LightBlockHDR lightDataHDR = getLightInformationHDR(worldToCameraMatrix);
+		LightBlockGamma lightData = new LightBlockGamma(lightDataHDR.ambientIntensity, lightDataHDR.lightAttenuation, lightDataHDR.maxIntensity, 0);
+		lightData.lights = lightDataHDR.lights;
+		
+		return lightData;
+	}
+	
+	public Vector4 getSunlightDirection() {
+		float angle = 2 * (float)Math.PI * sunTimer.getAlpha();
+		Vector4 sunDirection = new Vector4(0);
+		sunDirection.x((float)Math.sin(angle));
+		sunDirection.y((float)Math.cos(angle));
+		
+		return new Matrix4().clearToIdentity().rotateDeg(5, 0, 1, 0).mult(sunDirection);
+	}
+	
+	public Vector4 getSunlightIntensity() {
+		return sunlightInterpolator.interpolate(sunTimer.getAlpha());
+	}
+	
+	public int getNumberOfPointLights() {
+		return lightPos.size();
+	}
+	
+	public Vector3 getWorldLightPosition(int lightIndex) {
+		return lightPos.get(lightIndex).interpolate(lightTimers.get(lightIndex).getAlpha());
+	}
+	
+	public void setPointLightIntensity(int lightIndex, Vector4 intensity) {
+		lightIntensity.set(lightIndex, intensity.copy());
+	}
+	
+	public Vector4 getPointLightIntensity(int lightIndeX) {
+		return lightIntensity.get(lightIndeX);
+	}
+	
+	public void createTimer(String timerName, Timer.Type type, float duration) {
+		extraTimers.put(timerName, new Timer(type, duration));
+	}
+	
+	public float getTimerValue(String timerName) {
+		Timer t = extraTimers.get(timerName);
+		
+		if(t == null)
+			return -1;
+		
+		return t.getAlpha();
+	}
+	
+	public Vector4 getBackgroundColor() {
+		return backgroundInterpolator.interpolate(sunTimer.getAlpha());
+	}
+	
+	public float getMaxIntensity() {
+		return maxIntensityInterpolator.interpolate(sunTimer.getAlpha());
+	}
+	
+	public float getSunTime() {
+		return sunTimer.getAlpha();
+	}
+	
+	public static class PerLight {
+		public Vector4 cameraSpaceLightPos;
+		public Vector4 lightIntensity;
 		
 		public PerLight(Vector4 cameraSpaceLightPos, Vector4 lightIntensity) {
 			this.cameraSpaceLightPos = cameraSpaceLightPos;
@@ -205,10 +337,10 @@ public class LightManager {
 		}
 	}
 	
-	private class LightBlock {
-		private Vector4 ambientIntensity;
-		private float lightAttenuation;
-		private PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
+	public static class LightBlock {
+		public Vector4 ambientIntensity;
+		public float lightAttenuation;
+		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
 		public LightBlock(Vector4 ambientIntensity, float lightAttenuation) {
 			this.ambientIntensity = ambientIntensity;
@@ -216,11 +348,11 @@ public class LightManager {
 		}
 	}
 	
-	private class LightBlockHDR {
-		private Vector4 ambientIntensity;
-		private float lightAttenuation;
-		private float maxIntensity;
-		private PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
+	public static class LightBlockHDR {
+		public Vector4 ambientIntensity;
+		public float lightAttenuation;
+		public float maxIntensity;
+		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
 		public LightBlockHDR(Vector4 ambientIntensity, float lightAttenuation, float maxIntensity) {
 			this.ambientIntensity = ambientIntensity;
@@ -229,12 +361,12 @@ public class LightManager {
 		}
 	}
 	
-	private class LightBlockGamma {
-		private Vector4 ambientIntensity;
-		private float lightAttenuation;
-		private float maxIntensity;
-		private float gamma;
-		private PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
+	public static class LightBlockGamma {
+		public Vector4 ambientIntensity;
+		public float lightAttenuation;
+		public float maxIntensity;
+		public float gamma;
+		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
 		public LightBlockGamma(Vector4 ambientIntensity, float lightAttenuation, float maxIntensity, float gamma) {
 			this.ambientIntensity = ambientIntensity;
@@ -244,26 +376,26 @@ public class LightManager {
 		}
 	}
 	
-	private class SunlightValue {
-		private float normTime;
-		private Vector4 ambient;
-		private Vector4 sunlightIntensity;
-		private Vector4 backgroundColor;
+	public static class SunlightValue {
+		public float normTime;
+		public Vector4 ambient;
+		public Vector4 sunlightIntensity;
+		public Vector4 backgroundColor;
 		
-		public SunlightValue(float normTime, Vector3 ambient, Vector4 sunlightIntensity, Vector4 backgroundColor) {
+		public SunlightValue(float normTime, Vector4 ambient, Vector4 sunlightIntensity, Vector4 backgroundColor) {
 			this.normTime = normTime;
-			this.ambient = this.ambient;
+			this.ambient = ambient;
 			this.sunlightIntensity = sunlightIntensity;
 			this.backgroundColor = backgroundColor;
 		}
 	}
 	
-	private class SunlightValueHDR {
-		private float normTime;
-		private Vector4 ambient;
-		private Vector4 sunlightIntensity;
-		private Vector4 backgroundColor;
-		private float maxIntensity;
+	public static class SunlightValueHDR {
+		public float normTime;
+		public Vector4 ambient;
+		public Vector4 sunlightIntensity;
+		public Vector4 backgroundColor;
+		public float maxIntensity;
 		
 		public SunlightValueHDR(float normTime, Vector4 ambient, Vector4 sunlightIntensity, Vector4 backgroundColor, float maxIntensity) {
 			this.normTime = normTime;
