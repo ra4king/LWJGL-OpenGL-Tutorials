@@ -26,7 +26,7 @@ public class ConstVelLinearInterpolatorVector<T extends Vector<T>> extends Weigh
 		
 		totalDist = 0;
 		for(int a = 0; a < values.size(); a++) {
-			totalDist += values.get(a).data.copy().sub(values.get(a-1).data).length();
+			totalDist += values.get(a).data.copy().sub(values.get(a - 1).data).length();
 			values.get(a).weight = totalDist;
 		}
 		

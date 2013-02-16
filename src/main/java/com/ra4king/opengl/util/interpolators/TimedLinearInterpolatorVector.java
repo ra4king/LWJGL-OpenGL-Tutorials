@@ -22,7 +22,7 @@ public class TimedLinearInterpolatorVector<T extends Vector<T>> extends Weighted
 		
 		if(!values.isEmpty()) {
 			values.get(0).weight = 0;
-			values.get(values.size()-1).weight = 1;
+			values.get(values.size() - 1).weight = 1;
 		}
 	}
 }

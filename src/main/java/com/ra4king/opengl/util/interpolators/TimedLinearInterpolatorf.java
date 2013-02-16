@@ -20,7 +20,7 @@ public class TimedLinearInterpolatorf extends WeightedLinearInterpolatorf {
 		
 		if(!values.isEmpty()) {
 			values.get(0).weight = 0;
-			values.get(values.size()-1).weight = 1;
+			values.get(values.size() - 1).weight = 1;
 		}
 	}
 }

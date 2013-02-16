@@ -127,21 +127,21 @@ public class LightManager {
 		return ret;
 	}
 	
-//	public Vector4 getMaxIntensityValue(Pair<Vector4,Float> data) {
-//		return data.first;
-//	}
-//	
-//	public float getMaxIntensityTime(Pair<Vector4,Float> data) {
-//		return data.second;
-//	}
-//	
-//	public float getLightVectorValue(Pair<Float,Float> data) {
-//		return data.first;
-//	}
-//	
-//	public float getLightVectorTime(Pair<Float,Float> data) {
-//		return data.second;
-//	}
+	// public Vector4 getMaxIntensityValue(Pair<Vector4,Float> data) {
+	// return data.first;
+	// }
+	//
+	// public float getMaxIntensityTime(Pair<Vector4,Float> data) {
+	// return data.second;
+	// }
+	//
+	// public float getLightVectorValue(Pair<Float,Float> data) {
+	// return data.first;
+	// }
+	//
+	// public float getLightVectorTime(Pair<Float,Float> data) {
+	// return data.second;
+	// }
 	
 	public void setSunlightValues(SunlightValue[] values) {
 		ArrayList<TimedLinearInterpolatorVector<Vector4>.Data> ambient = new ArrayList<>();
@@ -245,7 +245,7 @@ public class LightManager {
 			Vector4 worldLightPos = new Vector4(lightPos.get(light).interpolate(lightTimers.get(light).getAlpha()), 1);
 			Vector4 lightPosCameraSpace = worldToCameraMatrix.mult(worldLightPos);
 			
-			lightData.lights[light+1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
+			lightData.lights[light + 1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
 		}
 		
 		return lightData;
@@ -259,7 +259,7 @@ public class LightManager {
 			Vector4 worldLightPos = new Vector4(lightPos.get(light).interpolate(lightTimers.get(light).getAlpha()), 1);
 			Vector4 lightPosCameraSpace = worldToCameraMatrix.mult(worldLightPos);
 			
-			lightData.lights[light+1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
+			lightData.lights[light + 1] = new PerLight(lightPosCameraSpace, lightIntensity.get(light));
 		}
 		
 		return lightData;

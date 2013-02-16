@@ -24,7 +24,7 @@ public class ConstVelLinearInterpolatorf extends WeightedLinearInterpolatorf {
 		
 		totalDist = 0;
 		for(int a = 0; a < values.size(); a++) {
-			totalDist += Math.abs(values.get(a).data - values.get(a-1).data);
+			totalDist += Math.abs(values.get(a).data - values.get(a - 1).data);
 			values.get(a).weight = totalDist;
 		}
 		

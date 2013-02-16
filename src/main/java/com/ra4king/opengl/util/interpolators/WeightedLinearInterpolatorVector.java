@@ -33,13 +33,13 @@ public class WeightedLinearInterpolatorVector<T extends Vector<T>> {
 				break;
 		
 		if(segment == values.size())
-			return values.get(values.size()-1).data;
+			return values.get(values.size() - 1).data;
 		
-		float sectionAlpha = alpha - values.get(segment-1).weight;
-		sectionAlpha /= values.get(segment).weight - values.get(segment-1).weight;
+		float sectionAlpha = alpha - values.get(segment - 1).weight;
+		sectionAlpha /= values.get(segment).weight - values.get(segment - 1).weight;
 		
 		float invSecAlpha = 1 - sectionAlpha;
 		
-		return values.get(segment-1).data.copy().mult(invSecAlpha).add(values.get(segment).data.copy().mult(sectionAlpha));
+		return values.get(segment - 1).data.copy().mult(invSecAlpha).add(values.get(segment).data.copy().mult(sectionAlpha));
 	}
 }
