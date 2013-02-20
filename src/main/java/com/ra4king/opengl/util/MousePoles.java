@@ -47,8 +47,8 @@ public class MousePoles {
 	}
 	
 	public static class ObjectData {
-		private Vector3 position;
-		private Quaternion orientation;
+		public Vector3 position;
+		public Quaternion orientation;
 		
 		public ObjectData(ObjectData data) {
 			position = new Vector3(data.position);
@@ -241,10 +241,10 @@ public class MousePoles {
 	}
 	
 	public static class ViewData {
-		private Vector3 targetPos;
-		private Quaternion orient;
-		private float radius;
-		private float degSpinRotation;
+		public Vector3 targetPos;
+		public Quaternion orient;
+		public float radius;
+		public float degSpinRotation;
 		
 		public ViewData(ViewData data) {
 			targetPos = new Vector3(data.targetPos);
@@ -262,13 +262,13 @@ public class MousePoles {
 	}
 	
 	public static class ViewScale {
-		private float minRadius;
-		private float maxRadius;
-		private float largeRadiusDelta;
-		private float smallRadiusDelta;
-		private float largePosOffset;
-		private float smallPosOffset;
-		private float rotationScale;
+		public float minRadius;
+		public float maxRadius;
+		public float largeRadiusDelta;
+		public float smallRadiusDelta;
+		public float largePosOffset;
+		public float smallPosOffset;
+		public float rotationScale;
 		
 		public ViewScale(float min, float max, float large, float small, float largePos, float smallPos, float rot) {
 			minRadius = min;

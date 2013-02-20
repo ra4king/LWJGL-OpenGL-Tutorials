@@ -28,19 +28,25 @@ public class Utils {
 			MouseButton button = MouseButton.getButton(Mouse.getEventButton());
 			if(button != null) {
 				boolean pressed = Mouse.getEventButtonState();
-				viewPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
-				objectPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
+				if(viewPole != null)
+					viewPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
+				if(objectPole != null)
+					objectPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
 			}
 			else {
 				int dwheel = Mouse.getDWheel();
 				
 				if(dwheel != 0) {
-					viewPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
-					objectPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
+					if(viewPole != null)
+						viewPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
+					if(objectPole != null)
+						objectPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
 				}
 				else {
-					viewPole.mouseMove(Mouse.getX(), Mouse.getY());
-					objectPole.mouseMove(Mouse.getX(), Mouse.getY());
+					if(viewPole != null)
+						viewPole.mouseMove(Mouse.getX(), Mouse.getY());
+					if(objectPole != null)
+						objectPole.mouseMove(Mouse.getX(), Mouse.getY());
 				}
 			}
 		}

@@ -1,7 +1,10 @@
 package com.ra4king.opengl.arcsynthesis.gl33.chapter12;
 
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.lwjgl.BufferUtils;
 
 import com.ra4king.opengl.util.Timer;
 import com.ra4king.opengl.util.Timer.Type;
@@ -331,9 +334,21 @@ public class LightManager {
 		public Vector4 cameraSpaceLightPos;
 		public Vector4 lightIntensity;
 		
+		public static final int SIZE = 2 * 4 * 4;
+		
 		public PerLight(Vector4 cameraSpaceLightPos, Vector4 lightIntensity) {
 			this.cameraSpaceLightPos = cameraSpaceLightPos;
 			this.lightIntensity = lightIntensity;
+		}
+		
+		private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(SIZE / 4);
+		
+		public FloatBuffer toBuffer() {
+			buffer.clear();
+			buffer.put(cameraSpaceLightPos.toBuffer());
+			buffer.put(lightIntensity.toBuffer());
+			buffer.flip();
+			return buffer;
 		}
 	}
 	
@@ -342,9 +357,26 @@ public class LightManager {
 		public float lightAttenuation;
 		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
+		public static final int SIZE = 2 * 4 * 4 + NUMBER_OF_LIGHTS * PerLight.SIZE;
+		
 		public LightBlock(Vector4 ambientIntensity, float lightAttenuation) {
 			this.ambientIntensity = ambientIntensity;
 			this.lightAttenuation = lightAttenuation;
+		}
+		
+		private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(SIZE / 4);
+		
+		public FloatBuffer toBuffer() {
+			buffer.clear();
+			buffer.put(ambientIntensity.toBuffer());
+			buffer.put(lightAttenuation);
+			buffer.put(0).put(0).put(0);
+			
+			for(PerLight light : lights)
+				buffer.put(light.toBuffer());
+			
+			buffer.flip();
+			return buffer;
 		}
 	}
 	
@@ -354,10 +386,28 @@ public class LightManager {
 		public float maxIntensity;
 		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
+		public static final int SIZE = 2 * 4 * 4 + NUMBER_OF_LIGHTS * PerLight.SIZE;
+		
 		public LightBlockHDR(Vector4 ambientIntensity, float lightAttenuation, float maxIntensity) {
 			this.ambientIntensity = ambientIntensity;
 			this.lightAttenuation = lightAttenuation;
 			this.maxIntensity = maxIntensity;
+		}
+		
+		private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(SIZE / 4);
+		
+		public FloatBuffer toBuffer() {
+			buffer.clear();
+			buffer.put(ambientIntensity.toBuffer());
+			buffer.put(lightAttenuation);
+			buffer.put(maxIntensity);
+			buffer.put(0).put(0);
+			
+			for(PerLight light : lights)
+				buffer.put(light.toBuffer());
+			
+			buffer.flip();
+			return buffer;
 		}
 	}
 	
@@ -368,11 +418,30 @@ public class LightManager {
 		public float gamma;
 		public PerLight[] lights = new PerLight[NUMBER_OF_LIGHTS];
 		
+		public static final int SIZE = 2 * 4 * 4 + NUMBER_OF_LIGHTS * PerLight.SIZE;
+		
 		public LightBlockGamma(Vector4 ambientIntensity, float lightAttenuation, float maxIntensity, float gamma) {
 			this.ambientIntensity = ambientIntensity;
 			this.lightAttenuation = lightAttenuation;
 			this.maxIntensity = maxIntensity;
 			this.gamma = gamma;
+		}
+		
+		private static final FloatBuffer buffer = BufferUtils.createFloatBuffer(SIZE / 4);
+		
+		public FloatBuffer toBuffer() {
+			buffer.clear();
+			buffer.put(ambientIntensity.toBuffer());
+			buffer.put(lightAttenuation);
+			buffer.put(maxIntensity);
+			buffer.put(gamma);
+			buffer.put(0);
+			
+			for(PerLight light : lights)
+				buffer.put(light.toBuffer());
+			
+			buffer.flip();
+			return buffer;
 		}
 	}
 	

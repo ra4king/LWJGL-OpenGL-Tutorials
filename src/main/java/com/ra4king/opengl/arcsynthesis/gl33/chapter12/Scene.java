@@ -18,11 +18,11 @@ import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Vector4;
 
 public class Scene {
-	private Mesh terrainMesh;
-	private Mesh cubeMesh;
-	private Mesh tetraMesh;
-	private Mesh cylMesh;
-	private Mesh sphereMesh;
+	public final Mesh terrainMesh;
+	public final Mesh cubeMesh;
+	public final Mesh tetraMesh;
+	public final Mesh cylMesh;
+	public final Mesh sphereMesh;
 	
 	private final int sizeMaterialBlock;
 	private int materialUniformBuffer;
@@ -183,10 +183,10 @@ public class Scene {
 	}
 	
 	public static class ProgramData {
-		private ShaderProgram program;
+		public ShaderProgram program;
 		
-		private int modelToCameraMatrixUniform;
-		private int normalModelTocameraMatrixUniform;
+		public int modelToCameraMatrixUniform;
+		public int normalModelTocameraMatrixUniform;
 		
 		public ProgramData(ShaderProgram program) {
 			this.program = program;
