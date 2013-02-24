@@ -19,16 +19,16 @@ vec4 ApplyLightIntensity(in vec3 cameraSpacePosition, out vec3 lightDirection)
 	float lightDistanceSqr = dot(lightDifference, lightDifference);
 	lightDirection = lightDifference * inversesqrt(lightDistanceSqr);
 	
-	return lightIntensity / (1 + lightAttenuation * sqrt(lightDistanceSqr));
+	return lightIntensity / (1.0 + lightAttenuation * sqrt(lightDistanceSqr));
 }
 
 void main()
 {
-	vec3 lightDir = vec3(0);
+	vec3 lightDir = vec3(0.0);
 	vec4 attenIntensity = ApplyLightIntensity(cameraSpacePosition, lightDir);
 	
 	float cosAngIncidence = dot(normalize(vertexNormal), lightDir);
-	cosAngIncidence = clamp(cosAngIncidence, 0, 1);
+	cosAngIncidence = clamp(cosAngIncidence, 0.0, 1.0);
 	
 	outputColor = diffuseColor * attenIntensity * cosAngIncidence + diffuseColor * ambientIntensity;
 }

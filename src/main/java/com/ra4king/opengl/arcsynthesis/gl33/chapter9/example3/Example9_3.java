@@ -50,7 +50,7 @@ public class Example9_3 extends GLProgram {
 	private boolean drawColoredCyl = true, showAmbient;
 	
 	public Example9_3() {
-		super("Example 9.3", 500, 500, false);
+		super("Example 9.3 - Ambient Lighting", 500, 500, false);
 	}
 	
 	@Override

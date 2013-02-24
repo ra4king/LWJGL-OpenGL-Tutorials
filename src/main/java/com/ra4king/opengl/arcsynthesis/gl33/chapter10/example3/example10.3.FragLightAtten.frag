@@ -24,9 +24,9 @@ uniform UnProjection
 vec3 CalcCameraSpacePosition()
 {
 	vec4 ndcPos;
-	ndcPos.xy = ((gl_FragCoord.xy / windowSize.xy) * 2) - 1;
-	ndcPos.z = (2 * gl_FragCoord.z - gl_DepthRange.near - gl_DepthRange.far) / (gl_DepthRange.far - gl_DepthRange.near);
-	ndcPos.w = 1;
+	ndcPos.xy = ((gl_FragCoord.xy / windowSize.xy) * 2.0) - 1.0;
+	ndcPos.z = (2.0 * gl_FragCoord.z - gl_DepthRange.near - gl_DepthRange.far) / (gl_DepthRange.far - gl_DepthRange.near);
+	ndcPos.w = 1.0;
 	
 	vec4 clipPos = ndcPos / gl_FragCoord.w;
 	
@@ -41,17 +41,17 @@ vec4 ApplyLightIntensity(in vec3 cameraSpacePosition, out vec3 lightDirection)
 	
 	float distFactor = useRSquare ? lightDistanceSqr : sqrt(lightDistanceSqr);
 	
-	return lightIntensity / (1 + lightAttenuation * distFactor);
+	return lightIntensity / (1.0 + lightAttenuation * distFactor);
 }
 
 void main()
 {
 	vec3 cameraSpacePosition = CalcCameraSpacePosition();
 	
-	vec3 lightDir = vec3(0);
+	vec3 lightDir = vec3(0.0);
 	vec4 attenIntensity = ApplyLightIntensity(cameraSpacePosition, lightDir);
 	
-	float cosAngIncidence = clamp(dot(normalize(vertexNormal), lightDir), 0, 1);
+	float cosAngIncidence = clamp(dot(normalize(vertexNormal), lightDir), 0.0, 1.0);
 	
 	outputColor = (diffuseColor * attenIntensity * cosAngIncidence) + (diffuseColor * ambientIntensity);
 }

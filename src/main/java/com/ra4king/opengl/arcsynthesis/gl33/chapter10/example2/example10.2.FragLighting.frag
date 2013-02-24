@@ -15,7 +15,7 @@ void main()
 {
 	vec3 lightDir = normalize(modelSpaceLightPos - modelSpacePosition);
 	
-	float cosAngIncidence = clamp(dot(normalize(vertexNormal), lightDir), 0, 1);
+	float cosAngIncidence = clamp(dot(normalize(vertexNormal), lightDir), 0.0, 1.0);
 	
 	outputColor = (diffuseColor * lightIntensity * cosAngIncidence) + (diffuseColor * ambientIntensity);
 }

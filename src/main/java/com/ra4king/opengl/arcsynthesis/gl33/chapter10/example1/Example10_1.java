@@ -52,7 +52,7 @@ public class Example10_1 extends GLProgram {
 	private boolean drawColoredCyl, drawLight;
 	
 	public Example10_1() {
-		super("Example 10.1", 500, 500, true);
+		super("Example 10.1 - Vertex Point Lighting", 500, 500, true);
 	}
 	
 	@Override

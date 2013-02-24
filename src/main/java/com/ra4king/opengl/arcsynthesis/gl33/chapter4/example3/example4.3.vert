@@ -10,6 +10,6 @@ uniform mat4 perspectiveMatrix;
 
 void main()
 {
-	gl_Position = perspectiveMatrix * (position + vec4(offset, 0, 0));
+	gl_Position = perspectiveMatrix * (position + vec4(offset, 0.0, 0.0));
 	theColor = color;
 }

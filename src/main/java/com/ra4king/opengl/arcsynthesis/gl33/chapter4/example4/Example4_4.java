@@ -125,7 +125,7 @@ public class Example4_4 extends GLProgram {
 	private float frustumScale = 1;
 	
 	public Example4_4() {
-		super("Example 4.4", 500, 500, true);
+		super("Example 4.4 - Aspect Ratio", 500, 500, true);
 	}
 	
 	@Override

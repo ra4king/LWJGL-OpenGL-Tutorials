@@ -31,7 +31,7 @@ public class Example8_2 extends GLProgram {
 	private boolean rightMultiply = true;
 	
 	public Example8_2() {
-		super("Example 8.2", 500, 500, true);
+		super("Example 8.2 - Quaternion YPR", 500, 500, true);
 	}
 	
 	@Override

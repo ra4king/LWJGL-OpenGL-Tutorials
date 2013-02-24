@@ -155,7 +155,7 @@ public class Example5_4 extends GLProgram {
 	private float frustumScale = 1;
 	
 	public Example5_4() {
-		super("Example 5.4", 500, 500, true);
+		super("Example 5.4 - Vertex Clipping", 500, 500, true);
 	}
 	
 	@Override

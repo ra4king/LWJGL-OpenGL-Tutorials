@@ -138,7 +138,7 @@ public class Example7_1 extends GLProgram {
 	private boolean drawLookAtPoint = true;
 	
 	public Example7_1() {
-		super("Example 7.1", 500, 500, true);
+		super("Example 7.1 - World Scene", 500, 500, true);
 	}
 	
 	@Override

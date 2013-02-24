@@ -69,7 +69,7 @@ public class Example11_2 extends GLProgram {
 	private Vector4 lightColor = new Vector4(1);
 	
 	public Example11_2() {
-		super("Example 11.2", 500, 500, true);
+		super("Example 11.2 - Blinn vs. Phong Lighting", 500, 500, true);
 	}
 	
 	@Override

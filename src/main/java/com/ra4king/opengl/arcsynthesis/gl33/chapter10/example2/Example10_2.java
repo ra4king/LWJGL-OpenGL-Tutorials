@@ -55,7 +55,7 @@ public class Example10_2 extends GLProgram {
 	private boolean useFragmentLighting = true, drawColoredCyl, drawLight, scaleCyl;
 	
 	public Example10_2() {
-		super("Example 10.2", 500, 500, true);
+		super("Example 10.2 - Fragment Point Lighting", 500, 500, true);
 	}
 	
 	@Override

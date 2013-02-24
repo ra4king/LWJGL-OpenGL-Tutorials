@@ -24,7 +24,7 @@ public class Example3_4 extends GLProgram {
 	private long elapsedTime;
 	
 	public Example3_4() {
-		super("Example 3.4", 500, 500, true);
+		super("Example 3.4 - Frag Change Color", 500, 500, true);
 	}
 	
 	@Override

@@ -48,7 +48,7 @@ public class Example9_2 extends GLProgram {
 	private boolean scaleCyl, doInvTranspose = true;
 	
 	public Example9_2() {
-		super("Example 9.2", 500, 500, false);
+		super("Example 9.2 - Scale And Lighting", 500, 500, false);
 	}
 	
 	@Override

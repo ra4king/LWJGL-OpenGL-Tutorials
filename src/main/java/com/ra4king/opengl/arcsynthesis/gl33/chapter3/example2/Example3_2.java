@@ -24,7 +24,7 @@ public class Example3_2 extends GLProgram {
 	private long elapsedTime;
 	
 	public Example3_2() {
-		super("Example 3.2", 500, 500, true);
+		super("Example 3.2 - Vertex Position Offset", 500, 500, true);
 	}
 	
 	@Override

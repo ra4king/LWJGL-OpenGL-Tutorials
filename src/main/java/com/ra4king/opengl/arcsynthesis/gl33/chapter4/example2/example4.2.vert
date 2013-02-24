@@ -12,7 +12,7 @@ uniform float frustumScale;
 
 void main()
 {
-	vec4 cameraPos = position + vec4(offset, 0, 0);
+	vec4 cameraPos = position + vec4(offset, 0.0, 0.0);
 	vec4 clipPos;
 	
 	clipPos.xy = cameraPos.xy * frustumScale;

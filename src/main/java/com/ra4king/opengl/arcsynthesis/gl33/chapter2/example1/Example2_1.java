@@ -21,7 +21,7 @@ public class Example2_1 extends GLProgram {
 	private int vbo;
 	
 	public Example2_1() {
-		super("Example 2.1", 500, 500, true);
+		super("Example 2.1 - Fragment Position", 500, 500, true);
 	}
 	
 	@Override

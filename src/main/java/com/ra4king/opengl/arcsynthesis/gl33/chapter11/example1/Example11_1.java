@@ -11,15 +11,15 @@ import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
-import com.ra4king.opengl.util.ShaderProgram;
-import com.ra4king.opengl.util.Timer;
-import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.MousePoles.MouseButton;
 import com.ra4king.opengl.util.MousePoles.ObjectData;
 import com.ra4king.opengl.util.MousePoles.ObjectPole;
 import com.ra4king.opengl.util.MousePoles.ViewData;
 import com.ra4king.opengl.util.MousePoles.ViewPole;
 import com.ra4king.opengl.util.MousePoles.ViewScale;
+import com.ra4king.opengl.util.ShaderProgram;
+import com.ra4king.opengl.util.Timer;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix3;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
@@ -71,7 +71,7 @@ public class Example11_1 extends GLProgram {
 	private Vector4 lightColor = new Vector4(1);
 	
 	public Example11_1() {
-		super("Example 11.1", 500, 500, true);
+		super("Example 11.1 - Phong Lighting", 500, 500, true);
 	}
 	
 	@Override

@@ -32,7 +32,7 @@ public class Example8_1 extends GLProgram {
 	private boolean drawGimbals = true;
 	
 	public Example8_1() {
-		super("Example 8.1", 500, 500, true);
+		super("Example 8.1 - Gimbal Lock", 500, 500, true);
 	}
 	
 	@Override

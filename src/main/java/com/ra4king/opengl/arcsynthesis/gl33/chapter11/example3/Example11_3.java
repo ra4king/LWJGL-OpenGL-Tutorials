@@ -71,7 +71,7 @@ public class Example11_3 extends GLProgram {
 	private Vector4 lightColor = new Vector4(1);
 	
 	public Example11_3() {
-		super("Example 11.3", 500, 500, true);
+		super("Example 11.3 - Gaussian Specular Lighting", 500, 500, true);
 	}
 	
 	@Override

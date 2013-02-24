@@ -60,7 +60,7 @@ public class Example10_3 extends GLProgram {
 	private boolean drawColoredCyl, drawLight, scaleCyl, useRSquare;
 	
 	public Example10_3() {
-		super("Example 10.3", 500, 500, true);
+		super("Example 10.3 - Fragment Attenuation", 500, 500, true);
 	}
 	
 	@Override

@@ -155,7 +155,7 @@ public class Example5_3 extends GLProgram {
 	private float frustumScale = 1;
 	
 	public Example5_3() {
-		super("Example 5.3", 500, 500, true);
+		super("Example 5.3 - Depth Buffer", 500, 500, true);
 	}
 	
 	@Override

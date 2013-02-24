@@ -39,7 +39,7 @@ public class Example8_3 extends GLProgram {
 	private OffsetRelative offsetRelative = OffsetRelative.MODEL_RELATIVE;
 	
 	public Example8_3() {
-		super("Example 8.3", 500, 500, true);
+		super("Example 8.3 - Camera Relative", 500, 500, true);
 	}
 	
 	@Override

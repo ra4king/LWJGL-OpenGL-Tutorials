@@ -121,7 +121,7 @@ public class Example4_2 extends GLProgram {
 	private int vbo;
 	
 	public Example4_2() {
-		super("Example 4.2", 500, 500, true);
+		super("Example 4.2 - Shader Perspective", 500, 500, true);
 	}
 	
 	@Override

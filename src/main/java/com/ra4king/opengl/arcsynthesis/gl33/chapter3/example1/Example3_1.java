@@ -25,7 +25,7 @@ public class Example3_1 extends GLProgram {
 	private long elapsedTime;
 	
 	public Example3_1() {
-		super("Example 3.1", 500, 500, true);
+		super("Example 3.1 - CPU Position Offset", 500, 500, true);
 	}
 	
 	@Override

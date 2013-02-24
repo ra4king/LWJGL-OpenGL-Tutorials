@@ -13,7 +13,7 @@ uniform vec3 cameraSpaceLightPos;
 
 uniform float lightAttenuation;
 
-const vec4 specularColor = vec4(0.25, 0.25, 0.25, 1);
+const vec4 specularColor = vec4(0.25, 0.25, 0.25, 1.0);
 uniform float shininessFactor;
 
 float CalcAttenuation(in vec3 cameraSpacePosition, out vec3 lightDirection)
@@ -22,12 +22,12 @@ float CalcAttenuation(in vec3 cameraSpacePosition, out vec3 lightDirection)
 	float lightDistanceSqr = dot(lightDifference, lightDifference);
 	lightDirection = lightDifference * inversesqrt(lightDistanceSqr);
 	
-	return 1 / (1 + lightAttenuation * sqrt(lightDistanceSqr));
+	return 1.0 / (1.0 + lightAttenuation * sqrt(lightDistanceSqr));
 }
 
 void main()
 {
-	vec3 lightDir = vec3(0);
+	vec3 lightDir = vec3(0.0);
 	float atten = CalcAttenuation(cameraSpacePosition, lightDir);
 	vec4 attenIntensity = atten * lightIntensity;
 	
@@ -37,7 +37,7 @@ void main()
 	
 	vec3 halfAngle = normalize(lightDir + viewDirection);
 	float blinnTerm = dot(surfaceNormal, halfAngle);
-	blinnTerm = clamp(blinnTerm, 0, 1);
+	blinnTerm = clamp(blinnTerm, 0.0, 1.0);
 	blinnTerm = dot(surfaceNormal, lightDir) >= 0.0 ? blinnTerm : 0.0;
 	blinnTerm = pow(blinnTerm, shininessFactor);
 	

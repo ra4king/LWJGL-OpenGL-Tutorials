@@ -21,7 +21,7 @@ public class Example2_2 extends GLProgram {
 	private int vbo;
 	
 	public Example2_2() {
-		super("Example 2.2", 500, 500, true);
+		super("Example 2.2 - Vertex Colors", 500, 500, true);
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ uniform Projection
 
 void main()
 {
-	vec4 tempCamPosition = modelToCameraMatrix * vec4(position, 1);
+	vec4 tempCamPosition = modelToCameraMatrix * vec4(position, 1.0);
 	gl_Position = cameraToClipMatrix * tempCamPosition;
 	
 	vertexNormal = normalModelToCameraMatrix * normal;

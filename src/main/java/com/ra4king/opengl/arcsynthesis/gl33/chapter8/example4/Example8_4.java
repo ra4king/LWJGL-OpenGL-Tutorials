@@ -53,7 +53,7 @@ public class Example8_4 extends GLProgram {
 	};
 	
 	public Example8_4() {
-		super("Example 8.4", 500, 500, true);
+		super("Example 8.4 - Interpolation", 500, 500, true);
 	}
 	
 	@Override

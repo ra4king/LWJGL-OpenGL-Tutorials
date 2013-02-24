@@ -20,7 +20,7 @@ uniform Projection
 
 void main()
 {
-	vec4 cameraPosition = modelToCameraMatrix * vec4(position, 1);
+	vec4 cameraPosition = modelToCameraMatrix * vec4(position, 1.0);
 	gl_Position = cameraToClipMatrix * cameraPosition;
 	
 	vec3 normCamSpace = normalize(normalModelToCameraMatrix * normal);
@@ -28,7 +28,7 @@ void main()
 	vec3 dirToLight = normalize(lightPos - vec3(cameraPosition));
 	
 	float cosAngIncidence = dot(normCamSpace, dirToLight);
-	cosAngIncidence = clamp(cosAngIncidence, 0, 1);
+	cosAngIncidence = clamp(cosAngIncidence, 0.0, 1.0);
 	
 	interpColor = (diffuseColor * lightIntensity * cosAngIncidence) + (diffuseColor * ambientIntensity);
 }

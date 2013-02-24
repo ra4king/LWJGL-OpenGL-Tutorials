@@ -16,9 +16,9 @@ uniform Projection
 
 void main()
 {
-	gl_Position = cameraToClipMatrix * modelToCameraMatrix * vec4(position, 1);
+	gl_Position = cameraToClipMatrix * modelToCameraMatrix * vec4(position, 1.0);
 	
 	vertexNormal = normal;
 	modelSpacePosition = position;
-	diffuseColor = vec4(1);
+	diffuseColor = vec4(1.0);
 }

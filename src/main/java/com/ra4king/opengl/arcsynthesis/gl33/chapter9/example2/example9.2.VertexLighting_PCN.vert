@@ -19,12 +19,12 @@ layout(std140) uniform Projection
 
 void main()
 {
-	gl_Position = cameraToClipMatrix * (modelToCameraMatrix * vec4(position, 1));
+	gl_Position = cameraToClipMatrix * (modelToCameraMatrix * vec4(position, 1.0));
 	
 	vec3 normCamSpace = normalize(normalModelToCameraMatrix * normal);
 	
 	float cosAngIncidence = dot(normCamSpace, dirToLight);
-	cosAngIncidence = clamp(cosAngIncidence, 0, 1);
+	cosAngIncidence = clamp(cosAngIncidence, 0.0, 1.0);
 	
 	interpColor = lightIntensity * diffuseColor * cosAngIncidence;
 }

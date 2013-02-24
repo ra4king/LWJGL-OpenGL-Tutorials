@@ -16,12 +16,12 @@ import com.ra4king.opengl.arcsynthesis.gl33.chapter12.Scene.LightingProgramTypes
 import com.ra4king.opengl.arcsynthesis.gl33.chapter12.Scene.ProgramData;
 import com.ra4king.opengl.arcsynthesis.gl33.chapter12.Scene.ProgramStore;
 import com.ra4king.opengl.util.MousePoles.MouseButton;
-import com.ra4king.opengl.util.ShaderProgram;
-import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.MousePoles.ViewData;
 import com.ra4king.opengl.util.MousePoles.ViewPole;
 import com.ra4king.opengl.util.MousePoles.ViewScale;
+import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.Timer.Type;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Quaternion;
@@ -53,7 +53,7 @@ public class Example12_1 extends GLProgram {
 	private boolean drawCameraPos, drawLights = true;
 	
 	public Example12_1() {
-		super("Example 12.1", 500, 500, true);
+		super("Example 12.1 - Scene Lighting", 500, 500, true);
 	}
 	
 	@Override
