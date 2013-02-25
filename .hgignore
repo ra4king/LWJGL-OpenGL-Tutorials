@@ -3,3 +3,6 @@ syntax: glob
 .idea/
 *.iml
 hs_err_*.log
+
+syntax: regexp
+^out$
