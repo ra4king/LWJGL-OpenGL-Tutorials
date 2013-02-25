@@ -9,10 +9,45 @@
             <option name="CONTINUATION_INDENT_SIZE" value="8" />
             <option name="TAB_SIZE" value="4" />
             <option name="USE_TAB_CHARACTER" value="true" />
-            <option name="SMART_TABS" value="true" />
+            <option name="SMART_TABS" value="false" />
             <option name="LABEL_INDENT_SIZE" value="0" />
             <option name="LABEL_INDENT_ABSOLUTE" value="false" />
             <option name="USE_RELATIVE_INDENTS" value="false" />
+          </value>
+        </option>
+        <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
+        <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="1" />
+        <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
+          <value>
+            <package name="org.lwjgl.opengl.GL11" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL12" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL13" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL14" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL15" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL20" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL21" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL30" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL31" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL32" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL33" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL40" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL41" withSubpackages="true" static="true" />
+            <package name="org.lwjgl.opengl.GL42" withSubpackages="true" static="true" />
+          </value>
+        </option>
+        <option name="IMPORT_LAYOUT_TABLE">
+          <value>
+            <package name="" withSubpackages="true" static="true" />
+            <emptyLine />
+            <package name="java" withSubpackages="true" static="false" />
+            <emptyLine />
+            <package name="com" withSubpackages="true" static="false" />
+            <emptyLine />
+            <package name="net" withSubpackages="true" static="false" />
+            <emptyLine />
+            <package name="org" withSubpackages="true" static="false" />
+            <emptyLine />
+            <package name="" withSubpackages="true" static="false" />
           </value>
         </option>
         <XML>
@@ -21,26 +56,31 @@
         <codeStyleSettings language="Groovy">
           <indentOptions>
             <option name="USE_TAB_CHARACTER" value="true" />
-            <option name="SMART_TABS" value="true" />
           </indentOptions>
         </codeStyleSettings>
         <codeStyleSettings language="HTML">
           <indentOptions>
             <option name="USE_TAB_CHARACTER" value="true" />
-            <option name="SMART_TABS" value="true" />
           </indentOptions>
         </codeStyleSettings>
         <codeStyleSettings language="JAVA">
+          <option name="SPACE_AFTER_TYPE_CAST" value="false" />
+          <option name="SPACE_BEFORE_IF_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_WHILE_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_FOR_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_TRY_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_CATCH_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_SWITCH_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_SYNCHRONIZED_PARENTHESES" value="false" />
+          <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
           <indentOptions>
             <option name="USE_TAB_CHARACTER" value="true" />
-            <option name="SMART_TABS" value="true" />
           </indentOptions>
         </codeStyleSettings>
         <codeStyleSettings language="XML">
           <indentOptions>
             <option name="CONTINUATION_INDENT_SIZE" value="0" />
             <option name="USE_TAB_CHARACTER" value="true" />
-            <option name="SMART_TABS" value="true" />
           </indentOptions>
         </codeStyleSettings>
       </value>

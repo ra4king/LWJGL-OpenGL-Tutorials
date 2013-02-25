@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="../../Documents/meshFormat.rnc" type="compact"?>
 
-<mesh xmlns="http://www.arcsynthesis.com/gltut/mesh" >
-	<attribute index="0" type="float" size="3" >
+<mesh xmlns="http://www.arcsynthesis.com/gltut/mesh">
+	<attribute index="0" type="float" size="3">
 		0 0.5 0
 		0.5 0.5 0
 		0.5 -0.5 0
@@ -126,7 +126,7 @@
 		0.48907326703854 0.5 -0.10395835448992
 		0.48907326703854 -0.5 -0.10395835448992
 	</attribute>
-	<attribute index="1" type="float" size="4" >
+	<attribute index="1" type="float" size="4">
 		1 1 1 1
 		0.9 0.8 0.8 1
 		0.9 0.8 0.8 1
@@ -250,7 +250,7 @@
 		0.84 0.76 0.74 1
 		0.84 0.76 0.74 1
 	</attribute>
-	<attribute index="2" type="float" size="3" >
+	<attribute index="2" type="float" size="3">
 		0 1 0
 		0 1 0
 		0 -1 0
@@ -374,20 +374,27 @@
 		0.97814653407707 0 -0.20791670897984
 		0.97814653407707 0 -0.20791670897984
 	</attribute>
-	<vao name="lit-color" >
-		<source attrib="0" />
-		<source attrib="1" />
-		<source attrib="2" />
+	<vao name="lit-color">
+		<source attrib="0"/>
+		<source attrib="1"/>
+		<source attrib="2"/>
 	</vao>
-	<vao name="lit" >
-		<source attrib="0" />
-		<source attrib="2" />
+	<vao name="lit">
+		<source attrib="0"/>
+		<source attrib="2"/>
 	</vao>
-	<vao name="color" >
-		<source attrib="0" />
-		<source attrib="1" />
+	<vao name="color">
+		<source attrib="0"/>
+		<source attrib="1"/>
 	</vao>
-	<indices cmd="tri-fan" type="ushort" >0 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59 1</indices>
-	<indices cmd="tri-fan" type="ushort" >61 60 58 56 54 52 50 48 46 44 42 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2 60</indices>
-	<indices cmd="tri-strip" type="ushort" >62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 62 63</indices>
+	<indices cmd="tri-fan" type="ushort">0 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53
+		55 57 59 1
+	</indices>
+	<indices cmd="tri-fan" type="ushort">61 60 58 56 54 52 50 48 46 44 42 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12
+		10 8 6 4 2 60
+	</indices>
+	<indices cmd="tri-strip" type="ushort">62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87
+		88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118
+		119 120 121 62 63
+	</indices>
 </mesh>

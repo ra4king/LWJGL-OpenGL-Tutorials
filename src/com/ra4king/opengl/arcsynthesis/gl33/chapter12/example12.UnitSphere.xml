@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="../../Documents/meshFormat.rnc" type="compact"?>
 
-<mesh xmlns="http://www.arcsynthesis.com/gltut/mesh" >
-	<attribute index="0" type="float" size="3" >
+<mesh xmlns="http://www.arcsynthesis.com/gltut/mesh">
+	<attribute index="0" type="float" size="3">
 		0 0.5 0
 		0.17101007166283 0.46984631039295 0
 		0.15622547417872 0.46984631039295 0.069556062480293
@@ -126,7 +126,7 @@
 		0.15622547417872 -0.46984631039295 -0.069556062480293
 		0 -0.5 0
 	</attribute>
-	<attribute index="1" type="float" size="4" >
+	<attribute index="1" type="float" size="4">
 		1 1 1 1
 		0.34202014332567 0.93969262078591 0 1
 		0.31245094835744 0.93969262078591 0.13911212496059 1
@@ -250,7 +250,7 @@
 		0.31245094835744 -0.93969262078591 -0.13911212496059 1
 		1 1 1 1
 	</attribute>
-	<attribute index="2" type="float" size="3" >
+	<attribute index="2" type="float" size="3">
 		0 1 0
 		0.34202014332567 0.93969262078591 0
 		0.31245094835744 0.93969262078591 0.13911212496059
@@ -374,29 +374,43 @@
 		0.31245094835744 -0.93969262078591 -0.13911212496059
 		0 -1 0
 	</attribute>
-	<vao name="lit-color" >
-		<source attrib="0" />
-		<source attrib="1" />
-		<source attrib="2" />
+	<vao name="lit-color">
+		<source attrib="0"/>
+		<source attrib="1"/>
+		<source attrib="2"/>
 	</vao>
-	<vao name="lit" >
-		<source attrib="0" />
-		<source attrib="2" />
+	<vao name="lit">
+		<source attrib="0"/>
+		<source attrib="2"/>
 	</vao>
-	<vao name="color" >
-		<source attrib="0" />
-		<source attrib="1" />
+	<vao name="color">
+		<source attrib="0"/>
+		<source attrib="1"/>
 	</vao>
-	<vao name="flat" >
-		<source attrib="0" />
+	<vao name="flat">
+		<source attrib="0"/>
 	</vao>
-	<indices cmd="tri-fan" type="ushort" >0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1</indices>
-	<indices cmd="tri-fan" type="ushort" >121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 120</indices>
-	<indices cmd="tri-strip" type="ushort" >1 16 2 17 3 18 4 19 5 20 6 21 7 22 8 23 9 24 10 25 11 26 12 27 13 28 14 29 15 30 1 16</indices>
-	<indices cmd="tri-strip" type="ushort" >16 31 17 32 18 33 19 34 20 35 21 36 22 37 23 38 24 39 25 40 26 41 27 42 28 43 29 44 30 45 16 31</indices>
-	<indices cmd="tri-strip" type="ushort" >31 46 32 47 33 48 34 49 35 50 36 51 37 52 38 53 39 54 40 55 41 56 42 57 43 58 44 59 45 60 31 46</indices>
-	<indices cmd="tri-strip" type="ushort" >46 61 47 62 48 63 49 64 50 65 51 66 52 67 53 68 54 69 55 70 56 71 57 72 58 73 59 74 60 75 46 61</indices>
-	<indices cmd="tri-strip" type="ushort" >61 76 62 77 63 78 64 79 65 80 66 81 67 82 68 83 69 84 70 85 71 86 72 87 73 88 74 89 75 90 61 76</indices>
-	<indices cmd="tri-strip" type="ushort" >76 91 77 92 78 93 79 94 80 95 81 96 82 97 83 98 84 99 85 100 86 101 87 102 88 103 89 104 90 105 76 91</indices>
-	<indices cmd="tri-strip" type="ushort" >91 106 92 107 93 108 94 109 95 110 96 111 97 112 98 113 99 114 100 115 101 116 102 117 103 118 104 119 105 120 91 106</indices>
+	<indices cmd="tri-fan" type="ushort">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1</indices>
+	<indices cmd="tri-fan" type="ushort">121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 120</indices>
+	<indices cmd="tri-strip" type="ushort">1 16 2 17 3 18 4 19 5 20 6 21 7 22 8 23 9 24 10 25 11 26 12 27 13 28 14 29 15
+		30 1 16
+	</indices>
+	<indices cmd="tri-strip" type="ushort">16 31 17 32 18 33 19 34 20 35 21 36 22 37 23 38 24 39 25 40 26 41 27 42 28 43
+		29 44 30 45 16 31
+	</indices>
+	<indices cmd="tri-strip" type="ushort">31 46 32 47 33 48 34 49 35 50 36 51 37 52 38 53 39 54 40 55 41 56 42 57 43 58
+		44 59 45 60 31 46
+	</indices>
+	<indices cmd="tri-strip" type="ushort">46 61 47 62 48 63 49 64 50 65 51 66 52 67 53 68 54 69 55 70 56 71 57 72 58 73
+		59 74 60 75 46 61
+	</indices>
+	<indices cmd="tri-strip" type="ushort">61 76 62 77 63 78 64 79 65 80 66 81 67 82 68 83 69 84 70 85 71 86 72 87 73 88
+		74 89 75 90 61 76
+	</indices>
+	<indices cmd="tri-strip" type="ushort">76 91 77 92 78 93 79 94 80 95 81 96 82 97 83 98 84 99 85 100 86 101 87 102 88
+		103 89 104 90 105 76 91
+	</indices>
+	<indices cmd="tri-strip" type="ushort">91 106 92 107 93 108 94 109 95 110 96 111 97 112 98 113 99 114 100 115 101
+		116 102 117 103 118 104 119 105 120 91 106
+	</indices>
 </mesh>
