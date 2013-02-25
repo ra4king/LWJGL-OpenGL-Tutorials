@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="files/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="files/lwjgl.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.lwjgl.com/javadoc"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="OpenGL/files/natives"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="files/xpp3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/OpenGL/files/XPP3-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
