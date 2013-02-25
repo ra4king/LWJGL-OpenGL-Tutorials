@@ -55,11 +55,11 @@
 		1 0 1 1
 	</attribute>
 	<vao name="color">
-		<source attrib="0"/>
-		<source attrib="1"/>
+		<source attrib="0" />
+		<source attrib="1" />
 	</vao>
 	<vao name="flat">
-		<source attrib="0"/>
+		<source attrib="0" />
 	</vao>
 	<indices cmd="triangles" type="ushort">
 		0 1 2

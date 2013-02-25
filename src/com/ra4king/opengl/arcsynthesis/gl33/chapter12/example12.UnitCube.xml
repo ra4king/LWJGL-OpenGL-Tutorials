@@ -81,20 +81,20 @@
 		-1 0 0
 	</attribute>
 	<vao name="lit">
-		<source attrib="0"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="2" />
 	</vao>
 	<vao name="lit-color">
-		<source attrib="0"/>
-		<source attrib="1"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="1" />
+		<source attrib="2" />
 	</vao>
 	<vao name="color">
-		<source attrib="0"/>
-		<source attrib="1"/>
+		<source attrib="0" />
+		<source attrib="1" />
 	</vao>
 	<vao name="flat">
-		<source attrib="0"/>
+		<source attrib="0" />
 	</vao>
 	<indices cmd="triangles" type="ushort">
 		0 1 2

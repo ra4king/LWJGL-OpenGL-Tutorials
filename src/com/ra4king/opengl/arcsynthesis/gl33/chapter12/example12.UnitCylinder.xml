@@ -375,17 +375,17 @@
 		0.97814653407707 0 -0.20791670897984
 	</attribute>
 	<vao name="lit-color">
-		<source attrib="0"/>
-		<source attrib="1"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="1" />
+		<source attrib="2" />
 	</vao>
 	<vao name="lit">
-		<source attrib="0"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="2" />
 	</vao>
 	<vao name="color">
-		<source attrib="0"/>
-		<source attrib="1"/>
+		<source attrib="0" />
+		<source attrib="1" />
 	</vao>
 	<indices cmd="tri-fan" type="ushort">0 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53
 		55 57 59 1

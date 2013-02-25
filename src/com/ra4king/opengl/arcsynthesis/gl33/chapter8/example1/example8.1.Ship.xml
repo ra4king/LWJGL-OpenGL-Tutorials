@@ -1017,11 +1017,11 @@
 		0.3215686 0.3647059 0.3686274
 	</attribute>
 	<vao name="flat">
-		<source attrib="0"/>
+		<source attrib="0" />
 	</vao>
 	<vao name="tint">
-		<source attrib="0"/>
-		<source attrib="1"/>
+		<source attrib="0" />
+		<source attrib="1" />
 	</vao>
-	<arrays cmd="triangles" start="0" count="336"/>
+	<arrays cmd="triangles" start="0" count="336" />
 </mesh>

@@ -375,20 +375,20 @@
 		0 -1 0
 	</attribute>
 	<vao name="lit-color">
-		<source attrib="0"/>
-		<source attrib="1"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="1" />
+		<source attrib="2" />
 	</vao>
 	<vao name="lit">
-		<source attrib="0"/>
-		<source attrib="2"/>
+		<source attrib="0" />
+		<source attrib="2" />
 	</vao>
 	<vao name="color">
-		<source attrib="0"/>
-		<source attrib="1"/>
+		<source attrib="0" />
+		<source attrib="1" />
 	</vao>
 	<vao name="flat">
-		<source attrib="0"/>
+		<source attrib="0" />
 	</vao>
 	<indices cmd="tri-fan" type="ushort">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1</indices>
 	<indices cmd="tri-fan" type="ushort">121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 120</indices>
