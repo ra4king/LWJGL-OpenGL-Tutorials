@@ -67,7 +67,7 @@ public class Timer {
 		secAccumTime += delta;
 		
 		absPrevTime = currTime;
-		// noinspection SimplifiableIfStatement
+		
 		if(type == Type.SINGLE)
 			return secAccumTime > secDuration;
 		
