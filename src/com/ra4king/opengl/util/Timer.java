@@ -1,6 +1,5 @@
 package com.ra4king.opengl.util;
 
-@SuppressWarnings("UnusedReturnValue")
 public class Timer {
 	public enum Type {
 		LOOP,

@@ -15,7 +15,6 @@ import org.lwjgl.BufferUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-@SuppressWarnings({ "ConstantConditions", "ToArrayCallWithZeroLengthArrayArgument" })
 public class Mesh {
 	private int vao;
 	private HashMap<String,Integer> vaoMap;

@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.lwjgl.BufferUtils;
 
-@SuppressWarnings({ "UnusedReturnValue", "PointlessArithmeticExpression" })
 public class Matrix4 {
 	private float[] matrix;
 	

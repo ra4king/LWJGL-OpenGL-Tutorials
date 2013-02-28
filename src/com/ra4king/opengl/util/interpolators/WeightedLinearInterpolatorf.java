@@ -11,6 +11,11 @@ public class WeightedLinearInterpolatorf {
 			this.data = data;
 			this.weight = weight;
 		}
+		
+		public Data(Data other) {
+			data = other.data;
+			weight = other.weight;
+		}
 	}
 	
 	protected ArrayList<Data> values = new ArrayList<>();

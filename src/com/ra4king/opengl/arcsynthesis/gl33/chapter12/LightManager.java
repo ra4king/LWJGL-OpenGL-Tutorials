@@ -132,22 +132,6 @@ public class LightManager {
 		return ret;
 	}
 	
-	// public Vector4 getMaxIntensityValue(Pair<Vector4,Float> data) {
-	// return data.first;
-	// }
-	//
-	// public float getMaxIntensityTime(Pair<Vector4,Float> data) {
-	// return data.second;
-	// }
-	//
-	// public float getLightVectorValue(Pair<Float,Float> data) {
-	// return data.first;
-	// }
-	//
-	// public float getLightVectorTime(Pair<Float,Float> data) {
-	// return data.second;
-	// }
-	
 	public void setSunlightValues(SunlightValue[] values) {
 		ArrayList<TimedLinearInterpolatorVector<Vector4>.Data> ambient = new ArrayList<>();
 		ArrayList<TimedLinearInterpolatorVector<Vector4>.Data> light = new ArrayList<>();

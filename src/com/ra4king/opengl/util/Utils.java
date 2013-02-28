@@ -37,9 +37,9 @@ public class Utils {
 				
 				if(dwheel != 0) {
 					if(viewPole != null)
-						viewPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
+						viewPole.mouseWheel(dwheel, getModifier());
 					if(objectPole != null)
-						objectPole.mouseWheel(dwheel, getModifier(), Mouse.getX(), Mouse.getY());
+						objectPole.mouseWheel(dwheel, getModifier());
 				} else {
 					if(viewPole != null)
 						viewPole.mouseMove(Mouse.getX(), Mouse.getY());

@@ -52,11 +52,11 @@ public class Scene {
 		ArrayList<MaterialBlock> materials = getMaterials();
 		
 		FloatBuffer buffer = BufferUtils.createByteBuffer(sizeMaterialUniformBuffer).asFloatBuffer();
-		for(MaterialBlock block : materials) {
-			buffer.put(block.diffuseColor.toBuffer());
-			buffer.put(block.specularColor.toBuffer());
-			buffer.put(block.specularShininess);
-			buffer.put(0).put(0).put(0);
+		for(int a = 0; a < materials.size(); a++) {
+			buffer.position(a * sizeMaterialBlock / 4);
+			buffer.put(materials.get(a).diffuseColor.toBuffer());
+			buffer.put(materials.get(a).specularColor.toBuffer());
+			buffer.put(materials.get(a).specularShininess);
 		}
 		buffer.flip();
 		

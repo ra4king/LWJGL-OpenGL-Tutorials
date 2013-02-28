@@ -13,6 +13,11 @@ public class WeightedLinearInterpolatorVector<T extends Vector<T>> {
 			this.data = data;
 			this.weight = weight;
 		}
+		
+		public Data(Data other) {
+			data = other.data.copy();
+			weight = other.weight;
+		}
 	}
 	
 	protected ArrayList<Data> values = new ArrayList<>();
@@ -25,7 +30,7 @@ public class WeightedLinearInterpolatorVector<T extends Vector<T>> {
 		if(values.isEmpty())
 			return null;
 		if(values.size() == 1)
-			return values.get(0).data;
+			return values.get(0).data.copy();
 		
 		int segment = 1;
 		for(; segment < values.size(); segment++)
@@ -33,7 +38,7 @@ public class WeightedLinearInterpolatorVector<T extends Vector<T>> {
 				break;
 		
 		if(segment == values.size())
-			return values.get(values.size() - 1).data;
+			return values.get(values.size() - 1).data.copy();
 		
 		float sectionAlpha = alpha - values.get(segment - 1).weight;
 		sectionAlpha /= values.get(segment).weight - values.get(segment - 1).weight;

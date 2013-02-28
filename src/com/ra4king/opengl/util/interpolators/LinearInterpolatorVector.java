@@ -13,10 +13,10 @@ public class LinearInterpolatorVector<T extends Vector<T>> extends WeightedLinea
 		values.clear();
 		
 		for(T d : data)
-			values.add(new Data(d, 0));
+			values.add(new Data(d.copy(), 0));
 		
 		if(isLooping && !values.isEmpty())
-			values.add(values.get(values.size() - 1));
+			values.add(new Data(values.get(values.size() - 1)));
 		
 		for(int a = 0; a < values.size(); a++)
 			values.get(a).weight = a / (float)(values.size() - 1);

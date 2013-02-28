@@ -174,8 +174,7 @@ public abstract class GLProgram {
 	
 	public void keyPressed(int key, char c) {}
 	
-	@SuppressWarnings("UnusedParameters")
-	public void keyReleased(int key, @SuppressWarnings("UnusedParameters") char cs) {}
+	public void keyReleased(int key, char cs) {}
 	
 	public void update(long deltaTime) {}
 	

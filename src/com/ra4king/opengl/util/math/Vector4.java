@@ -4,7 +4,6 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
-@SuppressWarnings("UnusedReturnValue")
 public class Vector4 implements Vector<Vector4> {
 	private float x, y, z, w;
 	

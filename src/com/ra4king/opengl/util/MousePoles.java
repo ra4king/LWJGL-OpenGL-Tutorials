@@ -1,5 +1,7 @@
 package com.ra4king.opengl.util;
 
+import org.lwjgl.input.Keyboard;
+
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector3;
@@ -37,11 +39,9 @@ public class MousePoles {
 		
 		public abstract void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY);
 		
-		@SuppressWarnings("UnusedParameters")
-		public abstract void mouseWheel(int direction, MouseModifier modifiers, @SuppressWarnings("UnusedParameters") int positionX, @SuppressWarnings("UnusedParameters") int positionY);
+		public abstract void mouseWheel(int direction, MouseModifier modifiers);
 		
-		@SuppressWarnings("UnusedParameters")
-		public abstract void charPress(char key, boolean isShiftPressed, @SuppressWarnings("UnusedParameters") float lastFrameDuration);
+		public abstract void charPress(long deltaTime);
 	}
 	
 	private static abstract class ViewProvider extends Pole {
@@ -77,9 +77,9 @@ public class MousePoles {
 		}
 		
 		private Vector3[] axisVectors = {
-											new Vector3(1, 0, 0),
-											new Vector3(0, 1, 0),
-											new Vector3(0, 0, 1)
+				new Vector3(1, 0, 0),
+				new Vector3(0, 1, 0),
+				new Vector3(0, 0, 1)
 		};
 		
 		private ViewProvider view;
@@ -234,10 +234,10 @@ public class MousePoles {
 		}
 		
 		@Override
-		public void mouseWheel(int direction, MouseModifier modifiers, int positionX, int positionY) {}
+		public void mouseWheel(int direction, MouseModifier modifiers) {}
 		
 		@Override
-		public void charPress(char key, boolean isShiftPressed, float lastFrameDuration) {}
+		public void charPress(long deltaTime) {}
 	}
 	
 	public static class ViewData {
@@ -300,12 +300,12 @@ public class MousePoles {
 		}
 		
 		private Vector3[] offsets = {
-										new Vector3(0, 1, 0),
-										new Vector3(0, -1, 0),
-										new Vector3(0, 0, -1),
-										new Vector3(0, 0, 1),
-										new Vector3(1, 0, 0),
-										new Vector3(-1, 0, 0)
+				new Vector3(0, 1, 0),
+				new Vector3(0, -1, 0),
+				new Vector3(0, 0, -1),
+				new Vector3(0, 0, 1),
+				new Vector3(1, 0, 0),
+				new Vector3(-1, 0, 0)
 		};
 		
 		private ViewData currView;
@@ -489,7 +489,8 @@ public class MousePoles {
 			}
 		}
 		
-		public void mouseWheel(int direction, MouseModifier modifiers, int positionX, int positionY) {
+		@Override
+		public void mouseWheel(int direction, MouseModifier modifiers) {
 			if(direction > 0)
 				moveCloser(modifiers != MouseModifier.KEY_SHIFT);
 			else
@@ -505,89 +506,38 @@ public class MousePoles {
 		}
 		
 		@Override
-		public void charPress(char key, boolean isShiftPressed, float lastFrameDuration) {
-			float offset = isShiftPressed ? viewScale.smallPosOffset : viewScale.largePosOffset;
+		public void charPress(long deltaTime) {
+			boolean isShiftPressed = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+			
+			float offset = (isShiftPressed ? viewScale.smallPosOffset : viewScale.largePosOffset) * 20 * deltaTime / (float)1e9;
 			
 			if(rightKeyboardCtrls) {
-				switch(key) {
-					case 'i':
-						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
-						break;
-					case 'k':
-						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
-						break;
-					case 'l':
-						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
-						break;
-					case 'j':
-						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
-						break;
-					case 'o':
-						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
-						break;
-					case 'u':
-						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
-						break;
-					
-					case 'I':
-						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
-						break;
-					case 'K':
-						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
-						break;
-					case 'L':
-						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
-						break;
-					case 'J':
-						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
-						break;
-					case 'O':
-						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
-						break;
-					case 'U':
-						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
-						break;
-				}
-			} else {
-				switch(key) {
-					case 'w':
-						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
-						break;
-					case 's':
-						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
-						break;
-					case 'd':
-						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
-						break;
-					case 'a':
-						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
-						break;
-					case 'e':
-						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
-						break;
-					case 'q':
-						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
-						break;
-					
-					case 'W':
-						offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
-						break;
-					case 'S':
-						offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
-						break;
-					case 'D':
-						offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
-						break;
-					case 'A':
-						offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
-						break;
-					case 'E':
-						offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
-						break;
-					case 'Q':
-						offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
-						break;
-				}
+				if(Keyboard.isKeyDown(Keyboard.KEY_I))
+					offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_K))
+					offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_L))
+					offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_J))
+					offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_O))
+					offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_U))
+					offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
+			}
+			else {
+				if(Keyboard.isKeyDown(Keyboard.KEY_W))
+					offsetTargetPos(TargetOffsetDir.DIR_FORWARD, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_S))
+					offsetTargetPos(TargetOffsetDir.DIR_BACKWARD, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_D))
+					offsetTargetPos(TargetOffsetDir.DIR_RIGHT, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_A))
+					offsetTargetPos(TargetOffsetDir.DIR_LEFT, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_E))
+					offsetTargetPos(TargetOffsetDir.DIR_UP, offset);
+				if(Keyboard.isKeyDown(Keyboard.KEY_Q))
+					offsetTargetPos(TargetOffsetDir.DIR_DOWN, offset);
 			}
 		}
 	}

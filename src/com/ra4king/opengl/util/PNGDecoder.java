@@ -43,7 +43,6 @@ import java.util.zip.Inflater;
  * 
  * @author Matthias Mann
  */
-@SuppressWarnings("PointlessArithmeticExpression")
 public class PNGDecoder {
 	
 	public enum Format {

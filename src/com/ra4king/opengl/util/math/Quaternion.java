@@ -1,6 +1,5 @@
 package com.ra4king.opengl.util.math;
 
-@SuppressWarnings("UnusedReturnValue")
 public class Quaternion {
 	private float x, y, z, w;
 	
@@ -168,10 +167,10 @@ public class Quaternion {
 	
 	public Matrix4 toMatrix() {
 		float[] m = {
-						1 - 2 * y * y - 2 * z * z, 2 * x * y + 2 * w * z, 2 * x * z - 2 * w * y, 0,
-						2 * x * y - 2 * w * z, 1 - 2 * x * x - 2 * z * z, 2 * y * z + 2 * w * x, 0,
-						2 * x * z + 2 * w * y, 2 * y * z - 2 * w * x, 1 - 2 * x * x - 2 * y * y, 0,
-						0, 0, 0, 1,
+				1 - 2 * y * y - 2 * z * z, 2 * x * y + 2 * w * z, 2 * x * z - 2 * w * y, 0,
+				2 * x * y - 2 * w * z, 1 - 2 * x * x - 2 * z * z, 2 * y * z + 2 * w * x, 0,
+				2 * x * z + 2 * w * y, 2 * y * z - 2 * w * x, 1 - 2 * x * x - 2 * y * y, 0,
+				0, 0, 0, 1,
 		};
 		
 		return new Matrix4(m);

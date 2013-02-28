@@ -14,11 +14,11 @@ public class TimedLinearInterpolatorVector<T extends Vector<T>> extends Weighted
 		for(Data d : data) {
 			if(d.weight < 0 || d.weight > 1)
 				throw new IllegalArgumentException("weight is out of bounds.");
-			values.add(d);
+			values.add(new Data(d));
 		}
 		
 		if(isLooping && !values.isEmpty())
-			values.add(values.get(0));
+			values.add(new Data(values.get(0)));
 		
 		if(!values.isEmpty()) {
 			values.get(0).weight = 0;

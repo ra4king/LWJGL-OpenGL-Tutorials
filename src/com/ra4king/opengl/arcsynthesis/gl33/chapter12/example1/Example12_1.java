@@ -68,11 +68,11 @@ public class Example12_1 extends GLProgram {
 		
 		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON, false);
 		
-		String[] vertexShaders = { "PCN.vert", "PCN.vert", "PN.vert", "PN.vert" };
-		String[] fragmentShaders = { "DiffuseSpecular.frag", "DiffuseOnly.frag", "DiffuseSpecularMtl.frag", "DiffuseOnlyMtl.frag" };
+		String[] vertexShaders = { "PCN", "PCN", "PN", "PN" };
+		String[] fragmentShaders = { "DiffuseSpecular", "DiffuseOnly", "DiffuseSpecularMtl", "DiffuseOnlyMtl" };
 		
 		for(int a = 0; a < vertexShaders.length && a < fragmentShaders.length; a++)
-			programs[a] = loadLitProgram("example12.1." + vertexShaders[a], "example12.1." + fragmentShaders[a]);
+			programs[a] = loadLitProgram("example12.1." + vertexShaders[a] + ".vert", "example12.1." + fragmentShaders[a] + ".frag");
 		
 		unlit = loadUnlitProgram("example12.1.PosTransform.vert", "example12.1.UniformColor.frag");
 		
@@ -113,13 +113,13 @@ public class Example12_1 extends GLProgram {
 	
 	private void setupDaytimeLighting() {
 		SunlightValue[] values = {
-									new SunlightValue(0.0f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
-									new SunlightValue(4.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
-									new SunlightValue(6.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.10f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
-									new SunlightValue(8.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
-									new SunlightValue(18.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
-									new SunlightValue(19.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.1f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
-									new SunlightValue(20.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor)
+				new SunlightValue(0.0f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
+				new SunlightValue(4.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
+				new SunlightValue(6.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.10f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
+				new SunlightValue(8.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
+				new SunlightValue(18.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
+				new SunlightValue(19.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.1f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
+				new SunlightValue(20.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor)
 		};
 		
 		lights.setSunlightValues(values);
@@ -131,13 +131,13 @@ public class Example12_1 extends GLProgram {
 	
 	private void setupNighttimeLighting() {
 		SunlightValue[] values = {
-									new SunlightValue(0.0f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
-									new SunlightValue(4.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
-									new SunlightValue(6.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.10f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
-									new SunlightValue(8.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
-									new SunlightValue(18.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
-									new SunlightValue(19.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.1f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
-									new SunlightValue(20.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor)
+				new SunlightValue(0.0f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
+				new SunlightValue(4.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor),
+				new SunlightValue(6.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.10f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
+				new SunlightValue(8.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
+				new SunlightValue(18.0f / 24.0f, new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)),
+				new SunlightValue(19.5f / 24.0f, new Vector4(0.15f, 0.05f, 0.05f, 1.0f), new Vector4(0.3f, 0.1f, 0.1f, 1.0f), new Vector4(0.5f, 0.1f, 0.1f, 1.0f)),
+				new SunlightValue(20.5f / 24.0f, new Vector4(0.2f, 0.2f, 0.2f, 1.0f), new Vector4(0.6f, 0.6f, 0.6f, 1.0f), skyDaylightColor)
 		};
 		
 		lights.setSunlightValues(values);
@@ -159,6 +159,9 @@ public class Example12_1 extends GLProgram {
 			
 			if(materialBlock != GL_INVALID_INDEX)
 				glUniformBlockBinding(data.program.getProgram(), materialBlock, materialBlockIndex);
+			else
+				System.out.println("invalid index!");
+			
 			glUniformBlockBinding(data.program.getProgram(), lightBlock, lightBlockIndex);
 			glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 			
@@ -171,7 +174,7 @@ public class Example12_1 extends GLProgram {
 	
 	private UnlitProgramData loadUnlitProgram(String vertexShader, String fragmentShader) {
 		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelTocameraMatrix");
+		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
 		data.objectColorUniform = glGetUniformLocation(data.program.getProgram(), "objectColor");
 		
 		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
@@ -194,6 +197,8 @@ public class Example12_1 extends GLProgram {
 		lights.updateTime(deltaTime);
 		
 		Utils.updateMousePoles(viewPole, null);
+		
+		viewPole.charPress(deltaTime);
 	}
 	
 	@Override
@@ -239,8 +244,6 @@ public class Example12_1 extends GLProgram {
 				System.out.println(sunHours + ":" + sunMinutes);
 				break;
 		}
-		
-		viewPole.charPress(c, Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT), 0);
 	}
 	
 	@Override

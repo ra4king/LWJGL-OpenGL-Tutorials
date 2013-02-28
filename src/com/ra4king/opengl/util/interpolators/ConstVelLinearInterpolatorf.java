@@ -20,7 +20,7 @@ public class ConstVelLinearInterpolatorf extends WeightedLinearInterpolatorf {
 			values.add(new Data(d, 0));
 		
 		if(isLooping)
-			values.add(values.get(0));
+			values.add(new Data(values.get(0)));
 		
 		totalDist = 0;
 		for(int a = 1; a < values.size(); a++) {
