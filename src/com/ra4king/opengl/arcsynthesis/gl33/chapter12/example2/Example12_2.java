@@ -8,7 +8,7 @@ public class Example12_2 extends GLProgram {
 	}
 	
 	public Example12_2() {
-		super("Example 12.1 - HDR Lighting", 800, 800, true);
+		super("Example 12.2 - HDR Lighting", 800, 800, true);
 	}
 	
 	@Override
