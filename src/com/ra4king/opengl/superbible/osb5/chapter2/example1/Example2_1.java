@@ -76,9 +76,9 @@ public class Example2_1 extends GLProgram {
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		FloatBuffer verts = BufferUtils.createFloatBuffer(12).put(new float[] {
-																				-0.5f, 0.0f, 0.0f, 1.0f,
-																				0.5f, 0.0f, 0.0f, 1.0f,
-																				0.0f, 0.5f, 0.0f, 1.0f
+				-0.5f, 0.0f, 0.0f, 1.0f,
+				0.5f, 0.0f, 0.0f, 1.0f,
+				0.0f, 0.5f, 0.0f, 1.0f
 		});
 		verts.flip(); // never forget to flip your buffers after filling them!
 		glBufferData(GL_ARRAY_BUFFER, verts, GL_STATIC_DRAW);

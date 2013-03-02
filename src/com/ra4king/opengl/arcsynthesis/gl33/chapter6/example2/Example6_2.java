@@ -26,37 +26,37 @@ public class Example6_2 extends GLProgram {
 	private final float[] BROWN_COLOR = { 0.5f, 0.5f, 0, 1 };
 	
 	private final float[] data = {
-									1, 1, 1,
-									-1, -1, 1,
-									-1, 1, -1,
-									1, -1, -1,
-									
-									-1, -1, -1,
-									1, 1, -1,
-									1, -1, 1,
-									-1, 1, 1,
-									
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
-									
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+			1, 1, 1,
+			-1, -1, 1,
+			-1, 1, -1,
+			1, -1, -1,
+			
+			-1, -1, -1,
+			1, 1, -1,
+			1, -1, 1,
+			-1, 1, 1,
+			
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
+			
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			BROWN_COLOR[0], BROWN_COLOR[1], BROWN_COLOR[2], BROWN_COLOR[3],
 	};
 	
 	private final short[] indices = {
-										0, 1, 2,
-										1, 0, 3,
-										2, 3, 0,
-										3, 2, 1,
-										
-										5, 4, 6,
-										4, 5, 7,
-										7, 6, 4,
-										6, 7, 5
+			0, 1, 2,
+			1, 0, 3,
+			2, 3, 0,
+			3, 2, 1,
+			
+			5, 4, 6,
+			4, 5, 7,
+			7, 6, 4,
+			6, 7, 5
 	};
 	
 	private ShaderProgram program;

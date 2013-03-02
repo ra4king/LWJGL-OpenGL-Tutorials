@@ -38,11 +38,11 @@ public class Example11_3 extends GLProgram {
 	
 	private ProgramPair[] programs = new ProgramPair[LightingModel.values().length];
 	private ShaderPair[] shaderFiles = { new ShaderPair("PN.vert", "PCN.vert", "PhongLighting.frag"),
-										new ShaderPair("PN.vert", "PCN.vert", "PhongOnly.frag"),
-										new ShaderPair("PN.vert", "PCN.vert", "BlinnLighting.frag"),
-										new ShaderPair("PN.vert", "PCN.vert", "BlinnOnly.frag"),
-										new ShaderPair("PN.vert", "PCN.vert", "GaussianLighting.frag"),
-										new ShaderPair("PN.vert", "PCN.vert", "GaussianOnly.frag"),
+			new ShaderPair("PN.vert", "PCN.vert", "PhongOnly.frag"),
+			new ShaderPair("PN.vert", "PCN.vert", "BlinnLighting.frag"),
+			new ShaderPair("PN.vert", "PCN.vert", "BlinnOnly.frag"),
+			new ShaderPair("PN.vert", "PCN.vert", "GaussianLighting.frag"),
+			new ShaderPair("PN.vert", "PCN.vert", "GaussianOnly.frag"),
 	};
 	
 	private UnlitProgramData unlit;

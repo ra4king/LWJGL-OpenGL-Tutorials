@@ -311,19 +311,19 @@ public class Matrix4 {
 			case 1:
 				res.w((get(6) - get(9)) * mult);
 				res.x(biggestVal);
-				res.y((get(1) - get(4)) * mult);
-				res.z((get(8) - get(2)) * mult);
+				res.y((get(1) + get(4)) * mult);
+				res.z((get(8) + get(2)) * mult);
 				break;
 			case 2:
 				res.w((get(8) - get(2)) * mult);
-				res.x((get(1) - get(4)) * mult);
+				res.x((get(1) + get(4)) * mult);
 				res.y(biggestVal);
-				res.z((get(6) - get(9)) * mult);
+				res.z((get(6) + get(9)) * mult);
 				break;
 			case 3:
 				res.w((get(1) - get(4)) * mult);
-				res.x((get(8) - get(2)) * mult);
-				res.y((get(6) - get(9)) * mult);
+				res.x((get(8) + get(2)) * mult);
+				res.y((get(6) + get(9)) * mult);
 				res.z(biggestVal);
 				break;
 		}

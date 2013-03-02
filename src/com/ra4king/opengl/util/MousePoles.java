@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.Quaternion;
+import com.ra4king.opengl.util.math.Vector2;
 import com.ra4king.opengl.util.math.Vector3;
 
 public class MousePoles {
@@ -35,9 +36,9 @@ public class MousePoles {
 	}
 	
 	public static abstract class Pole {
-		public abstract void mouseMove(int x, int y);
+		public abstract void mouseMove(Vector2 position);
 		
-		public abstract void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY);
+		public abstract void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, Vector2 position);
 		
 		public abstract void mouseWheel(int direction, MouseModifier modifiers);
 		
@@ -53,13 +54,13 @@ public class MousePoles {
 		public Quaternion orientation;
 		
 		public ObjectData(ObjectData data) {
-			position = new Vector3(data.position);
-			orientation = new Quaternion(data.orientation);
+			position = data.position.copy();
+			orientation = data.orientation.copy();
 		}
 		
 		public ObjectData(Vector3 v, Quaternion q) {
-			position = v;
-			orientation = q;
+			position = v.copy();
+			orientation = q.copy();
 		}
 	}
 	
@@ -92,8 +93,8 @@ public class MousePoles {
 		private RotateMode rotateMode;
 		private boolean isDragging;
 		
-		private int prevMousePosX, prevMousePosY;
-		private int startDragMousePosX, startDragMousePosY;
+		private Vector2 prevMousePos;
+		private Vector2 startDragMousePos;
 		private Quaternion startDragOrient;
 		
 		public ObjectPole(ObjectData initialData, float rotateScale, MouseButton actionButton, ViewProvider lookAtProvider) {
@@ -106,7 +107,7 @@ public class MousePoles {
 		
 		public Matrix4 calcMatrix() {
 			Matrix4 translateMat = new Matrix4().clearToIdentity();
-			translateMat.putColumn(3, po.position);
+			translateMat.putColumn(3, po.position, 1);
 			return translateMat.mult(po.orientation.toMatrix());
 		}
 		
@@ -143,7 +144,7 @@ public class MousePoles {
 			if(!isDragging)
 				fromInitial = false;
 			
-			po.orientation = new Quaternion(rot).mult(fromInitial ? startDragOrient : po.orientation).normalize();
+			po.orientation = rot.copy().mult(fromInitial ? startDragOrient : po.orientation).normalize();
 		}
 		
 		public void rotateViewDegrees(Quaternion rot, boolean fromInitial) {
@@ -154,53 +155,49 @@ public class MousePoles {
 				rotateWorldDegrees(rot, fromInitial);
 			else {
 				Quaternion viewQuat = view.calcMatrix().toQuaternion();
-				Quaternion inViewQuat = new Quaternion(viewQuat).conjugate();
+				Quaternion inViewQuat = viewQuat.copy().conjugate();
 				po.orientation = inViewQuat.mult(rot).mult(viewQuat).mult(fromInitial ? startDragOrient : po.orientation).normalize();
 			}
 		}
 		
 		@Override
-		public void mouseMove(int positionX, int positionY) {
+		public void mouseMove(Vector2 position) {
 			if(isDragging) {
-				int diffX = positionX - prevMousePosX;
-				int diffY = -(positionY - prevMousePosY);
+				Vector2 diff = position.copy().sub(prevMousePos);
 				
 				switch(rotateMode) {
-					case DUAL_AXIS: {
-						Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diffX * rotateScale);
-						rot = calcRotationQuat(Axis.AXIS_X, diffY * rotateScale).mult(rot).normalize();
+					case DUAL_AXIS:
+						Quaternion rot = calcRotationQuat(Axis.AXIS_Y, diff.x() * rotateScale);
+						rot = calcRotationQuat(Axis.AXIS_X, diff.y() * rotateScale).mult(rot).normalize();
 						rotateViewDegrees(rot, false);
-					}
 						break;
 					case BIAXIAL: {
-						int initDiffX = positionX - startDragMousePosX;
-						int initDiffY = positionY - startDragMousePosY;
+						Vector2 initDiff = position.copy().sub(startDragMousePos);
 						
 						Axis axis;
 						float degAngle;
-						if(Math.abs(initDiffX) > Math.abs(initDiffY)) {
+						if(Math.abs(initDiff.x()) > Math.abs(initDiff.y())) {
 							axis = Axis.AXIS_Y;
-							degAngle = initDiffX * rotateScale;
+							degAngle = initDiff.x() * rotateScale;
 						} else {
 							axis = Axis.AXIS_X;
-							degAngle = initDiffY * rotateScale;
+							degAngle = initDiff.y() * rotateScale;
 						}
 						
 						rotateViewDegrees(calcRotationQuat(axis, degAngle), true);
 					}
 						break;
 					case SPIN:
-						rotateViewDegrees(calcRotationQuat(Axis.AXIS_Z, -diffX * rotateScale), false);
+						rotateViewDegrees(calcRotationQuat(Axis.AXIS_Z, -diff.x() * rotateScale), false);
 						break;
 				}
 				
-				prevMousePosX = positionX;
-				prevMousePosY = positionY;
+				prevMousePos = position.copy();
 			}
 		}
 		
 		@Override
-		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY) {
+		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, Vector2 position) {
 			if(isPressed) {
 				if(!isDragging) {
 					if(button == actionButton) {
@@ -211,13 +208,11 @@ public class MousePoles {
 						else
 							rotateMode = RotateMode.DUAL_AXIS;
 						
-						prevMousePosX = positionX;
-						prevMousePosY = positionY;
+						prevMousePos = position.copy();
 						
-						startDragMousePosX = positionX;
-						startDragMousePosY = positionY;
+						startDragMousePos = position.copy();
 						
-						startDragOrient = po.orientation;
+						startDragOrient = po.orientation.copy();
 						
 						isDragging = true;
 					}
@@ -225,7 +220,7 @@ public class MousePoles {
 			} else {
 				if(isDragging) {
 					if(button == actionButton) {
-						mouseMove(positionX, positionY);
+						mouseMove(position);
 						
 						isDragging = false;
 					}
@@ -247,15 +242,15 @@ public class MousePoles {
 		public float degSpinRotation;
 		
 		public ViewData(ViewData data) {
-			targetPos = new Vector3(data.targetPos);
-			orient = new Quaternion(data.orient);
+			targetPos = data.targetPos.copy();
+			orient = data.orient.copy();
 			radius = data.radius;
 			degSpinRotation = data.degSpinRotation;
 		}
 		
 		public ViewData(Vector3 v, Quaternion q, float r, float d) {
 			targetPos = v;
-			orient = q;
+			orient = q.copy();
 			radius = r;
 			degSpinRotation = d;
 		}
@@ -278,6 +273,16 @@ public class MousePoles {
 			largePosOffset = largePos;
 			smallPosOffset = smallPos;
 			rotationScale = rot;
+		}
+		
+		public ViewScale(ViewScale v) {
+			minRadius = v.minRadius;
+			maxRadius = v.maxRadius;
+			largeRadiusDelta = v.largeRadiusDelta;
+			smallRadiusDelta = v.smallRadiusDelta;
+			largePosOffset = v.largePosOffset;
+			smallPosOffset = v.smallPosOffset;
+			rotationScale = v.rotationScale;
 		}
 	}
 	
@@ -319,12 +324,12 @@ public class MousePoles {
 		private RotateMode rotateMode;
 		
 		private float degStarDragSpin;
-		private int startDragMouseLocX, startDragMouseLocY;
+		private Vector2 startDragMouseLoc;
 		private Quaternion startDragOrient;
 		
 		public ViewPole(ViewData initialView, ViewScale viewScale, MouseButton actionButton, boolean rightKeyboardCtrls) {
 			this.currView = new ViewData(initialView);
-			this.viewScale = viewScale;
+			this.viewScale = new ViewScale(viewScale);
 			this.initialView = initialView;
 			this.actionButton = actionButton;
 			this.rightKeyboardCtrls = rightKeyboardCtrls;
@@ -339,7 +344,7 @@ public class MousePoles {
 			Quaternion fullRotation = Utils.angleAxisDeg(currView.degSpinRotation, new Vector3(0, 0, 1)).mult(currView.orient);
 			mat.mult(fullRotation.toMatrix());
 			
-			mat.translate(new Vector3(currView.targetPos).mult(-1));
+			mat.translate(currView.targetPos.copy().mult(-1));
 			
 			return mat;
 		}
@@ -368,7 +373,7 @@ public class MousePoles {
 		public void processXChange(int diffX) {
 			float degAngleDiff = diffX * viewScale.rotationScale;
 			
-			currView.orient = new Quaternion(startDragOrient).mult(Utils.angleAxisDeg(degAngleDiff, new Vector3(0, 1, 0)));
+			currView.orient = startDragOrient.copy().mult(Utils.angleAxisDeg(degAngleDiff, new Vector3(0, 1, 0)));
 		}
 		
 		public void processYChange(int diffY) {
@@ -381,7 +386,7 @@ public class MousePoles {
 			float degXAngleDiff = diffX * viewScale.rotationScale;
 			float degYAngleDiff = diffY * viewScale.rotationScale;
 			
-			currView.orient = new Quaternion(startDragOrient).mult(Utils.angleAxisDeg(degXAngleDiff, new Vector3(0, 1, 0)));
+			currView.orient = startDragOrient.copy().mult(Utils.angleAxisDeg(degXAngleDiff, new Vector3(0, 1, 0)));
 			currView.orient = Utils.angleAxisDeg(degYAngleDiff, new Vector3(1, 0, 0)).mult(currView.orient);
 		}
 		
@@ -390,22 +395,21 @@ public class MousePoles {
 			currView.degSpinRotation = degSpinDiff + degStarDragSpin;
 		}
 		
-		public void beginDragRotate(int startX, int startY, RotateMode rotMode) {
+		public void beginDragRotate(Vector2 start, RotateMode rotMode) {
 			rotateMode = rotMode;
 			
-			startDragMouseLocX = startX;
-			startDragMouseLocY = startY;
+			startDragMouseLoc = start.copy();
 			
 			degStarDragSpin = currView.degSpinRotation;
 			
-			startDragOrient = currView.orient;
+			startDragOrient = currView.orient.copy();
 			
 			isDragging = true;
 		}
 		
-		public void onDragRotate(int currX, int currY) {
-			int diffX = currX - startDragMouseLocX;
-			int diffY = -(currY - startDragMouseLocY);
+		public void onDragRotate(Vector2 position) {
+			int diffX = (int)(position.x() - startDragMouseLoc.x());
+			int diffY = -(int)(position.y() - startDragMouseLoc.y());
 			
 			switch(rotateMode) {
 				case DUAL_AXIS_ROTATE:
@@ -429,11 +433,11 @@ public class MousePoles {
 			}
 		}
 		
-		public void endDragRotate(int endX, int endY, boolean keepResults) {
+		public void endDragRotate(Vector2 end, boolean keepResults) {
 			if(keepResults)
-				onDragRotate(endX, endY);
+				onDragRotate(end);
 			else
-				currView.orient = startDragOrient;
+				currView.orient = startDragOrient.copy();
 			
 			isDragging = false;
 		}
@@ -459,22 +463,22 @@ public class MousePoles {
 		}
 		
 		@Override
-		public void mouseMove(int positionX, int positionY) {
+		public void mouseMove(Vector2 position) {
 			if(isDragging)
-				onDragRotate(positionX, positionY);
+				onDragRotate(position);
 		}
 		
 		@Override
-		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, int positionX, int positionY) {
+		public void mouseClick(MouseButton button, boolean isPressed, MouseModifier modifiers, Vector2 position) {
 			if(isPressed) {
 				if(!isDragging) {
 					if(button == actionButton) {
 						if(modifiers == MouseModifier.KEY_CTRL)
-							beginDragRotate(positionX, positionY, RotateMode.BIAXIAL_ROTATE);
+							beginDragRotate(position, RotateMode.BIAXIAL_ROTATE);
 						else if(modifiers == MouseModifier.KEY_ALT)
-							beginDragRotate(positionX, positionY, RotateMode.SPIN_VIEW_AXIS);
+							beginDragRotate(position, RotateMode.SPIN_VIEW_AXIS);
 						else
-							beginDragRotate(positionX, positionY, RotateMode.DUAL_AXIS_ROTATE);
+							beginDragRotate(position, RotateMode.DUAL_AXIS_ROTATE);
 					}
 				}
 			} else {
@@ -483,7 +487,7 @@ public class MousePoles {
 						if(rotateMode == RotateMode.DUAL_AXIS_ROTATE ||
 								rotateMode == RotateMode.SPIN_VIEW_AXIS ||
 								rotateMode == RotateMode.BIAXIAL_ROTATE)
-							endDragRotate(positionX, positionY, true);
+							endDragRotate(position, true);
 					}
 				}
 			}
@@ -498,7 +502,7 @@ public class MousePoles {
 		}
 		
 		private void offsetTargetPos(TargetOffsetDir dir, float worldDistance) {
-			offsetTargetPos(new Vector3(offsets[dir.ordinal()]).mult(worldDistance));
+			offsetTargetPos(offsets[dir.ordinal()].copy().mult(worldDistance));
 		}
 		
 		private void offsetTargetPos(Vector3 cameraOffset) {

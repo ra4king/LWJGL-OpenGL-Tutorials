@@ -24,6 +24,10 @@ public class Quaternion {
 		set(q);
 	}
 	
+	public Quaternion copy() {
+		return new Quaternion(this);
+	}
+	
 	public float x() {
 		return x;
 	}

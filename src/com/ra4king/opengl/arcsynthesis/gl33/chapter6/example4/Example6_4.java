@@ -32,85 +32,85 @@ public class Example6_4 extends GLProgram {
 	private final float[] MAGENTA_COLOR = { 1, 0, 1, 1 };
 	
 	private final float[] data = {
-									+1.0f, +1.0f, +1.0f,
-									+1.0f, -1.0f, +1.0f,
-									-1.0f, -1.0f, +1.0f,
-									-1.0f, +1.0f, +1.0f,
-									
-									+1.0f, +1.0f, +1.0f,
-									-1.0f, +1.0f, +1.0f,
-									-1.0f, +1.0f, -1.0f,
-									+1.0f, +1.0f, -1.0f,
-									
-									+1.0f, +1.0f, +1.0f,
-									+1.0f, +1.0f, -1.0f,
-									+1.0f, -1.0f, -1.0f,
-									+1.0f, -1.0f, +1.0f,
-									
-									+1.0f, +1.0f, -1.0f,
-									-1.0f, +1.0f, -1.0f,
-									-1.0f, -1.0f, -1.0f,
-									+1.0f, -1.0f, -1.0f,
-									
-									+1.0f, -1.0f, +1.0f,
-									+1.0f, -1.0f, -1.0f,
-									-1.0f, -1.0f, -1.0f,
-									-1.0f, -1.0f, +1.0f,
-									
-									-1.0f, +1.0f, +1.0f,
-									-1.0f, -1.0f, +1.0f,
-									-1.0f, -1.0f, -1.0f,
-									-1.0f, +1.0f, -1.0f,
-									
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
-									
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
-									
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
-									
-									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-									YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
-									
-									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-									CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
-									
-									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
-									MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3]
+			+1.0f, +1.0f, +1.0f,
+			+1.0f, -1.0f, +1.0f,
+			-1.0f, -1.0f, +1.0f,
+			-1.0f, +1.0f, +1.0f,
+			
+			+1.0f, +1.0f, +1.0f,
+			-1.0f, +1.0f, +1.0f,
+			-1.0f, +1.0f, -1.0f,
+			+1.0f, +1.0f, -1.0f,
+			
+			+1.0f, +1.0f, +1.0f,
+			+1.0f, +1.0f, -1.0f,
+			+1.0f, -1.0f, -1.0f,
+			+1.0f, -1.0f, +1.0f,
+			
+			+1.0f, +1.0f, -1.0f,
+			-1.0f, +1.0f, -1.0f,
+			-1.0f, -1.0f, -1.0f,
+			+1.0f, -1.0f, -1.0f,
+			
+			+1.0f, -1.0f, +1.0f,
+			+1.0f, -1.0f, -1.0f,
+			-1.0f, -1.0f, -1.0f,
+			-1.0f, -1.0f, +1.0f,
+			
+			-1.0f, +1.0f, +1.0f,
+			-1.0f, -1.0f, +1.0f,
+			-1.0f, -1.0f, -1.0f,
+			-1.0f, +1.0f, -1.0f,
+			
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			GREEN_COLOR[0], GREEN_COLOR[1], GREEN_COLOR[2], GREEN_COLOR[3],
+			
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			BLUE_COLOR[0], BLUE_COLOR[1], BLUE_COLOR[2], BLUE_COLOR[3],
+			
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			RED_COLOR[0], RED_COLOR[1], RED_COLOR[2], RED_COLOR[3],
+			
+			YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+			YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+			YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+			YELLOW_COLOR[0], YELLOW_COLOR[1], YELLOW_COLOR[2], YELLOW_COLOR[3],
+			
+			CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+			CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+			CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+			CYAN_COLOR[0], CYAN_COLOR[1], CYAN_COLOR[2], CYAN_COLOR[3],
+			
+			MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+			MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+			MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3],
+			MAGENTA_COLOR[0], MAGENTA_COLOR[1], MAGENTA_COLOR[2], MAGENTA_COLOR[3]
 	};
 	
 	private final short[] indices = {
-										0, 1, 2,
-										2, 3, 0,
-										
-										4, 5, 6,
-										6, 7, 4,
-										
-										8, 9, 10,
-										10, 11, 8,
-										
-										12, 13, 14,
-										14, 15, 12,
-										
-										16, 17, 18,
-										18, 19, 16,
-										
-										20, 21, 22,
-										22, 23, 20
+			0, 1, 2,
+			2, 3, 0,
+			
+			4, 5, 6,
+			6, 7, 4,
+			
+			8, 9, 10,
+			10, 11, 8,
+			
+			12, 13, 14,
+			14, 15, 12,
+			
+			16, 17, 18,
+			18, 19, 16,
+			
+			20, 21, 22,
+			22, 23, 20
 	};
 	
 	private ShaderProgram program;

@@ -38,8 +38,8 @@ public class Example3_2 extends GLProgram {
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
-																										0.25f, -0.25f, 0.0f, 1.0f,
-																										-0.25f, -0.25f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
+				0.25f, -0.25f, 0.0f, 1.0f,
+				-0.25f, -0.25f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
 		
 		glBindVertexArray(glGenVertexArrays());
 		

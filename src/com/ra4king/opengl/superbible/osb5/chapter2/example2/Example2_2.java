@@ -28,10 +28,10 @@ public class Example2_2 extends GLProgram {
 	private int vbo;
 	private float blockSize = 0.1f;
 	private float[] block = new float[] {
-											-blockSize, -blockSize, 0.0f, 1.0f,
-											blockSize, -blockSize, 0.0f, 1.0f,
-											blockSize, blockSize, 0.0f, 1.0f,
-											-blockSize, blockSize, 0.0f, 1.0f,
+			-blockSize, -blockSize, 0.0f, 1.0f,
+			blockSize, -blockSize, 0.0f, 1.0f,
+			blockSize, blockSize, 0.0f, 1.0f,
+			-blockSize, blockSize, 0.0f, 1.0f,
 	};
 	private FloatBuffer verts = BufferUtils.createFloatBuffer(16);
 	private float stepSize = 0.025f;

@@ -37,8 +37,8 @@ public class Example3_1 extends GLProgram {
 		vbo = glGenBuffers();
 		
 		vertexData = (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
-																						0.25f, -0.25f, 0.0f, 1.0f,
-																						-0.25f, -0.25f, 0.0f, 1.0f }).flip();
+				0.25f, -0.25f, 0.0f, 1.0f,
+				-0.25f, -0.25f, 0.0f, 1.0f }).flip();
 		newData = BufferUtils.createFloatBuffer(12);
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);

@@ -8,6 +8,7 @@ import com.ra4king.opengl.util.MousePoles.MouseModifier;
 import com.ra4king.opengl.util.MousePoles.ObjectPole;
 import com.ra4king.opengl.util.MousePoles.ViewPole;
 import com.ra4king.opengl.util.math.Quaternion;
+import com.ra4king.opengl.util.math.Vector2;
 import com.ra4king.opengl.util.math.Vector3;
 
 public class Utils {
@@ -29,9 +30,9 @@ public class Utils {
 			if(button != null) {
 				boolean pressed = Mouse.getEventButtonState();
 				if(viewPole != null)
-					viewPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
+					viewPole.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
 				if(objectPole != null)
-					objectPole.mouseClick(button, pressed, getModifier(), Mouse.getX(), Mouse.getY());
+					objectPole.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
 			} else {
 				int dwheel = Mouse.getDWheel();
 				
@@ -42,9 +43,9 @@ public class Utils {
 						objectPole.mouseWheel(dwheel, getModifier());
 				} else {
 					if(viewPole != null)
-						viewPole.mouseMove(Mouse.getX(), Mouse.getY());
+						viewPole.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
 					if(objectPole != null)
-						objectPole.mouseMove(Mouse.getX(), Mouse.getY());
+						objectPole.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
 				}
 			}
 		}
