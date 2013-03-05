@@ -30,14 +30,13 @@ uniform Light
 	PerLight lights[numberOfLights];
 } Lgt;
 
-
 float CalcAttenuation(in vec3 cameraSpacePosition, in vec3 cameraSpaceLightPos, out vec3 lightDirection)
 {
 	vec3 lightDifference =  cameraSpaceLightPos - cameraSpacePosition;
 	float lightDistanceSqr = dot(lightDifference, lightDifference);
 	lightDirection = lightDifference * inversesqrt(lightDistanceSqr);
 	
-	return (1 / ( 1.0 + Lgt.lightAttenuation * lightDistanceSqr));
+	return 1.0 / (1.0 + Lgt.lightAttenuation * lightDistanceSqr);
 }
 
 vec4 ComputeLighting(in PerLight lightData)

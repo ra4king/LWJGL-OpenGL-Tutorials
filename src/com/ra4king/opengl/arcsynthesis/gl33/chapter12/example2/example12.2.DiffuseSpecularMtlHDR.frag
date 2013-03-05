@@ -26,6 +26,7 @@ uniform Light
 {
 	vec4 ambientIntensity;
 	float lightAttenuation;
+	float maxIntensity;
 	PerLight lights[numberOfLights];
 } Lgt;
 
@@ -57,7 +58,18 @@ vec4 ComputeLighting(in PerLight lightData)
 	float cosAngIncidence = dot(surfaceNormal, lightDir);
 	cosAngIncidence = cosAngIncidence < 0.0001 ? 0.0 : cosAngIncidence;
 	
+	vec3 viewDirection = normalize(-cameraSpacePosition);
+	
+	vec3 halfAngle = normalize(lightDir + viewDirection);
+	float angleNormalHalf = acos(dot(halfAngle, surfaceNormal));
+	float exponent = angleNormalHalf / Mtl.specularShininess;
+	exponent = -(exponent * exponent);
+	float gaussianTerm = exp(exponent);
+
+	gaussianTerm = cosAngIncidence != 0.0 ? gaussianTerm : 0.0;
+	
 	vec4 lighting = Mtl.diffuseColor * lightIntensity * cosAngIncidence;
+	lighting += Mtl.specularColor * lightIntensity * gaussianTerm;
 	
 	return lighting;
 }
@@ -70,5 +82,5 @@ void main()
 		accumLighting += ComputeLighting(Lgt.lights[light]);
 	}
 	
-	outputColor = accumLighting;
+	outputColor = accumLighting / Lgt.maxIntensity;
 }

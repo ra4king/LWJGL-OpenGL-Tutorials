@@ -26,6 +26,7 @@ uniform Light
 {
 	vec4 ambientIntensity;
 	float lightAttenuation;
+	float maxIntensity;
 	PerLight lights[numberOfLights];
 } Lgt;
 
@@ -70,5 +71,5 @@ void main()
 		accumLighting += ComputeLighting(Lgt.lights[light]);
 	}
 	
-	outputColor = accumLighting;
+	outputColor = accumLighting / Lgt.maxIntensity;
 }

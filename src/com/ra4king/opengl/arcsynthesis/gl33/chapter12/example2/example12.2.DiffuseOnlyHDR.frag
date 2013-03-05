@@ -1,5 +1,6 @@
 #version 330
 
+in vec4 diffuseColor;
 in vec3 vertexNormal;
 in vec3 cameraSpacePosition;
 
@@ -26,6 +27,7 @@ uniform Light
 {
 	vec4 ambientIntensity;
 	float lightAttenuation;
+	float maxIntensity;
 	PerLight lights[numberOfLights];
 } Lgt;
 
@@ -57,18 +59,18 @@ vec4 ComputeLighting(in PerLight lightData)
 	float cosAngIncidence = dot(surfaceNormal, lightDir);
 	cosAngIncidence = cosAngIncidence < 0.0001 ? 0.0 : cosAngIncidence;
 	
-	vec4 lighting = Mtl.diffuseColor * lightIntensity * cosAngIncidence;
+	vec4 lighting = diffuseColor * lightIntensity * cosAngIncidence;
 	
 	return lighting;
 }
 
 void main()
 {
-	vec4 accumLighting = Mtl.diffuseColor * Lgt.ambientIntensity;
+	vec4 accumLighting = diffuseColor * Lgt.ambientIntensity;
 	for(int light = 0; light < numberOfLights; light++)
 	{
 		accumLighting += ComputeLighting(Lgt.lights[light]);
 	}
 	
-	outputColor = accumLighting;
+	outputColor = accumLighting / Lgt.maxIntensity;
 }
