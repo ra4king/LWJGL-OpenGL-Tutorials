@@ -12,7 +12,7 @@ public class TimedLinearInterpolatorf extends WeightedLinearInterpolatorf {
 		for(Data d : data) {
 			if(d.weight < 0 || d.weight > 1)
 				throw new IllegalArgumentException("weight is out of bounds.");
-			values.add(d);
+			values.add(new Data(d));
 		}
 		
 		if(isLooping && !values.isEmpty())
