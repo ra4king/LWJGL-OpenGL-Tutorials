@@ -356,7 +356,7 @@ public class LightManager {
 			buffer.clear();
 			buffer.put(ambientIntensity.toBuffer());
 			buffer.put(lightAttenuation);
-			buffer.put(0).put(0).put(0);
+			buffer.put(new float[3]);
 			
 			for(PerLight light : lights)
 				buffer.put(light.toBuffer());
@@ -387,7 +387,7 @@ public class LightManager {
 			buffer.put(ambientIntensity.toBuffer());
 			buffer.put(lightAttenuation);
 			buffer.put(maxIntensity);
-			buffer.put(0).put(0);
+			buffer.put(new float[2]);
 			
 			for(PerLight light : lights)
 				buffer.put(light.toBuffer());

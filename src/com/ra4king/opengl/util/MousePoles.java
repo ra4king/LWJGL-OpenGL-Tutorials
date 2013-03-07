@@ -513,7 +513,7 @@ public class MousePoles {
 		public void charPress(long deltaTime) {
 			boolean isShiftPressed = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
 			
-			float offset = (isShiftPressed ? viewScale.smallPosOffset : viewScale.largePosOffset) * 20 * deltaTime / (float)1e9;
+			float offset = (isShiftPressed ? viewScale.smallPosOffset : viewScale.largePosOffset) * 10 * deltaTime / (float)1e9;
 			
 			if(rightKeyboardCtrls) {
 				if(Keyboard.isKeyDown(Keyboard.KEY_I))

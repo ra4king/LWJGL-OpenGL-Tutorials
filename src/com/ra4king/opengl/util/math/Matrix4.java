@@ -185,6 +185,10 @@ public class Matrix4 {
 		return translate(vec.x(), vec.y(), vec.z());
 	}
 	
+	public Matrix4 scale(float f) {
+		return scale(f, f, f);
+	}
+	
 	public Matrix4 scale(float x, float y, float z) {
 		float[] m = new float[matrix.length];
 		
