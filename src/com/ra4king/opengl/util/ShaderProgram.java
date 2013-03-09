@@ -2,6 +2,7 @@ package com.ra4king.opengl.util;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL32.*;
 
 import java.util.Map;
 
@@ -9,15 +10,26 @@ public class ShaderProgram {
 	private int program;
 	
 	public ShaderProgram(String vertexShader, String fragmentShader) {
-		this(vertexShader, fragmentShader, null);
+		this(vertexShader, null, fragmentShader, null);
 	}
 	
 	public ShaderProgram(String vertexShader, String fragmentShader, Map<Integer,String> attributes) {
+		this(vertexShader, null, fragmentShader, attributes);
+	}
+	
+	public ShaderProgram(String vertexShader, String geometryShader, String fragmentShader) {
+		this(vertexShader, geometryShader, fragmentShader, null);
+	}
+	
+	public ShaderProgram(String vertexShader, String geometryShader, String fragmentShader, Map<Integer,String> attributes) {
 		int vs = compileShader(vertexShader, GL_VERTEX_SHADER);
+		int gs = compileShader(geometryShader, GL_GEOMETRY_SHADER);
 		int fs = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
 		
 		program = glCreateProgram();
 		glAttachShader(program, vs);
+		if(gs != -1)
+			glAttachShader(program, gs);
 		glAttachShader(program, fs);
 		
 		if(attributes != null)
@@ -39,13 +51,20 @@ public class ShaderProgram {
 		}
 		
 		glDetachShader(program, vs);
+		if(gs != -1)
+			glDetachShader(program, gs);
 		glDetachShader(program, fs);
 		
 		glDeleteShader(vs);
+		if(gs != -1)
+			glDeleteShader(gs);
 		glDeleteShader(fs);
 	}
 	
 	private int compileShader(String source, int type) {
+		if(source == null)
+			return -1;
+		
 		int shader = glCreateShader(type);
 		glShaderSource(shader, source);
 		
@@ -69,10 +88,12 @@ public class ShaderProgram {
 	private String getName(int shaderType) {
 		if(shaderType == GL_VERTEX_SHADER)
 			return "vertex";
+		if(shaderType == GL_GEOMETRY_SHADER)
+			return "geometry";
 		if(shaderType == GL_FRAGMENT_SHADER)
 			return "fragment";
 		
-		throw new IllegalArgumentException("Invalid shaderType, must be either GL_VERTEX_SHADER or GL_FRAGMENT_SHADER");
+		throw new IllegalArgumentException("Invalid shaderType, must be either GL_VERTEX_SHADER, GL_GEOMETRY_SHADER, or GL_FRAGMENT_SHADER");
 	}
 	
 	public int getProgram() {

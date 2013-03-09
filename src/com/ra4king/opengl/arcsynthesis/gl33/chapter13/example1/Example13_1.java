@@ -40,6 +40,10 @@ public class Example13_1 extends GLProgram {
 	private ProgramImposData[] litImpPrograms = new ProgramImposData[Impostors.values().length];
 	private UnlitProgramData unlit;
 	
+	private Mesh planeMesh;
+	private Mesh sphereMesh;
+	private Mesh cubeMesh;
+	
 	private ViewPole viewPole;
 	
 	private Impostors currentImpostor = Impostors.BASIC;
@@ -47,22 +51,18 @@ public class Example13_1 extends GLProgram {
 	
 	private Timer sphereTimer = new Timer(Type.LOOP, 6);
 	
-	private int impostoreVAO;
+	private int impostorVAO;
 	
-	private Mesh planeMesh;
-	private Mesh sphereMesh;
-	private Mesh cubeMesh;
+	private final int materialBlockIndex = 0;
+	private final int lightBlockIndex = 1;
+	private final int projectionBlockIndex = 2;
 	
 	private int materialUniformBuffer;
 	private int lightUniformBuffer;
 	private int projectionUniformBuffer;
 	
 	private int materialBlockOffset;
-	
-	private int materialBlockIndex = 0;
-	private int lightBlockIndex = 1;
-	private int projectionBlockIndex = 2;
-	
+
 	private final float halfLightDistance = 25;
 	private final float lightAttenuation = 1f / (halfLightDistance * halfLightDistance);
 	
@@ -129,7 +129,7 @@ public class Example13_1 extends GLProgram {
 		
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 		
-		impostoreVAO = glGenVertexArrays();
+		impostorVAO = glGenVertexArrays();
 		
 		createMaterials();
 	}
@@ -341,7 +341,7 @@ public class Example13_1 extends GLProgram {
 			glUniform3(litImpPrograms[currentImpostor.ordinal()].cameraSpherePosUniform, modelMatrix.getTop().mult(new Vector4(position, 1)).toBuffer());
 			glUniform1f(litImpPrograms[currentImpostor.ordinal()].sphereRadiusUniform, radius);
 			
-			glBindVertexArray(impostoreVAO);
+			glBindVertexArray(impostorVAO);
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 			glBindVertexArray(0);
 			
