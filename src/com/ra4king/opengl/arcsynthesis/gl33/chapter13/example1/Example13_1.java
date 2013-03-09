@@ -62,7 +62,7 @@ public class Example13_1 extends GLProgram {
 	private int projectionUniformBuffer;
 	
 	private int materialBlockOffset;
-
+	
 	private final float halfLightDistance = 25;
 	private final float lightAttenuation = 1f / (halfLightDistance * halfLightDistance);
 	

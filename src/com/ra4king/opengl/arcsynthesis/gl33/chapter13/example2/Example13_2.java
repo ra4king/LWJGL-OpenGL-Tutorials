@@ -41,7 +41,6 @@ public class Example13_2 extends GLProgram {
 	private UnlitProgramData unlit;
 	
 	private Mesh planeMesh;
-	private Mesh sphereMesh;
 	private Mesh cubeMesh;
 	
 	private ViewPole viewPole;
@@ -90,7 +89,6 @@ public class Example13_2 extends GLProgram {
 		
 		try {
 			planeMesh = new Mesh(getClass().getResource("example13.2.LargePlane.xml"));
-			sphereMesh = new Mesh(getClass().getResource("example13.2.UnitSphere.xml"));
 			cubeMesh = new Mesh(getClass().getResource("example13.2.UnitCube.xml"));
 		} catch(Exception exc) {
 			exc.printStackTrace();
