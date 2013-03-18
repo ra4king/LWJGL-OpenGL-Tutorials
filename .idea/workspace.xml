@@ -2,16 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.FauxHallway.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.frag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.vert" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.RealHallway.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.frag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OpenGL.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/a.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362976669989" ignored="false" />
-    <file path="/fragment.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362456584258" ignored="false" />
+    <file path="/fragment.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363141708070" ignored="false" />
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362982663692" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362982671677" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -52,7 +60,7 @@
     <file path="$PROJECT_DIR$/../../../../../Downloads/Downloaded Folders/IntelliJ IDEA/platform/lang-impl/src/com/intellij/codeInsight/actions/ReformatCodeProcessor.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362003317321" ignored="false" />
     <file path="/GLProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362018393427" ignored="false" />
     <file path="/Example8_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362018560645" ignored="false" />
-    <file path="/Mesh.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362019507338" ignored="false" />
+    <file path="/Mesh.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363141748335" ignored="false" />
     <file path="/MousePoles.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362117526452" ignored="false" />
     <file path="/Vector4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362025150664" ignored="false" />
     <file path="/WeightedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027648518" ignored="false" />
@@ -74,8 +82,8 @@
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter8/example1/Example8_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter7/example1/Example7_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter7/example2/Example7_2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
-    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/SmallGame.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362384652824" ignored="false" />
-    <file path="/SmallGame.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362384638290" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/SmallGame.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363138092153" ignored="false" />
+    <file path="/SmallGame.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137676182" ignored="false" />
     <file path="$PROJECT_DIR$/../SmallGame/.idea/misc.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362384634878" ignored="false" />
     <file path="$PROJECT_DIR$/../SmallGame/.idea/workspace.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362433066891" ignored="false" />
     <file path="/example12.2.DiffuseSpecularMtlHDR.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362444771007" ignored="false" />
@@ -85,7 +93,7 @@
     <file path="/example12.3.DiffuseSpecularGamma.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362455100183" ignored="false" />
     <file path="/example12.3.DiffuseSpecularMtlGamma.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362455113040" ignored="false" />
     <file path="/Example13_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362743787489" ignored="false" />
-    <file path="/UniformBlockArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362460808991" ignored="false" />
+    <file path="/UniformBlockArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137287273" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter8/example4/Example8_4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter6/example4/Example6_4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter6/example3/Example6_3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
@@ -140,12 +148,67 @@
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb4/chapter3/Example3_2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb4/chapter3/Example3_3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="/Test.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362807437516" ignored="false" />
-    <file path="/Example14_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362980960263" ignored="false" />
+    <file path="/Example14_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363150175267" ignored="false" />
     <file path="/Example11_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362977099998" ignored="false" />
     <file path="/Example11_2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362977123654" ignored="false" />
     <file path="/example14.1.PN.vert" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362980038617" ignored="false" />
     <file path="/example14.1.ShaderGaussian.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362980583851" ignored="false" />
     <file path="/example14.1.TextureGaussian.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362980864538" ignored="false" />
+    <file path="/Example14_2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582415450" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/PNGDecoder.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Quaternion.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/MousePoles.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Vector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/Utils.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/UniformBlockArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137028455" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/Timer.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Matrix3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Vector3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/WeightedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/LinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/WeightedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/MatrixStack.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Matrix4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/TimedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/Mesh.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137028455" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Vector4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/TimedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/GLProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137028455" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/LinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/ConstVelLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/math/Vector2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/ShaderProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137028455" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/smallgame/util/interpolators/ConstVelLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137027216" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/LinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/ConstVelLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/ConstVelLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Vector2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/ShaderProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461726" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/PNGDecoder.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137462071" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Quaternion.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/MousePoles.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137902932" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Vector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/Utils.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137921983" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/WeightedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/UniformBlockArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461726" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/Timer.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461726" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Matrix3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Vector3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/TimedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/LinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/WeightedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/MatrixStack.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Matrix4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/math/Vector4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137461478" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/Mesh.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363141796293" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/interpolators/TimedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137164660" ignored="false" />
+    <file path="$PROJECT_DIR$/../SmallGame/src/com/ra4king/util/GLProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363137584082" ignored="false" />
+    <file path="/LinkedArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363323713481" ignored="false" />
+    <file path="/FixedConstantTimeArray.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363323298900" ignored="false" />
+    <file path="/example14.2.NoCorrectVertexColors.vert" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582735806" ignored="false" />
+    <file path="/example14.2.NoCorrectVertexColors.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582751205" ignored="false" />
+    <file path="/example14.2.SmoothVertexColors.vert" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582640749" ignored="false" />
+    <file path="/example14.2.SmoothVertexColors.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582664813" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,8 +262,8 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -236,22 +299,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/MousePoles.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/ShaderProgram.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/example13.2.GeomImpostor.vert" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/example13.2.GeomImpostor.frag" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example1/Example13_1.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/Test.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/Example13_2.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/example13.2.GeomImpostor.geom" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter11/example1/Example11_1.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter11/example2/Example11_2.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Unlit.vert" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Infinity.xml" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.PN.vert" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.ShaderGaussian.frag" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.TextureGaussian.frag" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/LinkedArray.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/FixedConstantTimeArray.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.frag" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.RealHallway.xml" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.FauxHallway.xml" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.vert" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.frag" />
       </list>
     </option>
   </component>
@@ -341,10 +404,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -399,11 +458,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gl33" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chapter14" />
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -430,10 +485,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="chapter14" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="example1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,43 +512,47 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth1" value="285" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth1" value="282" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth2" value="288" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth2" value="292" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/production/OpenGL/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth0" value="293" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth0" value="296" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder2" value="2" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth3" value="968" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth3" value="971" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder3" value="3" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.26499033" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth3" value="964" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth2" value="289" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth1" value="289" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth0" value="289" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth3" value="967" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth2" value="293" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth1" value="292" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth0" value="292" />
     <property name="options.lastSelected" value="preferences.keymap" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder0" value="0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder2" value="2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder2" value="2" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -512,9 +567,9 @@
       <recent name="E:\Roi Atalla\Documents\Programming Files\Java Files\Personal Projects\OpenGL\src\com\ra4king\opengl\arcsynthesis\gl33\chapter12\example2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Example14_1">
-    <configuration default="false" name="Example12_2" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.ra4king.opengl.arcsynthesis.gl33.chapter12.example2.Example12_2" />
+  <component name="RunManager" selected="Application.Example14_2">
+    <configuration default="false" name="Example14_2" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.ra4king.opengl.arcsynthesis.gl33.chapter14.example2.Example14_2" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=files/natives/" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -577,43 +632,10 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Example14_1" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.ra4king.opengl.arcsynthesis.gl33.chapter14.example1.Example14_1" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=files/natives/" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="OpenGL" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -637,12 +659,42 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -670,19 +722,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -734,20 +773,35 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="Example14_1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.ra4king.opengl.arcsynthesis.gl33.chapter14.example1.Example14_1" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=files/natives/" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="OpenGL" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Example12_2" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Example12_3" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Example13_1" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Example13_2" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Example14_1" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Example14_1" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Example14_2" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Example12_3" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Example13_1" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Example13_2" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Example14_1" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.Example14_2" />
         <item index="1" class="java.lang.String" itemvalue="Application.Example13_2" />
         <item index="2" class="java.lang.String" itemvalue="Application.Example12_3" />
         <item index="3" class="java.lang.String" itemvalue="Application.Example13_1" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Example12_2" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -837,7 +891,11 @@
       <created>1362982665671</created>
       <updated>1362982665671</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Example 14.1 fully ported.">
+      <created>1362982674351</created>
+      <updated>1362982674351</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -867,22 +925,22 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23987207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45628998" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.081023455" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29530916" sideWeight="0.51387405" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.14915694" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18976545" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29104477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.17250325" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.36819637" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17289221" sideWeight="0.7046908" order="0" side_tool="true" content_ui="combo" x="2394" y="136" width="397" height="768" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29530916" sideWeight="0.9898039" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19690502" sideWeight="0.64818764" order="0" side_tool="true" content_ui="combo" x="2394" y="136" width="397" height="768" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35181236" sideWeight="0.4823906" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.32977587" sideWeight="0.80490404" order="3" side_tool="false" content_ui="combo" x="2005" y="108" width="1736" height="896" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45628998" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978677" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -977,60 +1035,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example1/Example13_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="8" selection-start="10034" selection-end="10034" vertical-scroll-proportion="0.24342105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter12/example3/Example12_3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="4" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.5263158">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter11/example1/Example11_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="232" column="8" selection-start="8356" selection-end="8356" vertical-scroll-proportion="0.4876033">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter11/example2/Example11_2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="4" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.30165288">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter12/LightManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="4" selection-start="7475" selection-end="7475" vertical-scroll-proportion="0.4890351">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Unlit.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.16447368">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/example13.2.Unlit.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="0" selection-end="260" vertical-scroll-proportion="0.27960527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Unlit.vert">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="260" selection-end="260" vertical-scroll-proportion="0.27960527">
-          <folding />
-        </state>
+        <state line="17" column="0" selection-start="260" selection-end="260" vertical-scroll-proportion="0.27960527" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Infinity.xml">
@@ -1049,16 +1056,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.PN.vert">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="543" selection-end="543" vertical-scroll-proportion="0.4276316">
-          <folding />
-        </state>
+        <state line="26" column="0" selection-start="543" selection-end="543" vertical-scroll-proportion="0.4276316" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/Example13_2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="8" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.47874016">
-          <folding />
-        </state>
+        <state line="82" column="8" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.47874016" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Vector4.java">
@@ -1068,23 +1071,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.TextureGaussian.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1898" selection-end="1898" vertical-scroll-proportion="0.8015748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.ShaderGaussian.frag">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.8346457">
+        <state line="74" column="0" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.8346457" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.TextureGaussian.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="4" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.60474306">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="8" selection-start="3734" selection-end="3734" vertical-scroll-proportion="0.68661416">
+        <state line="109" column="8" selection-start="3758" selection-end="3758" vertical-scroll-proportion="0.5722101">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.2297593">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.16411379">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.RealHallway.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="780" selection-end="780" vertical-scroll-proportion="0.7236842">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.FauxHallway.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="836" selection-end="836" vertical-scroll-proportion="0.7236842">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.25773194">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="193" selection-end="193" vertical-scroll-proportion="0.28350514">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="4" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.82302403">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
