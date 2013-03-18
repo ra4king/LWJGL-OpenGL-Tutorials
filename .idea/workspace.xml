@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.FauxHallway.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.frag" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.vert" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.RealHallway.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.frag" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsLoader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageFormat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Roi Atalla\Documents\Programming Files\Java Files\Personal Projects\OpenGL\src\com\ra4king\opengl\util\PNGDecoder.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/PNGDecoder.java" />
     </list>
     <ignored path="OpenGL.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +17,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362982671677" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582882079" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -209,6 +207,13 @@
     <file path="/example14.2.NoCorrectVertexColors.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582751205" ignored="false" />
     <file path="/example14.2.SmoothVertexColors.vert" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582640749" ignored="false" />
     <file path="/example14.2.SmoothVertexColors.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582664813" ignored="false" />
+    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582887607" ignored="false" />
+    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363582887607" ignored="false" />
+    <file path="/DDSLoader.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363584553109" ignored="false" />
+    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/DDSLoader.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363584604777" ignored="false" />
+    <file path="/DdsLoader.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585350677" ignored="false" />
+    <file path="/Util.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363584889897" ignored="false" />
+    <file path="/ImageCreator.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585211375" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,12 +304,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter11/example2/Example11_2.java" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Unlit.vert" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Infinity.xml" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.PN.vert" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.ShaderGaussian.frag" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.TextureGaussian.frag" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/LinkedArray.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/FixedConstantTimeArray.java" />
@@ -315,6 +314,12 @@
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.FauxHallway.xml" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.vert" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.NoCorrectVertexColors.frag" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/DDSLoader.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/Util.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/ImageSet.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/ImageFormat.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/ImageCreator.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/DdsLoader.java" />
       </list>
     </option>
   </component>
@@ -459,32 +464,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opengl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gl33" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chapter14" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -895,7 +874,11 @@
       <created>1362982674351</created>
       <updated>1362982674351</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Example 14.2 fully ported.">
+      <created>1363582887107</created>
+      <updated>1363582887107</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -983,7 +966,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Example 14.1 fully ported." />
+    <option name="LAST_COMMIT_MESSAGE" value="Example 14.2 fully ported." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1010,6 +993,7 @@
     <MESSAGE value="Formatting and removed useless variables." />
     <MESSAGE value="Forgot to remove a call to setFPS(0) in Example13.2." />
     <MESSAGE value="Example 14.1 fully ported." />
+    <MESSAGE value="Example 14.2 fully ported." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1035,35 +1019,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Unlit.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="260" selection-end="260" vertical-scroll-proportion="0.27960527" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.Infinity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4526" column="0" selection-start="98894" selection-end="98894" vertical-scroll-proportion="0.96710527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.UnitCube.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="1719" selection-end="1719" vertical-scroll-proportion="0.9013158">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.PN.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="543" selection-end="543" vertical-scroll-proportion="0.4276316" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter13/example2/Example13_2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="8" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.47874016" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Vector4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="115" column="4" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.4031496">
@@ -1087,7 +1042,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="109" column="8" selection-start="3758" selection-end="3758" vertical-scroll-proportion="0.5722101">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1137,6 +1092,49 @@
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="4" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.82302403">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="37" selection-end="37" vertical-scroll-proportion="0.025773196">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="5" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.45876288">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="5" selection-start="1799" selection-end="1799" vertical-scroll-proportion="0.7474227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="0" selection-start="9111" selection-end="9111" vertical-scroll-proportion="0.8453608">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="529" selection-end="529" vertical-scroll-proportion="0.33505154">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
