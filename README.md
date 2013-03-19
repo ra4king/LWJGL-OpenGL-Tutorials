@@ -16,7 +16,7 @@
 
 ## Sections ##
 
-Every section is found in the source under `src/main/java/com/ra4king/opengl`.
+Every section is found in the source under `src/com/ra4king/opengl`.
 Under each section you can find another README file that gives more detail, and finally some of the samples themselves may have their own README.
 
 
