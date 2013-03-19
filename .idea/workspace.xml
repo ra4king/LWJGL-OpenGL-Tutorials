@@ -12,7 +12,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363655777351" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363655853705" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -208,7 +208,7 @@
     <file path="/Util.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363584889897" ignored="false" />
     <file path="/ImageCreator.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585211375" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585453601" ignored="false" />
-    <file path="/README.md" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363655815381" ignored="false" />
+    <file path="/README.md" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363656075446" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +276,7 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.5756579">
+            <state line="15" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24671052">
               <folding />
             </state>
           </provider>
@@ -865,7 +865,11 @@
       <created>1363655778810</created>
       <updated>1363655778810</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed README file further.">
+      <created>1363655855699</created>
+      <updated>1363655855699</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -953,7 +957,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed README file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed README file further." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -984,6 +988,7 @@
     <MESSAGE value="Using DDS Loader from https://github.com/integeruser/gltut-lwjgl." />
     <MESSAGE value="Added REAMDE file." />
     <MESSAGE value="Fixed README file." />
+    <MESSAGE value="Fixed README file further." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1096,7 +1101,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.5756579">
+        <state line="15" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24671052">
           <folding />
         </state>
       </provider>

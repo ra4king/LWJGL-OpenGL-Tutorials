@@ -12,13 +12,11 @@
 
 1. Ensure you have Java SDK 7 and in your PATH
 2. Clone this repository: `hg clone https://bitbucket.org/ra4king/lwjgl-shader-tutorials`
-3. Import directly into Eclipse or IntelliJ IDEA. To open in Netbeans, Go to File -> Import Project -> Eclipse Project
+3. Import directly into Eclipse or IntelliJ IDEA. To open in Netbeans, go to File -> Import Project -> Eclipse Project
 
 ## Sections ##
 
-Every section is found in the source under `src/com/ra4king/opengl`.
-Under each section you can find another README file that gives more detail, and finally some of the samples themselves may have their own README.
-
+Every section is found in the source under `src/com/ra4king/opengl`:
 
 * **arcsynthesis:** Java ports of the excellent C++ tutorials from "Learning Modern 3d Graphics Programming"
 at [arcsynthesis.org](http://arcsynthesis.org/gltut) (14/17 chapters ported)
