@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="Modified the OTHER README files haha.">
+      <change type="DELETED" beforePath="E:\Roi Atalla\Documents\Programming Files\Java Files\Personal Projects\OpenGL\src\com\ra4king\opengl\test\README.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb5/README.md" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb5/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OpenGL.iws" />
@@ -12,7 +13,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363655853705" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363656343687" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -115,21 +116,6 @@
     <file path="/example13.2.GeomImpostor.vert" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362745735663" ignored="false" />
     <file path="/example13.2.GeomImpostor.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362783613195" ignored="false" />
     <file path="/example13.2.GeomImpostor.geom" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362788035299" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Vector2.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Vector3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Matrix4.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/MatrixStack.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Quaternion.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Vector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/WeightedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/WeightedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/math/Matrix3.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/ConstVelLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/ConstVelLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/LinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/LinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/TimedLinearInterpolatorf.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/interpolators/TimedLinearInterpolatorVector.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214554" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb4/chapter3/Example3_6.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb4/chapter3/Example3_7.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
     <file path="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb4/chapter3/Example3_8.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362804214555" ignored="false" />
@@ -207,7 +193,6 @@
     <file path="/DdsLoader.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585350677" ignored="false" />
     <file path="/Util.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363584889897" ignored="false" />
     <file path="/ImageCreator.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585211375" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363585453601" ignored="false" />
     <file path="/README.md" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1363656075446" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -276,7 +261,7 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24671052">
+            <state line="18" column="68" selection-start="667" selection-end="667" vertical-scroll-proportion="0.29605263">
               <folding />
             </state>
           </provider>
@@ -309,7 +294,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/LinkedArray.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/FixedConstantTimeArray.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.frag" />
@@ -325,6 +309,7 @@
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/util/img/DdsLoader.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/Example14_2.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb5/README.md" />
       </list>
     </option>
   </component>
@@ -451,28 +436,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="opengl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opengl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gl33" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -869,7 +832,11 @@
       <created>1363655855699</created>
       <updated>1363655855699</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Last update to README, I promise.">
+      <created>1363656085541</created>
+      <updated>1363656085541</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -957,7 +924,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed README file further." />
+    <option name="LAST_COMMIT_MESSAGE" value="Last update to README, I promise." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -989,6 +956,7 @@
     <MESSAGE value="Added REAMDE file." />
     <MESSAGE value="Fixed README file." />
     <MESSAGE value="Fixed README file further." />
+    <MESSAGE value="Last update to README, I promise." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1014,16 +982,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.ShaderGaussian.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.8346457" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/example14.1.TextureGaussian.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="4" selection-start="1678" selection-end="1678" vertical-scroll-proportion="0.60474306" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example2/example14.2.SmoothVertexColors.vert">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.2297593" />
@@ -1058,31 +1016,6 @@
         <state line="11" column="24" selection-start="193" selection-end="193" vertical-scroll-proportion="0.28350514" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="37" selection-end="37" vertical-scroll-proportion="0.025773196" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="5" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.45876288" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="1799" selection-end="1799" vertical-scroll-proportion="0.7474227" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="257" column="0" selection-start="9111" selection-end="9111" vertical-scroll-proportion="0.8453608" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="529" selection-end="529" vertical-scroll-proportion="0.33505154" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter14/example1/Example14_1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="194" column="4" selection-start="7677" selection-end="7677" vertical-scroll-proportion="0.6236324">
@@ -1099,9 +1032,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.016447369">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/DdsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="41" selection-end="41" vertical-scroll-proportion="0.016447369">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="0" selection-start="9145" selection-end="9145" vertical-scroll-proportion="0.9013158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="5" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.016447369">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/util/img/dds/ImageSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="5" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.016447369">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/superbible/osb5/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="803" selection-end="803" vertical-scroll-proportion="0.18092105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24671052">
+        <state line="18" column="68" selection-start="667" selection-end="667" vertical-scroll-proportion="0.29605263">
           <folding />
         </state>
       </provider>

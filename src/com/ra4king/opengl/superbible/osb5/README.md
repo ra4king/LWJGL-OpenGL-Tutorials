@@ -9,6 +9,3 @@ in all, it's a great leap backward from the imperfect but still excellent 4th ed
 of an _adaptation_ of the OSB examples, but not a perfect replica of them.  The shaders will be kept as similar as
 possible to the originals (sans Hungarian notation), but not tucked away in a library.  Geometry batching won't be
 dropped in from word go, but brought in gradually.
-
-
-
