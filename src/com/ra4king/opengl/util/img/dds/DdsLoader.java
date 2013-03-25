@@ -18,18 +18,17 @@ import com.ra4king.opengl.util.img.dds.ImageSet.Dimensions;
  * @author integeruser
  */
 public class DdsLoader {
-	public static ImageSet loadFromFile(String ddsFilepath) throws IOException {
-		InputStream ddsInputStream = ClassLoader.class.getResourceAsStream(ddsFilepath);
-		byte[] ddsFile = readDdsFile(ddsInputStream);
+	public static ImageSet load(InputStream dds) throws IOException {
+		byte[] ddsFile = readDdsFile(dds);
 		
 		// Check the first 4 bytes.
 		int magicTest = readDoubleWord(ddsFile, 0);
 		if(magicTest != MagicNumbers.DDS_MAGIC_NUMBER) {
-			throw new DdsFileMalformedException(ddsFilepath, "The Magic number is missing from the file.");
+			throw new DdsFileMalformedException("The Magic number is missing from the file.");
 		}
 		
 		if(ddsFile.length < DdsHeader.SIZE + 4) {
-			throw new DdsFileMalformedException(ddsFilepath, "The data is way too small to store actual information.");
+			throw new DdsFileMalformedException("The data is way too small to store actual information.");
 		}
 		
 		// Collect info from the DDS file.
@@ -72,8 +71,8 @@ public class DdsLoader {
 	private static class DdsFileMalformedException extends RuntimeException {
 		private static final long serialVersionUID = -1523221969465221880L;
 		
-		private DdsFileMalformedException(String filename, String message) {
-			super(filename + ": " + message);
+		private DdsFileMalformedException(String message) {
+			super(message);
 		}
 	}
 	
