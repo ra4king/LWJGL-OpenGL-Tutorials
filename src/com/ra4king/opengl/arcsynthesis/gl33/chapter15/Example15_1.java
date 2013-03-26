@@ -66,8 +66,6 @@ public class Example15_1 extends GLProgram {
 	
 	@Override
 	public void init() {
-		setFPS(0);
-		
 		glClearColor(0.75f, 0.75f, 1, 1);
 		glClearDepth(1);
 		
