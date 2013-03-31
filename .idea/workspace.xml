@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example1/example16.1.gamma_ramp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rosick/jglsdk/glimg/DdsLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rosick/jglsdk/glimg/DdsUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rosick/jglsdk/glimg/ImageCreator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rosick/jglsdk/glimg/ImageFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rosick/jglsdk/glimg/ImageSet.java" />
+      <change type="DELETED" beforePath="E:\Roi Atalla\Documents\Programming Files\Java Files\Personal Projects\OpenGL\src\com\ra4king\opengl\util\img\PNGDecoder.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example1/Example16_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example1/Example16_1.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Roi Atalla\Documents\Programming Files\Java Files\Personal Projects\OpenGL\src\com\ra4king\opengl\util\img\PNGDecoder.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/util/PNGDecoder.java" />
     </list>
     <ignored path="OpenGL.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,7 +14,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1364718742000" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1364718888698" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -482,32 +479,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opengl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1114,7 +1085,11 @@
       <created>1364718745149</created>
       <updated>1364718745149</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Forgot to add files.">
+      <created>1364718893087</created>
+      <updated>1364718893087</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1148,6 +1123,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29530916" sideWeight="0.51387405" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.14915694" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29104477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14605543" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.17250325" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1159,7 +1135,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34754798" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978677" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1202,7 +1177,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully ported Example 16.1. Also moved the 'dds' classes to their original packaging for better credit to author." />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot to add files." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1215,7 +1190,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Example 12.1 completely ported and fully working." />
     <MESSAGE value="Setup Example 12.2." />
     <MESSAGE value="Workspace.xml being weird." />
     <MESSAGE value="Silly typo." />
@@ -1240,6 +1214,7 @@
     <MESSAGE value="Forgot to remove the call to setFPS(0) in Example 15.1." />
     <MESSAGE value="Fully ported Example 16.1." />
     <MESSAGE value="Fully ported Example 16.1. Also moved the 'dds' classes to their original packaging for better credit to author." />
+    <MESSAGE value="Forgot to add files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1317,7 +1292,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter15/Example15_1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="225" column="8" selection-start="7412" selection-end="7634" vertical-scroll-proportion="0.44407895" />
+        <state line="225" column="8" selection-start="7412" selection-end="7634" vertical-scroll-proportion="0.44407895">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example1/example16.1.TextureGamma.frag">

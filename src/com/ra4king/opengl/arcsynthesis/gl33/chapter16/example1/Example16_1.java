@@ -17,9 +17,9 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 
 import com.ra4king.opengl.GLProgram;
+import com.ra4king.opengl.util.PNGDecoder;
+import com.ra4king.opengl.util.PNGDecoder.Format;
 import com.ra4king.opengl.util.ShaderProgram;
-import com.ra4king.opengl.util.img.PNGDecoder;
-import com.ra4king.opengl.util.img.PNGDecoder.Format;
 import com.ra4king.opengl.util.math.Matrix4;
 
 /**
