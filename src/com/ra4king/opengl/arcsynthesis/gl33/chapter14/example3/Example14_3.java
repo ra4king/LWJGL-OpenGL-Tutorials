@@ -16,6 +16,11 @@ import java.nio.FloatBuffer;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 
+import rosick.jglsdk.glimg.DdsLoader;
+import rosick.jglsdk.glimg.ImageSet;
+import rosick.jglsdk.glimg.ImageSet.Dimensions;
+import rosick.jglsdk.glimg.ImageSet.SingleImage;
+
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.MousePoles.MouseButton;
@@ -30,10 +35,6 @@ import com.ra4king.opengl.util.Timer.Type;
 import com.ra4king.opengl.util.UniformBlockArray;
 import com.ra4king.opengl.util.UniformBlockArray.UniformBlockObject;
 import com.ra4king.opengl.util.Utils;
-import com.ra4king.opengl.util.img.dds.DdsLoader;
-import com.ra4king.opengl.util.img.dds.ImageSet;
-import com.ra4king.opengl.util.img.dds.ImageSet.Dimensions;
-import com.ra4king.opengl.util.img.dds.ImageSet.SingleImage;
 import com.ra4king.opengl.util.math.Matrix3;
 import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.MatrixStack;
