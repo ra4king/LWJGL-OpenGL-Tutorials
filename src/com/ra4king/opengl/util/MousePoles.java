@@ -327,6 +327,10 @@ public class MousePoles {
 		private Vector2 startDragMouseLoc;
 		private Quaternion startDragOrient;
 		
+		public ViewPole(ViewData initialView, ViewScale viewScale, MouseButton actionButton) {
+			this(initialView, viewScale, actionButton, false);
+		}
+		
 		public ViewPole(ViewData initialView, ViewScale viewScale, MouseButton actionButton, boolean rightKeyboardCtrls) {
 			this.currView = new ViewData(initialView);
 			this.viewScale = new ViewScale(viewScale);

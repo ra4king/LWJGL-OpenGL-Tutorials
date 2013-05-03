@@ -33,6 +33,9 @@ void main()
 			mapping = vec2(1.0, 1.0);
 			offset = vec2(sphereRadius, sphereRadius);
 			break;
+		default:
+			offset = vec2(0);
+			break;
 	}
 	
 	vec4 cameraCornerPos = vec4(cameraSpherePos, 1.0);

@@ -58,12 +58,12 @@ public class Example9_3 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		ViewData initialViewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
+		ViewData viewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
 		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f / 250f);
-		ObjectData initialObjectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
+		ObjectData objectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
 		
-		viewPole = new ViewPole(initialViewData, viewScale, MouseButton.LEFT_BUTTON, false);
-		objectPole = new ObjectPole(initialObjectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
+		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON, false);
+		objectPole = new ObjectPole(objectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
 		whiteDiffuseColor = loadShader("example9.3.VertexLighting_PN.vert", "example9.3.frag");
 		vertexDiffuseColor = loadShader("example9.3.VertexLighting_PCN.vert", "example9.3.frag");

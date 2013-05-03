@@ -79,7 +79,7 @@ public class Example13_2 extends GLProgram {
 		ViewData viewData = new ViewData(new Vector3(0, 30, 25), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 10, 0);
 		ViewScale viewScale = new ViewScale(3, 70, 3.5f, 1.5f, 5, 1, 90 / 250f);
 		
-		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON, false);
+		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON);
 		
 		litMeshProgram = loadLitMeshProgram("example13.2.PN.vert", "example13.2.Lighting.frag");
 		litImpProgram = loadLitImposProgram("example13.2.GeomImpostor.vert", "example13.2.GeomImpostor.geom", "example13.2.GeomImpostor.frag");

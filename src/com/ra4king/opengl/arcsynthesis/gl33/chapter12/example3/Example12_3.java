@@ -70,7 +70,7 @@ public class Example12_3 extends GLProgram {
 		ViewData viewData = new ViewData(new Vector3(-59.5f, 44, 95), new Quaternion(0.3826834f, 0.0f, 0.0f, 0.92387953f), 50, 0);
 		ViewScale viewScale = new ViewScale(3, 80, 4, 1, 5, 1, 90 / 250f);
 		
-		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON, false);
+		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON);
 		
 		String[] vertexShaders = { "PCN", "PCN", "PN", "PN" };
 		String[] fragmentShaders = { "DiffuseSpecularGamma", "DiffuseOnlyGamma", "DiffuseSpecularMtlGamma", "DiffuseOnlyMtlGamma" };

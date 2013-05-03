@@ -167,6 +167,23 @@ public class Vector3 implements Vector<Vector3> {
 		return mult(vec.x, vec.y, vec.z);
 	}
 	
+	@Override
+	public Vector3 divide(float f) {
+		return divide(f, f, f);
+	}
+	
+	public Vector3 divide(float x, float y, float z) {
+		this.x /= x;
+		this.y /= y;
+		this.z /= z;
+		return this;
+	}
+	
+	@Override
+	public Vector3 divide(Vector3 vec) {
+		return divide(vec.x, vec.y, vec.z);
+	}
+	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(3);
 	
 	@Override

@@ -77,12 +77,12 @@ public class Example11_2 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		glClearDepth(1);
 		
-		ViewData initialViewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
+		ViewData viewData = new ViewData(new Vector3(0, 0.5f, 0), new Quaternion(0.3826834f, 0, 0, 0.92387953f), 5, 0);
 		ViewScale viewScale = new ViewScale(3, 20, 1.5f, 0.5f, 0, 0, 90f / 250f);
-		ObjectData initialObjectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
+		ObjectData objectData = new ObjectData(new Vector3(0, 0.5f, 0), new Quaternion());
 		
-		viewPole = new ViewPole(initialViewData, viewScale, MouseButton.LEFT_BUTTON, false);
-		objectPole = new ObjectPole(initialObjectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
+		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON);
+		objectPole = new ObjectPole(objectData, 90f / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
 		for(int a = 0; a < shaderFiles.length; a++)
 			programs[a] = new ProgramPair(loadLitProgram("example11.2." + shaderFiles[a].whiteVertexShader, "example11.2." + shaderFiles[a].fragmentShader),

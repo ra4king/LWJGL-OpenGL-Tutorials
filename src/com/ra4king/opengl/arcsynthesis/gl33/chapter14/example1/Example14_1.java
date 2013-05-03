@@ -92,7 +92,7 @@ public class Example14_1 extends GLProgram {
 		ViewData viewData = new ViewData(objectData.position, new Quaternion(0.3826834f, 0, 0, 0.92387953f), 10, 0);
 		ViewScale viewScale = new ViewScale(1.5f, 70, 1.5f, 0.5f, 0, 0, 90 / 250f);
 		
-		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON, false);
+		viewPole = new ViewPole(viewData, viewScale, MouseButton.LEFT_BUTTON);
 		objectPole = new ObjectPole(objectData, 90 / 250f, MouseButton.RIGHT_BUTTON, viewPole);
 		
 		litShaderProgram = loadStandardProgram("example14.1.PN.vert", "example14.1.ShaderGaussian.frag");

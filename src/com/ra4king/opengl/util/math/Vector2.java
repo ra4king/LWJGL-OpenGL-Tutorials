@@ -141,6 +141,22 @@ public class Vector2 implements Vector<Vector2> {
 		return mult(vec.x, vec.y);
 	}
 	
+	@Override
+	public Vector2 divide(float f) {
+		return divide(f, f);
+	}
+	
+	public Vector2 divide(float x, float y) {
+		this.x /= x;
+		this.y /= y;
+		return this;
+	}
+	
+	@Override
+	public Vector2 divide(Vector2 vec) {
+		return divide(vec.x, vec.y);
+	}
+	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(2);
 	
 	@Override

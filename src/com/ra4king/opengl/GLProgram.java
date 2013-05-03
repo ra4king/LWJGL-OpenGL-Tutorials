@@ -58,8 +58,12 @@ public abstract class GLProgram {
 	}
 	
 	public final void run(boolean core) {
+		run(core, new PixelFormat());
+	}
+	
+	public final void run(boolean core, PixelFormat format) {
 		try {
-			Display.create(new PixelFormat(), core ? new ContextAttribs(3, 3) : new ContextAttribs());
+			Display.create(format, core ? new ContextAttribs(3, 3).withProfileCore(true) : new ContextAttribs());
 		} catch(Exception exc) {
 			exc.printStackTrace();
 			System.exit(1);

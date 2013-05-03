@@ -185,6 +185,24 @@ public class Vector4 implements Vector<Vector4> {
 		return mult(vec.x, vec.y, vec.z, vec.w);
 	}
 	
+	@Override
+	public Vector4 divide(float f) {
+		return divide(f, f, f, f);
+	}
+	
+	public Vector4 divide(float x, float y, float z, float w) {
+		this.x /= x;
+		this.y /= y;
+		this.z /= z;
+		this.w /= w;
+		return this;
+	}
+	
+	@Override
+	public Vector4 divide(Vector4 vec) {
+		return divide(vec.x, vec.y, vec.z, vec.w);
+	}
+	
 	private final static FloatBuffer direct = BufferUtils.createFloatBuffer(4);
 	
 	@Override
