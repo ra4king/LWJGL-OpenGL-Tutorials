@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="Fully ported Example 16.3.">
+    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example3/Example16_3.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter16/example3/Example16_3.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -12,7 +12,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1367563155027" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1367563201307" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -1149,7 +1149,11 @@
       <created>1367562643409</created>
       <updated>1367562643409</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Formatting Example16_3.java.">
+      <created>1367563201651</created>
+      <updated>1367563201651</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1242,7 +1246,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully ported Example 16.3." />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatting Example16_3.java." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1256,7 +1260,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="*HUGE* error in my Matrix4.toQuaternion class that caused  buggy 3D movement in Example12.1. Also, completely reformat with Eclipse Formatter plugin for IDEA." />
     <MESSAGE value="Example 12.2 fully ported." />
     <MESSAGE value="Example 12.3 fully ported." />
     <MESSAGE value="Example 13.1 fully ported." />
@@ -1281,6 +1284,7 @@
     <MESSAGE value="Moved PNGDecoder back to util." />
     <MESSAGE value="Fully ported Example 16.2." />
     <MESSAGE value="Fully ported Example 16.3." />
+    <MESSAGE value="Formatting Example16_3.java." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

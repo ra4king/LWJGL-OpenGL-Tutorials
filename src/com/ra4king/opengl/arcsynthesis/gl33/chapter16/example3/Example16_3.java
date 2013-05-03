@@ -15,13 +15,6 @@ import static org.lwjgl.opengl.GL33.*;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.PixelFormat;
 
-import rosick.jglsdk.glimg.DdsLoader;
-import rosick.jglsdk.glimg.ImageSet;
-import rosick.jglsdk.glimg.ImageSet.Dimensions;
-import rosick.jglsdk.glimg.ImageSet.SingleImage;
-import rosick.jglsdk.glimg.TextureGenerator;
-import rosick.jglsdk.glimg.TextureGenerator.OpenGLPixelTransferParams;
-
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.arcsynthesis.gl33.chapter16.example3.LightEnv.LightBlock;
 import com.ra4king.opengl.util.Mesh;
@@ -36,6 +29,13 @@ import com.ra4king.opengl.util.math.MatrixStack;
 import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.math.Vector4;
+
+import rosick.jglsdk.glimg.DdsLoader;
+import rosick.jglsdk.glimg.ImageSet;
+import rosick.jglsdk.glimg.ImageSet.Dimensions;
+import rosick.jglsdk.glimg.ImageSet.SingleImage;
+import rosick.jglsdk.glimg.TextureGenerator;
+import rosick.jglsdk.glimg.TextureGenerator.OpenGLPixelTransferParams;
 
 /**
  * @author ra4king
