@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="XPP3">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/files/xpp3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xpp3.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/files/XPP3-javadoc.zip!/" />
+      <root url="jar://$PROJECT_DIR$/libs/XPP3-javadoc.zip!/" />
     </JAVADOC>
     <SOURCES />
   </library>
