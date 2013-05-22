@@ -15,7 +15,7 @@ import com.ra4king.opengl.util.ShaderProgram;
 
 public class Example3_1 extends GLProgram {
 	public static void main(String[] args) {
-		new Example3_1().run(3, 2);
+		new Example3_1().run(true);
 	}
 	
 	private ShaderProgram program;
