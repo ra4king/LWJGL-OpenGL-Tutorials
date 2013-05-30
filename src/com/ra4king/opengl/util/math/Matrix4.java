@@ -14,12 +14,21 @@ public class Matrix4 {
 	
 	public Matrix4(float[] m) {
 		this();
-		put(m);
+		set(m);
+	}
+	
+	public Matrix4(Matrix3 m) {
+		this();
+		set(m);
 	}
 	
 	public Matrix4(Matrix4 m) {
 		this();
-		put(m);
+		set(m);
+	}
+	
+	public Matrix4 copy() {
+		return new Matrix4(this);
 	}
 	
 	public Matrix4 clear() {
@@ -88,7 +97,7 @@ public class Matrix4 {
 		return this;
 	}
 	
-	public Matrix4 put(float[] m) {
+	public Matrix4 set(float[] m) {
 		if(m.length < matrix.length)
 			throw new IllegalArgumentException("float array must have at least " + matrix.length + " values.");
 		
@@ -97,8 +106,18 @@ public class Matrix4 {
 		return this;
 	}
 	
-	public Matrix4 put(Matrix4 m) {
-		return put(m.matrix);
+	public Matrix4 set(Matrix4 m) {
+		return set(m.matrix);
+	}
+	
+	public Matrix4 set(Matrix3 m) {
+		for(int a = 0; a < 3; a++) {
+			matrix[a * 4 + 0] = m.get(a * 3 + 0);
+			matrix[a * 4 + 1] = m.get(a * 3 + 1);
+			matrix[a * 4 + 2] = m.get(a * 3 + 2);
+		}
+		
+		return this;
 	}
 	
 	public Matrix4 mult(float f) {
@@ -118,7 +137,7 @@ public class Matrix4 {
 			newm[a + 3] = get(3) * m[a] + get(7) * m[a + 1] + get(11) * m[a + 2] + get(15) * m[a + 3];
 		}
 		
-		put(newm);
+		set(newm);
 		
 		return this;
 	}
@@ -273,7 +292,7 @@ public class Matrix4 {
 		inv.put(14, -(get(0) * get(5) * get(11) + get(4) * get(9) * get(3) + get(8) * get(1) * get(7) - get(3) * get(5) * get(8) - get(7) * get(9) * get(0) - get(11) * get(1) * get(4)));
 		inv.put(15, +(get(0) * get(5) * get(10) + get(4) * get(9) * get(2) + get(8) * get(1) * get(6) - get(2) * get(5) * get(8) - get(6) * get(9) * get(0) - get(10) * get(1) * get(4)));
 		
-		return put(inv.transpose().mult(1 / determinant()));
+		return set(inv.transpose().mult(1 / determinant()));
 	}
 	
 	public Quaternion toQuaternion() {

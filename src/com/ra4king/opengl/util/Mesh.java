@@ -5,6 +5,7 @@ import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.ByteBuffer;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 
 import org.lwjgl.BufferUtils;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 public class Mesh {
@@ -21,7 +23,7 @@ public class Mesh {
 	
 	private ArrayList<RenderCmd> renderCommands;
 	
-	public Mesh(URL url) throws Exception {
+	public Mesh(URL url) throws IOException, XmlPullParserException {
 		renderCommands = new ArrayList<>();
 		
 		ArrayList<Attribute> attributes = new ArrayList<>();
@@ -179,23 +181,23 @@ public class Mesh {
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 		
-		if(vaos == null) {
-			vao = glGenVertexArrays();
-			glBindVertexArray(vao);
-			
-			glBindBuffer(GL_ARRAY_BUFFER, vbo1);
-			for(Attribute attrib : attributes) {
-				glEnableVertexAttribArray(attrib.index);
-				glVertexAttribPointer(attrib.index, attrib.size, attrib.type.dataType, attrib.type.normalized, 0, attrib.offset);
-			}
-			
-			if(vbo2 >= 0)
-				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
-			
-			glBindVertexArray(0);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		} else {
+		vao = glGenVertexArrays();
+		glBindVertexArray(vao);
+		
+		glBindBuffer(GL_ARRAY_BUFFER, vbo1);
+		for(Attribute attrib : attributes) {
+			glEnableVertexAttribArray(attrib.index);
+			glVertexAttribPointer(attrib.index, attrib.size, attrib.type.dataType, attrib.type.normalized, 0, attrib.offset);
+		}
+		
+		if(vbo2 >= 0)
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
+		
+		glBindVertexArray(0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		
+		if(vaos != null) {
 			vaoMap = new HashMap<>();
 			
 			for(VAO vao : vaos) {
@@ -231,9 +233,6 @@ public class Mesh {
 	}
 	
 	public void render() {
-		if(vaoMap != null)
-			throw new IllegalArgumentException("vaoMap is not null, must call render(String) method.");
-		
 		glBindVertexArray(vao);
 		for(RenderCmd cmd : renderCommands)
 			cmd.render();

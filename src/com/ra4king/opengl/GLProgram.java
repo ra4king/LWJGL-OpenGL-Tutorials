@@ -3,14 +3,13 @@ package com.ra4king.opengl;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.*;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.ContextAttribs;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
+
+import com.ra4king.opengl.util.Utils;
 
 public abstract class GLProgram {
 	private int fps;
@@ -47,14 +46,7 @@ public abstract class GLProgram {
 	}
 	
 	public final void run() {
-		try {
-			Display.create();
-		} catch(Exception exc) {
-			exc.printStackTrace();
-			System.exit(1);
-		}
-		
-		gameLoop();
+		run(false);
 	}
 	
 	public final void run(boolean core) {
@@ -62,29 +54,15 @@ public abstract class GLProgram {
 	}
 	
 	public final void run(boolean core, PixelFormat format) {
-		try {
-			Display.create(format, new ContextAttribs().withProfileCore(core));
-		} catch(Exception exc) {
-			exc.printStackTrace();
-			System.exit(1);
-		}
-		
-		gameLoop();
+		run(format, core ? new ContextAttribs(3, 3).withProfileCore(true) : null);
 	}
 	
 	public final void run(int major, int minor) {
-		try {
-			Display.create(new PixelFormat(), new ContextAttribs(major, minor));
-		} catch(Exception exc) {
-			exc.printStackTrace();
-			System.exit(1);
-		}
-		
-		gameLoop();
+		run(new PixelFormat(), new ContextAttribs(major, minor));
 	}
 	
 	public final void run(PixelFormat format) {
-		run(format, new ContextAttribs());
+		run(format, null);
 	}
 	
 	public final void run(PixelFormat format, ContextAttribs attribs) {
@@ -190,16 +168,10 @@ public abstract class GLProgram {
 	}
 	
 	protected String readFromFile(String file) {
-		try(BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(file), "UTF-8"))) {
-			StringBuilder s = new StringBuilder();
-			String l;
-			
-			while((l = reader.readLine()) != null)
-				s.append(l).append('\n');
-			
-			return s.toString();
+		try {
+			return Utils.readFully(getClass().getResourceAsStream(file));
 		} catch(Exception exc) {
-			throw new RuntimeException("Failure reading file: " + file, exc);
+			throw new RuntimeException("Failure reading file " + file, exc);
 		}
 	}
 }

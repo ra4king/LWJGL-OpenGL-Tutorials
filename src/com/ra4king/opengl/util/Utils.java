@@ -1,5 +1,9 @@
 package com.ra4king.opengl.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -11,6 +15,7 @@ import com.ra4king.opengl.util.math.Matrix4;
 import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector2;
 import com.ra4king.opengl.util.math.Vector3;
+import com.ra4king.opengl.util.math.Vector4;
 
 public class Utils {
 	public static Quaternion angleAxisDeg(float angle, Vector3 vec) {
@@ -40,28 +45,46 @@ public class Utils {
 		}).translate(eye.copy().mult(-1));
 	}
 	
+	public static void updateMousePoles(ViewPole ... viewPoles) {
+		updateMousePoles(viewPoles, null);
+	}
+	
+	public static void updateMousePoles(ObjectPole ... objectPoles) {
+		updateMousePoles(null, objectPoles);
+	}
+	
 	public static void updateMousePoles(ViewPole viewPole, ObjectPole objectPole) {
+		updateMousePoles(new ViewPole[] { viewPole }, new ObjectPole[] { objectPole });
+	}
+	
+	public static void updateMousePoles(ViewPole[] viewPoles, ObjectPole[] objectPoles) {
 		while(Mouse.next()) {
 			MouseButton button = MouseButton.getButton(Mouse.getEventButton());
 			if(button != null) {
 				boolean pressed = Mouse.getEventButtonState();
-				if(viewPole != null)
-					viewPole.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
-				if(objectPole != null)
-					objectPole.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
+				if(viewPoles != null)
+					for(ViewPole v : viewPoles)
+						v.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
+				if(objectPoles != null)
+					for(ObjectPole o : objectPoles)
+						o.mouseClick(button, pressed, getModifier(), new Vector2(Mouse.getX(), Mouse.getY()));
 			} else {
 				int dwheel = Mouse.getDWheel();
 				
 				if(dwheel != 0) {
-					if(viewPole != null)
-						viewPole.mouseWheel(dwheel, getModifier());
-					if(objectPole != null)
-						objectPole.mouseWheel(dwheel, getModifier());
+					if(viewPoles != null)
+						for(ViewPole v : viewPoles)
+							v.mouseWheel(dwheel, getModifier());
+					if(objectPoles != null)
+						for(ObjectPole o : objectPoles)
+							o.mouseWheel(dwheel, getModifier());
 				} else {
-					if(viewPole != null)
-						viewPole.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
-					if(objectPole != null)
-						objectPole.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
+					if(viewPoles != null)
+						for(ViewPole v : viewPoles)
+							v.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
+					if(objectPoles != null)
+						for(ObjectPole o : objectPoles)
+							o.mouseMove(new Vector2(Mouse.getX(), Mouse.getY()));
 				}
 			}
 		}
@@ -78,5 +101,72 @@ public class Utils {
 			return MouseModifier.KEY_ALT;
 		
 		return null;
+	}
+	
+	public static String readFully(InputStream is) {
+		try(BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {
+			StringBuilder s = new StringBuilder();
+			String l;
+			
+			while((l = reader.readLine()) != null)
+				s.append(l).append('\n');
+			
+			return s.toString();
+		} catch(Exception exc) {
+			throw new RuntimeException("Failure reading input stream", exc);
+		}
+	}
+	
+	public static Quaternion parseQuaternion(String s) {
+		String[] comp = StringUtil.split(s, ' ');
+		if(comp.length != 4)
+			throw new IllegalArgumentException("invalid Quaternion");
+		
+		Quaternion quat = new Quaternion();
+		quat.x(Float.parseFloat(comp[0]));
+		quat.y(Float.parseFloat(comp[1]));
+		quat.z(Float.parseFloat(comp[2]));
+		quat.w(Float.parseFloat(comp[3]));
+		
+		return quat;
+	}
+	
+	public static Vector4 parseVector4(String s) {
+		String[] comp = StringUtil.split(s, ' ');
+		if(comp.length != 4)
+			throw new IllegalArgumentException("invalid Vector4");
+		
+		Vector4 vec = new Vector4();
+		vec.x(Float.parseFloat(comp[0]));
+		vec.y(Float.parseFloat(comp[1]));
+		vec.z(Float.parseFloat(comp[2]));
+		vec.w(Float.parseFloat(comp[3]));
+		
+		return vec;
+	}
+	
+	public static Vector3 parseVector3(String s) throws NumberFormatException {
+		String[] comp = StringUtil.split(s, ' ');
+		if(comp.length != 3)
+			throw new IllegalArgumentException("invalid Vector3");
+		
+		Vector3 vec = new Vector3();
+		vec.x(Float.parseFloat(comp[0]));
+		vec.y(Float.parseFloat(comp[1]));
+		vec.z(Float.parseFloat(comp[2]));
+		
+		return vec;
+	}
+	
+	public static Vector2 parseVector2(String s) throws NumberFormatException {
+		String[] comp = StringUtil.split(s, ' ');
+		if(comp.length != 2)
+			throw new IllegalArgumentException("invalid Vector2");
+		
+		Vector2 vec = new Vector2();
+		vec.x(Float.parseFloat(comp[0]));
+		vec.y(Float.parseFloat(comp[1]));
+		
+		return vec;
 	}
 }

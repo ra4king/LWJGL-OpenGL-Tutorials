@@ -9,9 +9,9 @@ import org.lwjgl.BufferUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.ra4king.opengl.util.StringUtil;
 import com.ra4king.opengl.util.Timer;
 import com.ra4king.opengl.util.Timer.Type;
+import com.ra4king.opengl.util.Utils;
 import com.ra4king.opengl.util.interpolators.ConstVelLinearInterpolatorVector;
 import com.ra4king.opengl.util.interpolators.TimedLinearInterpolatorVector;
 import com.ra4king.opengl.util.interpolators.TimedLinearInterpolatorf;
@@ -90,21 +90,21 @@ public class LightEnv {
 				}
 				
 				try {
-					ambient.add(ambientInterpolator.new Data(parseVector4(xml.getAttributeValue(null, "ambient")), keyTime));
+					ambient.add(ambientInterpolator.new Data(Utils.parseVector4(xml.getAttributeValue(null, "ambient")), keyTime));
 				} catch(IllegalArgumentException exc) {
 					System.err.println("'ambient' attribute at 'key' tag is invalid value");
 					throw exc;
 				}
 				
 				try {
-					light.add(sunlightInterpolator.new Data(parseVector4(xml.getAttributeValue(null, "intensity")), keyTime));
+					light.add(sunlightInterpolator.new Data(Utils.parseVector4(xml.getAttributeValue(null, "intensity")), keyTime));
 				} catch(IllegalArgumentException exc) {
 					System.err.println("'intensity' attribute at 'key' tag is invalid value");
 					throw exc;
 				}
 				
 				try {
-					background.add(backgroundInterpolator.new Data(parseVector4(xml.getAttributeValue(null, "background")), keyTime));
+					background.add(backgroundInterpolator.new Data(Utils.parseVector4(xml.getAttributeValue(null, "background")), keyTime));
 				} catch(IllegalArgumentException exc) {
 					System.err.println("'background' attribute at 'key' tag is invalid value");
 					throw exc;
@@ -150,7 +150,7 @@ public class LightEnv {
 				}
 				
 				try {
-					lightIntensity.add(parseVector4(xml.getAttributeValue(null, "intensity")));
+					lightIntensity.add(Utils.parseVector4(xml.getAttributeValue(null, "intensity")));
 				} catch(IllegalArgumentException exc) {
 					System.err.println("'intensity' attribute in 'light' tag is invalid value");
 					throw exc;
@@ -163,7 +163,7 @@ public class LightEnv {
 					xml.require(XmlPullParser.TEXT, null, null);
 					
 					try {
-						posValues.add(parseVector3(xml.getText()));
+						posValues.add(Utils.parseVector3(xml.getText()));
 					} catch(IllegalArgumentException exc) {
 						System.err.println("contents of 'key' tag invalid value");
 						throw exc;
@@ -183,33 +183,6 @@ public class LightEnv {
 				xml.require(XmlPullParser.END_TAG, null, "light");
 			}
 		}
-	}
-	
-	private Vector4 parseVector4(String s) {
-		String[] comp = StringUtil.split(s, ' ');
-		if(comp.length != 4)
-			throw new IllegalArgumentException("invalid Vector4");
-		
-		Vector4 vec = new Vector4();
-		vec.x(Float.parseFloat(comp[0]));
-		vec.y(Float.parseFloat(comp[1]));
-		vec.z(Float.parseFloat(comp[2]));
-		vec.w(Float.parseFloat(comp[3]));
-		
-		return vec;
-	}
-	
-	private Vector3 parseVector3(String s) throws NumberFormatException {
-		String[] comp = StringUtil.split(s, ' ');
-		if(comp.length != 3)
-			throw new IllegalArgumentException("invalid Vector3");
-		
-		Vector3 vec = new Vector3();
-		vec.x(Float.parseFloat(comp[0]));
-		vec.y(Float.parseFloat(comp[1]));
-		vec.z(Float.parseFloat(comp[2]));
-		
-		return vec;
 	}
 	
 	public void updateTime(long deltaTime) {
