@@ -45,11 +45,11 @@ public class Utils {
 		}).translate(eye.copy().mult(-1));
 	}
 	
-	public static void updateMousePoles(ViewPole ... viewPoles) {
+	public static void updateMousePoles(ViewPole... viewPoles) {
 		updateMousePoles(viewPoles, null);
 	}
 	
-	public static void updateMousePoles(ObjectPole ... objectPoles) {
+	public static void updateMousePoles(ObjectPole... objectPoles) {
 		updateMousePoles(null, objectPoles);
 	}
 	

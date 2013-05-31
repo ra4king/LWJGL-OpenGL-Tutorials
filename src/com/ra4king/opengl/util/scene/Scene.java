@@ -285,7 +285,7 @@ public class Scene {
 				
 				ArrayList<TextureBinding> texBindings = readNodeTextures(name, xml);
 				
-				HashMap<String, Variant> variants = new HashMap<>();
+				HashMap<String,Variant> variants = new HashMap<>();
 				
 				int variantCount = 0;
 				while(xml.getName().equals("variant")) {
