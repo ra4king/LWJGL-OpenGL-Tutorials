@@ -207,6 +207,10 @@ public class Example17_2 extends GLProgram {
 			lightNumBinder.associateWithProgram(node.getProgram(), "numberOfLights");
 			lightProjMatBinder.associateWithProgram(node.getProgram(), "cameraToLightProjMatrix");
 			camLightPosBinder.associateWithProgram(node.getProgram(), "cameraSpaceProjLightPos");
+			
+			node.setStateBinder(lightNumBinder);
+			node.setStateBinder(lightProjMatBinder);
+			node.setStateBinder(camLightPosBinder);
 		}
 		
 		spinBarOrient = nodes.get(3).getOrient();

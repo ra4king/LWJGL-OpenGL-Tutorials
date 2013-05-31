@@ -531,8 +531,8 @@ public class Scene {
 	}
 	
 	public static class SceneTexture {
-		private int texture;
-		private int type;
+		public int texture;
+		public int type;
 		
 		public SceneTexture(InputStream is, int creationFlags) throws IOException {
 			if(is == null)

@@ -70,7 +70,7 @@ public class Matrix4 {
 	}
 	
 	public Vector4 getColumn(int index) {
-		return new Vector4(get(index * 4), get(index * 4 + 1), get(index * 4 + 2), get(index * 4 + 3));
+		return new Vector4(get(index * 4 + 0), get(index * 4 + 1), get(index * 4 + 2), get(index * 4 + 3));
 	}
 	
 	public Matrix4 put(int index, float f) {
