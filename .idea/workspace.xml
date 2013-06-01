@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="Updated README.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example1/Example2_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example1/Example2_1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example2/Example2_2.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example2/Example2_2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example1/Example3_1.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example1/Example3_1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example2/Example3_2.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example2/Example3_2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example3/Example3_3.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example3/Example3_3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example4/Example3_4.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example4/Example3_4.java" />
+    <list default="true" id="3bd3582b-975a-4915-888d-8e2c52d85938" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java" afterPath="$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -19,7 +12,7 @@
     <file path="/a.xml" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850040520" ignored="false" />
     <file path="/a.html" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850041808" ignored="false" />
     <file path="/a.groovy" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361850042481" ignored="false" />
-    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1370110917951" ignored="false" />
+    <file path="/Dummy.txt" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1370111043434" ignored="false" />
     <file path="/Example12_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362027020824" ignored="false" />
     <file path="/example12.1.DiffuseSpecular.frag" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361702005810" ignored="false" />
     <file path="/LightManager.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362461124226" ignored="false" />
@@ -58,7 +51,7 @@
     <file path="$PROJECT_DIR$/../../../../../Downloads/Downloaded Folders/IntelliJ IDEA/java/java-impl/src/com/intellij/psi/codeStyle/arrangement/JavaRearranger.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361947416272" ignored="false" />
     <file path="/ReformatCodeProcessor.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1361992964680" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../Downloads/Downloaded Folders/IntelliJ IDEA/platform/lang-impl/src/com/intellij/codeInsight/actions/ReformatCodeProcessor.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362003317321" ignored="false" />
-    <file path="/GLProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1370110900961" ignored="false" />
+    <file path="/GLProgram.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1370112774344" ignored="false" />
     <file path="/Example8_1.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1362018560645" ignored="false" />
     <file path="/Mesh.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1369812780731" ignored="false" />
     <file path="/MousePoles.java" changelist="3bd3582b-975a-4915-888d-8e2c52d85938" time="1367471073782" ignored="false" />
@@ -408,7 +401,26 @@
     <favorites_list name="OpenGL" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Example1_1.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="8" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GLProgram.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="66" column="4" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.49780703">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -443,7 +455,6 @@
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter17/example3/Example17_3.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl33/chapter17/example2/Example17_2.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example1/Example2_1.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example2/Example2_2.java" />
@@ -451,6 +462,7 @@
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example2/Example3_2.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example3/Example3_3.java" />
         <option value="$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example4/Example3_4.java" />
+        <option value="$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java" />
       </list>
     </option>
   </component>
@@ -639,6 +651,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gl32" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenGL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenGL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opengl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arcsynthesis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gl32" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chapter1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1187,7 +1229,11 @@
       <created>1370077318182</created>
       <updated>1370077318182</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Added run methods to GLProgram that accept version and core profile. Updated the GL32 package accordingly.">
+      <created>1370111046651</created>
+      <updated>1370111046651</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -1212,7 +1258,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23723404" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1221,11 +1267,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24200426" sideWeight="0.51600856" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.14915694" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29104477" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23240939" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14605543" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18366013" sideWeight="0.17250325" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.36819637" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20170757" sideWeight="0.7579957" order="0" side_tool="true" content_ui="combo" x="2394" y="136" width="397" height="768" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20170757" sideWeight="0.7579957" order="0" side_tool="true" content_ui="combo" x="2394" y="136" width="397" height="768" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11940298" sideWeight="0.48399147" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.32977587" sideWeight="0.80490404" order="4" side_tool="false" content_ui="combo" x="2005" y="108" width="1736" height="896" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1233,7 +1280,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58528787" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23240939" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978677" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1280,7 +1326,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added run methods to GLProgram that accept version and core profile. Updated the GL32 package accordingly." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1294,7 +1340,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Modified the OTHER README files haha." />
     <MESSAGE value="Fully ported Example 14.3." />
     <MESSAGE value="Fully ported Example 15.1. Also added &quot;lookAt&quot; method to Utils." />
     <MESSAGE value="Forgot to remove the call to setFPS(0) in Example 15.1." />
@@ -1319,6 +1364,7 @@
     <MESSAGE value="Example 17.3 fully ported. This concludes 10 months of arduous work porting Arcsynthesis tutorials!" />
     <MESSAGE value="Reformatting." />
     <MESSAGE value="Updated README." />
+    <MESSAGE value="Added run methods to GLProgram that accept version and core profile. Updated the GL32 package accordingly." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1384,20 +1430,6 @@
         <state line="22" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.3618421" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="4" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.4310722">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="552" selection-end="552" vertical-scroll-proportion="0.23026316">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter2/example1/Example2_1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="35" selection-start="508" selection-end="508" vertical-scroll-proportion="0.098684214">
@@ -1436,6 +1468,20 @@
     <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter3/example4/Example3_4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="35" selection-start="508" selection-end="508" vertical-scroll-proportion="0.032894738">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/arcsynthesis/gl32/chapter1/Example1_1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="8" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ra4king/opengl/GLProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="4" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.49780703">
           <folding />
         </state>
       </provider>
