@@ -13,7 +13,7 @@ import com.ra4king.opengl.GLProgram;
 
 public class Example1_1 extends GLProgram {
 	public static void main(String[] args) {
-		new Example1_1().run(true);
+		new Example1_1().run(3, 2, true);
 	}
 	
 	private int program, vbo;

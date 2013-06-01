@@ -57,12 +57,20 @@ public abstract class GLProgram {
 		run(format, core ? new ContextAttribs(3, 3).withProfileCore(true) : null);
 	}
 	
-	public final void run(int major, int minor) {
-		run(new PixelFormat(), new ContextAttribs(major, minor));
+	public final void run(int major, int minor, boolean core) {
+		run(major, minor, core, new PixelFormat());
+	}
+	
+	public final void run(int major, int minor, boolean core, PixelFormat format) {
+		run(format, new ContextAttribs(major, minor).withProfileCompatibility(core));
 	}
 	
 	public final void run(PixelFormat format) {
 		run(format, null);
+	}
+	
+	public final void run(ContextAttribs attribs) {
+		run(new PixelFormat(), attribs);
 	}
 	
 	public final void run(PixelFormat format, ContextAttribs attribs) {
