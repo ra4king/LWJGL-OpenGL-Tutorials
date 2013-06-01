@@ -214,14 +214,14 @@ public class Example17_2 extends GLProgram {
 		}
 		
 		spinBarOrient = nodes.get(3).getOrient();
-
+		
 		unlit = scene.findProgram("p_unlit");
 		unlitModelToCameraMatrixUniform = glGetUniformLocation(unlit.getProgram(), "modelToCameraMatrix");
 		unlitObjectColorUniform = glGetUniformLocation(unlit.getProgram(), "objectColor");
-
+		
 		colored = scene.findProgram("p_colored");
 		coloredModelToCameraMatrixUniform = glGetUniformBlockIndex(colored.getProgram(), "modelToCameraMatrix");
-
+		
 		sphereMesh = scene.findMesh("m_sphere");
 		axesMesh = scene.findMesh("m_axes");
 	}
