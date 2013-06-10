@@ -13,6 +13,6 @@ public class StringUtil {
 			input = input.substring(index + 1);
 		}
 		parts.add(input);
-		return parts.toArray(new String[0]);
+		return parts.toArray(new String[parts.size()]);
 	}
 }

@@ -229,7 +229,7 @@ public class Mesh {
 		for(String s : data)
 			if(!(s = s.trim()).isEmpty())
 				clean.add(s);
-		return clean.toArray(new String[0]);
+		return clean.toArray(new String[clean.size()]);
 	}
 	
 	public void render() {

@@ -19,6 +19,11 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import rosick.jglsdk.glimg.DdsLoader;
+import rosick.jglsdk.glimg.ImageSet;
+import rosick.jglsdk.glimg.TextureGenerator;
+import rosick.jglsdk.glimg.TextureGenerator.ForcedConvertFlags;
+
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.ShaderProgram;
 import com.ra4king.opengl.util.Utils;
@@ -28,11 +33,6 @@ import com.ra4king.opengl.util.math.Quaternion;
 import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.scene.Scene.SceneNode.Variant;
 import com.ra4king.opengl.util.scene.binders.StateBinder;
-
-import rosick.jglsdk.glimg.DdsLoader;
-import rosick.jglsdk.glimg.ImageSet;
-import rosick.jglsdk.glimg.TextureGenerator;
-import rosick.jglsdk.glimg.TextureGenerator.ForcedConvertFlags;
 
 /**
  * @author ra4king

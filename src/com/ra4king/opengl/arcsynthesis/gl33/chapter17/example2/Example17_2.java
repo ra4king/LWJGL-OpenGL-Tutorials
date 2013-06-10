@@ -18,6 +18,10 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.xmlpull.v1.XmlPullParserException;
 
+import rosick.jglsdk.glimg.DdsLoader;
+import rosick.jglsdk.glimg.ImageSet;
+import rosick.jglsdk.glimg.TextureGenerator;
+
 import com.ra4king.opengl.GLProgram;
 import com.ra4king.opengl.util.Mesh;
 import com.ra4king.opengl.util.MousePoles.MouseButton;
@@ -38,10 +42,6 @@ import com.ra4king.opengl.util.scene.Scene.SceneNode;
 import com.ra4king.opengl.util.scene.binders.UniformIntBinder;
 import com.ra4king.opengl.util.scene.binders.UniformMat4Binder;
 import com.ra4king.opengl.util.scene.binders.UniformVec3Binder;
-
-import rosick.jglsdk.glimg.DdsLoader;
-import rosick.jglsdk.glimg.ImageSet;
-import rosick.jglsdk.glimg.TextureGenerator;
 
 /**
  * @author ra4king

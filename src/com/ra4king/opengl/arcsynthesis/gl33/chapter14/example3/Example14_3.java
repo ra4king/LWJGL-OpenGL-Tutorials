@@ -478,15 +478,7 @@ public class Example14_3 extends GLProgram {
 	private static enum ShaderMode {
 		MODE_FIXED, MODE_TEXTURED, MODE_TEXTURED_COMPUTE;
 		
-		static {
-			length = values().length;
-		}
-		
-		private static int length;
-		
-		public static int length() {
-			return length;
-		}
+		private static int length = values().length;
 	}
 	
 	private static class ShaderPair {
