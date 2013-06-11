@@ -1,0 +1,1 @@
+Source code in this directory is under Creative Commons Attribution 3.0 License from this repository: https://github.com/integeruser/gltut-lwjgl
