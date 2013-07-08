@@ -130,7 +130,7 @@ public class Example4_1 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example4.1.vert"), readFromFile("example4.1.frag"));
 		
-		offsetUniform = glGetUniformLocation(program.getProgram(), "offset");
+		offsetUniform = program.getUniformLocation("offset");
 		
 		vbo = glGenBuffers();
 		

@@ -85,7 +85,7 @@ public class Example2_3 extends GLProgram {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glEnableClientState(GL_VERTEX_ARRAY);
 		program.begin();
-		glUniform4f(glGetUniformLocation(program.getProgram(), "color"), 1, 0, 0, 1); // red
+		glUniform4f(program.getUniformLocation("color"), 1, 0, 0, 1); // red
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 4, GL_FLOAT, false, 0, 0);

@@ -32,10 +32,10 @@ public class Example3_4 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		
 		program = new ShaderProgram(readFromFile("example3.4.vert"), readFromFile("example3.4.frag"));
-		timeLocation = glGetUniformLocation(program.getProgram(), "time");
+		timeLocation = program.getUniformLocation("time");
 		
-		int loopDurationLocation = glGetUniformLocation(program.getProgram(), "loopDuration");
-		int fragLoopDuration = glGetUniformLocation(program.getProgram(), "fragLoopDuration");
+		int loopDurationLocation = program.getUniformLocation("loopDuration");
+		int fragLoopDuration = program.getUniformLocation("fragLoopDuration");
 		program.begin();
 		glUniform1f(loopDurationLocation, 5);
 		glUniform1f(fragLoopDuration, 10);

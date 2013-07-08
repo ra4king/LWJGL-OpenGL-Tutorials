@@ -126,16 +126,16 @@ public class Example16_3 extends GLProgram {
 	
 	private ProgramData loadProgram(String vertexShader, String fragmentShader) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.numberOfLightsUniform = glGetUniformLocation(data.program.getProgram(), "numberOfLights");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.numberOfLightsUniform = data.program.getUniformLocation("numberOfLights");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
-		int lightBlock = glGetUniformBlockIndex(data.program.getProgram(), "Light");
+		int lightBlock = data.program.getUniformBlockIndex("Light");
 		glUniformBlockBinding(data.program.getProgram(), lightBlock, lightBlockIndex);
 		
-		int colorTextureUniform = glGetUniformLocation(data.program.getProgram(), "diffuseColorTex");
+		int colorTextureUniform = data.program.getUniformLocation("diffuseColorTex");
 		data.program.begin();
 		glUniform1i(colorTextureUniform, colorTexUnit);
 		data.program.end();
@@ -145,10 +145,10 @@ public class Example16_3 extends GLProgram {
 	
 	private UnlitProgramData loadUnlitProgram(String vertexShader, String fragmentShader) {
 		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.objectColorUniform = glGetUniformLocation(data.program.getProgram(), "objectColor");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.objectColorUniform = data.program.getUniformLocation("objectColor");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
 		return data;

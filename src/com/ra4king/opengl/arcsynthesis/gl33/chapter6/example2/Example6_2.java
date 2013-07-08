@@ -88,8 +88,8 @@ public class Example6_2 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example6.2.vert"), readFromFile("example6.2.frag"));
 		
-		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
-		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
+		modelToCameraMatrixUniform = program.getUniformLocation("modelToCameraMatrix");
+		cameraToClipMatrixUniform = program.getUniformLocation("cameraToClipMatrix");
 		
 		modelToCameraMatrices = new Matrix4[5];
 		for(int a = 0; a < modelToCameraMatrices.length; a++)

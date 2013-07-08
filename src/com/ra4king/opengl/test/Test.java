@@ -45,8 +45,8 @@ public class Test extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("test.vert"), readFromFile("test.frag"));
 		
-		perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
-		modelViewMatrixUniform = glGetUniformLocation(program.getProgram(), "modelViewMatrix");
+		perspectiveMatrixUniform = program.getUniformLocation("perspectiveMatrix");
+		modelViewMatrixUniform = program.getUniformLocation("modelViewMatrix");
 		
 		perspectiveMatrix = new Matrix4();
 		modelViewMatrix = new Matrix4();

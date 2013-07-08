@@ -72,19 +72,19 @@ public class Example16_1 extends GLProgram {
 		String vertexShader = readFromFile("example16.1.ScreenCoords.vert");
 		noGammaProgram = new ShaderProgram(vertexShader, readFromFile("example16.1.TextureNoGamma.frag"));
 		
-		int projectionBlock = glGetUniformBlockIndex(noGammaProgram.getProgram(), "Projection");
+		int projectionBlock = noGammaProgram.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(noGammaProgram.getProgram(), projectionBlock, projectionBlockIndex);
 		
-		int colorTextureUniform = glGetUniformLocation(noGammaProgram.getProgram(), "colorTexture");
+		int colorTextureUniform = noGammaProgram.getUniformLocation("colorTexture");
 		noGammaProgram.begin();
 		glUniform1i(colorTextureUniform, gammaRampTextureUnit);
 		noGammaProgram.end();
 		
 		gammaProgram = new ShaderProgram(vertexShader, readFromFile("example16.1.TextureGamma.frag"));
-		projectionBlock = glGetUniformBlockIndex(gammaProgram.getProgram(), "Projection");
+		projectionBlock = gammaProgram.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(gammaProgram.getProgram(), projectionBlock, projectionBlockIndex);
 		
-		colorTextureUniform = glGetUniformLocation(gammaProgram.getProgram(), "colorTexture");
+		colorTextureUniform = gammaProgram.getUniformLocation("colorTexture");
 		gammaProgram.begin();
 		glUniform1i(colorTextureUniform, gammaRampTextureUnit);
 		gammaProgram.end();

@@ -1,5 +1,8 @@
 package com.ra4king.opengl.util;
 
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.util.glu.GLU.*;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,6 +21,12 @@ import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.math.Vector4;
 
 public class Utils {
+	public static void checkGLError(String event) {
+		int error;
+		if((error = glGetError()) != GL_NO_ERROR)
+			throw new RuntimeException("OpenGL Error during " + event + ": " + gluErrorString(error));
+	}
+	
 	public static Quaternion angleAxisDeg(float angle, Vector3 vec) {
 		return new Quaternion((float)Math.toRadians(angle), vec);
 	}
@@ -54,7 +63,7 @@ public class Utils {
 	}
 	
 	public static void updateMousePoles(ViewPole viewPole, ObjectPole objectPole) {
-		updateMousePoles(new ViewPole[] { viewPole }, new ObjectPole[] { objectPole });
+		updateMousePoles(viewPole == null ? null : new ViewPole[] { viewPole }, objectPole == null ? null : new ObjectPole[] { objectPole });
 	}
 	
 	public static void updateMousePoles(ViewPole[] viewPoles, ObjectPole[] objectPoles) {

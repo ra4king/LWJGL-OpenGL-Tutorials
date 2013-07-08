@@ -32,7 +32,7 @@ public class Example3_2 extends GLProgram {
 		glClearColor(0, 0, 0, 0);
 		
 		program = new ShaderProgram(readFromFile("example3.2.vert"), readFromFile("example3.2.frag"));
-		offsetLocation = glGetUniformLocation(program.getProgram(), "offset");
+		offsetLocation = program.getUniformLocation("offset");
 		
 		vbo = glGenBuffers();
 		

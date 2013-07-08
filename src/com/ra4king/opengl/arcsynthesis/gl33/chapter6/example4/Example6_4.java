@@ -134,8 +134,8 @@ public class Example6_4 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example6.4.vert"), readFromFile("example6.4.frag"));
 		
-		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
-		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
+		modelToCameraMatrixUniform = program.getUniformLocation("modelToCameraMatrix");
+		cameraToClipMatrixUniform = program.getUniformLocation("cameraToClipMatrix");
 		
 		hierarchy = new Hierarchy();
 		cameraToClipMatrix = new Matrix4().clearToPerspective(45 * (float)Math.PI / 180, getWidth(), getHeight(), 1, 100);

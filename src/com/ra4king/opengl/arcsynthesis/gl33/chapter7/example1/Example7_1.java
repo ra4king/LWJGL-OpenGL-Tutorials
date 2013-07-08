@@ -176,10 +176,10 @@ public class Example7_1 extends GLProgram {
 	
 	private ProgramData loadProgram(String vs, String fs) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vs), readFromFile(fs)));
-		data.modelToWorldMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToWorldMatrix");
-		data.worldToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "worldToCameraMatrix");
-		data.cameraToClipMatrixUniform = glGetUniformLocation(data.program.getProgram(), "cameraToClipMatrix");
-		data.baseColorUniform = glGetUniformLocation(data.program.getProgram(), "baseColor");
+		data.modelToWorldMatrixUniform = data.program.getUniformLocation("modelToWorldMatrix");
+		data.worldToCameraMatrixUniform = data.program.getUniformLocation("worldToCameraMatrix");
+		data.cameraToClipMatrixUniform = data.program.getUniformLocation("cameraToClipMatrix");
+		data.baseColorUniform = data.program.getUniformLocation("baseColor");
 		return data;
 	}
 	

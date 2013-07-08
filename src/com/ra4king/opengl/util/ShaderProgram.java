@@ -2,6 +2,7 @@ package com.ra4king.opengl.util;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL31.*;
 import static org.lwjgl.opengl.GL32.*;
 
 import java.util.Map;
@@ -98,6 +99,14 @@ public class ShaderProgram {
 	
 	public int getProgram() {
 		return program;
+	}
+	
+	public int getUniformLocation(String name) {
+		return glGetUniformLocation(program, name);
+	}
+	
+	public int getUniformBlockIndex(String name) {
+		return glGetUniformBlockIndex(program, name);
 	}
 	
 	public void begin() {

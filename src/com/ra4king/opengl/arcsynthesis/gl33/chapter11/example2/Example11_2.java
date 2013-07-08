@@ -118,17 +118,17 @@ public class Example11_2 extends GLProgram {
 	
 	private ProgramData loadLitProgram(String vertexFile, String fragmentFile) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertexFile), readFromFile(fragmentFile)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.lightIntensityUniform = glGetUniformLocation(data.program.getProgram(), "lightIntensity");
-		data.ambientIntensityUniform = glGetUniformLocation(data.program.getProgram(), "ambientIntensity");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.lightIntensityUniform = data.program.getUniformLocation("lightIntensity");
+		data.ambientIntensityUniform = data.program.getUniformLocation("ambientIntensity");
 		
-		data.normalModelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "normalModelToCameraMatrix");
-		data.cameraSpaceLightPositionUniform = glGetUniformLocation(data.program.getProgram(), "cameraSpaceLightPos");
-		data.lightAttenuationUniform = glGetUniformLocation(data.program.getProgram(), "lightAttenuation");
-		data.shininessFactorUniform = glGetUniformLocation(data.program.getProgram(), "shininessFactor");
-		data.baseDiffuseColorUniform = glGetUniformLocation(data.program.getProgram(), "baseDiffuseColor");
+		data.normalModelToCameraMatrixUniform = data.program.getUniformLocation("normalModelToCameraMatrix");
+		data.cameraSpaceLightPositionUniform = data.program.getUniformLocation("cameraSpaceLightPos");
+		data.lightAttenuationUniform = data.program.getUniformLocation("lightAttenuation");
+		data.shininessFactorUniform = data.program.getUniformLocation("shininessFactor");
+		data.baseDiffuseColorUniform = data.program.getUniformLocation("baseDiffuseColor");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
 		return data;
@@ -136,10 +136,10 @@ public class Example11_2 extends GLProgram {
 	
 	private UnlitProgramData loadUnlitProgramData(String vertexFile, String fragmentFile) {
 		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertexFile), readFromFile(fragmentFile)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.objectColorUniform = glGetUniformLocation(data.program.getProgram(), "objectColor");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.objectColorUniform = data.program.getUniformLocation("objectColor");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
 		return data;

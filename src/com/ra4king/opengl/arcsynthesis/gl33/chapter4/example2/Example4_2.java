@@ -130,11 +130,11 @@ public class Example4_2 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example4.2.vert"), readFromFile("example4.2.frag"));
 		
-		offsetUniform = glGetUniformLocation(program.getProgram(), "offset");
+		offsetUniform = program.getUniformLocation("offset");
 		
-		int frustumScaleUniform = glGetUniformLocation(program.getProgram(), "frustumScale");
-		int zNearUniform = glGetUniformLocation(program.getProgram(), "zNear");
-		int zFarUniform = glGetUniformLocation(program.getProgram(), "zFar");
+		int frustumScaleUniform = program.getUniformLocation("frustumScale");
+		int zNearUniform = program.getUniformLocation("zNear");
+		int zFarUniform = program.getUniformLocation("zFar");
 		
 		program.begin();
 		glUniform1f(frustumScaleUniform, 1);

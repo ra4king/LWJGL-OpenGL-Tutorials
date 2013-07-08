@@ -188,9 +188,9 @@ public class Example7_2 extends GLProgram {
 	
 	private ProgramData loadProgram(String vs, String fs) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vs), readFromFile(fs)));
-		data.modelToWorldMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToWorldMatrix");
-		data.globalUniformBlockIndex = glGetUniformBlockIndex(data.program.getProgram(), "GlobalMatrices");
-		data.baseColorUniform = glGetUniformLocation(data.program.getProgram(), "baseColor");
+		data.modelToWorldMatrixUniform = data.program.getUniformLocation("modelToWorldMatrix");
+		data.globalUniformBlockIndex = data.program.getUniformBlockIndex("GlobalMatrices");
+		data.baseColorUniform = data.program.getUniformLocation("baseColor");
 		
 		glUniformBlockBinding(data.program.getProgram(), data.globalUniformBlockIndex, globalMatricesBindingIndex);
 		

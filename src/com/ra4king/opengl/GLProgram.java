@@ -1,7 +1,6 @@
 package com.ra4king.opengl;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.util.glu.GLU.*;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.ContextAttribs;
@@ -66,7 +65,7 @@ public abstract class GLProgram {
 	}
 	
 	public final void run(int major, int minor, boolean core, PixelFormat format) {
-		run(format, new ContextAttribs(major, minor).withProfileCore(core));
+		run(format, core ? new ContextAttribs(major, minor).withProfileCore(core) : new ContextAttribs(major, minor));
 	}
 	
 	public final void run(PixelFormat format) {
@@ -92,11 +91,11 @@ public abstract class GLProgram {
 		try {
 			init();
 			
-			checkGLError("init");
+			Utils.checkGLError("init");
 			
 			resized();
 			
-			checkGLError("resized");
+			Utils.checkGLError("resized");
 			
 			long lastTime, lastFPS;
 			lastTime = lastFPS = System.nanoTime();
@@ -118,11 +117,11 @@ public abstract class GLProgram {
 				
 				update(deltaTime);
 				
-				checkGLError("update");
+				Utils.checkGLError("update");
 				
 				render();
 				
-				checkGLError("render");
+				Utils.checkGLError("render");
 				
 				Display.update();
 				
@@ -140,12 +139,6 @@ public abstract class GLProgram {
 		} finally {
 			destroy();
 		}
-	}
-	
-	public void checkGLError(String event) {
-		int error;
-		if((error = glGetError()) != GL_NO_ERROR)
-			throw new RuntimeException("OpenGL Error during " + event + ": " + gluErrorString(error));
 	}
 	
 	public int getWidth() {

@@ -130,9 +130,9 @@ public class Example4_3 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example4.3.vert"), readFromFile("example4.3.frag"));
 		
-		offsetUniform = glGetUniformLocation(program.getProgram(), "offset");
+		offsetUniform = program.getUniformLocation("offset");
 		
-		int perspectiveMatrixUniform = glGetUniformLocation(program.getProgram(), "perspectiveMatrix");
+		int perspectiveMatrixUniform = program.getUniformLocation("perspectiveMatrix");
 		
 		float frustumScale = 1, zNear = 0.5f, zFar = 3;
 		FloatBuffer perspectiveMatrix = BufferUtils.createFloatBuffer(16);

@@ -97,13 +97,13 @@ public class Example9_3 extends GLProgram {
 	
 	private ProgramData loadShader(String vertFile, String fragFile) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertFile), readFromFile(fragFile)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.normalModelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "normalModelToCameraMatrix");
-		data.dirTolightUniform = glGetUniformLocation(data.program.getProgram(), "dirToLight");
-		data.lightIntensityUniform = glGetUniformLocation(data.program.getProgram(), "lightIntensity");
-		data.ambientIntensityUniform = glGetUniformLocation(data.program.getProgram(), "ambientIntensity");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.normalModelToCameraMatrixUniform = data.program.getUniformLocation("normalModelToCameraMatrix");
+		data.dirTolightUniform = data.program.getUniformLocation("dirToLight");
+		data.lightIntensityUniform = data.program.getUniformLocation("lightIntensity");
+		data.ambientIntensityUniform = data.program.getUniformLocation("ambientIntensity");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
 		return data;

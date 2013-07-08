@@ -42,9 +42,9 @@ public class Example8_1 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example8.1.vert"), readFromFile("example8.1.frag"));
 		
-		modelToCameraMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
-		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
-		baseColorUniform = glGetUniformLocation(program.getProgram(), "baseColor");
+		modelToCameraMatrixUniform = program.getUniformLocation("modelToCameraMatrix");
+		cameraToClipMatrixUniform = program.getUniformLocation("cameraToClipMatrix");
+		baseColorUniform = program.getUniformLocation("baseColor");
 		
 		cameraToClipMatrix = new Matrix4();
 		

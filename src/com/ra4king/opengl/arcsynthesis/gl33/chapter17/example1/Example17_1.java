@@ -140,8 +140,8 @@ public class Example17_1 extends GLProgram {
 		spinBarOrient = nodes.get(3).getOrient();
 		
 		unlit = scene.findProgram("p_unlit");
-		unlitModelToCameraMatrixUniform = glGetUniformLocation(unlit.getProgram(), "modelToCameraMatrix");
-		unlitObjectColorUniform = glGetUniformLocation(unlit.getProgram(), "objectColor");
+		unlitModelToCameraMatrixUniform = unlit.getUniformLocation("modelToCameraMatrix");
+		unlitObjectColorUniform = unlit.getUniformLocation("objectColor");
 	}
 	
 	@Override

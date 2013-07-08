@@ -103,13 +103,13 @@ public class Example16_2 extends GLProgram {
 	
 	private ProgramData loadProgram(String vertexShader, String fragmentShader) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
-		int colorTextureUniform = glGetUniformLocation(data.program.getProgram(), "colorTexture");
+		int colorTextureUniform = data.program.getUniformLocation("colorTexture");
 		data.program.begin();
 		glUniform1i(colorTextureUniform, colorTexUnit);
 		data.program.end();

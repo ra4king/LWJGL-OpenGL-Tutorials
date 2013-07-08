@@ -54,7 +54,7 @@ public class Example14_2 extends GLProgram {
 	
 	private ProgramData loadProgram(String vertex, String fragment) {
 		ProgramData data = new ProgramData(new ShaderProgram(readFromFile(vertex), readFromFile(fragment)));
-		data.cameraToClipMatrixUniform = glGetUniformLocation(data.program.getProgram(), "cameraToClipMatrix");
+		data.cameraToClipMatrixUniform = data.program.getUniformLocation("cameraToClipMatrix");
 		
 		return data;
 	}

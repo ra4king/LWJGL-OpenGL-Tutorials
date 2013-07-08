@@ -41,9 +41,9 @@ public class Example8_2 extends GLProgram {
 		
 		program = new ShaderProgram(readFromFile("example8.2.vert"), readFromFile("example8.2.frag"));
 		
-		modelToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "modelToCameraMatrix");
-		cameraToClipMatrixUniform = glGetUniformLocation(program.getProgram(), "cameraToClipMatrix");
-		baseColorUniform = glGetUniformLocation(program.getProgram(), "baseColor");
+		modelToClipMatrixUniform = program.getUniformLocation("modelToCameraMatrix");
+		cameraToClipMatrixUniform = program.getUniformLocation("cameraToClipMatrix");
+		baseColorUniform = program.getUniformLocation("baseColor");
 		
 		try {
 			ship = new Mesh(getClass().getResource("example8.2.Ship.xml"));

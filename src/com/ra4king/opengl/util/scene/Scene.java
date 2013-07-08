@@ -151,20 +151,20 @@ public class Scene {
 					throw new IllegalArgumentException("Invalid shaders for program " + id, exc);
 				}
 				
-				int matrixLocation = glGetUniformLocation(program.getProgram(), modelMatrix);
+				int matrixLocation = program.getUniformLocation(modelMatrix);
 				if(matrixLocation == -1)
 					throw new IllegalArgumentException("Program shader '" + id + "' does not have a matrix uniform.");
 				
 				int normalMatrixLocation = -1;
 				if(normalModelMatrix != null) {
-					normalMatrixLocation = glGetUniformLocation(program.getProgram(), normalModelMatrix);
+					normalMatrixLocation = program.getUniformLocation(normalModelMatrix);
 					if(normalMatrixLocation == -1)
 						throw new IllegalArgumentException("Program shader '" + id + "' does not have a normal matrix uniform.");
 				}
 				
 				int invNormalMatrixLocation = -1;
 				if(invNormalModelMatrix != null) {
-					invNormalMatrixLocation = glGetUniformLocation(program.getProgram(), invNormalModelMatrix);
+					invNormalMatrixLocation = program.getUniformLocation(invNormalModelMatrix);
 					if(normalMatrixLocation == -1)
 						throw new IllegalArgumentException("Program shader '" + id + "' does not have a inverse normal matrix uniform.");
 				}
@@ -188,7 +188,7 @@ public class Scene {
 							
 							blocks.add(name);
 							
-							int blockIndex = glGetUniformBlockIndex(program.getProgram(), name);
+							int blockIndex = program.getUniformBlockIndex(name);
 							if(blockIndex == GL_INVALID_INDEX)
 								throw new IllegalArgumentException("Block '" + name + "' cannot be found in program '" + id + "'.");
 							
@@ -218,7 +218,7 @@ public class Scene {
 							
 							samplers.add(name);
 							
-							int samplerLocation = glGetUniformLocation(program.getProgram(), name);
+							int samplerLocation = program.getUniformLocation(name);
 							if(samplerLocation == -1)
 								throw new IllegalArgumentException("Sampler '" + name + "' cannot be found in program '" + id + "'.");
 							

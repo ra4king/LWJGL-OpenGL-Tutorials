@@ -137,12 +137,12 @@ public class Example13_2 extends GLProgram {
 	
 	private ProgramMeshData loadLitMeshProgram(String vertexShader, String fragmentShader) {
 		ProgramMeshData data = new ProgramMeshData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrix = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.normalModelToCameraMatrix = glGetUniformLocation(data.program.getProgram(), "normalModelToCameraMatrix");
+		data.modelToCameraMatrix = data.program.getUniformLocation("modelToCameraMatrix");
+		data.normalModelToCameraMatrix = data.program.getUniformLocation("normalModelToCameraMatrix");
 		
-		int materialBlock = glGetUniformBlockIndex(data.program.getProgram(), "Material");
-		int lightBlock = glGetUniformBlockIndex(data.program.getProgram(), "Light");
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int materialBlock = data.program.getUniformBlockIndex("Material");
+		int lightBlock = data.program.getUniformBlockIndex("Light");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		
 		glUniformBlockBinding(data.program.getProgram(), materialBlock, materialBlockIndex);
 		glUniformBlockBinding(data.program.getProgram(), lightBlock, lightBlockIndex);
@@ -154,9 +154,9 @@ public class Example13_2 extends GLProgram {
 	private ProgramImposData loadLitImposProgram(String vertexShader, String geometryShader, String fragmentShader) {
 		ProgramImposData data = new ProgramImposData(new ShaderProgram(readFromFile(vertexShader), readFromFile(geometryShader), readFromFile(fragmentShader)));
 		
-		int materialBlock = glGetUniformBlockIndex(data.program.getProgram(), "Material");
-		int lightBlock = glGetUniformBlockIndex(data.program.getProgram(), "Light");
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int materialBlock = data.program.getUniformBlockIndex("Material");
+		int lightBlock = data.program.getUniformBlockIndex("Light");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		
 		glUniformBlockBinding(data.program.getProgram(), materialBlock, materialBlockIndex);
 		glUniformBlockBinding(data.program.getProgram(), lightBlock, lightBlockIndex);
@@ -167,10 +167,10 @@ public class Example13_2 extends GLProgram {
 	
 	private UnlitProgramData loadUnlitProgram(String vertexShader, String fragmentShader) {
 		UnlitProgramData data = new UnlitProgramData(new ShaderProgram(readFromFile(vertexShader), readFromFile(fragmentShader)));
-		data.modelToCameraMatrixUniform = glGetUniformLocation(data.program.getProgram(), "modelToCameraMatrix");
-		data.objectColorUniform = glGetUniformLocation(data.program.getProgram(), "objectColor");
+		data.modelToCameraMatrixUniform = data.program.getUniformLocation("modelToCameraMatrix");
+		data.objectColorUniform = data.program.getUniformLocation("objectColor");
 		
-		int projectionBlock = glGetUniformBlockIndex(data.program.getProgram(), "Projection");
+		int projectionBlock = data.program.getUniformBlockIndex("Projection");
 		glUniformBlockBinding(data.program.getProgram(), projectionBlock, projectionBlockIndex);
 		
 		return data;
