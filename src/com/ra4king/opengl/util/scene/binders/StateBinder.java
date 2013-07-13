@@ -4,23 +4,25 @@ import static org.lwjgl.opengl.GL20.*;
 
 import java.util.HashMap;
 
+import com.ra4king.opengl.util.ShaderProgram;
+
 public interface StateBinder {
-	void bindState(int program);
+	void bindState(ShaderProgram program);
 	
-	void unbindState(int program);
+	void unbindState(ShaderProgram program);
 }
 
 abstract class UniformBinderBase implements StateBinder {
-	private HashMap<Integer,Integer> programUniformLocation = new HashMap<>();
+	private HashMap<ShaderProgram,Integer> programUniformLocation = new HashMap<>();
 	
-	public void associateWithProgram(int program, String uniform) {
-		programUniformLocation.put(program, glGetUniformLocation(program, uniform));
+	public void associateWithProgram(ShaderProgram program, String uniform) {
+		programUniformLocation.put(program, glGetUniformLocation(program.getProgram(), uniform));
 	}
 	
-	protected int getUniformLocation(int program) {
+	protected int getUniformLocation(ShaderProgram program) {
 		Integer i = programUniformLocation.get(program);
-		if(i == null)
-			return -1;
+		if(i == -1)
+			throw new IllegalArgumentException("Unassociated program");
 		return i;
 	}
 }

@@ -608,8 +608,8 @@ public class Scene {
 			binders.add(binder);
 		}
 		
-		public int getProgram() {
-			return baseVariant.program.program.getProgram();
+		public ShaderProgram getProgram() {
+			return baseVariant.program.program;
 		}
 		
 		public void render(Matrix4 baseMatrix) {
@@ -639,7 +639,7 @@ public class Scene {
 				glUniformMatrix3(variant.program.invNormalMatrixUniform, false, new Matrix3(objectMatrix.inverse().transpose()).inverse().toBuffer());
 			
 			for(StateBinder binder : binders)
-				binder.bindState(variant.program.program.getProgram());
+				binder.bindState(variant.program.program);
 			
 			for(TextureBinding binding : variant.texBindings) {
 				glActiveTexture(GL_TEXTURE0 + binding.texUnit);
@@ -656,7 +656,7 @@ public class Scene {
 			}
 			
 			for(StateBinder binder : binders)
-				binder.unbindState(variant.program.program.getProgram());
+				binder.unbindState(variant.program.program);
 			
 			variant.program.program.end();
 		}
