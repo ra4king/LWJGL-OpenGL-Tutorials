@@ -316,19 +316,19 @@ public class Mesh {
 		UBYTE("ubyte", GL_UNSIGNED_BYTE, 1) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
-					b.put(Byte.parseByte(s));
+					b.put((byte)Long.parseLong(s));
 			}
 		},
 		USHORT("ushort", GL_UNSIGNED_SHORT, 2) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
-					b.putShort(Short.parseShort(s));
+					b.putShort((short)Long.parseLong(s));
 			}
 		},
 		UINT("uint", GL_UNSIGNED_INT, 4) {
 			public void store(ByteBuffer b, String[] data) {
 				for(String s : data)
-					b.putInt(Integer.parseInt(s));
+					b.putInt((int)Long.parseLong(s));
 			}
 		};
 		
@@ -405,17 +405,17 @@ public class Mesh {
 				case GL_INT:
 				case GL_UNSIGNED_INT:
 					for(String s : data)
-						b.putInt(Integer.parseInt(s));
+						b.putInt((int)Long.parseLong(s));
 					break;
 				case GL_SHORT:
 				case GL_UNSIGNED_SHORT:
 					for(String s : data)
-						b.putShort(Short.parseShort(s));
+						b.putShort((short)Long.parseLong(s));
 					break;
 				case GL_BYTE:
 				case GL_UNSIGNED_BYTE:
 					for(String s : data)
-						b.put(Byte.parseByte(s));
+						b.put((byte)Long.parseLong(s));
 					break;
 			}
 		}
