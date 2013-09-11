@@ -13,6 +13,10 @@
 1. Ensure you have Java SDK 7 and in your PATH
 2. Clone this repository: `hg clone https://bitbucket.org/ra4king/lwjgl-shader-tutorials`
 3. Import directly into Eclipse or IntelliJ IDEA. To open in Netbeans, go to File -> Import Project -> Eclipse Project
+4. Setup natives properly. The natives are located in /libs/lwjgl/natives/
+	+ [Eclipse](http://lwjgl.com/wiki/index.php?title=Setting_Up_LWJGL_with_Eclipse)
+	+ [IntelliJ IDEA](http://lwjgl.com/wiki/index.php?title=Setting_Up_LWJGL_with_IntelliJ_IDEA)
+	+ [Netbeans](http://lwjgl.com/wiki/index.php?title=Setting_Up_LWJGL_with_NetBeans)
 
 ## Sections ##
 
