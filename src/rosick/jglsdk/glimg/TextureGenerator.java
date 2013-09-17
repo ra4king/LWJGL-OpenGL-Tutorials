@@ -7,7 +7,6 @@ import static org.lwjgl.opengl.EXTTextureInteger.*;
 import static org.lwjgl.opengl.EXTTextureSRGB.*;
 import static org.lwjgl.opengl.EXTTextureSnorm.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL11.glGetInteger;
 import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL13.*;
 import static org.lwjgl.opengl.GL14.*;
