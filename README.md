@@ -35,3 +35,5 @@ at [arcsynthesis.org](http://arcsynthesis.org/gltut)
 
 
 * **test:** Miscellaneous test programs.
+
+## Licensed under [BSD 3-Clause license](http://opensource.org/licenses/BSD-3-Clause) ##
