@@ -66,7 +66,7 @@ public class Example1_1 extends GLProgram {
 		vbo = glGenBuffers();
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(24).put(new float[] { 0.75f, 0.75f, 0.0f, 1.0f,
+		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.75f, 0.75f, 0.0f, 1.0f,
 				0.75f, -0.75f, 0.0f, 1.0f,
 				-0.75f, -0.75f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
 		
