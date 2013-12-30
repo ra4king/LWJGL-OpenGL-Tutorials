@@ -199,8 +199,6 @@ public class Example5_1 extends GLProgram {
 		glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 36 * 3 * 4);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo2);
 		
-		glBindVertexArray(0);
-		
 		vao2 = glGenVertexArrays();
 		glBindVertexArray(vao2);
 		

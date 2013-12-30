@@ -47,10 +47,10 @@ public class Example3_4 extends GLProgram {
 		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(12).put(new float[] { 0.25f, 0.25f, 0.0f, 1.0f,
 				0.25f, -0.25f, 0.0f, 1.0f,
 				-0.25f, -0.25f, 0.0f, 1.0f }).flip(), GL_STATIC_DRAW);
-		
-		glBindVertexArray(glGenVertexArrays());
-		
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
+		// In core OpenGL, Vertex Array Objects (VAOs) are required for all draw calls. VAOs will be explained in Chapter 5.
+		glBindVertexArray(glGenVertexArrays());
 	}
 	
 	@Override

@@ -154,10 +154,10 @@ public class Example4_4 extends GLProgram {
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, (FloatBuffer)BufferUtils.createFloatBuffer(data.length).put(data).flip(), GL_STATIC_DRAW);
-		
-		glBindVertexArray(glGenVertexArrays());
-		
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
+		// In core OpenGL, Vertex Array Objects (VAOs) are required for all draw calls. VAOs will be explained in Chapter 5.
+		glBindVertexArray(glGenVertexArrays());
 		
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);

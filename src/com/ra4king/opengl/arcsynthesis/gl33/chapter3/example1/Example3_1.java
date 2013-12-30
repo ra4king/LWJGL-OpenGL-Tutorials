@@ -43,10 +43,10 @@ public class Example3_1 extends GLProgram {
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, vertexData, GL_STREAM_DRAW);
-		
-		glBindVertexArray(glGenVertexArrays());
-		
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
+		// In core OpenGL, Vertex Array Objects (VAOs) are required for all draw calls. VAOs will be explained in Chapter 5.
+		glBindVertexArray(glGenVertexArrays());
 	}
 	
 	@Override
