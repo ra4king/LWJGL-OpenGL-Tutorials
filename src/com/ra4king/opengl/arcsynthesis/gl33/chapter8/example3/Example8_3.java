@@ -55,7 +55,7 @@ public class Example8_3 extends GLProgram {
 		
 		try {
 			ship = new Mesh(getClass().getResource("example8.3.Ship.xml"));
-			plane = new Mesh(getClass().getResource("example8.3.plane.xml"));
+			plane = new Mesh(getClass().getResource("example8.3.Plane.xml"));
 		} catch(Exception exc) {
 			exc.printStackTrace();
 			destroy();
