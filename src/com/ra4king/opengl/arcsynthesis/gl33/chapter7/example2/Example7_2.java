@@ -227,9 +227,9 @@ public class Example7_2 extends GLProgram {
 			camTarget.sub(speed1, 0, 0);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_E))
-			camTarget.sub(speed1, 0, 0);
+			camTarget.sub(0, speed1, 0);
 		if(Keyboard.isKeyDown(Keyboard.KEY_Q))
-			camTarget.add(speed1, 0, 0);
+			camTarget.add(0, speed1, 0);
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_I))
 			sphereCamRelPos.sub(0, speed2, 0);
