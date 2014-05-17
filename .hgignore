@@ -1,9 +1,0 @@
-syntax: glob
-
-.idea/
-*.iml
-hs_err_*.log
-
-bin/
-syntax: regexp
-^out$
