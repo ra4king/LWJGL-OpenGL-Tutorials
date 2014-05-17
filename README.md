@@ -1,4 +1,5 @@
-# README #
+LWJGL OpenGL Tutorials
+======================
 
 ## Quick Start ##
 
