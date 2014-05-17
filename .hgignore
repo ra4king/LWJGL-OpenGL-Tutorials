@@ -4,5 +4,6 @@ syntax: glob
 *.iml
 hs_err_*.log
 
+bin/
 syntax: regexp
 ^out$
