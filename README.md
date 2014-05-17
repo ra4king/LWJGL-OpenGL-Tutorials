@@ -12,7 +12,7 @@ LWJGL OpenGL Tutorials
 ### How to run samples ###
 
 1. Ensure you have Java SDK 7 and in your PATH
-2. Clone this repository: `git clone https://github.org/ra4king/LWJGL-OpenGL-Tutorials.git`
+2. Clone this repository: `git clone https://github.com/ra4king/LWJGL-OpenGL-Tutorials.git`
 3. Create a project, specifying 'src' as the source folder, and adding the JARs in the 'libs' folder as dependencies
 4. Setup natives properly. The natives are located in /libs/lwjgl/natives/
 	+ [Eclipse](http://lwjgl.com/wiki/index.php?title=Setting_Up_LWJGL_with_Eclipse)
