@@ -21,9 +21,11 @@ import com.ra4king.opengl.util.math.Vector3;
 import com.ra4king.opengl.util.math.Vector4;
 
 public class Utils {
+	public static boolean ENABLE_ERROR_CHECKING = true;
+	
 	public static void checkGLError(String event) {
 		int error;
-		if((error = glGetError()) != GL_NO_ERROR)
+		if(ENABLE_ERROR_CHECKING && (error = glGetError()) != GL_NO_ERROR)
 			throw new RuntimeException("OpenGL Error during " + event + ": " + gluErrorString(error));
 	}
 	
