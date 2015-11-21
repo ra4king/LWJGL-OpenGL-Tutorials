@@ -24,7 +24,7 @@ LWJGL OpenGL Tutorials
 Every section is found in the source under `src/com/ra4king/opengl`:
 
 * **arcsynthesis:** Java ports of the excellent C++ tutorials from "Learning Modern 3d Graphics Programming"
-at [arcsynthesis.org](http://arcsynthesis.org/gltut)
+at [arcsynthesis.org](https://www.roiatalla.com/public/arcsynthesis/)
 
 
 * **redbook:** A collection of examples from the [OpenGL Programming Guide](http://www.glprogramming.com/red/) first edition
